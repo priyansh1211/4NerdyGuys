@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                 OutlinedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                        MaterialStateProperty.all(Colors.blue.shade900)),
+                            MaterialStateProperty.all(Colors.blue.shade900)),
                     child: const Text('Log in',
                         style: TextStyle(color: Colors.white)),
                     onPressed: () {
@@ -62,7 +63,8 @@ class _LoginPageState extends State<LoginPage> {
                                 new FlatButton(
                                   child: const Text('OK'),
                                   onPressed: () {
-                                    Navigator.of(context).pop();
+                                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage(),));
+                                   // Navigator.of(context).pop();
                                   },
                                 )
                               ],
@@ -75,14 +77,14 @@ class _LoginPageState extends State<LoginPage> {
                 Row(children: [
                   Text('Don\'t have an account?',
                       style: TextStyle(color: Colors.black, fontSize: 20)),
-                  InkWell(onTap: (){},
+                  InkWell(
+                    onTap: () {},
                     child: Text(
                       'Sign up',
                       style: TextStyle(color: Colors.blueAccent, fontSize: 20),
                     ),
                   )
-                ],
-                    mainAxisAlignment:MainAxisAlignment.center)
+                ], mainAxisAlignment: MainAxisAlignment.center)
               ],
             ),
           ),

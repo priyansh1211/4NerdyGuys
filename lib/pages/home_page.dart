@@ -63,6 +63,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                const Center(
+                  child: Text(
+                    "Home",
+                    style: TextStyle(fontSize: 30, fontFamily: 'ReadexPro',),
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
