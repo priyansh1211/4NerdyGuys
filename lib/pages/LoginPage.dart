@@ -30,32 +30,29 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(
-        child: DrawerHeader(
-          child: Text("Hello World"),
-        ),
-      ),
       backgroundColor: Colors.grey.shade200,
       body: Padding(
         padding: const EdgeInsets.all(12),
         child:ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
           child: Container(
+            width: 400,
+            height: 800,
             decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage('assets/images/login_bg.jpeg'),fit: BoxFit.contain)
+              image: DecorationImage(image: AssetImage('assets/images/login_bg.jpeg'),fit: BoxFit.fill)
             ),
             child:Container(
               child: Form(
                 autovalidateMode: AutovalidateMode.always,
                 key: formkey,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     TextFormField(
                       decoration : InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.0)),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40.0)),
                           labelText: "E-mail",
+                          helperStyle: TextStyle(color: Color(0x00eef2ff)),
                           hintText: "Enter your email"),
                       validator: MultiValidator(
                           [
@@ -71,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                         obscureText: true,
                         decoration: InputDecoration(
                             fillColor: Color(0x00EEF2FF),
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.0)),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(40.0)),
                             labelText: "Password",
                             hintText: "Enter your password"),
                         validator: (value){

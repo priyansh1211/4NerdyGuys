@@ -33,7 +33,6 @@ class _signupState extends State<signup> {
             autovalidateMode: AutovalidateMode.always,
             key: formkey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 TextFormField(
                   decoration : InputDecoration(
