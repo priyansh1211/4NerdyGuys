@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/home_page.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -9,86 +10,115 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  GlobalKey<FormState> formkey = GlobalKey<FormState>();
+
+  void validate(){
+    if(formkey.currentState!.validate()){
+          print("Validated");
+    }
+    else{
+      print("Not validated");
+    }
+  }
+
+
+
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  get isEmpty => null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      drawer: const Drawer(
+        child: DrawerHeader(
+          child: Text("Hello World"),
+        ),
+      ),
+      backgroundColor: Colors.grey.shade200,
       body: Padding(
         padding: const EdgeInsets.all(12),
-        child: Container(
-          color: Colors.grey.shade100,
-          child: Align(
-            alignment: Alignment.center,
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(13),
-                  child: TextField(
-                    controller: nameController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Username',
-                      hintText: 'Enter your name',
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: TextField(
-                    controller: passwordController,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Password',
-                      hintText: 'Enter your password',
-                    ),
-                  ),
-                ),
-                OutlinedButton(
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.blue.shade900)),
-                    child: const Text('Log in',
-                        style: TextStyle(color: Colors.white)),
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: const Text("Alert Message"),
-                              content: Text(nameController.text),
-                              actions: <Widget>[
-                                new FlatButton(
-                                  child: const Text('OK'),
-                                  onPressed: () {
-                                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage(),));
-                                   // Navigator.of(context).pop();
-                                  },
-                                )
-                              ],
-                            );
-                          });
-                    }),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(children: [
-                  Text('Don\'t have an account?',
-                      style: TextStyle(color: Colors.black, fontSize: 20)),
-                  InkWell(
-                    onTap: () {},
-                    child: Text(
-                      'Sign up',
-                      style: TextStyle(color: Colors.blueAccent, fontSize: 20),
-                    ),
-                  )
-                ], mainAxisAlignment: MainAxisAlignment.center)
-              ],
+        child:ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage('assets/images/login_bg.jpeg'),fit: BoxFit.contain)
             ),
+            child:Container(
+              child: Form(
+                autovalidateMode: AutovalidateMode.always,
+                key: formkey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    TextFormField(
+                      decoration : InputDecoration(
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.0)),
+                          labelText: "E-mail",
+                          hintText: "Enter your email"),
+                      validator: MultiValidator(
+                          [
+                            RequiredValidator(errorText: "Required"),
+                            EmailValidator(errorText: "Not a valid E-mail"),
+                          ]
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: 20.0),
+                      child: TextFormField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            fillColor: Color(0x00EEF2FF),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.0)),
+                            labelText: "Password",
+                            hintText: "Enter your password"),
+                        validator: (value){
+                          if(value!.isEmpty){
+                            return "Required";
+                          }
+                          else if(value.length < 6){
+                            return "Should be at least 6 characters";
+                          }else if(value.length > 15){
+                            return "Should not be more than 15 characters";
+                          }else{
+                            return null;
+                          }
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 20.0,
+                      ),
+                      child: RaisedButton(
+                        onPressed:validate,
+                        child: Text("Log in"),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      Text('Don\'t have an account?',
+                          style: TextStyle(color: Colors.black, fontSize: 20)),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, 'SignUp');
+                        },
+                        child: Text(
+                          'Sign up',
+                          style: TextStyle(color: Colors.blueAccent, fontSize: 20),
+                        ),
+                      )
+                    ])
+                  ],
+                ),
+              ),
+            )
           ),
-        ),
+        )
       ),
     );
   }

@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import './pages/LoginPage.dart';
+import './pages/SignUp.dart';
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    initialRoute: 'LoginPage',
+    routes: {
+      'LoginPage' : (context) => LoginPage(),
+      'SignUp' : (context) => signup()
+    },
+  ));
 }
 
 class MyApp extends StatelessWidget {

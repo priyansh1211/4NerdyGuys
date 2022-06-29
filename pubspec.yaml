@@ -27,8 +27,10 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  js : ^0.6.2
   flutter:
     sdk: flutter
+  form_field_validator : ^1.0.1
 
 
   # The following adds the Cupertino Icons fonts to your application.
