@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/Button.dart';
+import 'package:flutter_app/pages/InputField.dart';
+
+class InputWrapper extends StatefulWidget {
+  const InputWrapper({Key? key}) : super(key: key);
+
+  @override
+  State<InputWrapper> createState() => _InputWrapperState();
+}
+class _InputWrapperState extends State<InputWrapper>{
+Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(30),
+      child: Column(
+        children: <Widget>[
+          SizedBox(height: 40,),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10)
+            ),
+            child: InputField(),
+          ),
+          SizedBox(height: 40,),
+          Text("Forgot Password?",style: TextStyle(color: Colors.grey),
+          ),
+          SizedBox(height: 40,),
+          Button()
+        ],
+
+      ),
+    );
+  }
+}
