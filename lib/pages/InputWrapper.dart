@@ -22,13 +22,25 @@ Widget build(BuildContext context) {
             ),
             child: InputField(),
           ),
-          SizedBox(height: 40,),
-          Text("Forgot Password?",style: TextStyle(color: Colors.grey),
+          SizedBox(height: 20,),
+          Text("Forgot Password?",style: TextStyle(color: Colors.white),
           ),
-          SizedBox(height: 40,),
-          Button()
+          SizedBox(height: 20,),
+          Button(),
+          SizedBox(height: 20,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('Don\'t have an account?',style: TextStyle(color: Colors.black,fontSize: 20),),
+              InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, 'SignUp');
+                },
+                child: Text('Sign Up',style: TextStyle(color: Colors.blue.shade900,fontSize: 20),),
+              )
+            ],
+          )
         ],
-
       ),
     );
   }

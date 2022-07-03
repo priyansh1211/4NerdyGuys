@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class Header extends StatefulWidget {
   const Header({Key? key}) : super(key: key);
 
@@ -9,16 +10,10 @@ class Header extends StatefulWidget {
 class _HeaderState extends State<Header> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.all(20),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Center(
-          child: Text("Login",style: TextStyle(color: Colors.white,fontSize: 40),),
-        ),
-      ],
-    ),
+    return Container(
+      child: ClipRRect(
+        child: Image.asset('assets/images/login_page_pic.jpeg',height: 200,),
+      ),
     );
   }
 }

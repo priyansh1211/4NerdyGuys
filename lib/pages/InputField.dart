@@ -50,6 +50,7 @@ class _InputFieldState extends State<InputField> {
               )
           ),
           child: TextField(
+            obscureText: true,
             decoration: InputDecoration(
                 hintText: "Enter your password",
                 hintStyle: TextStyle(color: Colors.grey),
