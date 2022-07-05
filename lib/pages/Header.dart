@@ -11,9 +11,9 @@ class _HeaderState extends State<Header> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ClipRRect(
-        child: Image.asset('assets/images/login_page_pic.jpeg',height: 200,),
-      ),
+      //child: ClipRRect(
+        //child: Image.asset('assets/images/login_page_pic.jpeg',height: 200,),
+      //),
     );
   }
 }

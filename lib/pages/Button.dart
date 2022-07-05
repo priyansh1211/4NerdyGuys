@@ -12,7 +12,7 @@ class _ButtonState extends State<Button> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: 50,
         margin: EdgeInsets.symmetric(horizontal: 45),
         decoration: BoxDecoration(
           color: Colors.blue.shade900,
@@ -22,7 +22,7 @@ class _ButtonState extends State<Button> {
         child: Text("Login", style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize:15
+            fontSize:20
         ),
         ),
       ),

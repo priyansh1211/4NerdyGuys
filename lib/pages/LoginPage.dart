@@ -16,31 +16,34 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
+      resizeToAvoidBottomInset: false,
+      body: ClipRRect(
+        child:Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-          Colors.grey.shade500,
-          Colors.white,
-        ])),
+              Colors.white,
+              Colors.grey.shade400,
+            ]
+            )
+        ),
         child: Column(
           children: <Widget>[
             const SizedBox(
-              height: 110,
+              height: 250,
             ),
             const Header(),
             Expanded(
                 child: Container(
-              decoration: const BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(60),
-                      topRight: Radius.circular(60))),
-              child: const InputWrapper(),
-            )),
+                  decoration: const BoxDecoration(
+                      color: Colors.black12,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(60),
+                          topRight: Radius.circular(60))),
+                  child: const InputWrapper(),
+                )),
           ],
         ),
-      ),
+      ),)
     );
   }
 }

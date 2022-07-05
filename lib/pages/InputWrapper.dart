@@ -23,8 +23,12 @@ Widget build(BuildContext context) {
             child: InputField(),
           ),
           SizedBox(height: 20,),
-          Text("Forgot Password?",style: TextStyle(color: Colors.white),
-          ),
+           InkWell(
+             onTap: (){
+               Navigator.pushNamed(context, 'SignUp');
+             },
+             child: Text("Forgot Password?",style: TextStyle(color: Colors.blue.shade900,fontSize: 20),),
+           ),
           SizedBox(height: 20,),
           Button(),
           SizedBox(height: 20,),

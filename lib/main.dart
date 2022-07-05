@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './pages/ForgotPassword.dart';
 import './pages/LoginPage.dart';
 import './pages/SignUp.dart';
 void main() {
@@ -7,7 +8,8 @@ void main() {
     initialRoute: 'LoginPage',
     routes: {
       'LoginPage' : (context) => LoginPage(),
-      'SignUp' : (context) => signup()
+      'SignUp' : (context) => SignUp(),
+      'Forgot Password': (context)=> ForgotPassword(),
     },
   ));
 }
