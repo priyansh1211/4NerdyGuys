@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/ResetPassword.dart';
 import './pages/ForgotPassword.dart';
 import './pages/LoginPage.dart';
 import './pages/SignUp.dart';
@@ -10,6 +11,7 @@ void main() {
       'LoginPage' : (context) => LoginPage(),
       'SignUp' : (context) => SignUp(),
       'ForgotPassword': (context)=> ForgotPassword(),
+      'ResetPassword': (context)=> ResetPassword(),
     },
   ));
 }
