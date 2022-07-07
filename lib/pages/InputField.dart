@@ -13,13 +13,13 @@ class _InputFieldState extends State<InputField> {
     return Column(
       children: <Widget>[
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             border: Border(
               bottom:BorderSide(color: Colors.grey.shade200)
             )
           ),
-          child: TextField(
+          child: const TextField(
             decoration: InputDecoration(
               hintText: "Enter your name",
               hintStyle: TextStyle(color: Colors.grey),
@@ -28,13 +28,13 @@ class _InputFieldState extends State<InputField> {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
               border: Border(
                   bottom:BorderSide(color: Colors.grey.shade200)
               )
           ),
-          child: TextField(
+          child: const TextField(
             decoration: InputDecoration(
                 hintText: "Enter your E-mail",
                 hintStyle: TextStyle(color: Colors.grey),
@@ -43,13 +43,13 @@ class _InputFieldState extends State<InputField> {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
               border: Border(
                   bottom:BorderSide(color: Colors.grey.shade200)
               )
           ),
-          child: TextField(
+          child: const TextField(
             obscureText: true,
             decoration: InputDecoration(
                 hintText: "Enter your password",

@@ -9,7 +9,7 @@ void main() {
     routes: {
       'LoginPage' : (context) => LoginPage(),
       'SignUp' : (context) => SignUp(),
-      'Forgot Password': (context)=> ForgotPassword(),
+      'ForgotPassword': (context)=> ForgotPassword(),
     },
   ));
 }
