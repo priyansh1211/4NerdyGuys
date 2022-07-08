@@ -42,6 +42,7 @@ class _InputWrapperState extends State<InputWrapper> {
                     'Forgot Password?',
                     style: TextStyle(
                         color: Colors.blue.shade900,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
                 )

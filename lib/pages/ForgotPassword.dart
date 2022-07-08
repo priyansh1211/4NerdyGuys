@@ -10,6 +10,8 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   //final isKeyboard = MediaQuery.of(context).viewInsets.bottom!=0;
+  bool isDesktop(BuildContext context) => MediaQuery.of(context).size.width >=600;
+  bool isMobile(BuildContext context)=> MediaQuery.of(context).size.width<600;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +20,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            if(isDesktop(context))
+              Container(
               width: 250,
               margin: EdgeInsets.all(20),
               child: ClipRRect(

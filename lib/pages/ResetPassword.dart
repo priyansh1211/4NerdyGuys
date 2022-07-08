@@ -18,8 +18,8 @@ class _ResetPasswordState extends State<ResetPassword> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 250,
-              margin: EdgeInsets.all(20),
+              height: MediaQuery.of(context).size.height*0.30,
+              width: MediaQuery.of(context).size.width*0.6,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image(image: AssetImage('assets/images/reset_password.png'),),
@@ -40,6 +40,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextField(
+                obscureText: true,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(40),
@@ -58,6 +59,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             SizedBox(height: 10,),
             Padding(padding: EdgeInsets.symmetric(horizontal: 25),
             child: TextField(
+              obscureText: true,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(40),
