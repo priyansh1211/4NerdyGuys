@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/Project.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,11 +15,7 @@ class _HomePageState extends State<HomePage> {
       //   appBar: AppBar(
       //     title: Text("Card"),
       //   ),
-      drawer: const Drawer(
-        child: DrawerHeader(
-          child: Text("Hello World"),
-        ),
-      ),
+
       body: Center(
         child: Stack(
           children: [
@@ -48,6 +45,8 @@ class _HomePageState extends State<HomePage> {
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
+              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Align(
                   alignment: Alignment.center,
@@ -65,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const Center(
                   child: Text(
-                    "Home",
+                    "Vishwas",
                     style: TextStyle(fontSize: 30, fontFamily: 'ReadexPro',),
                   ),
                 ),
@@ -82,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                         child: Image.asset('assets/images/proj.png'),
                       ),
                       onTap: () {
-                        print("Project");
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ProjectPage()));
                       },
                     ),
                     InkWell(
@@ -99,6 +98,7 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                   ],
+                  //mainAxisAlignment: MainAxisAlignment.center,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -130,6 +130,7 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                   ],
+                  //mainAxisAlignment: MainAxisAlignment.center,
                 ),
               ],
             ),

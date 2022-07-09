@@ -79,6 +79,9 @@ flutter:
      - family: ReadexPro
        fonts:
          - asset: assets/fonts/ReadexPro.ttf
+         - asset: assets/fonts/Inter.ttf
+         - asset: assets/fonts/OpenSans.ttf
+         - asset: assets/fonts/Montserrat.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
