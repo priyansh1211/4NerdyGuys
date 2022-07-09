@@ -9,14 +9,21 @@ class ManPowerReport extends StatefulWidget {
 class _ManPowerReportState extends State<ManPowerReport> {
   @override
   Widget build(BuildContext context) {
+    Row toolbar = new Row(
+      children:<Widget>[
+        new Icon(Icons.arrow_back_ios),
+        new Expanded(child: Text('Man Power Report')),
+        new CircleAvatar(radius: 20,backgroundColor: Colors.white,child: Icon(Icons.person,size: 20,color: Colors.blue[500],),)
+      ],
+    );
     return Scaffold(
-      body: Container(
-        child: Row(
-          children: <Widget>[
-            Align(alignment: Alignment.topRight,
-            child: CircleAvatar(radius: 20,backgroundColor: Colors.white,child:Center(child: Icon(Icons.person,size: 20,color: Colors.blue.shade500),) ),)
-          ],
-        ),
+      appBar: AppBar(
+        title: toolbar,
+      ),
+      body: Row(
+        children: <Widget>[
+
+        ],
       ),
     );
   }
