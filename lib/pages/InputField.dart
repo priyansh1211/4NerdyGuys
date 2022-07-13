@@ -15,39 +15,31 @@ class _InputFieldState extends State<InputField> {
         Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            border: Border(
-              bottom:BorderSide(color: Colors.grey.shade200)
-            )
+           borderRadius: BorderRadius.circular(20),
           ),
           child: const TextField(
             decoration: InputDecoration(
               hintText: "Enter your name",
               hintStyle: TextStyle(color: Colors.grey),
-              border: InputBorder.none
             ),
           ),
         ),
         Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-              border: Border(
-                  bottom:BorderSide(color: Colors.grey.shade200)
-              )
+              borderRadius: BorderRadius.circular(25),
           ),
           child: const TextField(
             decoration: InputDecoration(
                 hintText: "Enter your E-mail",
                 hintStyle: TextStyle(color: Colors.grey),
-                border: InputBorder.none
             ),
           ),
         ),
         Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-              border: Border(
-                  bottom:BorderSide(color: Colors.grey.shade200)
-              )
+            borderRadius: BorderRadius.circular(20),
           ),
           child: const TextField(
             obscureText: true,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/MachineryReport.dart';
+import 'package:flutter_app/pages/ManPowerReport.dart';
 
 class DpReportPage extends StatefulWidget {
   const DpReportPage({Key? key}) : super(key: key);
@@ -183,7 +185,9 @@ class _DpReportPageState extends State<DpReportPage> {
                               width: 147,
                             ),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>ManPowerReport()));
+                            },
                         ),
                         const Positioned(
                           top: 11,
@@ -214,7 +218,9 @@ class _DpReportPageState extends State<DpReportPage> {
                               width: 147,
                             ),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> MachineryReport() ));
+                          },
                         ),
                         const Positioned(
                           top: 11,

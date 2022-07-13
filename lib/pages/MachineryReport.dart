@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-
-class ManPowerReport extends StatefulWidget {
-  const ManPowerReport({Key? key}) : super(key: key);
+class MachineryReport extends StatefulWidget {
+  const MachineryReport({Key? key}) : super(key: key);
 
   @override
-  State<ManPowerReport> createState() => _ManPowerReportState();
+  State<MachineryReport> createState() => _MachineryReportState();
 }
 
-class _ManPowerReportState extends State<ManPowerReport> {
-  var items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
-
+class _MachineryReportState extends State<MachineryReport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +15,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.grey.shade400,
         title: const Text(
-          "Man Power Report:",
+          "Machinery Report:",
           style: TextStyle(color: Colors.black),
         ),
         leading: GestureDetector(
@@ -48,7 +45,6 @@ class _ManPowerReportState extends State<ManPowerReport> {
         ],
       ),
       body: ListView(
-
         shrinkWrap: true,
         children: <Widget>[
           Padding(
@@ -93,55 +89,6 @@ class _ManPowerReportState extends State<ManPowerReport> {
             child: Text(
               'Description',
               style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Container(
-              height: 50,
-              margin: EdgeInsets.only(right: 100),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-          ),
-          //SizedBox(height: 10,),
-          Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Skilled',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Container(
-              height: 55,
-              margin: EdgeInsets.only(right: 280),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-          ),
-          //SizedBox(height: 10,),
-          Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Unskilled',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Container(
-              height: 55,
-              margin: EdgeInsets.only(right: 280),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
             ),
           ),
           //SizedBox(height: 10,),
