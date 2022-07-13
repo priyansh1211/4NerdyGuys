@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-class MachineryReport extends StatefulWidget {
-  const MachineryReport({Key? key}) : super(key: key);
+class NextDayPlanning extends StatefulWidget {
+  const NextDayPlanning({Key? key}) : super(key: key);
 
   @override
-  State<MachineryReport> createState() => _MachineryReportState();
+  State<NextDayPlanning> createState() => _NextDayPlanningState();
 }
 
-class _MachineryReportState extends State<MachineryReport> {
+class _NextDayPlanningState extends State<NextDayPlanning> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +15,7 @@ class _MachineryReportState extends State<MachineryReport> {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.grey.shade400,
         title: const Text(
-          "Machinery Report:",
+          "Man Power Report:",
           style: TextStyle(color: Colors.black),
         ),
         leading: GestureDetector(
@@ -45,6 +45,7 @@ class _MachineryReportState extends State<MachineryReport> {
         ],
       ),
       body: ListView(
+
         shrinkWrap: true,
         children: <Widget>[
           Padding(
@@ -58,9 +59,9 @@ class _MachineryReportState extends State<MachineryReport> {
               ),
               child:  TextField(
                 decoration: InputDecoration(
-                  hintText: 'Add Data',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_rounded),
                   border: InputBorder.none,
+                  suffixIcon: Icon(Icons.keyboard_arrow_down_rounded),
+                  hintText: 'Add Data',
                 ),
               ),
             ),
@@ -82,8 +83,7 @@ class _MachineryReportState extends State<MachineryReport> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: TextField(
-                style: TextStyle(color: Colors.black54),
+              child:TextField(
                 decoration: InputDecoration(
                   hintText: '-Select Agency-',
                   border: InputBorder.none,
@@ -95,20 +95,19 @@ class _MachineryReportState extends State<MachineryReport> {
             padding: EdgeInsets.only(left: 24),
             child: Text(
               'Description',
-              style: TextStyle(color: Colors.black, fontSize: 15),
+              style: TextStyle(color: Colors.black,fontSize: 15),
             ),
           ),
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
-              height: 55,
+              height: 50,
               margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: TextField(
-                style: TextStyle(color: Colors.black54),
                 decoration: InputDecoration(
                   hintText: '-Give Work Description-',
                   border: InputBorder.none,
@@ -120,8 +119,60 @@ class _MachineryReportState extends State<MachineryReport> {
           Padding(
             padding: EdgeInsets.only(left: 24),
             child: Text(
+              'Skilled',
+              style: TextStyle(color: Colors.black,fontSize: 15),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Container(
+              height: 55,
+              margin: EdgeInsets.only(right: 280),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: '1',
+                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ),
+          //SizedBox(height: 10,),
+          Padding(
+            padding: EdgeInsets.only(left: 24),
+            child: Text(
+              'Unskilled',
+              style: TextStyle(color: Colors.black,fontSize: 15),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Container(
+              height: 55,
+              margin: EdgeInsets.only(right: 280),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child:TextField(
+                decoration: InputDecoration(
+                  hintText: '1',
+                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ),
+          //SizedBox(height: 10,),
+          Padding(
+            padding: EdgeInsets.only(left: 24),
+            child: Text(
               'Remarks',
-              style: TextStyle(color: Colors.black, fontSize: 15),
+              style: TextStyle(color: Colors.black,fontSize: 15),
             ),
           ),
           Padding(
@@ -135,26 +186,6 @@ class _MachineryReportState extends State<MachineryReport> {
               ),
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Container(
-              height: 50,
-              margin: EdgeInsets.only(left: 212),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: TextField(decoration: InputDecoration(
-                prefixIcon: Icon(Icons.add_a_photo),
-                hintText: 'Add Image',
-                border: InputBorder.none,
-              ),
-              ),
-            ),
-          )
         ],
       ),
     );

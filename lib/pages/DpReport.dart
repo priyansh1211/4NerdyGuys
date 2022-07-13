@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/DesignRequirement.dart';
 import 'package:flutter_app/pages/MachineryReport.dart';
 import 'package:flutter_app/pages/ManPowerReport.dart';
+import 'package:flutter_app/pages/MaterialReport.dart';
+import 'package:flutter_app/pages/NextDayPlanning.dart';
+import 'package:flutter_app/pages/TargetVsAchieved.dart';
+import 'package:flutter_app/pages/WorkDoneToday.dart';
 
 class DpReportPage extends StatefulWidget {
   const DpReportPage({Key? key}) : super(key: key);
@@ -257,7 +262,9 @@ class _DpReportPageState extends State<DpReportPage> {
                               width: 147,
                             ),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> WorkDoneToday() ));
+                          },
                         ),
                         const Positioned(
                           top: 11,
@@ -288,7 +295,9 @@ class _DpReportPageState extends State<DpReportPage> {
                               width: 147,
                             ),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> MaterialReport() ));
+                          },
                         ),
                         const Positioned(
                           top: 11,
@@ -325,7 +334,9 @@ class _DpReportPageState extends State<DpReportPage> {
                               width: 147,
                             ),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> DesignRequirement() ));
+                          },
                         ),
                         const Positioned(
                           top: 11,
@@ -356,7 +367,9 @@ class _DpReportPageState extends State<DpReportPage> {
                               width: 147,
                             ),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> NextDayPlanning() ));
+                          },
                         ),
                         const Positioned(
                           top: 11,
@@ -393,7 +406,9 @@ class _DpReportPageState extends State<DpReportPage> {
                               width: 310,
                             ),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> TargetVsAchieved() ));
+                          },
                         ),
                         const Positioned(
                           top: 11,

@@ -86,6 +86,12 @@ class _ManPowerReportState extends State<ManPowerReport> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
+              child:TextField(
+                decoration: InputDecoration(
+                  hintText: '-Select Agency-',
+                  border: InputBorder.none,
+                ),
+              ),
             ),
           ),
           Padding(
@@ -103,6 +109,12 @@ class _ManPowerReportState extends State<ManPowerReport> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: '-Give Work Description-',
+                  border: InputBorder.none,
+                ),
               ),
             ),
           ),
@@ -123,6 +135,13 @@ class _ManPowerReportState extends State<ManPowerReport> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: '1',
+                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
+                  border: InputBorder.none,
+                ),
+              ),
             ),
           ),
           //SizedBox(height: 10,),
@@ -141,6 +160,13 @@ class _ManPowerReportState extends State<ManPowerReport> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
+              ),
+              child:TextField(
+                decoration: InputDecoration(
+                  hintText: '1',
+                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
+                  border: InputBorder.none,
+                ),
               ),
             ),
           ),
