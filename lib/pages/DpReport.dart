@@ -335,7 +335,10 @@ class _DpReportPageState extends State<DpReportPage> {
                             ),
                           ),
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> DesignRequirement() ));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DesignRequirement()));
                           },
                         ),
                         const Positioned(

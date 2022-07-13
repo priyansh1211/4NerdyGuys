@@ -10,12 +10,12 @@ class _NextDayPlanningState extends State<NextDayPlanning> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
+      backgroundColor: Color(0xffE5E5E5),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.grey.shade400,
         title: const Text(
-          "Man Power Report:",
+          "Next Day Planning",
           style: TextStyle(color: Colors.black),
         ),
         leading: GestureDetector(
@@ -45,7 +45,6 @@ class _NextDayPlanningState extends State<NextDayPlanning> {
         ],
       ),
       body: ListView(
-
         shrinkWrap: true,
         children: <Widget>[
           Padding(
@@ -70,7 +69,7 @@ class _NextDayPlanningState extends State<NextDayPlanning> {
           Padding(
             padding: EdgeInsets.only(left: 25),
             child: Text(
-              'Agency',
+              'Description(Location)',
               style: TextStyle(color: Colors.black,fontSize: 17),
             ),
           ),
@@ -85,19 +84,14 @@ class _NextDayPlanningState extends State<NextDayPlanning> {
               ),
               child:TextField(
                 decoration: InputDecoration(
-                  hintText: '-Select Agency-',
+                  hintText: '-Give Work Description-',
                   border: InputBorder.none,
                 ),
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Description',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
-          ),
+          Padding(padding: EdgeInsets.only(left:24),
+          child: Text('Activity',style: TextStyle(color:Colors.black,fontSize: 17)),),
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
@@ -107,66 +101,9 @@ class _NextDayPlanningState extends State<NextDayPlanning> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: '-Give Work Description-',
-                  border: InputBorder.none,
-                ),
-              ),
             ),
           ),
           //SizedBox(height: 10,),
-          Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Skilled',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Container(
-              height: 55,
-              margin: EdgeInsets.only(right: 280),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: '1',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
-                  border: InputBorder.none,
-                ),
-              ),
-            ),
-          ),
-          //SizedBox(height: 10,),
-          Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Unskilled',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Container(
-              height: 55,
-              margin: EdgeInsets.only(right: 280),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child:TextField(
-                decoration: InputDecoration(
-                  hintText: '1',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
-                  border: InputBorder.none,
-                ),
-              ),
-            ),
-          ),
           //SizedBox(height: 10,),
           Padding(
             padding: EdgeInsets.only(left: 24),

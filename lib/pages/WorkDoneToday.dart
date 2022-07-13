@@ -10,10 +10,10 @@ class _WorkDoneTodayState extends State<WorkDoneToday> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
+      backgroundColor: Color(0xffE5E5E5),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.grey.shade400,
+        backgroundColor: Color(0xffE5E5E5),
         title: const Text(
           "Work Done Today:",
           style: TextStyle(color: Colors.black),
@@ -94,7 +94,7 @@ class _WorkDoneTodayState extends State<WorkDoneToday> {
           Padding(
             padding: EdgeInsets.only(left: 24),
             child: Text(
-              'Description',
+              'Description(Location)',
               style: TextStyle(color: Colors.black,fontSize: 15),
             ),
           ),
@@ -116,57 +116,6 @@ class _WorkDoneTodayState extends State<WorkDoneToday> {
             ),
           ),
           //SizedBox(height: 10,),
-          Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Skilled',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Container(
-              height: 55,
-              margin: EdgeInsets.only(right: 280),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: '1',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
-                  border: InputBorder.none,
-                ),
-              ),
-            ),
-          ),
-          //SizedBox(height: 10,),
-          Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Unskilled',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Container(
-              height: 55,
-              margin: EdgeInsets.only(right: 280),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child:TextField(
-                decoration: InputDecoration(
-                  hintText: '1',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
-                  border: InputBorder.none,
-                ),
-              ),
-            ),
-          ),
           //SizedBox(height: 10,),
           Padding(
             padding: EdgeInsets.only(left: 24),

@@ -10,12 +10,12 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
+      backgroundColor: Color(0xffE5E5E5),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.grey.shade400,
         title: const Text(
-          "Man Power Report:",
+          "Target Vs Achieved:",
           style: TextStyle(color: Colors.black),
         ),
         leading: GestureDetector(
@@ -70,7 +70,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: EdgeInsets.only(left: 25),
             child: Text(
-              'Agency',
+              'Description(Location)',
               style: TextStyle(color: Colors.black,fontSize: 17),
             ),
           ),
@@ -85,7 +85,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
               ),
               child:TextField(
                 decoration: InputDecoration(
-                  hintText: '-Select Agency-',
+                  hintText: '-Give Work Description-',
                   border: InputBorder.none,
                 ),
               ),
@@ -94,7 +94,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: EdgeInsets.only(left: 24),
             child: Text(
-              'Description',
+              'Status',
               style: TextStyle(color: Colors.black,fontSize: 15),
             ),
           ),
@@ -107,19 +107,13 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: '-Give Work Description-',
-                  border: InputBorder.none,
-                ),
-              ),
             ),
           ),
           //SizedBox(height: 10,),
           Padding(
             padding: EdgeInsets.only(left: 24),
             child: Text(
-              'Skilled',
+              'Concrete Used',
               style: TextStyle(color: Colors.black,fontSize: 15),
             ),
           ),
@@ -127,25 +121,19 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             padding: EdgeInsets.all(20),
             child: Container(
               height: 55,
-              margin: EdgeInsets.only(right: 280),
+              margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: '1',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
-                  border: InputBorder.none,
-                ),
-              ),
+
             ),
           ),
           //SizedBox(height: 10,),
           Padding(
             padding: EdgeInsets.only(left: 24),
             child: Text(
-              'Unskilled',
+              'Reason if not achieved',
               style: TextStyle(color: Colors.black,fontSize: 15),
             ),
           ),
@@ -153,17 +141,10 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             padding: EdgeInsets.all(20),
             child: Container(
               height: 55,
-              margin: EdgeInsets.only(right: 280),
+              margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
-              ),
-              child:TextField(
-                decoration: InputDecoration(
-                  hintText: '1',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
-                  border: InputBorder.none,
-                ),
               ),
             ),
           ),
@@ -183,6 +164,40 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Container(
+              height: 50,
+              margin: EdgeInsets.only(right: 160),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: TextField(decoration: InputDecoration(
+                prefixIcon: Icon(Icons.insert_photo_outlined),
+                hintText: 'Add Target Image',
+                border: InputBorder.none,
+              ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Container(
+              height: 50,
+              margin: EdgeInsets.only(right: 150),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: TextField(decoration: InputDecoration(
+                prefixIcon: Icon(Icons.add_a_photo),
+                hintText: 'Add Achieved Image',
+                border: InputBorder.none,
+              ),
               ),
             ),
           ),

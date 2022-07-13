@@ -10,12 +10,12 @@ class _MaterialReportState extends State<MaterialReport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
+      backgroundColor: Color(0xffE5E5E5),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.grey.shade400,
+        backgroundColor: Color(0xffE5E5E5),
         title: const Text(
-          "Man Power Report:",
+          "Material Report:",
           style: TextStyle(color: Colors.black),
         ),
         leading: GestureDetector(
@@ -45,7 +45,6 @@ class _MaterialReportState extends State<MaterialReport> {
         ],
       ),
       body: ListView(
-
         shrinkWrap: true,
         children: <Widget>[
           Padding(
@@ -70,7 +69,7 @@ class _MaterialReportState extends State<MaterialReport> {
           Padding(
             padding: EdgeInsets.only(left: 25),
             child: Text(
-              'Agency',
+              'Item',
               style: TextStyle(color: Colors.black,fontSize: 17),
             ),
           ),
@@ -82,12 +81,6 @@ class _MaterialReportState extends State<MaterialReport> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
-              ),
-              child:TextField(
-                decoration: InputDecoration(
-                  hintText: '-Select Agency-',
-                  border: InputBorder.none,
-                ),
               ),
             ),
           ),
@@ -119,7 +112,7 @@ class _MaterialReportState extends State<MaterialReport> {
           Padding(
             padding: EdgeInsets.only(left: 24),
             child: Text(
-              'Skilled',
+              'Status',
               style: TextStyle(color: Colors.black,fontSize: 15),
             ),
           ),
@@ -127,46 +120,20 @@ class _MaterialReportState extends State<MaterialReport> {
             padding: EdgeInsets.all(20),
             child: Container(
               height: 55,
-              margin: EdgeInsets.only(right: 280),
+              margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: '1',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
+                  hintText: '-Select Work Status',
                   border: InputBorder.none,
                 ),
               ),
             ),
           ),
           //SizedBox(height: 10,),
-          Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Unskilled',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Container(
-              height: 55,
-              margin: EdgeInsets.only(right: 280),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child:TextField(
-                decoration: InputDecoration(
-                  hintText: '1',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
-                  border: InputBorder.none,
-                ),
-              ),
-            ),
-          ),
           //SizedBox(height: 10,),
           Padding(
             padding: EdgeInsets.only(left: 24),

@@ -13,10 +13,10 @@ class _ManPowerReportState extends State<ManPowerReport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
+      backgroundColor: Color(0xffE5E5E5),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.grey.shade400,
+        backgroundColor: Color(0xffE5E5E5),
         title: const Text(
           "Man Power Report:",
           style: TextStyle(color: Colors.black),
