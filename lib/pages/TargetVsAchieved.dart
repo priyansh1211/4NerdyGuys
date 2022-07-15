@@ -50,8 +50,28 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 20),
               height: 50,
               margin: const EdgeInsets.only(right: 160),
+              decoration: BoxDecoration(
+                color: Colors.blue.shade100,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child:  const TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  suffixIcon: Icon(Icons.keyboard_arrow_down_rounded),
+                  hintText: 'Add Data',
+                ),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: Container(
+              padding: EdgeInsets.only(left: 20),
+              height: 50,
+              margin: const EdgeInsets.only(bottom: 16,left: 160),
               decoration: BoxDecoration(
                 color: Colors.blue.shade100,
                 borderRadius: BorderRadius.circular(20),
