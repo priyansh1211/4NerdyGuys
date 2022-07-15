@@ -21,8 +21,8 @@ class _LoginPageState extends State<LoginPage> {
         child:Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-              Colors.white,
-              Colors.grey.shade400,
+              Color(0xffE5E5E5),
+              Color(0xffE5E5E5),
             ]
             )
         ),

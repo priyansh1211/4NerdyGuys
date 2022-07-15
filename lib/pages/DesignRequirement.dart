@@ -129,6 +129,29 @@ class _DesignRequirementState extends State<DesignRequirement> {
               ),
             ),
           ),
+          SizedBox(height: 40,),
+          MaterialButton(
+            onPressed: () {},
+            child: Container(
+              height: 50,
+              width: 130,
+              margin: EdgeInsets.symmetric(horizontal: 105),
+              decoration: BoxDecoration(
+                color: Colors.blue.shade600,
+                borderRadius: BorderRadius.circular(35.0),
+              ),
+              child: Center(
+                child: Text(
+                  "Make Report",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Montserrat',
+                      fontSize: 15),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

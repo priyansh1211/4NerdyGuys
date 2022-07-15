@@ -10,7 +10,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffE5E5E5),
+      backgroundColor: const Color(0xffE5E5E5),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.grey.shade400,
@@ -45,19 +45,18 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
         ],
       ),
       body: ListView(
-
         shrinkWrap: true,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
               height: 50,
-              margin: EdgeInsets.only(right: 160),
+              margin: const EdgeInsets.only(right: 160),
               decoration: BoxDecoration(
                 color: Colors.blue.shade100,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child:  TextField(
+              child:  const TextField(
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   suffixIcon: Icon(Icons.keyboard_arrow_down_rounded),
@@ -66,8 +65,8 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
               ),
             ),
           ),
-          SizedBox(height: 10,),
-          Padding(
+          const SizedBox(height: 10,),
+          const Padding(
             padding: EdgeInsets.only(left: 25),
             child: Text(
               'Description(Location)',
@@ -75,15 +74,15 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
               height: 50,
-              margin: EdgeInsets.only(right: 100),
+              margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child:TextField(
+              child:const TextField(
                 decoration: InputDecoration(
                   hintText: '-Give Work Description-',
                   border: InputBorder.none,
@@ -91,7 +90,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
               ),
             ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 24),
             child: Text(
               'Status',
@@ -99,18 +98,24 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
               height: 50,
-              margin: EdgeInsets.only(right: 100),
+              margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
+              child:  const TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  //prefixIcon: Icon(Icons)
+                ),
+              ),
             ),
           ),
           //SizedBox(height: 10,),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 24),
             child: Text(
               'Concrete Used',
@@ -118,19 +123,23 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
               height: 55,
-              margin: EdgeInsets.only(right: 100),
+              margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-
+             child:  const TextField(
+               decoration: InputDecoration(
+                 border: InputBorder.none,
+               ),
+             ),
             ),
           ),
           //SizedBox(height: 10,),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 24),
             child: Text(
               'Reason if not achieved',
@@ -138,18 +147,23 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
               height: 55,
-              margin: EdgeInsets.only(right: 100),
+              margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
+              child:  const TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                ),
+              ),
             ),
           ),
           //SizedBox(height: 10,),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 24),
             child: Text(
               'Remarks',
@@ -157,26 +171,32 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
               height: 50,
-              margin: EdgeInsets.only(right: 100),
+              margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
+              ),
+              child: const TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  prefixIcon: Icon(Icons.mode_comment_outlined),
+                ),
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
               height: 50,
-              margin: EdgeInsets.only(right: 160),
+              margin: const EdgeInsets.only(right: 160),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: TextField(decoration: InputDecoration(
+              child: const TextField(decoration: InputDecoration(
                 prefixIcon: Icon(Icons.insert_photo_outlined),
                 hintText: 'Add Target Image',
                 border: InputBorder.none,
@@ -185,19 +205,42 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
               height: 50,
-              margin: EdgeInsets.only(right: 150),
+              margin: const EdgeInsets.only(right: 150),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: TextField(decoration: InputDecoration(
+              child: const TextField(decoration: InputDecoration(
                 prefixIcon: Icon(Icons.add_a_photo),
                 hintText: 'Add Achieved Image',
                 border: InputBorder.none,
               ),
+              ),
+            ),
+          ),
+          SizedBox(height: 20,),
+          MaterialButton(
+            onPressed: () {},
+            child: Container(
+              height: 50,
+              width: 130,
+              margin: EdgeInsets.symmetric(horizontal: 105),
+              decoration: BoxDecoration(
+                color: Colors.blue.shade600,
+                borderRadius: BorderRadius.circular(35.0),
+              ),
+              child: Center(
+                child: Text(
+                  "Make Report",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Montserrat',
+                      fontSize: 15),
+                ),
               ),
             ),
           ),
