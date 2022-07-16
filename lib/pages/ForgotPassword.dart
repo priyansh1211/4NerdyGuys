@@ -81,7 +81,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     ),
                     hintText: 'E-mail ID',
                     filled: true,
-                    fillColor: Colors.grey.shade200,
+                    fillColor: Color(0xffEEF2FF),
                   ),
                 ),
               ),
@@ -97,16 +97,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   },
                   child: Container(
                     height: 50,
-                    margin: EdgeInsets.symmetric(horizontal: 45),
+                    margin: EdgeInsets.symmetric(horizontal: 70),
                     decoration: BoxDecoration(
                       color: Color(0xff001E6C),
-                      borderRadius: BorderRadius.circular(40.0),
+                      borderRadius: BorderRadius.circular(45),
                     ),
                     child: Center(
                       child: Text("Submit", style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize:20
+                          fontSize:20,
+                        fontFamily: 'ReadexPro',
                       ),
                       ),
                     ),
