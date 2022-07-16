@@ -50,6 +50,7 @@ class _MachineryReportState extends State<MachineryReport> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 20),
               height: 50,
               margin: EdgeInsets.only(right: 160),
               decoration: BoxDecoration(
@@ -76,6 +77,7 @@ class _MachineryReportState extends State<MachineryReport> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 20),
               height: 50,
               margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -101,6 +103,7 @@ class _MachineryReportState extends State<MachineryReport> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 20),
               height: 55,
               margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(

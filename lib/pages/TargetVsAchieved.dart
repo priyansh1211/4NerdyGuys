@@ -80,7 +80,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   suffixIcon: Icon(Icons.keyboard_arrow_down_rounded),
-                  hintText: 'Add Data',
+                  hintText: 'Select Block',
                 ),
               ),
             ),
@@ -96,6 +96,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 20),
               height: 50,
               margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -120,6 +121,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 20),
               height: 50,
               margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -145,6 +147,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 20),
               height: 55,
               margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -169,6 +172,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 20),
               height: 55,
               margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -193,6 +197,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
+              //padding: EdgeInsets.only(left: 20),
               height: 50,
               margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(

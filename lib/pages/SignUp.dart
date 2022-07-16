@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/SignUpInputWrapper.dart';
+import 'package:flutter_app/pages/Header.dart';
+import 'package:flutter_app/pages/InputWrapper.dart';
+//import 'package:flutter_app/pages/SignUpInputWrapper.dart';
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
 
@@ -11,29 +13,30 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: false,
         body: ClipRRect(
           child:Container(
-            clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
                 gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                  Colors.grey.shade500,
-                  Colors.white,
-                  Colors.grey.shade400,
-                ])),
+                  Color(0xffE5E5E5),
+                  Color(0xffE5E5E5),
+                ]
+                )
+            ),
             child: Column(
               children: <Widget>[
                 const SizedBox(
-                  height: 70,
+                  height: 250,
                 ),
+                const Header(),
                 Expanded(
                     child: Container(
                       decoration: const BoxDecoration(
-                          color: Colors.grey,
+                          color: Colors.black12,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(60),
                               topRight: Radius.circular(60))),
-                      child: const SignUpInputWrapper(),
+                      child: const InputWrapper(),
                     )),
               ],
             ),

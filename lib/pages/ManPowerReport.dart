@@ -53,6 +53,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 20),
               height: 50,
               margin: EdgeInsets.only(right: 160),
               decoration: BoxDecoration(
@@ -79,6 +80,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 20),
               height: 50,
               margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -103,6 +105,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 20),
               height: 50,
               margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -128,6 +131,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 20,top: 5,bottom: 5),
               height: 55,
               margin: EdgeInsets.only(right: 280),
               decoration: BoxDecoration(
@@ -154,6 +158,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 20,top: 5,bottom: 5),
               height: 55,
               margin: EdgeInsets.only(right: 280),
               decoration: BoxDecoration(

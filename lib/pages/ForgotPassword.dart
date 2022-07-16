@@ -9,92 +9,113 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
-  //final isKeyboard = MediaQuery.of(context).viewInsets.bottom!=0;
-  bool isDesktop(BuildContext context) => MediaQuery.of(context).size.width >=600;
-  bool isMobile(BuildContext context)=> MediaQuery.of(context).size.width<600;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
-      resizeToAvoidBottomInset: false,
-      body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if(isDesktop(context))
-              Container(
-              width: 250,
-              margin: EdgeInsets.all(20),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image(image: AssetImage('assets/images/forgot_password.png'),),
-              ),
-            ),
-        SizedBox(height: 30,),
-        const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 45),
-            child: Text('Forgot Password?',
-                style: TextStyle(
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w800,
-                    fontSize: 40))),
-        const SizedBox(
-          height: 10,
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25),
-          child: const Text('Enter E-mail linked with your account',
-              style: TextStyle(color: Colors.black54, fontSize: 18)),
-        ),
-        const SizedBox(
-          height: 40,
-        ),
-        //if(!isKeyboard)
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
-          child: TextField(
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(40),
-                borderSide: const BorderSide(color: Colors.black45),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.deepPurple),
-                borderRadius: BorderRadius.circular(40),
-              ),
-              hintText: 'E-mail ID',
-              filled: true,
-              fillColor: Colors.grey.shade200,
-            ),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Color(0xffE5E5E5),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
           ),
         ),
-        const SizedBox(
-          height: 20,
-        ),
-        MaterialButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ResetPassword()),
-            );
-          },
-          child: Container(
-            height: 50,
-            margin: EdgeInsets.symmetric(horizontal: 45),
-            decoration: BoxDecoration(
-              color: Colors.blue.shade900,
-              borderRadius: BorderRadius.circular(40.0),
-            ),
-            child: Center(
-              child: Text("Submit", style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize:20
+      ),
+      backgroundColor: Color(0xffE5E5E5),
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: EdgeInsets.only(bottom: 40,top: 40),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(40),
+                  child: Image(
+                      image: AssetImage('assets/images/forgot_password.png'),
+                      height: 200,
+                      width: 200,
+                      fit: BoxFit.fitHeight),
+                ),
               ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 42),
+                child: Text('Forgot Password?',
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 36,
+                    fontFamily: 'ReadexPro')
+                ),
               ),
-            ),
-          )
-        )
-      ]),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 27),
+                child: const Text('Enter E-mail linked with your account',
+                    style: TextStyle(color: Colors.black54,fontSize: 17,
+                    fontFamily: 'ReadexPro')),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              //if(!isKeyboard)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: TextField(
+                  decoration: InputDecoration(
+                    helperStyle: TextStyle(fontFamily: 'ReadexPro'),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(45),
+                      borderSide:  BorderSide(color: Colors.lightBlue.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.lightBlue.shade200),
+                      borderRadius: BorderRadius.circular(45),
+                    ),
+                    hintText: 'E-mail ID',
+                    filled: true,
+                    fillColor: Colors.grey.shade200,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              MaterialButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ResetPassword()),
+                    );
+                  },
+                  child: Container(
+                    height: 50,
+                    margin: EdgeInsets.symmetric(horizontal: 45),
+                    decoration: BoxDecoration(
+                      color: Color(0xff001E6C),
+                      borderRadius: BorderRadius.circular(40.0),
+                    ),
+                    child: Center(
+                      child: Text("Submit", style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize:20
+                      ),
+                      ),
+                    ),
+                  )
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
