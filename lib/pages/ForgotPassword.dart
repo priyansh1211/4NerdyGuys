@@ -38,8 +38,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   borderRadius: BorderRadius.circular(40),
                   child: Image(
                       image: AssetImage('assets/images/forgot_password.png'),
-                      height: 200,
-                      width: 200,
+                      height: 227,
+                      width: 244,
                       fit: BoxFit.fitHeight),
                 ),
               ),
@@ -67,14 +67,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
               //if(!isKeyboard)
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
+                padding: const EdgeInsets.only(left: 45,right: 45),
                 child: TextField(
                   decoration: InputDecoration(
-                    helperStyle: TextStyle(fontFamily: 'ReadexPro'),
+                    hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(45),
                       borderSide:  BorderSide(color: Colors.lightBlue.shade200),
                     ),
+                    suffixIcon: Icon(Icons.email_outlined),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.lightBlue.shade200),
                       borderRadius: BorderRadius.circular(45),
