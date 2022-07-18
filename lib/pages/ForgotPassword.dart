@@ -75,7 +75,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       borderRadius: BorderRadius.circular(45),
                       borderSide:  BorderSide(color: Colors.lightBlue.shade200),
                     ),
-                    suffixIcon: Icon(Icons.email_outlined),
+                   // suffixIcon: Icon(Icons.email_outlined),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.lightBlue.shade200),
                       borderRadius: BorderRadius.circular(45),
