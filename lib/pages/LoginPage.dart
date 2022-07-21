@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/ForgotPassword.dart';
 import 'package:flutter_app/pages/Header.dart';
-//import 'package:flutter_app/pages/InputWrapper.dart';
 import 'package:flutter_app/pages/home_page.dart';
 
-//import 'package:flutter_app/pages/home_page.dart';
-//import 'package:form_field_validator/form_field_validator.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -50,26 +47,6 @@ class _LoginPageState extends State<LoginPage> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 40,right: 40),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: const BorderSide(color: Colors.black45),
-                                ),
-                                hintStyle: TextStyle(fontFamily: 'ReadexPro'),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(color: Colors.deepPurple),
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                                hintText: 'Name',
-                                filled: true,
-                                fillColor: Color(0xffEEF2FF),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 20,),
                           Padding(
                             padding: const EdgeInsets.only(left: 40,right: 40),
                             child: TextField(
