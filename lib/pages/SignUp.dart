@@ -12,8 +12,8 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: ClipRRect(
+      resizeToAvoidBottomInset: false,
+        body: Form(
           child:Container(
             decoration: const BoxDecoration(
                 gradient: LinearGradient(begin: Alignment.topCenter, colors: [
@@ -32,13 +32,12 @@ class _SignUpState extends State<SignUp> {
                       decoration: const BoxDecoration(
                           color: Color(0xffE5E5E5),
                           borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(60),
-                              topRight: Radius.circular(60))),
-                      child:  ListView(
-                          shrinkWrap: true,
+                              topLeft: Radius.circular(90),
+                              topRight: Radius.circular(90))),
+                      child:  Column(
                           children: <Widget>[
                             const SizedBox(
-                              height: 40,
+                              height: 100,
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -49,11 +48,11 @@ class _SignUpState extends State<SignUp> {
                                       decoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(40),
-                                          borderSide: const BorderSide(color: Colors.black45),
+                                          borderSide: BorderSide(color: Color(0xffEEF2FF)),
                                         ),
                                         hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(color: Colors.deepPurple),
+                                          borderSide: const BorderSide(color: Color(0xffEEF2FF)),
                                           borderRadius: BorderRadius.circular(40),
                                         ),
                                         hintText: 'Name',
@@ -69,11 +68,11 @@ class _SignUpState extends State<SignUp> {
                                       decoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(40),
-                                          borderSide: const BorderSide(color: Colors.black45),
+                                          borderSide: BorderSide(color: Color(0xffEEF2FF)),
                                         ),
                                         hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(color: Colors.deepPurple),
+                                          borderSide: const BorderSide(color: Color(0xffEEF2FF)),
                                           borderRadius: BorderRadius.circular(40),
                                         ),
                                         hintText: 'E-mail',
@@ -90,11 +89,11 @@ class _SignUpState extends State<SignUp> {
                                       decoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(40),
-                                          borderSide: const BorderSide(color: Colors.black45),
+                                          borderSide: BorderSide(color: Color(0xffEEF2FF)),
                                         ),
                                         hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(color: Colors.deepPurple),
+                                          borderSide: const BorderSide(color: Color(0xffEEF2FF)),
                                           borderRadius: BorderRadius.circular(40),
                                         ),
                                         hintText: 'Password',
@@ -111,11 +110,11 @@ class _SignUpState extends State<SignUp> {
                                       decoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(40),
-                                          borderSide: const BorderSide(color: Colors.black45),
+                                          borderSide: const BorderSide(color: Color(0xffEEF2FF)),
                                         ),
                                         hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(color: Colors.deepPurple),
+                                          borderSide: const BorderSide(color: Color(0xffEEF2FF)),
                                           borderRadius: BorderRadius.circular(40),
                                         ),
                                         hintText: 'Confirm Password',
@@ -163,7 +162,7 @@ class _SignUpState extends State<SignUp> {
                     ),
               ],
             ),
-          ),)
+          ),),
     );
   }
 }

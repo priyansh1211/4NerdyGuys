@@ -53,11 +53,11 @@ class _LoginPageState extends State<LoginPage> {
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: const BorderSide(color: Colors.black45),
+                                  borderSide: BorderSide(color: Color(0xffEEF2FF)),
                                 ),
                                 hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(color: Colors.deepPurple),
+                                  borderSide: const BorderSide(color: Color(0xffEEF2FF)),
                                   borderRadius: BorderRadius.circular(40),
                                 ),
                                 hintText: 'E-mail',
@@ -74,11 +74,11 @@ class _LoginPageState extends State<LoginPage> {
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: const BorderSide(color: Colors.black45),
+                                  borderSide: BorderSide(color: Color(0xffEEF2FF)),
                                 ),
                                 hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(color: Colors.deepPurple),
+                                  borderSide: const BorderSide(color: Color(0xffEEF2FF)),
                                   borderRadius: BorderRadius.circular(40),
                                 ),
                                 hintText: 'Password',
