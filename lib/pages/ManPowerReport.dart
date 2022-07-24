@@ -8,8 +8,8 @@ class ManPowerReport extends StatefulWidget {
 }
 
 class _ManPowerReportState extends State<ManPowerReport> {
-  var items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
 
+  String? _chosenValue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,23 +77,38 @@ class _ManPowerReportState extends State<ManPowerReport> {
               style: TextStyle(color: Colors.black,fontSize: 17),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Container(
-              padding: EdgeInsets.only(left: 20),
-              height: 50,
-              margin: EdgeInsets.only(right: 100),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child:TextField(
-                decoration: InputDecoration(
-                  hintText: '-Select Agency-',
-                  border: InputBorder.none,
-                ),
-              ),
+          DropdownButton<String>(
+            focusColor:Colors.white,
+            value: _chosenValue,
+            //elevation: 5,
+            style: TextStyle(color: Colors.white),
+            iconEnabledColor:Colors.black,
+            items: <String>[
+              'Android',
+              'IOS',
+              'Flutter',
+              'Node',
+              'Java',
+              'Python',
+              'PHP',
+            ].map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value,style:TextStyle(color:Colors.black),),
+              );
+            }).toList(),
+            hint:Text(
+              "-Select Agency-",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500),
             ),
+            onChanged: (String? value) {
+              setState(() {
+                _chosenValue = value;
+              });
+            },
           ),
           Padding(
             padding: EdgeInsets.only(left: 24),

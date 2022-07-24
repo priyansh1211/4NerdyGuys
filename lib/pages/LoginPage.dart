@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/ForgotPassword.dart';
-import 'package:flutter_app/pages/Header.dart';
 import 'package:flutter_app/pages/home_page.dart';
 
 
@@ -30,7 +29,6 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 250,
             ),
-            const Header(),
             Expanded(
                 child: Container(
                   decoration: const BoxDecoration(

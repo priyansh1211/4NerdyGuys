@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/ResetPassword.dart';
+import 'package:flutter_app/pages/Welcome.dart';
 import './pages/ForgotPassword.dart';
 import './pages/LoginPage.dart';
 import './pages/SignUp.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: 'LoginPage',
+    initialRoute: 'Welcome',
     routes: {
+      'Welcome' : (context)=> Welcome(),
       'LoginPage' : (context) => LoginPage(),
       'SignUp' : (context) => SignUp(),
       'ForgotPassword': (context)=> ForgotPassword(),
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //this makes the "debug" banner disappear when you run the app
-      home : LoginPage(),
+      home : Welcome(),
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
