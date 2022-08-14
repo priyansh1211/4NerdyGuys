@@ -49,7 +49,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     style: TextStyle(
                         color: Colors.black87,
                         fontWeight: FontWeight.w800,
-                        fontSize: 36,
+                        fontSize: 35,
                     fontFamily: 'ReadexPro')
                 ),
               ),
@@ -59,7 +59,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 27),
                 child: const Text('Enter E-mail linked with your account',
-                    style: TextStyle(color: Colors.black54,fontSize: 17,
+                    style: TextStyle(color: Colors.black54,fontSize: 15.2,
                     fontFamily: 'ReadexPro')),
               ),
               const SizedBox(
@@ -67,18 +67,18 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
               //if(!isKeyboard)
               Padding(
-                padding: const EdgeInsets.only(left: 45,right: 45),
+                padding: const EdgeInsets.only(left: 35,right: 35),
                 child: TextField(
                   decoration: InputDecoration(
                     hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(45),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide:  BorderSide(color: Colors.lightBlue.shade200),
                     ),
                    // suffixIcon: Icon(Icons.email_outlined),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.lightBlue.shade200),
-                      borderRadius: BorderRadius.circular(45),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                     hintText: 'E-mail ID',
                     filled: true,
@@ -98,10 +98,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   },
                   child: Container(
                     height: 50,
-                    margin: EdgeInsets.symmetric(horizontal: 70),
+                    margin: EdgeInsets.symmetric(horizontal: 20),
                     decoration: BoxDecoration(
                       color: Color(0xff001E6C),
-                      borderRadius: BorderRadius.circular(45),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                     child: Center(
                       child: Text("Submit", style: TextStyle(

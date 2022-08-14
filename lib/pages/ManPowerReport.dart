@@ -61,6 +61,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
     }
     return dividersIndexes;
   }
+
   //String? _chosenValue;
   @override
   Widget build(BuildContext context) {
@@ -226,13 +227,6 @@ class _ManPowerReportState extends State<ManPowerReport> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
-              ),
-              child: const TextField(
-                decoration: InputDecoration(
-                  hintText: '1',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
-                  border: InputBorder.none,
-                ),
               ),
             ),
           ),

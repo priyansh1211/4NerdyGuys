@@ -9,6 +9,25 @@ class ResetPassword extends StatefulWidget {
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
+  bool showPassword = true;
+  //bool showConfirmPassword = true;
+
+  late FocusNode passwordFocusNode;
+ // FocusNode confirmPasswordFocusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    passwordFocusNode = FocusNode();
+   // confirmPasswordFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    passwordFocusNode.dispose();
+   // confirmPasswordFocusNode.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +63,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                 ),
                 SizedBox(height: 10,),
                 const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 45),
+                    padding: EdgeInsets.symmetric(horizontal: 25),
                     child: Text('Reset Password',
                         style: TextStyle(
                             color: Colors.black87,
@@ -56,47 +75,39 @@ class _ResetPasswordState extends State<ResetPassword> {
                 ),
                 //if(!isKeyboard)
                 Padding(
-                  padding: const EdgeInsets.only(left: 40,right: 40),
+                  padding: const EdgeInsets.only(left: 20,right: 20),
                   child: TextField(
-                    obscureText: true,
+                    focusNode: passwordFocusNode,
+                    onTap: () {
+                      setState(() {
+                        FocusScope.of(context).unfocus();
+                        FocusScope.of(context).requestFocus(passwordFocusNode);
+                      });
+                    },
+                    obscureText: showPassword,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
+                        borderRadius: BorderRadius.circular(5),
                         borderSide: const BorderSide(color: Colors.black45),
                       ),
                       hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.deepPurple),
-                        borderRadius: BorderRadius.circular(40),
+                        borderSide: const BorderSide(color: Colors.black45),
+                        borderRadius: BorderRadius.circular(5),
                       ),
                       hintText: 'New Password',
                       filled: true,
+                      suffixIcon: IconButton(
+                          icon: Icon(Icons.remove_red_eye),
+                          onPressed: () => setState(() {
+                            showPassword = !showPassword;
+                          })
+                      ),
                       fillColor: Color(0xffEEF2FF),
                     ),
                   ),
                 ),
                 SizedBox(height: 10,),
-                Padding(padding: EdgeInsets.only(left: 40,right: 40),
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: const BorderSide(color: Colors.black45),
-                      ),
-                      hintStyle: TextStyle(fontFamily: 'ReadexPro'),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color:Colors.deepPurple),
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                      hintText: 'Confirm New Password',
-                      filled:true,
-                      fillColor: Color(0xffEEF2FF),
-                    ),
-                  ),),
-                const SizedBox(
-                  height: 20,
-                ),
                 MaterialButton(
                     onPressed: () {
                       Navigator.push(
@@ -106,10 +117,10 @@ class _ResetPasswordState extends State<ResetPassword> {
                     },
                     child: Container(
                       height: 50,
-                      margin: EdgeInsets.symmetric(horizontal: 70),
+                      margin: EdgeInsets.symmetric(horizontal: 5),
                       decoration: BoxDecoration(
                         color: Color(0xff001E6C),
-                        borderRadius: BorderRadius.circular(40.0),
+                        borderRadius: BorderRadius.circular(5.0),
                       ),
                       child: Center(
                         child: Text("Submit", style: TextStyle(

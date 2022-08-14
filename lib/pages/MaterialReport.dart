@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 class MaterialReport extends StatefulWidget {
   const MaterialReport({Key? key}) : super(key: key);
 
@@ -7,6 +8,52 @@ class MaterialReport extends StatefulWidget {
 }
 
 class _MaterialReportState extends State<MaterialReport> {
+  final List<String> items = [
+    'Add new column',
+  ];
+
+  String? selectedValue;
+
+  List<DropdownMenuItem<String>> _addDividersAfterItems(List<String> items) {
+    List<DropdownMenuItem<String>> menuItems = [];
+    for (var item in items) {
+      menuItems.addAll(
+        [
+          DropdownMenuItem<String>(
+            value: item,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                item,
+                style: const TextStyle(
+                  fontSize: 14,
+                ),
+              ),
+            ),
+          ),
+          //If it's last item, we will not add Divider after it.
+          if (item != items.last)
+            const DropdownMenuItem<String>(
+              enabled: false,
+              child: Divider(),
+            ),
+        ],
+      );
+    }
+    return menuItems;
+  }
+
+  List<int> _getDividersIndexes() {
+    List<int> dividersIndexes = [];
+    for (var i = 0; i < (items.length * 2) - 1; i++) {
+      //Dividers indexes will be the odd indexes
+      if (i.isOdd) {
+        dividersIndexes.add(i);
+      }
+    }
+    return dividersIndexes;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +87,8 @@ class _MaterialReportState extends State<MaterialReport> {
                     size: 30,
                     color: Colors.blue,
                   ),
-                )),
+                ),
+            ),
           ),
         ],
       ),
@@ -57,11 +105,28 @@ class _MaterialReportState extends State<MaterialReport> {
                 color: Colors.blue.shade100,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child:  TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_rounded),
-                  hintText: 'Add Data',
+              child:  DropdownButtonHideUnderline(
+                child: DropdownButton2(
+                  isExpanded: true,
+                  hint: const TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Add Data',
+                    ),
+                  ),
+                  items: _addDividersAfterItems(items),
+                  customItemsIndexes: _getDividersIndexes(),
+                  customItemsHeight: 4,
+                  value: selectedValue,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedValue = value as String;
+                    });
+                  },
+                  buttonHeight: 40,
+                  buttonWidth: 140,
+                  itemHeight: 40,
+                  itemPadding: const EdgeInsets.symmetric(horizontal: 8.0),
                 ),
               ),
             ),

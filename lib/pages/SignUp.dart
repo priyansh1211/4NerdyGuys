@@ -13,6 +13,7 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.blue,
         body: Form(
           child:Container(
             decoration: const BoxDecoration(
@@ -24,16 +25,18 @@ class _SignUpState extends State<SignUp> {
             ),
             child: Column(
               children: <Widget>[
-                const SizedBox(
-                  height: 250,
-                ),
+                Expanded(child: Image.asset(fit: BoxFit.fitWidth,'assets/images/sign_up.png')),
                 Expanded(
                     child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.29875),
+                      //padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height*0.29875),
+                      height: MediaQuery.of(context).size.height*0.70125,
                       decoration: const BoxDecoration(
                           color: Color(0xffE5E5E5),
                           borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(90),
-                              topRight: Radius.circular(90))),
+                              topLeft: Radius.circular(21),
+                              topRight: Radius.circular(21))),
                       child:  Column(
                           children: <Widget>[
                             const SizedBox(
@@ -97,6 +100,7 @@ class _SignUpState extends State<SignUp> {
                                           borderRadius: BorderRadius.circular(40),
                                         ),
                                         hintText: 'Password',
+                                        suffixIcon: Icon(Icons.remove_red_eye),
                                         filled: true,
                                         fillColor: Color(0xffEEF2FF),
                                       ),
@@ -117,7 +121,7 @@ class _SignUpState extends State<SignUp> {
                                           borderSide: const BorderSide(color: Color(0xffEEF2FF)),
                                           borderRadius: BorderRadius.circular(40),
                                         ),
-                                        hintText: 'Confirm Password',
+                                        hintText: 'Designation',
                                         filled: true,
                                         fillColor: Color(0xffEEF2FF),
                                       ),
