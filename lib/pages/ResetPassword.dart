@@ -9,25 +9,7 @@ class ResetPassword extends StatefulWidget {
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
-  bool showPassword = true;
-  //bool showConfirmPassword = true;
-
-  late FocusNode passwordFocusNode;
- // FocusNode confirmPasswordFocusNode;
-
-  @override
-  void initState() {
-    super.initState();
-    passwordFocusNode = FocusNode();
-   // confirmPasswordFocusNode = FocusNode();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    passwordFocusNode.dispose();
-   // confirmPasswordFocusNode.dispose();
-  }
+  bool _showpassword = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,18 +59,19 @@ class _ResetPasswordState extends State<ResetPassword> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20,right: 20),
                   child: TextField(
-                    focusNode: passwordFocusNode,
-                    onTap: () {
-                      setState(() {
-                        FocusScope.of(context).unfocus();
-                        FocusScope.of(context).requestFocus(passwordFocusNode);
-                      });
-                    },
-                    obscureText: showPassword,
+                    obscureText: _showpassword,
                     decoration: InputDecoration(
+                      suffixIcon: GestureDetector(
+                        onTap: (){
+                          setState(()=>_showpassword=!_showpassword);
+                        },
+                        child: Icon(
+                         _showpassword?Icons.visibility_rounded:Icons.visibility_off_rounded
+                        ),
+                      ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
-                        borderSide: const BorderSide(color: Colors.black45),
+                        borderSide:  BorderSide(color: Colors.black45),
                       ),
                       hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                       focusedBorder: OutlineInputBorder(
@@ -97,12 +80,6 @@ class _ResetPasswordState extends State<ResetPassword> {
                       ),
                       hintText: 'New Password',
                       filled: true,
-                      suffixIcon: IconButton(
-                          icon: Icon(Icons.remove_red_eye),
-                          onPressed: () => setState(() {
-                            showPassword = !showPassword;
-                          })
-                      ),
                       fillColor: Color(0xffEEF2FF),
                     ),
                   ),
