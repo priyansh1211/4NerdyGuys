@@ -1,6 +1,3 @@
-// ignore: file_names
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 
 class ProjectPage extends StatefulWidget {
@@ -49,7 +46,7 @@ class _ProjectPageState extends State<ProjectPage> {
         height: 45,
         child: FloatingActionButton(
           shape:
-              BeveledRectangleBorder(borderRadius: BorderRadius.circular(5.1)),
+          BeveledRectangleBorder(borderRadius: BorderRadius.circular(5.1)),
           backgroundColor: const Color(0xff91DEF2),
           child: const Icon(Icons.add),
           onPressed: () {
@@ -58,7 +55,7 @@ class _ProjectPageState extends State<ProjectPage> {
                 context: context,
                 builder: (_) {
                   return AlertDialog(
-                    shape: const RoundedRectangleBorder(
+                    shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10.0))),
                     content: Form(
                         key: fkey,
@@ -91,11 +88,11 @@ class _ProjectPageState extends State<ProjectPage> {
                               ),
                               Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 20),
+                                    padding: EdgeInsets.only(top: 20),
                                     child: ElevatedButton(
                                       onPressed: () {
                                         if (fkey.currentState!.validate()) {
@@ -112,7 +109,7 @@ class _ProjectPageState extends State<ProjectPage> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 20),
+                                    padding: EdgeInsets.only(top: 20),
                                     child: ElevatedButton(
                                       onPressed: () {
                                         Navigator.pop(context);
@@ -133,7 +130,7 @@ class _ProjectPageState extends State<ProjectPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
 
       body: Container(
-        color: const Color(0xffE5E5E5),
+        color: Color(0xffE5E5E5),
 
         child: Stack(children: [
           Container(
@@ -142,17 +139,17 @@ class _ProjectPageState extends State<ProjectPage> {
             ),
           ),
           Positioned(
-            left: 20,
-            top: 23,
-            child: InkWell(
-              child: const Icon(
-                Icons.arrow_back_ios,
-                size: 30,
-              ),
-              onTap: () { Navigator.of(context).pop();},
-            )
+              left: 20,
+              top: 23,
+              child: InkWell(
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  size: 30,
+                ),
+                onTap: () { Navigator.of(context).pop();},
+              )
           ),
-          const Positioned(
+          Positioned(
             left: 55,
             top: 20,
             child: Text(
@@ -161,7 +158,7 @@ class _ProjectPageState extends State<ProjectPage> {
             ),
           ),
           Align(
-            alignment: const Alignment(0.94, -0.96),
+            alignment: Alignment(0.94, -0.96),
             child: CircleAvatar(
               radius: 25,
               backgroundColor: Colors.white,
@@ -189,7 +186,7 @@ class _ProjectPageState extends State<ProjectPage> {
                 return Container(
                   height: 200,
                   width: 148,
-                  margin: const EdgeInsets.only(left: 15, right: 15),
+                  margin: EdgeInsets.only(left: 15, right: 15),
                   child: InkWell(
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -208,7 +205,7 @@ class _ProjectPageState extends State<ProjectPage> {
                             child: Text(
                               userList1[index].keys.elementAt(0).toString(),
                               style:
-                                  const TextStyle(fontSize: 18, fontFamily: 'Inter'),
+                              TextStyle(fontSize: 18, fontFamily: 'Inter'),
                             ),
                           ),
                           const Positioned(
