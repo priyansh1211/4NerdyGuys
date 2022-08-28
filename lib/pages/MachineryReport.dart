@@ -50,7 +50,7 @@ class _MachineryReportState extends State<MachineryReport> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: EdgeInsets.only(left: 12),
               height: 50,
               margin: EdgeInsets.only(right: 160),
               decoration: BoxDecoration(
@@ -77,7 +77,7 @@ class _MachineryReportState extends State<MachineryReport> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: EdgeInsets.only(left: 12),
               height: 50,
               margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -103,7 +103,7 @@ class _MachineryReportState extends State<MachineryReport> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: EdgeInsets.only(left: 12),
               height: 55,
               margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -130,22 +130,25 @@ class _MachineryReportState extends State<MachineryReport> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 12),
               height: 50,
               margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                ),
+              ),
             ),
-          ),
-          SizedBox(
-            height: 20,
           ),
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
               height: 50,
-              margin: EdgeInsets.only(left: 212),
+              margin: EdgeInsets.only(right: 170),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),

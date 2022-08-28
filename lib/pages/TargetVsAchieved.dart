@@ -66,25 +66,6 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.topRight,
-            child: Container(
-              padding: EdgeInsets.only(left: 20),
-              height: 50,
-              margin: const EdgeInsets.only(bottom: 16,left: 160),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade100,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child:  const TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_rounded),
-                  hintText: 'Select Block',
-                ),
-              ),
-            ),
-          ),
           const SizedBox(height: 10,),
           const Padding(
             padding: EdgeInsets.only(left: 25),
@@ -197,7 +178,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
-              //padding: EdgeInsets.only(left: 20),
+              padding: EdgeInsets.only(left: 20),
               height: 50,
               margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -207,7 +188,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
               child: const TextField(
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  prefixIcon: Icon(Icons.mode_comment_outlined),
+                 // prefixIcon: Icon(Icons.mode_comment_outlined),
                 ),
               ),
             ),
@@ -216,7 +197,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             padding: const EdgeInsets.all(20),
             child: Container(
               height: 50,
-              margin: const EdgeInsets.only(right: 160),
+              margin: const EdgeInsets.only(right: 130),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
@@ -233,7 +214,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             padding: const EdgeInsets.all(20),
             child: Container(
               height: 50,
-              margin: const EdgeInsets.only(right: 150),
+              margin: const EdgeInsets.only(right: 110),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),

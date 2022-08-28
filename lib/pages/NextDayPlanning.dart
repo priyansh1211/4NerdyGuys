@@ -50,6 +50,7 @@ class _NextDayPlanningState extends State<NextDayPlanning> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 12),
               height: 50,
               margin: EdgeInsets.only(right: 160),
               decoration: BoxDecoration(
@@ -76,6 +77,7 @@ class _NextDayPlanningState extends State<NextDayPlanning> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 10),
               height: 50,
               margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -132,7 +134,8 @@ class _NextDayPlanningState extends State<NextDayPlanning> {
           ),
           SizedBox(height: 40,),
           MaterialButton(
-            onPressed: () {},
+            onPressed: () {
+            },
             child: Container(
               height: 50,
               width: 130,

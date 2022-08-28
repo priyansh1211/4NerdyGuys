@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/DpReport.dart';
+import 'package:flutter_app/pages/TypesOfReport.dart';
 
 class ProjectPage extends StatefulWidget {
   const ProjectPage({Key? key}) : super(key: key);
@@ -73,7 +74,7 @@ class _ProjectPageState extends State<ProjectPage> {
                               elevation: 10.0,
                             ),
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> DpReportPage()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> TypesOfReport()));
                             },
                           ),
                         ),
@@ -118,7 +119,7 @@ class _ProjectPageState extends State<ProjectPage> {
                               elevation: 10.0,
                             ),
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> DpReportPage()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> TypesOfReport()));
                             },
                           ),
                         ),

@@ -65,6 +65,8 @@ class _ManPowerReportState extends State<ManPowerReport> {
   //String? _chosenValue;
   @override
   Widget build(BuildContext context) {
+    final number1 = TextEditingController();
+    final number2 = TextEditingController();
     return Scaffold(
       backgroundColor: const Color(0xffE5E5E5),
       appBar: AppBar(
@@ -221,12 +223,21 @@ class _ManPowerReportState extends State<ManPowerReport> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
-              padding: const EdgeInsets.only(left: 20, top: 5, bottom: 5),
+              padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
               height: 55,
-              margin: const EdgeInsets.only(right: 280),
+              margin: const EdgeInsets.only(right: 260),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
+              ),
+              child: TextField(
+                controller: number1,
+                autocorrect: true,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  hintText: '1',
+                  border: InputBorder.none,
+                ),
               ),
             ),
           ),
@@ -241,17 +252,19 @@ class _ManPowerReportState extends State<ManPowerReport> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
-              padding: const EdgeInsets.only(left: 20, top: 5, bottom: 5),
+              padding: const EdgeInsets.only(left: 10,top: 8,bottom: 8),
               height: 55,
-              margin: const EdgeInsets.only(right: 280),
+              margin: const EdgeInsets.only(right: 260),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const TextField(
+              child:  TextField(
+                controller: number2,
+                autocorrect: true,
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   hintText: '1',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
                   border: InputBorder.none,
                 ),
               ),

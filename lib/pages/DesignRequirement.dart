@@ -51,6 +51,7 @@ class _DesignRequirementState extends State<DesignRequirement> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 12),
               height: 50,
               margin: EdgeInsets.only(right: 160),
               decoration: BoxDecoration(
@@ -71,17 +72,23 @@ class _DesignRequirementState extends State<DesignRequirement> {
             padding: EdgeInsets.only(left: 25),
             child: Text(
               'Item',
-              style: TextStyle(color: Colors.black,fontSize: 17),
+              style: TextStyle(color: Colors.black,fontSize: 17,fontFamily: 'ReadexPro'),
             ),
           ),
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 12),
               height: 50,
               margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                ),
               ),
             ),
           ),
@@ -89,12 +96,13 @@ class _DesignRequirementState extends State<DesignRequirement> {
             padding: EdgeInsets.only(left: 24),
             child: Text(
               'Consultant',
-              style: TextStyle(color: Colors.black,fontSize: 15),
+              style: TextStyle(color: Colors.black,fontSize: 15,fontFamily: 'ReadexPro'),
             ),
           ),
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 12),
               height: 50,
               margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -106,6 +114,7 @@ class _DesignRequirementState extends State<DesignRequirement> {
                   hintText: '-Select consultant-',
                   border: InputBorder.none,
                 ),
+
               ),
             ),
           ),
@@ -115,17 +124,23 @@ class _DesignRequirementState extends State<DesignRequirement> {
             padding: EdgeInsets.only(left: 24),
             child: Text(
               'Remarks',
-              style: TextStyle(color: Colors.black,fontSize: 15),
+              style: TextStyle(color: Colors.black,fontSize: 15,fontFamily: "ReadexPro"),
             ),
           ),
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
+              padding: EdgeInsets.only(left: 12),
               height: 50,
               margin: EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                ),
               ),
             ),
           ),
