@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/DpReport.dart';
 
 class ProjectPage extends StatefulWidget {
   const ProjectPage({Key? key}) : super(key: key);
@@ -222,7 +223,9 @@ class _ProjectPageState extends State<ProjectPage> {
                         ],
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const DpReportPage()));
+                    },
                   ),
                   // child : Card(child: Center(child: Text(userList1[index].keys.elementAt(0).toString())))
                 );
