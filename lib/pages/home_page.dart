@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                         child: Image.asset('assets/images/proj.png'),
                       ),
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ProjectPage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> const ProjectPage()));
                       },
                     ),
                     InkWell(
@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                         child: Image.asset('assets/images/dash.png'),
                       ),
                       onTap: () {
-                        print("Dashboard");
+                        //print("Dashboard");
                       },
                     ),
                   ],
@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                         child: Image.asset('assets/images/profile.png'),
                       ),
                       onTap: () {
-                        print("Profile");
+                        //print("Profile");
                       },
                     ),
                     InkWell(
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                         child: Image.asset('assets/images/contact_us.png'),
                       ),
                       onTap: () {
-                        print("Contact Us");
+                        //print("Contact Us");
                       },
                     ),
                   ],

@@ -55,11 +55,11 @@ class _ProjectPageState extends State<ProjectPage> {
                 context: context,
                 builder: (_) {
                   return AlertDialog(
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10.0))),
                     content: Form(
                         key: fkey,
-                        child: Container(
+                        child: SizedBox(
                           width: 100,
                           height: 200,
                           child: Column(
@@ -92,7 +92,7 @@ class _ProjectPageState extends State<ProjectPage> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(top: 20),
+                                    padding: const EdgeInsets.only(top: 20),
                                     child: ElevatedButton(
                                       onPressed: () {
                                         if (fkey.currentState!.validate()) {
@@ -109,7 +109,7 @@ class _ProjectPageState extends State<ProjectPage> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(top: 20),
+                                    padding: const EdgeInsets.only(top: 20),
                                     child: ElevatedButton(
                                       onPressed: () {
                                         Navigator.pop(context);
@@ -130,7 +130,7 @@ class _ProjectPageState extends State<ProjectPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
 
       body: Container(
-        color: Color(0xffE5E5E5),
+        color: const Color(0xffE5E5E5),
 
         child: Stack(children: [
           Container(
@@ -142,14 +142,14 @@ class _ProjectPageState extends State<ProjectPage> {
               left: 20,
               top: 23,
               child: InkWell(
-                child: Icon(
+                child: const Icon(
                   Icons.arrow_back_ios,
                   size: 30,
                 ),
                 onTap: () { Navigator.of(context).pop();},
               )
           ),
-          Positioned(
+          const Positioned(
             left: 55,
             top: 20,
             child: Text(
@@ -158,7 +158,7 @@ class _ProjectPageState extends State<ProjectPage> {
             ),
           ),
           Align(
-            alignment: Alignment(0.94, -0.96),
+            alignment: const Alignment(0.94, -0.96),
             child: CircleAvatar(
               radius: 25,
               backgroundColor: Colors.white,
@@ -186,7 +186,7 @@ class _ProjectPageState extends State<ProjectPage> {
                 return Container(
                   height: 200,
                   width: 148,
-                  margin: EdgeInsets.only(left: 15, right: 15),
+                  margin: const EdgeInsets.only(left: 15, right: 15),
                   child: InkWell(
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -205,7 +205,7 @@ class _ProjectPageState extends State<ProjectPage> {
                             child: Text(
                               userList1[index].keys.elementAt(0).toString(),
                               style:
-                              TextStyle(fontSize: 18, fontFamily: 'Inter'),
+                              const TextStyle(fontSize: 18, fontFamily: 'Inter'),
                             ),
                           ),
                           const Positioned(
