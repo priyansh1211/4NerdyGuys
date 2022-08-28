@@ -26,26 +26,31 @@ class _DpReportPageState extends State<DpReportPage> {
                 color: Color(0xffE5E5E5),
               ),
             ),
-            const Positioned(
-              left: 20,
-              top: 10,
-              child: Icon(
-                Icons.arrow_back_ios,
-                size: 30,
-              ),
+            Positioned(
+                left: 20,
+                top: 23,
+                child: InkWell(
+                  child: const Icon(
+                    Icons.arrow_back_ios,
+                    size: 30,
+                  ),
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    },
+                )
             ),
             const Positioned(
               left: 50,
-              top: 10,
+              top: 20,
               child: Text(
                 "Daily Project Report",
                 style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
               ),
             ),
             Align(
-              alignment: const Alignment(0.97, -0.99),
+              alignment: const Alignment(0.94, -0.96),
               child: CircleAvatar(
-                radius: 20,
+                radius: 25,
                 backgroundColor: Colors.white,
                 child: Center(
                   child: Icon(
