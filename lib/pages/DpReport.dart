@@ -6,6 +6,7 @@ import 'package:flutter_app/pages/MaterialReport.dart';
 import 'package:flutter_app/pages/NextDayPlanning.dart';
 import 'package:flutter_app/pages/TargetVsAchieved.dart';
 import 'package:flutter_app/pages/WorkDoneToday.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class DpReportPage extends StatefulWidget {
   const DpReportPage({Key? key}) : super(key: key);
@@ -79,23 +80,45 @@ class _DpReportPageState extends State<DpReportPage> {
                           margin: const EdgeInsets.only(
                             top: 60,
                           ),
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            color: const Color(0xffBDE6F1),
-                            elevation: 20,
-                            child: const Align(
-                              alignment: Alignment(-0.85, -0.65),
-                              child: Text(
-                                "Sanskruti",
-                                style: TextStyle(
-                                  fontFamily: 'ReadexPro',
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
+                          child: Stack(
+                            children: [
+                              Card(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0)),
+                                color: const Color(0xffBDE6F1),
+                                elevation: 20,
+                                child: const Align(
+                                  alignment: Alignment(-0.85, -0.65),
+                                  child: Text(
+                                    "Sanskruti",
+                                    style: TextStyle(
+                                      fontFamily: 'ReadexPro',
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
+
+                              Positioned(
+                                top: MediaQuery.of(context).size.height*0.035,
+                                left : MediaQuery.of(context).size.width*0.6275833,
+
+                                  child: CircularPercentIndicator(
+                                    radius: 90.0,
+                                    backgroundColor: Colors.white,
+                                    percent: 0.8,
+                                    progressColor: Color(0xff242F9B),
+                                    lineWidth: 10,
+                                    circularStrokeCap: CircularStrokeCap.round,
+                                    animation: true,
+                                    animationDuration: 3000,
+                                    center: Text('80%',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,color: Color(0xff242F9B))),
+                                  ),
+                              )
+
+                            ],
+                          )
                         ),
 
                         Container(
@@ -128,7 +151,7 @@ class _DpReportPageState extends State<DpReportPage> {
                         ),
                       ],
                     ),
-                  ],
+                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
