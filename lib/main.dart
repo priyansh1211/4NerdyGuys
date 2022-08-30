@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/ResetPassword.dart';
+import './pages/ResetPassword.dart';
 import './pages/ForgotPassword.dart';
 import './pages/LoginPage.dart';
 import './pages/SignUp.dart';
+
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: LoginPage(),
     routes: {
-      'LoginPage' : (context) => LoginPage(),
-      'SignUp' : (context) => SignUp(),
-      'ForgotPassword': (context)=> ForgotPassword(),
-      'ResetPassword': (context)=> ResetPassword(),
+      'LoginPage': (context) => const LoginPage(),
+      'SignUp': (context) => const SignUp(),
+      'ForgotPassword': (context) => const ForgotPassword(),
+      'ResetPassword': (context) => const ResetPassword(),
     },
   ));
 }
@@ -23,9 +24,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, //this makes the "debug" banner disappear when you run the app
-      home : LoginPage(),
-      title: 'Static Startup',
+      debugShowCheckedModeBanner:
+          false, //this makes the "debug" banner disappear when you run the app
+      home: const LoginPage(),
+      //title: 'Static Startup',
       theme: ThemeData(
         // This is the theme of your application.
         //
