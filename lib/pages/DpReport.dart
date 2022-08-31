@@ -77,8 +77,8 @@ class _DpReportPageState extends State<DpReportPage> {
                         Container(
                           height: MediaQuery.of(context).size.height*0.15625,
                           width: MediaQuery.of(context).size.width*0.9111,
-                          margin: const EdgeInsets.only(
-                            top: 60,
+                          margin: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height*0.08875,
                           ),
                           child: Stack(
                             children: [
@@ -101,7 +101,7 @@ class _DpReportPageState extends State<DpReportPage> {
                               ),
 
                               Positioned(
-                                top: 60-40,//MediaQuery.of(context).size.height*0.020,
+                                top: MediaQuery.of(context).size.height*0.12-85,//MediaQuery.of(context).size.height*0.020,
                                 left : MediaQuery.of(context).size.width*0.6275833,
 
                                   child: CircularPercentIndicator(
@@ -125,8 +125,8 @@ class _DpReportPageState extends State<DpReportPage> {
                           height: MediaQuery.of(context).size.height*0.04,
                           width: MediaQuery.of(context).size.width*0.18166,
                           margin: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height*0.180,
-                            left: 24.5,
+                            top: MediaQuery.of(context).size.height*0.18,
+                            left: MediaQuery.of(context).size.width*0.05,
                           ),
                           child: InkWell(
                             child: Card(
