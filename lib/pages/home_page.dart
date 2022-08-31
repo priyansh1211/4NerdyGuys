@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/New_items.dart';
+import 'package:flutter_app/pages/Item_list.dart';
 import 'package:flutter_app/pages/Project.dart';
 
 class HomePage extends StatefulWidget {
@@ -275,7 +275,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> const Additem()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> const ItemPage()));
                             },
                           )
                         ),
