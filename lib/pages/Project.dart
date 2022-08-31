@@ -225,7 +225,7 @@ class _ProjectPageState extends State<ProjectPage> {
                       ),
                     ),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> TypesOfReport()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const TypesOfReport()));
                     },
                   ),
                   // child : Card(child: Center(child: Text(userList1[index].keys.elementAt(0).toString())))
