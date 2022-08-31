@@ -77,8 +77,8 @@ class _DpReportPageState extends State<DpReportPage> {
                         Container(
                           height: MediaQuery.of(context).size.height*0.15625,
                           width: MediaQuery.of(context).size.width*0.9111,
-                          margin: const EdgeInsets.only(
-                            top: 60,
+                          margin: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height*0.08875,
                           ),
                           child: Stack(
                             children: [
@@ -101,19 +101,19 @@ class _DpReportPageState extends State<DpReportPage> {
                               ),
 
                               Positioned(
-                                top: MediaQuery.of(context).size.height*0.035,
+                                top: MediaQuery.of(context).size.height*0.12-85,//MediaQuery.of(context).size.height*0.020,
                                 left : MediaQuery.of(context).size.width*0.6275833,
 
                                   child: CircularPercentIndicator(
                                     radius: 90.0,
                                     backgroundColor: Colors.white,
                                     percent: 0.8,
-                                    progressColor: Color(0xff242F9B),
+                                    progressColor: const Color(0xff242F9B),
                                     lineWidth: 10,
                                     circularStrokeCap: CircularStrokeCap.round,
                                     animation: true,
                                     animationDuration: 3000,
-                                    center: Text('80%',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,color: Color(0xff242F9B))),
+                                    center: const Text('80%',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,color: Color(0xff242F9B))),
                                   ),
                               )
 
@@ -124,9 +124,9 @@ class _DpReportPageState extends State<DpReportPage> {
                         Container(
                           height: MediaQuery.of(context).size.height*0.04,
                           width: MediaQuery.of(context).size.width*0.18166,
-                          margin: const EdgeInsets.only(
-                            top: 158,
-                            left: 24.5,
+                          margin: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height*0.18,
+                            left: MediaQuery.of(context).size.width*0.05,
                           ),
                           child: InkWell(
                             child: Card(
