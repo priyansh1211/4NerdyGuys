@@ -46,10 +46,10 @@ class _TypesOfReportState extends State<TypesOfReport> {
                 ),
               ),
               ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
-          Padding(padding: EdgeInsets.only(left: 20),
+          const Padding(padding: EdgeInsets.only(left: 20),
             child:TextField(
               decoration: InputDecoration(
                 hintText: "Choose Report",
@@ -62,7 +62,7 @@ class _TypesOfReportState extends State<TypesOfReport> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Column(
@@ -71,7 +71,7 @@ class _TypesOfReportState extends State<TypesOfReport> {
                 children: [
                   InkWell(
                     child: Card(
-                      color: Color(0xffBDE6F1),
+                      color: const Color(0xffBDE6F1),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0)),
                       child: const SizedBox(
@@ -80,10 +80,10 @@ class _TypesOfReportState extends State<TypesOfReport> {
                       ),
                     ),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> DpReportPage() ));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const DpReportPage() ));
                     },
                   ),
-                  Positioned(
+                  const Positioned(
                     height: 40,
                     width: 110,
                     right: 30,
@@ -109,24 +109,25 @@ class _TypesOfReportState extends State<TypesOfReport> {
                       shape:RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      child: Icon(Icons.add),
                         onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>DpReportPage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const DpReportPage()));
                  },
                      // elevation: 10,
                       backgroundColor: Colors.black,
+                      child: const Icon(Icons.add),
                  ),
                  // FloatingActionButtonLocation.endFloat
                  ],
               ),
-              SizedBox(
+
+              const SizedBox(
                 height: 20,
               ),
               Stack(
                 children: [
                   InkWell(
                     child: Card(
-                      color: Color(0xffBDE6F1),
+                      color: const Color(0xffBDE6F1),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0)),
                       child: const SizedBox(
@@ -135,10 +136,10 @@ class _TypesOfReportState extends State<TypesOfReport> {
                       ),
                     ),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> DpReportPage() ));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const DpReportPage() ));
                     },
                   ),
-                  Positioned(
+                  const Positioned(
                     height: 40,
                     width: 110,
                     right: 30,
