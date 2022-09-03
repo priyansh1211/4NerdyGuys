@@ -30,7 +30,7 @@ class _DpReportPageState extends State<DpReportPage> {
             ),
             Positioned(
                 left: 20,
-                top: 23,
+                top: 30,
                 child: InkWell(
                   child: const Icon(
                     Icons.arrow_back_ios,
@@ -43,14 +43,14 @@ class _DpReportPageState extends State<DpReportPage> {
             ),
             const Positioned(
               left: 50,
-              top: 20,
+              top: 30,
               child: Text(
                 "Daily Project Report",
                 style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
               ),
             ),
             Align(
-              alignment: const Alignment(0.94, -0.96),
+              alignment: const Alignment(0.94, -0.94),
               child: CircleAvatar(
                 radius: 25,
                 backgroundColor: Colors.white,
@@ -101,7 +101,7 @@ class _DpReportPageState extends State<DpReportPage> {
                               ),
 
                               Positioned(
-                                top: MediaQuery.of(context).size.height*0.12-85,//MediaQuery.of(context).size.height*0.020,
+                                top: MediaQuery.of(context).size.height*0.12-75,//MediaQuery.of(context).size.height*0.020,
                                 left : MediaQuery.of(context).size.width*0.6275833,
 
                                   child: CircularPercentIndicator(
@@ -109,7 +109,7 @@ class _DpReportPageState extends State<DpReportPage> {
                                     backgroundColor: Colors.white,
                                     percent: 0.8,
                                     progressColor: const Color(0xff242F9B),
-                                    lineWidth: 10,
+                                    lineWidth: 9,
                                     circularStrokeCap: CircularStrokeCap.round,
                                     animation: true,
                                     animationDuration: 3000,
