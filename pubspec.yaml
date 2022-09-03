@@ -33,7 +33,8 @@ dependencies:
   form_field_validator : ^1.0.1
   simple_animations: ^4.2.0
   dropdown_button2: ^1.6.3
-
+  flutter_otp_text_field: ^1.1.0+2
+  otp_timer_button: ^1.1.0
 
   # The following adds the Cupertino Icons fonts to your application.
   # Use with the CupertinoIcons class for iOS style icons.

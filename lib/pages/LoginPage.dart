@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/ForgotPassword.dart';
-import 'package:flutter_app/pages/home_page.dart';
+import 'package:flutter_app/pages/OTP.dart';
+//import 'package:flutter_app/pages/home_page.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -141,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                                    onPressed: () {
                                      Navigator.push(
                                        context,
-                                       MaterialPageRoute(builder: (context) => const HomePage()),
+                                       MaterialPageRoute(builder: (context) => OTP()),
                                      );
                                    },
                                    child: Container(
