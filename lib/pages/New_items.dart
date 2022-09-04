@@ -16,7 +16,7 @@ class _AdditemState extends State<Additem> {
             children: [
               Container(
                 height: MediaQuery.of(context).size.height * 0.3,
-                color: Color(0xffE5E5E5),
+                color: const Color(0xffE5E5E5),
               ),
               Positioned(
                   left: 20,
@@ -33,7 +33,7 @@ class _AdditemState extends State<Additem> {
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.07375,
                 left: MediaQuery.of(context).size.width * 0.05555,
-                child: Text('Add new item',
+                child: const Text('Add new item',
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
               ),
               Positioned(
@@ -42,7 +42,7 @@ class _AdditemState extends State<Additem> {
                   child: Image.asset('assets/images/calendar_add_item.png')),
               Container(
                 // height: MediaQuery.of(context).size.height*0.4325,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40), topRight: Radius.circular(40)),
@@ -151,11 +151,11 @@ class _AdditemState extends State<Additem> {
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.87,
                         height: 50,
-                        margin: EdgeInsets.only(top: 20),
-                        decoration: BoxDecoration(
+                        margin: const EdgeInsets.only(top: 20),
+                        decoration: const BoxDecoration(
                             color: Color(0xffA6D1E6),
                             borderRadius: BorderRadius.all(Radius.circular(10))),
-                        child: Center(
+                        child: const Center(
                           child: Text('Add item', style: TextStyle(fontSize: 20)),
                         ),
                       ),

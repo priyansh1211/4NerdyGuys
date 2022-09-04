@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/Item_details.dart';
 import 'package:flutter_app/pages/New_items.dart';
 
 
@@ -26,12 +27,12 @@ class _ItemPageState extends State<ItemPage> {
     return Scaffold(
 
       body: Container(
-        color: Color(0xffE5E5E5),
+        color: const Color(0xffE5E5E5),
         child: Stack(
           children: [
 
             Container(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 top: 80,
                 left: 16,
               ),
@@ -62,14 +63,14 @@ class _ItemPageState extends State<ItemPage> {
                     child: Container(
                       height: 49,
                       width: 99,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(10))
                       ),
-                      margin: EdgeInsets.only(left: 80,
+                      margin: const EdgeInsets.only(left: 80,
                           right: 16),
                       child: Stack(
-                        children: [
+                        children: const [
                           Align(
                             alignment: Alignment(-0.90,0),
                             child: Icon(Icons.add_circle,size: 30,),
@@ -82,13 +83,13 @@ class _ItemPageState extends State<ItemPage> {
                       ),
                     ),
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const Additem()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const ItemDetailPage()));
                     },
                   ),
                 ],
               ),
             ),
-            Positioned(
+            const Positioned(
                 top: 49+130,
                 left: 25,
                 child: Text('My items')),
@@ -119,7 +120,7 @@ class _ItemPageState extends State<ItemPage> {
                     crossAxisCount: 2, mainAxisSpacing: 15),
                 itemCount: userList1.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
+                  return SizedBox(
                     height: 137,//MediaQuery.of(context).size.height*0.17125,
                     width: 160,//MediaQuery.of(context).size.width*0.44444,
                     //margin: const EdgeInsets.only(left: 20, right: 20),
@@ -141,20 +142,20 @@ class _ItemPageState extends State<ItemPage> {
                               child: Text(
                                 userList1[index].keys.elementAt(0).toString(),
                                 style:
-                                const TextStyle(fontSize: 18, fontFamily: 'Inter'),
+                                const TextStyle(fontSize: 20, fontFamily: 'ReadexPro'),
                               ),
                             ),
-                            // const Positioned(
-                            //   top: 90,
-                            //   left: 17,
-                            //   child: Text(
-                            //     "Ongoing Site",
-                            //     style: TextStyle(
-                            //         fontSize: 10,
-                            //         fontFamily: 'Inter',
-                            //         color: Color(0xff796A6A)),
-                            //   ),
-                            // ),
+                            const Positioned(
+                              top: 140,
+                              left: 20,
+                              child: Text(
+                                "Used - \nTotal -",
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    fontFamily: 'Inter',
+                                    color: Colors.black),
+                              ),
+                            ),
                           ],
                         ),
                       ),
