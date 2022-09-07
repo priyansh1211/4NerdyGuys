@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/Edit_Project.dart';
 import 'package:flutter_app/pages/Item_list.dart';
 import 'package:flutter_app/pages/Project.dart';
 
@@ -275,7 +276,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> const ItemPage()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> const EditProjectPage()));
                             },
                           )
                         ),
