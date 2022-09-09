@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 class TargetVsAchieved extends StatefulWidget {
   const TargetVsAchieved({Key? key}) : super(key: key);
 
@@ -12,6 +13,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
     return Scaffold(
       backgroundColor: const Color(0xffE5E5E5),
       appBar: AppBar(
+
         automaticallyImplyLeading: false,
         backgroundColor: Colors.grey.shade400,
         title: const Text(
@@ -50,7 +52,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               height: 50,
               margin: const EdgeInsets.only(right: 160),
               decoration: BoxDecoration(
@@ -77,7 +79,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               height: 50,
               margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -102,7 +104,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               height: 50,
               margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -128,7 +130,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               height: 55,
               margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -153,7 +155,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               height: 55,
               margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -178,7 +180,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               height: 50,
               margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
@@ -227,27 +229,49 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
               ),
             ),
           ),
-          SizedBox(height: 20,),
-          MaterialButton(
-            onPressed: () {},
-            child: Container(
-              height: 50,
-              width: 130,
-              margin: EdgeInsets.symmetric(horizontal: 105),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade600,
-                borderRadius: BorderRadius.circular(35.0),
-              ),
-              child: Center(
-                child: Text(
-                  "Make Report",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Montserrat',
-                      fontSize: 15),
+          const SizedBox(height: 20,),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(onPressed: (){
+                  Get.defaultDialog(
+                    title: "Report has been created!",
+                    middleText: "Do you want to download?",
+                    titleStyle: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ReadexPro',
+                        fontSize: 15),
+                    middleTextStyle: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ReadexPro',
+                        fontSize: 15),
+                    textCancel: "NO",
+                    cancelTextColor: Colors.white,
+                    textConfirm: "YES",
+                     confirmTextColor: Colors.white,
+                    onConfirm: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>TargetVsAchieved()));
+                    },
+                    radius: 30,
+                    buttonColor: Color(0xff009AFF),
+                    // barrierDismissible: false,
+                    backgroundColor: const Color(0xff009AFF),
+                  );
+                }, child: const Text(
+                  "Download",
+                  // style: TextStyle(
+                  //     color: Colors.white,
+                  //     fontWeight: FontWeight.bold,
+                  //     fontFamily: 'ReadexPro',
+                  //     fontSize: 15),
                 ),
-              ),
+                ),
+              ],
             ),
           ),
         ],

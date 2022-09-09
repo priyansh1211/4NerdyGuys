@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/WorkDoneToday.dart';
+import 'package:get/get.dart';
 class MachineryReport extends StatefulWidget {
   const MachineryReport({Key? key}) : super(key: key);
 
@@ -10,10 +12,10 @@ class _MachineryReportState extends State<MachineryReport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffE5E5E5),
+      backgroundColor: const Color(0xffE5E5E5),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xffE5E5E5),
+        backgroundColor: const Color(0xffE5E5E5),
         title: const Text(
           "Machinery Report:",
           style: TextStyle(color: Colors.black),
@@ -48,16 +50,16 @@ class _MachineryReportState extends State<MachineryReport> {
         shrinkWrap: true,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 12),
+              padding: const EdgeInsets.only(left: 12),
               height: 50,
-              margin: EdgeInsets.only(right: 160),
+              margin: const EdgeInsets.only(right: 160),
               decoration: BoxDecoration(
                 color: Colors.blue.shade100,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child:  TextField(
+              child:  const TextField(
                 decoration: InputDecoration(
                   hintText: 'Add Data',
                   suffixIcon: Icon(Icons.keyboard_arrow_down_rounded),
@@ -66,8 +68,8 @@ class _MachineryReportState extends State<MachineryReport> {
               ),
             ),
           ),
-          SizedBox(height: 10,),
-          Padding(
+          const SizedBox(height: 10,),
+          const Padding(
             padding: EdgeInsets.only(left: 25),
             child: Text(
               'Agency',
@@ -75,16 +77,16 @@ class _MachineryReportState extends State<MachineryReport> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 12),
+              padding: const EdgeInsets.only(left: 12),
               height: 50,
-              margin: EdgeInsets.only(right: 100),
+              margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: TextField(
+              child: const TextField(
                 style: TextStyle(color: Colors.black54),
                 decoration: InputDecoration(
                   hintText: '-Select Agency-',
@@ -93,7 +95,7 @@ class _MachineryReportState extends State<MachineryReport> {
               ),
             ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 24),
             child: Text(
               'Description',
@@ -101,16 +103,16 @@ class _MachineryReportState extends State<MachineryReport> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 12),
+              padding: const EdgeInsets.only(left: 12),
               height: 55,
-              margin: EdgeInsets.only(right: 100),
+              margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: TextField(
+              child: const TextField(
                 style: TextStyle(color: Colors.black54),
                 decoration: InputDecoration(
                   hintText: '-Give Work Description-',
@@ -120,7 +122,7 @@ class _MachineryReportState extends State<MachineryReport> {
             ),
           ),
           //SizedBox(height: 10,),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 24),
             child: Text(
               'Remarks',
@@ -128,16 +130,16 @@ class _MachineryReportState extends State<MachineryReport> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 12),
+              padding: const EdgeInsets.only(left: 12),
               height: 50,
-              margin: EdgeInsets.only(right: 100),
+              margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: TextField(
+              child: const TextField(
                 decoration: InputDecoration(
                   border: InputBorder.none,
                 ),
@@ -145,42 +147,62 @@ class _MachineryReportState extends State<MachineryReport> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
               height: 50,
-              margin: EdgeInsets.only(right: 170),
+              margin: const EdgeInsets.only(right: 170),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: TextField(decoration: InputDecoration(
+              child: const TextField(decoration: InputDecoration(
                 prefixIcon: Icon(Icons.add_a_photo),
                 hintText: 'Add Image',
                 border: InputBorder.none,
               ),
               ),
             ),
-          ),SizedBox(height: 40,),
-          MaterialButton(
-            onPressed: () {},
-            child: Container(
-              height: 50,
-              width: 130,
-              margin: EdgeInsets.symmetric(horizontal: 105),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade600,
-                borderRadius: BorderRadius.circular(35.0),
-              ),
-              child: Center(
-                child: Text(
+          ),const SizedBox(height: 40,),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(onPressed: (){
+                  Get.defaultDialog(
+                    middleText: "Do you want to continue?",
+                    titleStyle: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ReadexPro',
+                        fontSize: 15),
+                    middleTextStyle: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ReadexPro',
+                        fontSize: 15),
+                    textCancel: "NO",
+                    cancelTextColor: const Color(0xff685D5D),
+                    textConfirm: "YES",
+                    confirmTextColor: Colors.lightGreenAccent,
+                    radius: 40,
+                    buttonColor: const Color(0xff685D5D),
+                    //barrierDismissible: false,
+                    backgroundColor: const Color(0xff009AFF),
+                    onConfirm: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const WorkDoneToday()));
+                    },
+                  );
+                }, child: const Text(
                   "Make Report",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Montserrat',
-                      fontSize: 15),
+                  // style: TextStyle(
+                  //     color: Colors.white,
+                  //     fontWeight: FontWeight.bold,
+                  //     fontFamily: 'ReadexPro',
+                  //     fontSize: 15),
                 ),
-              ),
+                ),
+              ],
             ),
           ),
         ],

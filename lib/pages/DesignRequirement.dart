@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/NextDayPlanning.dart';
+import 'package:get/get.dart';
 class DesignRequirement extends StatefulWidget {
   const DesignRequirement({Key? key}) : super(key: key);
 
@@ -145,26 +147,46 @@ class _DesignRequirementState extends State<DesignRequirement> {
             ),
           ),
           SizedBox(height: 40,),
-          MaterialButton(
-            onPressed: () {},
-            child: Container(
-              height: 50,
-              width: 130,
-              margin: EdgeInsets.symmetric(horizontal: 105),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade600,
-                borderRadius: BorderRadius.circular(35.0),
-              ),
-              child: Center(
-                child: Text(
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(onPressed: (){
+                  Get.defaultDialog(
+                    middleText: "Do you want to continue?",
+                    titleStyle: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ReadexPro',
+                        fontSize: 15),
+                    middleTextStyle: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ReadexPro',
+                        fontSize: 15),
+                    textCancel: "NO",
+                    cancelTextColor: Color(0xff685D5D),
+                    textConfirm: "YES",
+                    confirmTextColor: Colors.lightGreenAccent,
+                    radius: 40,
+                    buttonColor: Color(0xff685D5D),
+                    //barrierDismissible: false,
+                    backgroundColor: Color(0xff009AFF),
+                    onConfirm: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>NextDayPlanning()));
+                    },
+                  );
+                }, child: const Text(
                   "Make Report",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Montserrat',
-                      fontSize: 15),
+                  // style: TextStyle(
+                  //     color: Colors.white,
+                  //     fontWeight: FontWeight.bold,
+                  //     fontFamily: 'ReadexPro',
+                  //     fontSize: 15),
                 ),
-              ),
+                ),
+              ],
             ),
           ),
         ],

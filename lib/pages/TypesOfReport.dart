@@ -92,7 +92,7 @@ class _TypesOfReportState extends State<TypesOfReport> {
                           top: 85,
                           left: 220,
                           child: Icon(
-                            Icons.add_box,
+                            Icons.add_box_rounded,
                             size: 30,
                           )),
                       const Positioned(

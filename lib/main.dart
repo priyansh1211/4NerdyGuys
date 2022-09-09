@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import './pages/ResetPassword.dart';
 import './pages/ForgotPassword.dart';
 import './pages/LoginPage.dart';
 import './pages/SignUp.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(
+      GetMaterialApp(
     debugShowCheckedModeBanner: false,
     home: LoginPage(),
     routes: {
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner:
           false, //this makes the "debug" banner disappear when you run the app
       home: const LoginPage(),

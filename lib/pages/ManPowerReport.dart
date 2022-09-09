@@ -1,6 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/MachineryReport.dart';
+import 'package:get/get.dart';
 
 class ManPowerReport extends StatefulWidget {
   const ManPowerReport({Key? key}) : super(key: key);
@@ -296,53 +297,46 @@ class _ManPowerReportState extends State<ManPowerReport> {
           const SizedBox(
             height: 20,
           ),
-          MaterialButton(
-            onPressed: () {
-              AlertDialog(
-                title: const Text('Do you want to continue?'),
-                actions: [
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const MachineryReport()));
-                      },
-                      child: const Text(
-                        'Yes',
-                        style: TextStyle(
-                            color: Color(0xff685D5D), fontFamily: 'ReadexPro'),
-                      ),
-                  ),
-                  ElevatedButton(onPressed: (){
-                   // Navigator.push(context, MaterialPageRoute(builder: (context)=>))
-                  }, child: const Text(
-                    'Yes',
-                    style: TextStyle(
-                        color: Color(0xff685D5D), fontFamily: 'ReadexPro'),
-                  ),
-                  ),
-                ],
-              );
-            },
-            child: Container(
-              height: 52,
-              width: 130,
-              margin: const EdgeInsets.symmetric(horizontal: 105),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade600,
-                borderRadius: BorderRadius.circular(35.0),
-              ),
-              child: const Center(
-                child: Text(
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(onPressed: (){
+                  Get.defaultDialog(
+                    middleText: "Do you want to continue?",
+                    titleStyle: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ReadexPro',
+                        fontSize: 15),
+                    middleTextStyle: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ReadexPro',
+                        fontSize: 15),
+                    textCancel: "NO",
+                    cancelTextColor: Color(0xff685D5D),
+                    textConfirm: "YES",
+                    confirmTextColor: Colors.lightGreenAccent,
+                    radius: 40,
+                    buttonColor: Color(0xff685D5D),
+                    //barrierDismissible: false,
+                    backgroundColor: Color(0xff009AFF),
+                    onConfirm: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>MachineryReport()));
+                    },
+                  );
+                }, child: const Text(
                   "Make Report",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Montserrat',
-                      fontSize: 15),
+                  // style: TextStyle(
+                  //     color: Colors.white,
+                  //     fontWeight: FontWeight.bold,
+                  //     fontFamily: 'ReadexPro',
+                  //     fontSize: 15),
                 ),
-              ),
+                ),
+              ],
             ),
           ),
         ],
