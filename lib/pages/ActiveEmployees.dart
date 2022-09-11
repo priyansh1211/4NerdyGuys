@@ -69,22 +69,16 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
            ),
            child: Stack(
              children: [
-               const Positioned(
-                   top: 85,
-                   left: 220,
-                   child: Icon(
-                     Icons.arrow_right_alt_outlined,
-                     size: 30,
-                   )),
-               const Positioned(
-                 height: 40,
-                 width: 110,
+               Positioned(
+                 height: 32,
+                 width: 101,
                  right: 30,
                  bottom: 60,
+               //  top: 32,
                  child: Text(
-                   "Daily Progress Report",
+                   "Vishwas Bhatt",
                    style: TextStyle(
-                     fontSize: 16,
+                     fontSize: 15,
                      fontFamily: 'ReadexPro',
                      fontWeight: FontWeight.w600,
                      //color: Color(0xffBDE6F1),
@@ -93,10 +87,10 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
                ),
                Positioned(
                  top: 10,
-                 height: 101,
-                 width: 108,
+                 height: 25,
+                 width: 25,
                  left: 10,
-                 child: Image.asset('assets/images/report1.png'),
+                 child: Icon(Icons.arrow_right),
                ),
              ],
            ),
