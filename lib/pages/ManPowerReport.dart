@@ -145,12 +145,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
           const SizedBox(
             height: 10,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 25),
-            child: Text(
-              'Agency',
-              style: TextStyle(color: Colors.black, fontSize: 17),
-            ),
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(text: 'Agency',style: TextStyle(color: Colors.black, fontSize: 20)),
+                  WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                  WidgetSpan(child: Icon(Icons.more_horiz)),
+                 // TextSpan(text: 'to add'),
+                ],
+              ),
+            )
           ),
           Padding(
             padding: const EdgeInsets.all(20),
@@ -188,12 +194,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Description',
-              style: TextStyle(color: Colors.black, fontSize: 15),
-            ),
+          Padding(
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Description',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: const EdgeInsets.all(20),
@@ -214,12 +226,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
             ),
           ),
           //SizedBox(height: 10,),
-          const Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Skilled',
-              style: TextStyle(color: Colors.black, fontSize: 15),
-            ),
+          Padding(
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Skilled',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: const EdgeInsets.all(20),
@@ -243,12 +261,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
             ),
           ),
           //SizedBox(height: 10,),
-          const Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Unskilled',
-              style: TextStyle(color: Colors.black, fontSize: 15),
-            ),
+          Padding(
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Unskilled',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: const EdgeInsets.all(20),
@@ -272,12 +296,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
             ),
           ),
           //SizedBox(height: 10,),
-          const Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Remarks',
-              style: TextStyle(color: Colors.black, fontSize: 15),
-            ),
+          Padding(
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Remarks',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: const EdgeInsets.all(20),

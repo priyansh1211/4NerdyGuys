@@ -135,11 +135,17 @@ class _MaterialReportState extends State<MaterialReport> {
           ),
           SizedBox(height: 10,),
           Padding(
-            padding: EdgeInsets.only(left: 25),
-            child: Text(
-              'Item',
-              style: TextStyle(color: Colors.black,fontSize: 17),
-            ),
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Item',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: EdgeInsets.all(20),
@@ -153,11 +159,17 @@ class _MaterialReportState extends State<MaterialReport> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Description',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Description',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: EdgeInsets.all(20),
@@ -179,11 +191,17 @@ class _MaterialReportState extends State<MaterialReport> {
           ),
           //SizedBox(height: 10,),
           Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Status',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Status',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: EdgeInsets.all(20),
@@ -206,11 +224,17 @@ class _MaterialReportState extends State<MaterialReport> {
           //SizedBox(height: 10,),
           //SizedBox(height: 10,),
           Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Remarks',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Remarks',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: EdgeInsets.all(20),

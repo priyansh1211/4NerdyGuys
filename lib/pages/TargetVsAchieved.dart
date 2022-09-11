@@ -69,12 +69,18 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             ),
           ),
           const SizedBox(height: 10,),
-          const Padding(
-            padding: EdgeInsets.only(left: 25),
-            child: Text(
-              'Description(Location)',
-              style: TextStyle(color: Colors.black,fontSize: 17),
-            ),
+          Padding(
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Description(Location)',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: const EdgeInsets.all(20),
@@ -94,12 +100,18 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Status',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
+          Padding(
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Status',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: const EdgeInsets.all(20),
@@ -120,12 +132,18 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             ),
           ),
           //SizedBox(height: 10,),
-          const Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Concrete Used',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
+          Padding(
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Concrete Used',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: const EdgeInsets.all(20),
@@ -145,12 +163,18 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             ),
           ),
           //SizedBox(height: 10,),
-          const Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Reason if not achieved',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
+          Padding(
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Reason if not achieved',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: const EdgeInsets.all(20),
@@ -170,12 +194,18 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             ),
           ),
           //SizedBox(height: 10,),
-          const Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Remarks',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
+          Padding(
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Remarks',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: const EdgeInsets.all(20),

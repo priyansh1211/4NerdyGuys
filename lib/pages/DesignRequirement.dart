@@ -71,11 +71,17 @@ class _DesignRequirementState extends State<DesignRequirement> {
           ),
           SizedBox(height: 10,),
           Padding(
-            padding: EdgeInsets.only(left: 25),
-            child: Text(
-              'Item',
-              style: TextStyle(color: Colors.black,fontSize: 17,fontFamily: 'ReadexPro'),
-            ),
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Item',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: EdgeInsets.all(20),
@@ -95,11 +101,17 @@ class _DesignRequirementState extends State<DesignRequirement> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Consultant',
-              style: TextStyle(color: Colors.black,fontSize: 15,fontFamily: 'ReadexPro'),
-            ),
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Consultant',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: EdgeInsets.all(20),
@@ -123,11 +135,17 @@ class _DesignRequirementState extends State<DesignRequirement> {
           //SizedBox(height: 10,),
           //SizedBox(height: 10,),
           Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Remarks',
-              style: TextStyle(color: Colors.black,fontSize: 15,fontFamily: "ReadexPro"),
-            ),
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Remarks',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: EdgeInsets.all(20),

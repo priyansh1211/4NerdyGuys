@@ -70,11 +70,17 @@ class _NextDayPlanningState extends State<NextDayPlanning> {
           ),
           SizedBox(height: 10,),
           Padding(
-            padding: EdgeInsets.only(left: 25),
-            child: Text(
-              'Description(Location)',
-              style: TextStyle(color: Colors.black,fontSize: 17),
-            ),
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Description(Location)',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: EdgeInsets.all(20),
@@ -94,8 +100,19 @@ class _NextDayPlanningState extends State<NextDayPlanning> {
               ),
             ),
           ),
-          Padding(padding: EdgeInsets.only(left:24),
-          child: Text('Activity',style: TextStyle(color:Colors.black,fontSize: 17)),),
+          Padding(
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Activity',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
+          ),
           Padding(
             padding: EdgeInsets.all(20),
             child: Container(
@@ -110,11 +127,17 @@ class _NextDayPlanningState extends State<NextDayPlanning> {
           //SizedBox(height: 10,),
           //SizedBox(height: 10,),
           Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: Text(
-              'Remarks',
-              style: TextStyle(color: Colors.black,fontSize: 15),
-            ),
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: 'Remarks',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )
           ),
           Padding(
             padding: EdgeInsets.all(20),
