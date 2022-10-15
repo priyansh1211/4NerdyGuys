@@ -53,30 +53,37 @@ class _MachineryReportState extends State<MachineryReport> {
             padding: const EdgeInsets.all(20),
             child: Container(
               padding: const EdgeInsets.only(left: 12),
-              height: 50,
+              height: 30,
               margin: const EdgeInsets.only(right: 160),
               decoration: BoxDecoration(
                 color: Colors.blue.shade100,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child:  const TextField(
-                decoration: InputDecoration(
-                  hintText: 'Add Data',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down_rounded),
-                  border: InputBorder.none,
+              child:  Text.rich(
+                TextSpan(
+                  children: [
+                    const TextSpan(text: 'Add column',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child:InkWell(
+                      child: Icon(Icons.add),
+                      onTap: (){
+                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>));
+                      },
+                    )),
+                  ],
                 ),
               ),
             ),
           ),
           const SizedBox(height: 10,),
           Padding(
-              padding: EdgeInsets.only(left: 25),
+              padding: const EdgeInsets.only(left: 25),
               child: Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(text: 'Agency',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    const TextSpan(text: 'Agency',style: TextStyle(color: Colors.black, fontSize: 20)),
                     WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    const WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
@@ -102,13 +109,13 @@ class _MachineryReportState extends State<MachineryReport> {
             ),
           ),
           Padding(
-              padding: EdgeInsets.only(left: 25),
+              padding: const EdgeInsets.only(left: 25),
               child: Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(text: 'Description',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    const TextSpan(text: 'Description',style: TextStyle(color: Colors.black, fontSize: 20)),
                     WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    const WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
@@ -135,13 +142,13 @@ class _MachineryReportState extends State<MachineryReport> {
           ),
           //SizedBox(height: 10,),
           Padding(
-              padding: EdgeInsets.only(left: 25),
+              padding: const EdgeInsets.only(left: 25),
               child: Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(text: 'Remarks',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    const TextSpan(text: 'Remarks',style: TextStyle(color: Colors.black, fontSize: 20)),
                     WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    const WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
@@ -173,11 +180,8 @@ class _MachineryReportState extends State<MachineryReport> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const TextField(decoration: InputDecoration(
-                prefixIcon: Icon(Icons.add_a_photo),
-                hintText: 'Add Image',
-                border: InputBorder.none,
-              ),
+              child: buildButton(
+                
               ),
             ),
           ),const SizedBox(height: 40,),
@@ -227,4 +231,6 @@ class _MachineryReportState extends State<MachineryReport> {
       ),
     );
   }
+
+  buildButton() {}
 }

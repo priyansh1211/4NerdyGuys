@@ -110,36 +110,21 @@ class _ManPowerReportState extends State<ManPowerReport> {
             padding: const EdgeInsets.all(20),
             child: Container(
               padding: const EdgeInsets.only(left: 20),
-              height: 50,
+              height: 30,
               margin: const EdgeInsets.only(right: 160),
               decoration: BoxDecoration(
                 color: Colors.blue.shade100,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton2(
-                  isExpanded: true,
-                  hint: const TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Add Data',
-                    ),
-                  ),
-                  items: _addDividersAfterItems(items),
-                  customItemsIndexes: _getDividersIndexes(),
-                  customItemsHeight: 4,
-                  value: selectedValue,
-                  onChanged: (value) {
-                    setState(() {
-                      selectedValue = value as String;
-                    });
-                  },
-                  buttonHeight: 40,
-                  buttonWidth: 140,
-                  itemHeight: 40,
-                  itemPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text.rich(
+                TextSpan(
+                children: [
+                  TextSpan(text: 'Add column',style: TextStyle(color: Colors.black, fontSize: 20)),
+                  WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                  WidgetSpan(child: Icon(Icons.add)),
+                ],
                 ),
-              ),
+              )
             ),
           ),
           const SizedBox(
@@ -205,7 +190,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                     // TextSpan(text: 'to add'),
                   ],
                 ),
-              )
+              ),
           ),
           Padding(
             padding: const EdgeInsets.all(20),
