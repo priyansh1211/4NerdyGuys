@@ -1,6 +1,6 @@
 import 'dart:io';
+//import 'dart:html';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -25,24 +25,45 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
   //  }
   // }
   File? _image;
-
-  Future getImagefromCamera() async{
-
-    var image = await ImagePicker().pickImage(source: ImageSource.camera);
-
+  _imageFromCamera() async {
+    File image = (await ImagePicker().pickImage(
+        source: ImageSource.camera)) as File;
     setState(() {
-      _image = image as File?;
+      _image = image;
     });
   }
-  Future getImagefromGallery() async{
-
-    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
-
-    setState(() {
-      _image = image as File?;
+    _imageFromGallery() async{
+      File image = (await ImagePicker().pickImage(source: ImageSource.gallery)) as File;
+      setState((){
+        _image = image;
+      });
+    }
+  void _PickImageFromCamera(context){
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc){
+      return GestureDetector(
+        onTap: (){
+          _imageFromCamera();
+          Navigator.of(context).pop();
+        },
+        child: const Icon(Icons.camera_alt),
+      );
     });
   }
-
+  void _PickImageFromGallery(context){
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc){
+          return GestureDetector(
+            onTap: (){
+              _imageFromGallery();
+              Navigator.of(context).pop();
+            },
+            child: const Icon(Icons.photo_library_outlined),
+          );
+        });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -279,46 +300,66 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
               ),
             ),
           ),
-          // buildButton(
-          //   title: "Pick from Gallery",
-          //   icon: Icons.image_outlined,
-          //   onClicked:(){} =>pickImage(),
-          // ),
-          // const SizedBox(
-          //   height: 20,
-          // ),
-          // buildButton(
-          //   title: "Pick from Camera",
-          //   icon:Icons.camera_alt_outlined,
-          //   onClicked:(){},
-          // ),
+         GestureDetector(
+           onTap: (){
+             _PickImageFromCamera(context);
+           },
+           child: CircleAvatar(
+             radius: 55,
+             backgroundColor: Colors.black,
+             child: _image!=null
+                 ?ClipRRect(
+               borderRadius: BorderRadius.circular(50),
+               child: Image.file(
+                 _image!,
+                 height: 100,
+                 fit: BoxFit.fitHeight,
+                 width: 100,
+               ),
+             ):Container(
+               decoration: BoxDecoration(
+                   color: Colors.grey.shade200,
+                   borderRadius: BorderRadius.circular(50)
+               ),
+               width: 100,
+               height: 100,
+               child: Icon(
+                 Icons.camera_alt,
+                 color: Colors.grey.shade800,
+               ),
+             ),
+           ),
+         ),
           GestureDetector(
-            onTap: getImagefromCamera,
-            child: _image == null ? Container(decoration: BoxDecoration(color: Colors.red[50],border: Border.all(color: Colors.red.shade200, width: 1.0),borderRadius: BorderRadius.circular(10.0)),
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height:30.0),
-                    Icon(Icons.camera_alt, color: Colors.red),
-                    SizedBox(height: 10.0),
-                    Text('Take Image of the Item', style: TextStyle(color: Colors.red)),
-                    SizedBox(height: 30.0)
-                  ],
-                )) : Image.file(_image!),
+            onTap: (){
+              _PickImageFromGallery(context);
+            },
+            child: CircleAvatar(
+              radius: 55,
+              backgroundColor: Colors.black,
+              child: _image!=null
+              ?ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.file(
+                  _image!,
+                  height: 100,
+                  fit: BoxFit.fitHeight,
+                  width: 100,
+                ),
+              ):Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(50)
+                ),
+                width: 100,
+                height: 100,
+                child: Icon(
+                  Icons.photo_library_outlined,
+                  color: Colors.grey.shade800,
+                ),
+              ),
+            ),
           ),
-          GestureDetector(
-            onTap: getImagefromGallery,
-            child: _image == null ? Container(decoration: BoxDecoration(color: Colors.red[50],border: Border.all(color: Colors.red.shade200, width: 1.0),borderRadius: BorderRadius.circular(10.0)),
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height:30.0,width: 20),
-                    Icon(Icons.camera_alt, color: Colors.red),
-                    SizedBox(height: 10.0),
-                    Text('Choose image from gallery', style: TextStyle(color: Colors.red)),
-                    SizedBox(height: 30.0)
-                  ],
-                )) : Image.file(_image!),
-          ),
-
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
