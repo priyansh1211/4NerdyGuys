@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:convert';
 //import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,30 @@ class TargetVsAchieved extends StatefulWidget {
 }
 
 class _TargetVsAchievedState extends State<TargetVsAchieved> {
+  File? selectedImage;
+  String base64Image = "";
+
+  Future<void> chooseImage(type) async {
+    // ignore: prefer_typing_uninitialized_variables
+    var image;
+    if (type == "camera") {
+      image = await ImagePicker().pickImage(
+        source: ImageSource.camera,
+      );
+    } else if(type=="gallery") {
+      image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+      );
+    }
+    if (image != null) {
+      setState(() {
+        selectedImage = File(image.path);
+        base64Image = base64Encode(selectedImage!.readAsBytesSync());
+        // won't have any error now
+      });
+    }
+  }
+
   // File? image;
   // Future pickImage() async{
   //  try{
@@ -24,46 +49,46 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
   //    print('Failed to pick image: $e');
   //  }
   // }
-  File? _image;
-  _imageFromCamera() async {
-    File image = (await ImagePicker().pickImage(
-        source: ImageSource.camera)) as File;
-    setState(() {
-      _image = image;
-    });
-  }
-    _imageFromGallery() async{
-      File image = (await ImagePicker().pickImage(source: ImageSource.gallery)) as File;
-      setState((){
-        _image = image;
-      });
-    }
-  void _PickImageFromCamera(context){
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext bc){
-      return GestureDetector(
-        onTap: (){
-          _imageFromCamera();
-          Navigator.of(context).pop();
-        },
-        child: const Icon(Icons.camera_alt),
-      );
-    });
-  }
-  void _PickImageFromGallery(context){
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext bc){
-          return GestureDetector(
-            onTap: (){
-              _imageFromGallery();
-              Navigator.of(context).pop();
-            },
-            child: const Icon(Icons.photo_library_outlined),
-          );
-        });
-  }
+  // File? _image;
+  // _imageFromCamera() async {
+  //   File image = (await ImagePicker().pickImage(
+  //       source: ImageSource.camera)) as File;
+  //   setState(() {
+  //     _image = image;
+  //   });
+  // }
+  //   _imageFromGallery() async{
+  //     File image = (await ImagePicker().pickImage(source: ImageSource.gallery)) as File;
+  //     setState((){
+  //       _image = image;
+  //     });
+  //   }
+  // void _PickImageFromCamera(context){
+  //   showModalBottomSheet(
+  //       context: context,
+  //       builder: (BuildContext bc){
+  //     return GestureDetector(
+  //       onTap: (){
+  //         _imageFromCamera();
+  //         Navigator.of(context).pop();
+  //       },
+  //       child: const Icon(Icons.camera_alt),
+  //     );
+  //   });
+  // }
+  // void _PickImageFromGallery(context){
+  //   showModalBottomSheet(
+  //       context: context,
+  //       builder: (BuildContext bc){
+  //         return GestureDetector(
+  //           onTap: (){
+  //             _imageFromGallery();
+  //             Navigator.of(context).pop();
+  //           },
+  //           child: const Icon(Icons.photo_library_outlined),
+  //         );
+  //       });
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -300,65 +325,119 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
               ),
             ),
           ),
-         GestureDetector(
-           onTap: (){
-             _PickImageFromCamera(context);
-           },
-           child: CircleAvatar(
-             radius: 55,
-             backgroundColor: Colors.black,
-             child: _image!=null
-                 ?ClipRRect(
-               borderRadius: BorderRadius.circular(50),
-               child: Image.file(
-                 _image!,
-                 height: 100,
-                 fit: BoxFit.fitHeight,
-                 width: 100,
-               ),
-             ):Container(
-               decoration: BoxDecoration(
-                   color: Colors.grey.shade200,
-                   borderRadius: BorderRadius.circular(50)
-               ),
-               width: 100,
-               height: 100,
-               child: Icon(
-                 Icons.camera_alt,
-                 color: Colors.grey.shade800,
-               ),
-             ),
-           ),
-         ),
-          GestureDetector(
-            onTap: (){
-              _PickImageFromGallery(context);
-            },
-            child: CircleAvatar(
-              radius: 55,
-              backgroundColor: Colors.black,
-              child: _image!=null
-              ?ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Image.file(
-                  _image!,
-                  height: 100,
-                  fit: BoxFit.fitHeight,
-                  width: 100,
-                ),
-              ):Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(50)
-                ),
-                width: 100,
-                height: 100,
-                child: Icon(
-                  Icons.photo_library_outlined,
-                  color: Colors.grey.shade800,
-                ),
-              ),
+         // GestureDetector(
+         //   onTap: (){
+         //     _PickImageFromCamera(context);
+         //   },
+         //   child: CircleAvatar(
+         //     radius: 55,
+         //     backgroundColor: Colors.black,
+         //     child: _image!=null
+         //         ?ClipRRect(
+         //       borderRadius: BorderRadius.circular(50),
+         //       child: Image.file(
+         //         _image!,
+         //         height: 100,
+         //         fit: BoxFit.fitHeight,
+         //         width: 100,
+         //       ),
+         //     ):Container(
+         //       decoration: BoxDecoration(
+         //           color: Colors.grey.shade200,
+         //           borderRadius: BorderRadius.circular(50)
+         //       ),
+         //       width: 100,
+         //       height: 100,
+         //       child: Icon(
+         //         Icons.camera_alt,
+         //         color: Colors.grey.shade800,
+         //       ),
+         //     ),
+         //   ),
+         // ),
+         //  GestureDetector(
+         //    onTap: (){
+         //      _PickImageFromGallery(context);
+         //    },
+         //    child: CircleAvatar(
+         //      radius: 55,
+         //      backgroundColor: Colors.black,
+         //      child: _image!=null
+         //      ?ClipRRect(
+         //        borderRadius: BorderRadius.circular(50),
+         //        child: Image.file(
+         //          _image!,
+         //          height: 100,
+         //          fit: BoxFit.fitHeight,
+         //          width: 100,
+         //        ),
+         //      ):Container(
+         //        decoration: BoxDecoration(
+         //          color: Colors.grey.shade200,
+         //          borderRadius: BorderRadius.circular(50)
+         //        ),
+         //        width: 100,
+         //        height: 100,
+         //        child: Icon(
+         //          Icons.photo_library_outlined,
+         //          color: Colors.grey.shade800,
+         //        ),
+         //      ),
+         //    ),
+         //  ),
+          CircleAvatar(
+            radius: 60,
+            backgroundColor: Colors.red,
+            child: Padding(
+              padding: EdgeInsets.only(left: 10,right: 10), // Border radius
+              child: ClipOval(
+                  child: selectedImage != null
+                      ? Image.file(
+                    selectedImage!,
+                    fit: BoxFit.cover,
+                    height: 100,
+                    width: 100,
+                  )
+                      : Image.network(
+                    'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
+                    fit: BoxFit.cover,
+                    height: 100,
+                    width: 100,
+                  )),
             ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              chooseImage("camera");
+            },
+            child: const Text("Target Image from camera"),
+          ),
+          CircleAvatar(
+            radius: 60,
+            backgroundColor: Colors.red,
+            child: Padding(
+              padding: const EdgeInsets.all(8), // Border radius
+              child: ClipOval(
+                  child: selectedImage != null
+                      ? Image.file(
+                    selectedImage!,
+                    fit: BoxFit.cover,
+                    height: 100,
+                    width: 100,
+                  )
+                      : Image.network(
+                    'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
+                    fit: BoxFit.cover,
+                    height: 100,
+                    width: 100,
+                  )),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              chooseImage("gallery");
+            },
+            child: const Text("Achieved Image From Gallery"),
           ),
           Center(
             child: Column(
