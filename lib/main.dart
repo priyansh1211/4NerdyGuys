@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/home_page.dart';
 import 'package:get/get.dart';
-import './pages/ResetPassword.dart';
+
 import './pages/ForgotPassword.dart';
 import './pages/LoginPage.dart';
+import './pages/ResetPassword.dart';
 import './pages/SignUp.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 void main() {
   runApp(
       GetMaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: LoginPage(),
+        debugShowCheckedModeBanner: false,
+    home: const LoginPage(),
     routes: {
       'LoginPage': (context) => const LoginPage(),
       'SignUp': (context) => const SignUp(),
@@ -21,6 +23,16 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  autoLogin() async{
+    SharedPreferences  prefs = await SharedPreferences.getInstance();
+    bool? LoggedIn = prefs.getBool('LoggedIn');
+
+    if(LoggedIn==true){
+      return HomePage();
+    }else{
+      return SignUp();
+    }
+  }
 
   // This widget is the root of your application.
   @override
@@ -28,7 +40,16 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner:
           false, //this makes the "debug" banner disappear when you run the app
-      home: const LoginPage(),
+      home: FutureBuilder(
+        future: autoLogin(), builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.hasData){
+            return snapshot.data;
+          }else{
+            return SignUp();
+          }
+      },
+
+      ),
       //title: 'Static Startup',
       theme: ThemeData(
         // This is the theme of your application.

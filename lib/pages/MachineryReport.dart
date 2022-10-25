@@ -171,20 +171,7 @@ class _MachineryReportState extends State<MachineryReport> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Container(
-              height: 50,
-              margin: const EdgeInsets.only(right: 170),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: buildButton(
-                
-              ),
-            ),
-          ),const SizedBox(height: 40,),
+
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
