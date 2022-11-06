@@ -1,14 +1,19 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/DpReport.dart';
 
 class TypesOfReport extends StatefulWidget {
-  const TypesOfReport({Key? key}) : super(key: key);
+  final String projectName;
+
+    const TypesOfReport({Key? key, required this.projectName}) : super(key: key);
 
   @override
   State<TypesOfReport> createState() => _TypesOfReportState();
 }
 
 class _TypesOfReportState extends State<TypesOfReport> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,14 +100,14 @@ class _TypesOfReportState extends State<TypesOfReport> {
                             Icons.add_box_rounded,
                             size: 30,
                           )),
-                      const Positioned(
+                      Positioned(
                         height: 40,
                         width: 110,
                         right: 30,
                         bottom: 60,
                         child: Text(
-                          "Daily Progress Report",
-                          style: TextStyle(
+                          widget.projectName,//"Daily Progress Report",
+                          style: const TextStyle(
                             fontSize: 16,
                             fontFamily: 'ReadexPro',
                             fontWeight: FontWeight.w600,

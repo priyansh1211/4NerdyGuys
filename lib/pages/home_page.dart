@@ -1,17 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/ActiveEmployees.dart';
-import 'package:flutter_app/pages/DashboardPage.dart';
 import 'package:flutter_app/pages/Edit_Project.dart';
-// import 'package:flutter_app/pages/LoginPage.dart';
 import 'package:flutter_app/pages/Project.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-username() async{
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  String? mail = prefs.getString('mail');
-
-  return Text("Mail is: $mail");
-}
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,21 +14,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
-    // LogOut() async{
-    //   SharedPreferences prefs = await SharedPreferences.getInstance();
-    //   prefs.setBool('LoggedIn',false);
-    //   prefs.remove('mail');
-    //
-    //   return Navigator.push(
-    //     context,
-    //     PageRouteBuilder(
-    //       pageBuilder: (c, a1, a2) => LoginPage(),
-    //       transitionsBuilder: (c, anim, a2, child) =>
-    //           FadeTransition(opacity: anim, child: child),
-    //       transitionDuration: Duration(milliseconds: 200),
-    //     ),
-    //   );
-    // }
     return Scaffold(
         body: Center(
             child: Stack(children: [
@@ -199,9 +174,7 @@ class _HomePageState extends State<HomePage> {
 
                               ],
                             ),
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>DashboardPage()));
-                            },
+                            onTap: (){},
                           )
                         ),
                       ],

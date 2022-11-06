@@ -8,16 +8,7 @@ class EditProjectPage extends StatefulWidget {
 }
 
 class _EditProjectPageState extends State<EditProjectPage> {
-  DateTime _dateTime = DateTime.now();
 
-  void _showDataPicker()
-  {
-    showDatePicker(context: context, initialDate: _dateTime == null ? DateTime.now() : _dateTime , firstDate: DateTime(2021), lastDate: DateTime(2030)).then((data){
-      setState(() {
-        _dateTime = data!;
-      });
-    });
-  }
 
   final TextEditingController _data = TextEditingController();
 

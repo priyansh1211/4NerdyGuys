@@ -1,52 +1,7 @@
-// import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/LoginPage.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:web_socket_channel/io.dart';
 
-// login(context, _mail, _pwd) async {
-//   String auth = "chatappauthkey231r4";
-//   if (_mail.isNotEmpty && _pwd.isNotEmpty) {
-//     IOWebSocketChannel? channel;
-//     try {
-//       // Create connection.
-//       channel = IOWebSocketChannel.connect('ws://localhost:5000/login$_mail');
-//     } catch (e) {
-//       print("Error on connecting to websocket: " + e);
-//     }
-//     // Data that will be sent to Node.js
-//     String signUpData =
-//         "{'auth':'$auth','email':'$_mail','hash':'$_pwd'}";
-//     // Send data to Node.js
-//     channel?.sink.add(signUpData);
-//     // listen for data from the server
-//     channel?.stream.listen((event) async {
-//       event = event.replaceAll(RegExp("'"), '"');
-//       var loginData = json.decode(event);
-//       // Check if the status is successful
-//       if (loginData["status"] == 'success') {
-//         // Close connection.
-//         channel?.sink.close();
-//
-//         SharedPreferences prefs = await SharedPreferences.getInstance();
-//         prefs.setBool('loggedin', true);
-//         prefs.setString('mail', _mail);
-//         // Return user to login if successful
-//         return Navigator.push(
-//           context,
-//           MaterialPageRoute(builder: (context) => const LoginPage()),
-//         );
-//       } else {
-//         channel?.sink.close();
-//         print("Error signing signing up");
-//       }
-//     });
-//   } else {
-//     print("Password are not equal");
-//   }
-// }
 //import 'package:flutter_app/pages/SignUpInputWrapper.dart';
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -150,7 +105,7 @@ class _SignUpState extends State<SignUp> {
                               // reverse: true,
                               shrinkWrap: true,
                               children: <Widget>[
-                                const SizedBox(
+                                SizedBox(
                                   height: 35,
                                 ),
                                 Column(
@@ -162,40 +117,40 @@ class _SignUpState extends State<SignUp> {
                                         decoration: InputDecoration(
                                           enabledBorder: OutlineInputBorder(
                                             borderRadius: BorderRadius.circular(10),
-                                            borderSide: const BorderSide(color: Color(0xffEEF2FF)),
+                                            borderSide: BorderSide(color: Color(0xffEEF2FF)),
                                           ),
-                                          hintStyle: const TextStyle(fontFamily: 'ReadexPro'),
+                                          hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: const BorderSide(color: Color(0xffEEF2FF)),
                                             borderRadius: BorderRadius.circular(10),
                                           ),
                                           hintText: 'Name',
                                           filled: true,
-                                          fillColor: const Color(0xffEEF2FF),
+                                          fillColor: Color(0xffEEF2FF),
                                         ),
                                       ),
                                     ),
-                                    const SizedBox(height: 20,),
+                                    SizedBox(height: 20,),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 40,right: 40),
                                       child: TextField(
                                         decoration: InputDecoration(
                                           enabledBorder: OutlineInputBorder(
                                             borderRadius: BorderRadius.circular(10),
-                                            borderSide: const BorderSide(color: const Color(0xffEEF2FF)),
+                                            borderSide: BorderSide(color: Color(0xffEEF2FF)),
                                           ),
-                                          hintStyle: const TextStyle(fontFamily: 'ReadexPro'),
+                                          hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: const BorderSide(color: Color(0xffEEF2FF)),
                                             borderRadius: BorderRadius.circular(10),
                                           ),
                                           hintText: 'E-mail',
                                           filled: true,
-                                          fillColor: const Color(0xffEEF2FF),
+                                          fillColor: Color(0xffEEF2FF),
                                         ),
                                       ),
                                     ),
-                                    const SizedBox(height: 20,),
+                                    SizedBox(height: 20,),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 40,right: 40),
                                       child: TextField(
@@ -211,20 +166,20 @@ class _SignUpState extends State<SignUp> {
                                           ),
                                           enabledBorder: OutlineInputBorder(
                                             borderRadius: BorderRadius.circular(10),
-                                            borderSide: const BorderSide(color: const Color(0xffEEF2FF)),
+                                            borderSide: BorderSide(color: Color(0xffEEF2FF)),
                                           ),
-                                          hintStyle: const TextStyle(fontFamily: 'ReadexPro'),
+                                          hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: const BorderSide(color: Color(0xffEEF2FF)),
                                             borderRadius: BorderRadius.circular(10),
                                           ),
                                           hintText: 'Password',
                                           filled: true,
-                                          fillColor: const Color(0xffEEF2FF),
+                                          fillColor: Color(0xffEEF2FF),
                                         ),
                                       ),
                                     ),
-                                    const SizedBox(height: 20,),
+                                    SizedBox(height: 20,),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 40,right: 40),
                                       child: DropdownButtonHideUnderline(
@@ -237,14 +192,14 @@ class _SignUpState extends State<SignUp> {
                                                 borderRadius: BorderRadius.circular(10),
                                                 borderSide: const BorderSide(color: Color(0xffEEF2FF)),
                                               ),
-                                              hintStyle: const TextStyle(fontFamily: 'ReadexPro'),
+                                              hintStyle: TextStyle(fontFamily: 'ReadexPro'),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: const BorderSide(color: Color(0xffEEF2FF)),
                                                 borderRadius: BorderRadius.circular(10),
                                               ),
                                               hintText: 'Designation',
                                               filled: true,
-                                              fillColor: const Color(0xffEEF2FF),
+                                              fillColor: Color(0xffEEF2FF),
                                             ),
                                           ),
                                           items: _addDividersAfterItems(Designation),
@@ -280,7 +235,7 @@ class _SignUpState extends State<SignUp> {
                                       height: 50,
                                       margin: const EdgeInsets.symmetric(horizontal: 25),
                                       decoration: BoxDecoration(
-                                        color: const Color(0xff001E6C),
+                                        color: Color(0xff001E6C),
                                         borderRadius: BorderRadius.circular(10.0),
                                       ),
                                       child: const Center(

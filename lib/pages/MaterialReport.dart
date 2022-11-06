@@ -45,7 +45,7 @@ class _MaterialReportState extends State<MaterialReport> {
     return menuItems;
   }
 
-  List<int> _getDividersIndexes() {
+  List<int> getDividersIndexes() {
     List<int> dividersIndexes = [];
     for (var i = 0; i < (items.length * 2) - 1; i++) {
       //Dividers indexes will be the odd indexes
@@ -117,8 +117,8 @@ class _MaterialReportState extends State<MaterialReport> {
                     ),
                   ),
                   items: _addDividersAfterItems(items),
-                  customItemsIndexes: _getDividersIndexes(),
-                  customItemsHeight: 4,
+                  // customItemsIndexes: _getDividersIndexes(),
+                  // customItemsHeight: 4,
                   value: selectedValue,
                   onChanged: (value) {
                     setState(() {
