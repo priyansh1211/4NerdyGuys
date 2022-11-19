@@ -232,8 +232,8 @@ class _SignUpState extends State<SignUp> {
                                         ),
                                         items:
                                             _addDividersAfterItems(Designation),
-                                        //customItemsIndexes: _getDividersIndexes(),
-                                        //customItemsHeight: 4,
+                                        customItemsIndexes: _getDividersIndexes(),
+                                        customItemsHeight: 4,
                                         value: selectedValue,
                                         onChanged: (value) {
                                           setState(() {

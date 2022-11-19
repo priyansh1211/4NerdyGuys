@@ -126,8 +126,8 @@ class _ManPowerReportState extends State<ManPowerReport> {
                     ),
                   ),
                   items: _addDividersAfterItems(items),
-                  //customItemsIndexes: _getDividersIndexes(),
-                  //customItemsHeight: 4,
+                  customItemsIndexes: _getDividersIndexes(),
+                  customItemsHeight: 4,
                   value: selectedValue,
                   onChanged: (value) {
                     setState(() {
@@ -182,8 +182,8 @@ class _ManPowerReportState extends State<ManPowerReport> {
                     ),
                   ),
                   items: _addDividersAfterItems(Agency),
-                  //customItemsIndexes: _getDividersIndexes(),
-                  //customItemsHeight: 4,
+                  customItemsIndexes: _getDividersIndexes(),
+                  customItemsHeight: 4,
                   value: selectedValue,
                   onChanged: (value) {
                     setState(() {
