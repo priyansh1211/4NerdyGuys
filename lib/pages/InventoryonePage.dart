@@ -88,7 +88,7 @@ class _InventoryPageState extends State<InventoryPage> {
                                           fontFamily: 'Readxpro', fontSize: 15),
                                     ),
                                     Text(
-                                      '\n73%',
+                                      '73%',
                                       style: TextStyle(
                                           fontFamily: 'Readxpro', fontSize: 30),
                                     ),
