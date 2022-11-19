@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-//import 'package:flutter_app/pages/home_page.dart';
+import 'package:flutter_app/pages/home_page.dart';
 import 'package:flutter_app/Modules/api.dart';
 import 'package:flutter_app/pages/ForgotPassword.dart';
 import 'package:flutter_app/pages/OTP.dart';
@@ -163,34 +163,38 @@ class _LoginPageState extends State<LoginPage> {
                               height: 20,
                             ),
                             MaterialButton(
-                                onPressed: () async {
-                                  Api api = new Api();
-                                  Map map = new Map();
-                                  map['email'] = _userEmailCtrler.text;
-                                  map['password'] = _passwordCtrler.text;
-                                  if (_userEmailCtrler.text.isNotEmpty &&
-                                      _passwordCtrler.text.isNotEmpty) {
-                                    Map response = await api.loginApi(map1)
-                                        as Map<String, dynamic>;
-                                    SharedPreferences? preferences =
-                                        await SharedPreferences.getInstance();
-                                    print("REQUEST: ====================> " +
-                                        response.toString());
-                                    setState(() {
-                                      if (response["status"] == "success") {
-                                        preferences.setString(
-                                            "UserName", _userEmailCtrler.text);
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => const OTP()),
-                                        );
-                                      } else {
+                              onPressed : () {
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomePage()));
+    },
 
-                                      }
-                                    });
-                                  }
-                                },
+                                // onPressed: () async {
+                                //   Api api = new Api();
+                                //   Map map = new Map();
+                                //   map['email'] = _userEmailCtrler.text;
+                                //   map['password'] = _passwordCtrler.text;
+                                //   if (_userEmailCtrler.text.isNotEmpty &&
+                                //       _passwordCtrler.text.isNotEmpty) {
+                                //     Map response = await api.loginApi(map1)
+                                //         as Map<String, dynamic>;
+                                //     SharedPreferences? preferences =
+                                //         await SharedPreferences.getInstance();
+                                //     print("REQUEST: ====================> " +
+                                //         response.toString());
+                                //     setState(() {
+                                //       if (response["status"] == "success") {
+                                //         preferences.setString(
+                                //             "UserName", _userEmailCtrler.text);
+                                //         Navigator.push(
+                                //           context,
+                                //           MaterialPageRoute(
+                                //               builder: (context) => const OTP()),
+                                //         );
+                                //       } else {
+                                //
+                                //       }
+                                //     });
+                                //   }
+                                // },
                                 child: Container(
                                   height: 55,
                                   margin: const EdgeInsets.symmetric(

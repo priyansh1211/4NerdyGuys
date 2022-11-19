@@ -49,16 +49,16 @@ class _SignUpState extends State<SignUp> {
     return menuItems;
   }
 
-  List<int> _getDividersIndexes() {
-    List<int> dividersIndexes = [];
-    for (var i = 0; i < (Designation.length * 2) - 1; i++) {
-      //Dividers indexes will be the odd indexes
-      if (i.isOdd) {
-        dividersIndexes.add(i);
-      }
-    }
-    return dividersIndexes;
-  }
+  // List<int> _getDividersIndexes() {
+  //   List<int> dividersIndexes = [];
+  //   for (var i = 0; i < (Designation.length * 2) - 1; i++) {
+  //     //Dividers indexes will be the odd indexes
+  //     if (i.isOdd) {
+  //       dividersIndexes.add(i);
+  //     }
+  //   }
+  //   return dividersIndexes;
+  // }
 
   bool _showpassword = true;
   @override
@@ -232,8 +232,8 @@ class _SignUpState extends State<SignUp> {
                                         ),
                                         items:
                                             _addDividersAfterItems(Designation),
-                                        customItemsIndexes: _getDividersIndexes(),
-                                        customItemsHeight: 4,
+                                        //customItemsIndexes: _getDividersIndexes(),
+                                        //customItemsHeight: 4,
                                         value: selectedValue,
                                         onChanged: (value) {
                                           setState(() {

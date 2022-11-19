@@ -13,7 +13,6 @@ class TypesOfReport extends StatefulWidget {
 }
 
 class _TypesOfReportState extends State<TypesOfReport> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,14 +99,14 @@ class _TypesOfReportState extends State<TypesOfReport> {
                             Icons.add_box_rounded,
                             size: 30,
                           )),
-                      Positioned(
+                      const Positioned(
                         height: 40,
                         width: 110,
                         right: 30,
                         bottom: 60,
                         child: Text(
-                          widget.projectName,//"Daily Progress Report",
-                          style: const TextStyle(
+                          "Daily Progress Report",
+                          style: TextStyle(
                             fontSize: 16,
                             fontFamily: 'ReadexPro',
                             fontWeight: FontWeight.w600,
@@ -129,7 +128,7 @@ class _TypesOfReportState extends State<TypesOfReport> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const DpReportPage()));
+                          builder: (context) => DpReportPage(pName : widget.projectName,)));
                 },
               ),
 
@@ -245,7 +244,7 @@ class _TypesOfReportState extends State<TypesOfReport> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const DpReportPage()));
+                          builder: (context) => DpReportPage(pName : widget.projectName,)));
                 },
               ),
 

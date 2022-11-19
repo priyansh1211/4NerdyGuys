@@ -76,10 +76,10 @@ class _OwnerPageState extends State<OwnerPage>{
                   left: screensize.width * 0.04,
                   right: screensize.width * 0.04,
                 ),
-                color:  Color(0xff68B1D5),
+                color:  const Color(0xff68B1D5),
                 child: ListTile(
                   title: Text(Listfordate[index],
-                      style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,fontFamily: 'Readxpro')),
+                      style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20,fontFamily: 'Readxpro')),
                   subtitle: Column(
                     children: [
                       Container(
@@ -87,7 +87,7 @@ class _OwnerPageState extends State<OwnerPage>{
                         child: Align(
                           alignment: Alignment.bottomLeft,
                           child: Text(Listforname[index],
-                            style: TextStyle(fontSize: 18),),
+                            style: const TextStyle(fontSize: 18),),
                         ),
                       ),
                       Align(
@@ -97,11 +97,11 @@ class _OwnerPageState extends State<OwnerPage>{
                             Container(
                               padding: EdgeInsets.only(top: screensize.height * 0.02,),
                               child: Align(alignment:Alignment.bottomLeft,
-                                  child: Text(Listforsite[index],style:TextStyle(fontSize: 18))),
+                                  child: Text(Listforsite[index],style:const TextStyle(fontSize: 18))),
                             ),
                             Container(
                               padding: EdgeInsets.only(top: screensize.height * 0.02,left: screensize.width*0.2),
-                              child: Text(ListforBlock[index],style: TextStyle(fontSize: 18),/*textAlign: TextAlign.center,*/),
+                              child: Text(ListforBlock[index],style: const TextStyle(fontSize: 18),/*textAlign: TextAlign.center,*/),
                             ),
                           ],
                         ),
@@ -112,7 +112,7 @@ class _OwnerPageState extends State<OwnerPage>{
                           child: ButtonBar(
                             children: <Widget>[
                               ElevatedButton(
-                                child: Text("View Report"),
+                                child: const Text("View Report"),
                                 onPressed: () {print("Go to view page");},
                               ),
                             ],

@@ -76,7 +76,7 @@ class _InventoryPageState extends State<InventoryPage> {
                               alignment: Alignment.center,
                               child: Center(
                                 child: Column(
-                                  children: [
+                                  children: const [
                                     Text(
                                       'Sanskruti',
                                       style: TextStyle(
@@ -109,7 +109,7 @@ class _InventoryPageState extends State<InventoryPage> {
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
+                                children: const <Widget>[
                                   Text(
                                     'Tasks',
                                     style: TextStyle(
@@ -150,7 +150,7 @@ class _InventoryPageState extends State<InventoryPage> {
                               alignment: Alignment.center,
                               child: Center(
                                 child: Column(
-                                  children: [
+                                  children: const [
                                     Text(
                                       'Antriksh',
                                       style: TextStyle(
@@ -183,7 +183,7 @@ class _InventoryPageState extends State<InventoryPage> {
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
+                                children: const <Widget>[
                                   Text(
                                     'Tasks',
                                     style: TextStyle(
@@ -222,7 +222,7 @@ class _InventoryPageState extends State<InventoryPage> {
                               alignment: Alignment.center,
                               child: Center(
                                 child: Column(
-                                  children: [
+                                  children: const [
                                     Text(
                                       'Nakshtra',
                                       style: TextStyle(
@@ -255,7 +255,7 @@ class _InventoryPageState extends State<InventoryPage> {
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
+                                children: const <Widget>[
                                   Text(
                                     'Tasks',
                                     style: TextStyle(
