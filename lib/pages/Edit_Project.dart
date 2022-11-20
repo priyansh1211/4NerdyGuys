@@ -10,7 +10,7 @@ class EditProjectPage extends StatefulWidget {
 class _EditProjectPageState extends State<EditProjectPage> {
 
 
-  final TextEditingController _data = TextEditingController();
+  // final TextEditingController _data = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class _EditProjectPageState extends State<EditProjectPage> {
               padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.055,left: 30,right: 30,bottom: MediaQuery.of(context).size.height*0.03625),
               decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-                color: Color(0xff89CFFD),
+                color: const Color(0xff89CFFD),
               ),
 
               child: Column(
@@ -34,12 +34,12 @@ class _EditProjectPageState extends State<EditProjectPage> {
                 children: [
 
 
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text('Edit Name',style: TextStyle(fontSize: 16)),
                   ),
 
-                  SizedBox(height: 5,),
+                  const SizedBox(height: 5,),
 
                   Flexible(
                     child: TextFormField(
@@ -61,14 +61,14 @@ class _EditProjectPageState extends State<EditProjectPage> {
                     ),
                   ),
 
-                  SizedBox(height: 5,),
+                  const SizedBox(height: 5,),
 
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text('Edit no. of floors',style: TextStyle(fontSize: 16)),
                   ),
 
-                  SizedBox(height: 5,),
+                  const SizedBox(height: 5,),
 
                   Flexible(
                     child: TextFormField(
@@ -90,14 +90,14 @@ class _EditProjectPageState extends State<EditProjectPage> {
                     ),
                   ),
 
-                  SizedBox(height: 5,),
+                  const SizedBox(height: 5,),
 
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text('Edit no. of block',style: TextStyle(fontSize: 16)),
                   ),
 
-                  SizedBox(height: 5,),
+                  const SizedBox(height: 5,),
 
                   Flexible(
                     child: TextFormField(
@@ -119,61 +119,61 @@ class _EditProjectPageState extends State<EditProjectPage> {
                     ),
                   ),
 
-                  SizedBox(height: 5,),
+                  const SizedBox(height: 5,),
 
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text('Time estimate',style: TextStyle(fontSize: 16)),
-                  ),
-
-                  SizedBox(height: 5,),
-
-                  Flexible(child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                    children: [
-                      Flexible(
-                          child: Padding(
-                            padding: EdgeInsets.only(right: 20),
-                            child: TextField(
-                              controller: _data,
-                              decoration: const InputDecoration(
-                                filled: true,
-                                fillColor: Colors.white,
-                                suffixIcon: Icon(Icons.calendar_month),
-                                border: OutlineInputBorder(),
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(8)),
-                                    borderSide: BorderSide(color: Colors.white)),
-                              ),
-
-                            ),
-                          )
-                      ),
-                      Flexible(
-                          child: Padding(
-                            padding: EdgeInsets.only(left: 20),
-                            child: TextField(
-                              controller: _data,
-                              decoration: const InputDecoration(
-                                filled: true,
-                                fillColor: Colors.white,
-                                suffixIcon: Icon(Icons.calendar_month),
-                                border: OutlineInputBorder(),
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(8)),
-                                    borderSide: BorderSide(color: Colors.white)),
-                              ),
-
-                            ),
-                          )
-                      ),
+                  // Align(
+                  //   alignment: Alignment.topLeft,
+                  //   child: Text('Time estimate',style: TextStyle(fontSize: 16)),
+                  // ),
+                  //
+                  // SizedBox(height: 5,),
+                  //
+                  // Flexible(child: Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.end,
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //
+                  //   children: [
+                  //     Flexible(
+                  //         child: Padding(
+                  //           padding: EdgeInsets.only(right: 20),
+                  //           child: TextField(
+                  //             controller: _data,
+                  //             decoration: const InputDecoration(
+                  //               filled: true,
+                  //               fillColor: Colors.white,
+                  //               suffixIcon: Icon(Icons.calendar_month),
+                  //               border: OutlineInputBorder(),
+                  //               enabledBorder: OutlineInputBorder(
+                  //                   borderRadius:
+                  //                   BorderRadius.all(Radius.circular(8)),
+                  //                   borderSide: BorderSide(color: Colors.white)),
+                  //             ),
+                  //
+                  //           ),
+                  //         )
+                  //     ),
+                  //     Flexible(
+                  //         child: Padding(
+                  //           padding: EdgeInsets.only(left: 20),
+                  //           child: TextField(
+                  //             controller: _data,
+                  //             decoration: const InputDecoration(
+                  //               filled: true,
+                  //               fillColor: Colors.white,
+                  //               suffixIcon: Icon(Icons.calendar_month),
+                  //               border: OutlineInputBorder(),
+                  //               enabledBorder: OutlineInputBorder(
+                  //                   borderRadius:
+                  //                   BorderRadius.all(Radius.circular(8)),
+                  //                   borderSide: BorderSide(color: Colors.white)),
+                  //             ),
+                  //
+                  //           ),
+                  //         )
+                  //     ),
                     ],
-                  ))
-                ],
+
+
               ),
             ),
           ],

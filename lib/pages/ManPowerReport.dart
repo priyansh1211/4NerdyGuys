@@ -14,7 +14,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
   final List<String> items = [
     'Add new column',
   ];
-  final List<String> Agency =[
+  final List<String> Agency = [
     'Steel',
     'Shuttering',
     'Concrete',
@@ -52,7 +52,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
     return menuItems;
   }
 
-  List<int> _getDividersIndexes() {
+  /*List<int> _getDividersIndexes() {
     List<int> dividersIndexes = [];
     for (var i = 0; i < (items.length * 2) - 1; i++) {
       //Dividers indexes will be the odd indexes
@@ -61,7 +61,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
       }
     }
     return dividersIndexes;
-  }
+  }*/
 
   //String? _chosenValue;
   @override
@@ -126,8 +126,8 @@ class _ManPowerReportState extends State<ManPowerReport> {
                     ),
                   ),
                   items: _addDividersAfterItems(items),
-                  customItemsIndexes: _getDividersIndexes(),
-                  customItemsHeight: 4,
+                  //customItemsIndexes: _getDividersIndexes(),
+                  //customItemsHeight: 4,
                   value: selectedValue,
                   onChanged: (value) {
                     setState(() {
@@ -146,18 +146,22 @@ class _ManPowerReportState extends State<ManPowerReport> {
             height: 10,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 25),
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(text: 'Agency',style: TextStyle(color: Colors.black, fontSize: 20)),
-                  WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                  WidgetSpan(child: Icon(Icons.more_horiz)),
-                 // TextSpan(text: 'to add'),
-                ],
-              ),
-            )
-          ),
+              padding: EdgeInsets.only(left: 25),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                        text: 'Agency',
+                        style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(
+                        child: SizedBox(
+                      width: MediaQuery.of(context).devicePixelRatio,
+                    )),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    // TextSpan(text: 'to add'),
+                  ],
+                ),
+              )),
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
@@ -178,8 +182,8 @@ class _ManPowerReportState extends State<ManPowerReport> {
                     ),
                   ),
                   items: _addDividersAfterItems(Agency),
-                  customItemsIndexes: _getDividersIndexes(),
-                  customItemsHeight: 4,
+                  //customItemsIndexes: _getDividersIndexes(),
+                  //customItemsHeight: 4,
                   value: selectedValue,
                   onChanged: (value) {
                     setState(() {
@@ -199,14 +203,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
               child: Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(text: 'Description',style: TextStyle(color: Colors.black, fontSize: 20)),
-                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    TextSpan(
+                        text: 'Description',
+                        style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(
+                        child: SizedBox(
+                      width: MediaQuery.of(context).devicePixelRatio,
+                    )),
                     WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
-              )
-          ),
+              )),
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
@@ -231,14 +239,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
               child: Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(text: 'Skilled',style: TextStyle(color: Colors.black, fontSize: 20)),
-                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    TextSpan(
+                        text: 'Skilled',
+                        style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(
+                        child: SizedBox(
+                      width: MediaQuery.of(context).devicePixelRatio,
+                    )),
                     WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
-              )
-          ),
+              )),
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
@@ -266,25 +278,29 @@ class _ManPowerReportState extends State<ManPowerReport> {
               child: Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(text: 'Unskilled',style: TextStyle(color: Colors.black, fontSize: 20)),
-                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    TextSpan(
+                        text: 'Unskilled',
+                        style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(
+                        child: SizedBox(
+                      width: MediaQuery.of(context).devicePixelRatio,
+                    )),
                     WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
-              )
-          ),
+              )),
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
-              padding: const EdgeInsets.only(left: 10,top: 8,bottom: 8),
+              padding: const EdgeInsets.only(left: 10, top: 8, bottom: 8),
               height: 55,
               margin: const EdgeInsets.only(right: 260),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child:  TextField(
+              child: TextField(
                 controller: number2,
                 autocorrect: true,
                 keyboardType: TextInputType.number,
@@ -301,14 +317,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
               child: Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(text: 'Remarks',style: TextStyle(color: Colors.black, fontSize: 20)),
-                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    TextSpan(
+                        text: 'Remarks',
+                        style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(
+                        child: SizedBox(
+                      width: MediaQuery.of(context).devicePixelRatio,
+                    )),
                     WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
-              )
-          ),
+              )),
           Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
@@ -332,39 +352,44 @@ class _ManPowerReportState extends State<ManPowerReport> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ElevatedButton(onPressed: (){
-                  Get.defaultDialog(
-                    middleText: "Do you want to continue?",
-                    titleStyle: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'ReadexPro',
-                        fontSize: 15),
-                    middleTextStyle: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'ReadexPro',
-                        fontSize: 15),
-                    textCancel: "NO",
-                    cancelTextColor: Color(0xff685D5D),
-                    textConfirm: "YES",
-                    confirmTextColor: Colors.lightGreenAccent,
-                    radius: 40,
-                    buttonColor: Color(0xff685D5D),
-                    //barrierDismissible: false,
-                    backgroundColor: Color(0xff009AFF),
-                    onConfirm: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>MachineryReport()));
-                    },
-                  );
-                }, child: const Text(
-                  "Make Report",
-                  // style: TextStyle(
-                  //     color: Colors.white,
-                  //     fontWeight: FontWeight.bold,
-                  //     fontFamily: 'ReadexPro',
-                  //     fontSize: 15),
-                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.defaultDialog(
+                      middleText: "Do you want to continue?",
+                      titleStyle: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'ReadexPro',
+                          fontSize: 15),
+                      middleTextStyle: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'ReadexPro',
+                          fontSize: 15),
+                      textCancel: "NO",
+                      cancelTextColor: Color(0xff685D5D),
+                      textConfirm: "YES",
+                      confirmTextColor: Colors.lightGreenAccent,
+                      radius: 40,
+                      buttonColor: Color(0xff685D5D),
+                      //barrierDismissible: false,
+                      backgroundColor: Color(0xff009AFF),
+                      onConfirm: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MachineryReport()));
+                      },
+                    );
+                  },
+                  child: const Text(
+                    "Make Report",
+                    // style: TextStyle(
+                    //     color: Colors.white,
+                    //     fontWeight: FontWeight.bold,
+                    //     fontFamily: 'ReadexPro',
+                    //     fontSize: 15),
+                  ),
                 ),
               ],
             ),

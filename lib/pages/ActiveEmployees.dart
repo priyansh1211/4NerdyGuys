@@ -7,26 +7,21 @@ class ActiveEmployees extends StatefulWidget {
 }
 
 class _ActiveEmployeesState extends State<ActiveEmployees> {
-  List<Map<String, int>> userList1 = [
-    {'Sanskruti': 10},
-    {'Antriksh': 15},
-    {'Nakshtra': 18}
+  List User_Name_List = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F'
   ];
-  final fkey = GlobalKey<FormState>();
-  TextEditingController message = TextEditingController();
-  TextEditingController number = TextEditingController();
-
-  get i => null;
+  List Site_name = ['Sanskruti', 'Antriksh', 'Bougainvilla'];
+  List Block_no = ['A', 'B', 'C'];
 
   @override
   Widget build(BuildContext context) {
+    var screensize = MediaQuery.of(context).size;
     return Scaffold(
-      // floatingActionButton: SizedBox(
-      //   width: 64,
-      //   height: 45,
-      //   child:
-      // ),
-      //floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       backgroundColor: const Color(0xffE7EAEB),
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -45,143 +40,97 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
           ),
         ),
       ),
-      body: ListView(
+      body: Column(
         children: [
-          Container(
-            width: 328,
-            height: 150,
-            padding: const EdgeInsets.all(5),
-            child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                color: const Color(0xff89CFFD),
-                elevation: 12,
-                child: Column(
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Container(
+              padding: const EdgeInsets.only(left: 15),
+              height: 35,
+              width: 225,
+              margin: const EdgeInsets.only(right: 125),
+              decoration: BoxDecoration(
+                color: Colors.blue.shade100,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child:  Text.rich(
+                TextSpan(
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Icon(Icons.circle),
-                          flex: 1,
-                        ),
-                        Expanded(child: Text("VISHWAS BHATT"), flex: 3),
-                        Expanded(
-                          flex: 2,
-                          child: FloatingActionButton(
-                            shape:
-                            BeveledRectangleBorder(borderRadius: BorderRadius.circular(5.1)),
-                            backgroundColor: const Color(0xff89CFFD),
-                            child: Row(
-                              children: [Icon(Icons.add), Text("New site")],
-                            ),
-                            onPressed: () {
-                              showDialog(
-                                  barrierDismissible: true,
-                                  context: context,
-                                  builder: (_) {
-                                    return AlertDialog(
-                                      shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                                      content: Form(
-                                          key: fkey,
-                                          child: SizedBox(
-                                            width: 100,
-                                            height: 200,
-                                            child: Column(
-                                              children: [
-                                                TextFormField(
-                                                  decoration: const InputDecoration(
-                                                      labelText: 'Enter Site Name'),
-                                                  controller: message,
-                                                  validator: (value) {
-                                                    if (value == null || value.isEmpty) {
-                                                      return "Enter Something";
-                                                    }
-                                                    return null;
-                                                  },
-                                                ),
-                                                TextFormField(
-                                                  decoration: const InputDecoration(
-                                                      labelText: 'Enter The Block Number'),
-                                                  controller: number,
-                                                  validator: (value) {
-                                                    if (value == null || value.isEmpty) {
-                                                      return "Enter Number";
-                                                    }
-                                                    return null;
-                                                  },
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
-                                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                                  children: [
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 20),
-                                                      child: ElevatedButton(
-                                                        onPressed: () {
-                                                          if (fkey.currentState!.validate()) {
-                                                            userList1.add({
-                                                              message.text: int.parse(number.text)
-                                                            });
-                                                            Navigator.pop(context);
-                                                            number.clear();
-                                                            message.clear();
-                                                            setState(() {});
-                                                          }
-                                                        },
-                                                        child: const Text('Add'),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 20),
-                                                      child: ElevatedButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(context);
-                                                        },
-                                                        child: const Text('Cancel'),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          )),
-                                    );
-                                  });
-                            },
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(right: 125),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text("Sanskruti"),
-                              Text("B"),
-                            ],
-                          ), Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text("Sanskruti"),
-                              Text("B"),
-                            ],
-                          ), Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text("Sanskruti"),
-                              Text("B"),
-                            ],
-                          ),],
-                      ),
+                    const TextSpan(text: 'Junior Engineer',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                    WidgetSpan(child:Icon(Icons.arrow_drop_down),
                     ),
                   ],
-                )),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: User_Name_List.length,
+              itemBuilder: (context, i) {
+                return Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Container(
+                    height: 135,
+                    width: 328,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Color(0xff89CFFD),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.circle_rounded),
+                            Text(User_Name_List[i]),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 15),
+                            height: 35,
+                            width: 225,
+                            margin: const EdgeInsets.only(right: 125),
+                            decoration: BoxDecoration(
+                              color: Colors.blue.shade100,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child:  Text.rich(
+                              TextSpan(
+                                children: [
+                                  const TextSpan(text: 'Junior Engineer',style: TextStyle(color: Colors.black, fontSize: 20)),
+                                  WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                                  WidgetSpan(child:Icon(Icons.arrow_drop_down),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        ListView.builder(
+                            itemBuilder: (context,i){
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(Site_name[i]),
+                                      SizedBox(width: 20,),
+                                      Text(Block_no[i]),
+                                    ],
+                                  ),
+                                ],
+                              );
+                            })
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),

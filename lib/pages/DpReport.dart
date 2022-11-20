@@ -6,10 +6,12 @@ import 'package:flutter_app/pages/MaterialReport.dart';
 import 'package:flutter_app/pages/NextDayPlanning.dart';
 import 'package:flutter_app/pages/TargetVsAchieved.dart';
 import 'package:flutter_app/pages/WorkDoneToday.dart';
+import 'package:flutter_app/pages/tasks.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class DpReportPage extends StatefulWidget {
-  const DpReportPage({Key? key}) : super(key: key);
+  final String pName;
+  const DpReportPage({Key? key, required this.pName}) : super(key: key);
 
   @override
   State<DpReportPage> createState() => _DpReportPageState();
@@ -87,11 +89,11 @@ class _DpReportPageState extends State<DpReportPage> {
                                     borderRadius: BorderRadius.circular(20.0)),
                                 color: const Color(0xffBDE6F1),
                                 elevation: 20,
-                                child: const Align(
-                                  alignment: Alignment(-0.85, -0.65),
+                                child: Align(
+                                  alignment: const Alignment(-0.85, -0.65),
                                   child: Text(
-                                    "Sanskruti",
-                                    style: TextStyle(
+                                    widget.pName,
+                                    style: const TextStyle(
                                       fontFamily: 'ReadexPro',
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold,
@@ -146,7 +148,9 @@ class _DpReportPageState extends State<DpReportPage> {
                                 ),
                               ),
                             ),
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const TasksPage()));
+                            },
                           ),
                         ),
                       ],

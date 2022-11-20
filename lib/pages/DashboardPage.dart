@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/TypesOfReport.dart';
+//import 'package:flutter_app/pages/TypesOfReport.dart';
+import 'package:flutter_app/pages/select_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -103,8 +104,9 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                     ),
                     onTap: () {
+                     //Navigator.push(context, MaterialPageRoute(builder: (context) => TypesOfReport(projectName: userList1[index].keys.elementAt(0).toString(),)));
 
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => TypesOfReport(projectName: userList1[index].keys.elementAt(0).toString(),)));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const SelectPage()));
                     },
                   ),
                   // child : Card(child: Center(child: Text(userList1[index].keys.elementAt(0).toString())))

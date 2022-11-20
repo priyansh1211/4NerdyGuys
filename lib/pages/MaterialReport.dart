@@ -59,10 +59,10 @@ class _MaterialReportState extends State<MaterialReport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffE5E5E5),
+      backgroundColor: const Color(0xffE5E5E5),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xffE5E5E5),
+        backgroundColor: const Color(0xffE5E5E5),
         title: const Text(
           "Material Report:",
           style: TextStyle(color: Colors.black),
@@ -98,11 +98,11 @@ class _MaterialReportState extends State<MaterialReport> {
         shrinkWrap: true,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               height: 50,
-              margin: EdgeInsets.only(right: 160),
+              margin: const EdgeInsets.only(right: 160),
               decoration: BoxDecoration(
                 color: Colors.blue.shade100,
                 borderRadius: BorderRadius.circular(20),
@@ -133,25 +133,25 @@ class _MaterialReportState extends State<MaterialReport> {
               ),
             ),
           ),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           Padding(
-              padding: EdgeInsets.only(left: 25),
+              padding: const EdgeInsets.only(left: 25),
               child: Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(text: 'Item',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    const TextSpan(text: 'Item',style: TextStyle(color: Colors.black, fontSize: 20)),
                     WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    const WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
               )
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
               height: 50,
-              margin: EdgeInsets.only(right: 100),
+              margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
@@ -159,29 +159,29 @@ class _MaterialReportState extends State<MaterialReport> {
             ),
           ),
           Padding(
-              padding: EdgeInsets.only(left: 25),
+              padding: const EdgeInsets.only(left: 25),
               child: Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(text: 'Description',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    const TextSpan(text: 'Description',style: TextStyle(color: Colors.black, fontSize: 20)),
                     WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    const WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
               )
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               height: 50,
-              margin: EdgeInsets.only(right: 100),
+              margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: TextField(
+              child: const TextField(
                 decoration: InputDecoration(
                   hintText: '-Give Work Description-',
                   border: InputBorder.none,
@@ -191,29 +191,29 @@ class _MaterialReportState extends State<MaterialReport> {
           ),
           //SizedBox(height: 10,),
           Padding(
-              padding: EdgeInsets.only(left: 25),
+              padding: const EdgeInsets.only(left: 25),
               child: Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(text: 'Status',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    const TextSpan(text: 'Status',style: TextStyle(color: Colors.black, fontSize: 20)),
                     WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    const WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
               )
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               height: 55,
-              margin: EdgeInsets.only(right: 100),
+              margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: TextField(
+              child: const TextField(
                 decoration: InputDecoration(
                   hintText: '-Select Work Status',
                   border: InputBorder.none,
@@ -224,30 +224,30 @@ class _MaterialReportState extends State<MaterialReport> {
           //SizedBox(height: 10,),
           //SizedBox(height: 10,),
           Padding(
-              padding: EdgeInsets.only(left: 25),
+              padding: const EdgeInsets.only(left: 25),
               child: Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(text: 'Remarks',style: TextStyle(color: Colors.black, fontSize: 20)),
+                    const TextSpan(text: 'Remarks',style: TextStyle(color: Colors.black, fontSize: 20)),
                     WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                    WidgetSpan(child: Icon(Icons.more_horiz)),
+                    const WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
               )
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Container(
               height: 50,
-              margin: EdgeInsets.only(right: 100),
+              margin: const EdgeInsets.only(right: 100),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
           ),
-          SizedBox(height: 40,),
+          const SizedBox(height: 40,),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -267,15 +267,15 @@ class _MaterialReportState extends State<MaterialReport> {
                         fontFamily: 'ReadexPro',
                         fontSize: 15),
                     textCancel: "NO",
-                    cancelTextColor: Color(0xff685D5D),
+                    cancelTextColor: const Color(0xff685D5D),
                     textConfirm: "YES",
                     confirmTextColor: Colors.lightGreenAccent,
                     radius: 40,
-                    buttonColor: Color(0xff685D5D),
+                    buttonColor: const Color(0xff685D5D),
                     //barrierDismissible: false,
-                    backgroundColor: Color(0xff009AFF),
+                    backgroundColor: const Color(0xff009AFF),
                     onConfirm: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>DesignRequirement()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const DesignRequirement()));
                     },
                   );
                 }, child: const Text(

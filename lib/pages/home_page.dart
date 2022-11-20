@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/ActiveEmployees.dart';
-import 'package:flutter_app/pages/DashboardPage.dart';
 import 'package:flutter_app/pages/Edit_Project.dart';
 import 'package:flutter_app/pages/Project.dart';
 
@@ -170,11 +169,12 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                 ),
+
+
+
                               ],
                             ),
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>DashboardPage()));
-                            },
+                            onTap: (){},
                           )
                         ),
                       ],
