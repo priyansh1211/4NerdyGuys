@@ -52,16 +52,16 @@ class _ManPowerReportState extends State<ManPowerReport> {
     return menuItems;
   }
 
-  // List<int> _getDividersIndexes() {
-  //   List<int> dividersIndexes = [];
-  //   for (var i = 0; i < (items.length * 2) - 1; i++) {
-  //     //Dividers indexes will be the odd indexes
-  //     if (i.isOdd) {
-  //       dividersIndexes.add(i);
-  //     }
-  //   }
-  //   return dividersIndexes;
-  // }
+  /*List<int> _getDividersIndexes() {
+    List<int> dividersIndexes = [];
+    for (var i = 0; i < (items.length * 2) - 1; i++) {
+      //Dividers indexes will be the odd indexes
+      if (i.isOdd) {
+        dividersIndexes.add(i);
+      }
+    }
+    return dividersIndexes;
+  }*/
 
   //String? _chosenValue;
   @override
@@ -126,8 +126,8 @@ class _ManPowerReportState extends State<ManPowerReport> {
                     ),
                   ),
                   items: _addDividersAfterItems(items),
-                  // customItemsIndexes: _getDividersIndexes(),
-                  // customItemsHeight: 4,
+                  //customItemsIndexes: _getDividersIndexes(),
+                  //customItemsHeight: 4,
                   value: selectedValue,
                   onChanged: (value) {
                     setState(() {
@@ -146,18 +146,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
             height: 10,
           ),
           Padding(
-              padding: const EdgeInsets.only(left: 25),
+              padding: EdgeInsets.only(left: 25),
               child: Text.rich(
                 TextSpan(
                   children: [
-                    const TextSpan(
+                    TextSpan(
                         text: 'Agency',
                         style: TextStyle(color: Colors.black, fontSize: 20)),
                     WidgetSpan(
                         child: SizedBox(
                       width: MediaQuery.of(context).devicePixelRatio,
                     )),
-                    const WidgetSpan(child: Icon(Icons.more_horiz)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
@@ -182,8 +182,8 @@ class _ManPowerReportState extends State<ManPowerReport> {
                     ),
                   ),
                   items: _addDividersAfterItems(Agency),
-                  // customItemsIndexes: _getDividersIndexes(),
-                  // customItemsHeight: 4,
+                  //customItemsIndexes: _getDividersIndexes(),
+                  //customItemsHeight: 4,
                   value: selectedValue,
                   onChanged: (value) {
                     setState(() {
@@ -199,18 +199,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
             ),
           ),
           Padding(
-              padding: const EdgeInsets.only(left: 25),
+              padding: EdgeInsets.only(left: 25),
               child: Text.rich(
                 TextSpan(
                   children: [
-                    const TextSpan(
+                    TextSpan(
                         text: 'Description',
                         style: TextStyle(color: Colors.black, fontSize: 20)),
                     WidgetSpan(
                         child: SizedBox(
                       width: MediaQuery.of(context).devicePixelRatio,
                     )),
-                    const WidgetSpan(child: Icon(Icons.more_horiz)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
@@ -235,18 +235,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
           ),
           //SizedBox(height: 10,),
           Padding(
-              padding: const EdgeInsets.only(left: 25),
+              padding: EdgeInsets.only(left: 25),
               child: Text.rich(
                 TextSpan(
                   children: [
-                    const TextSpan(
+                    TextSpan(
                         text: 'Skilled',
                         style: TextStyle(color: Colors.black, fontSize: 20)),
                     WidgetSpan(
                         child: SizedBox(
                       width: MediaQuery.of(context).devicePixelRatio,
                     )),
-                    const WidgetSpan(child: Icon(Icons.more_horiz)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
@@ -265,7 +265,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                 controller: number1,
                 autocorrect: true,
                 keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: '1',
                   border: InputBorder.none,
                 ),
@@ -274,18 +274,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
           ),
           //SizedBox(height: 10,),
           Padding(
-              padding: const EdgeInsets.only(left: 25),
+              padding: EdgeInsets.only(left: 25),
               child: Text.rich(
                 TextSpan(
                   children: [
-                    const TextSpan(
+                    TextSpan(
                         text: 'Unskilled',
                         style: TextStyle(color: Colors.black, fontSize: 20)),
                     WidgetSpan(
                         child: SizedBox(
                       width: MediaQuery.of(context).devicePixelRatio,
                     )),
-                    const WidgetSpan(child: Icon(Icons.more_horiz)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
@@ -304,7 +304,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                 controller: number2,
                 autocorrect: true,
                 keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: '1',
                   border: InputBorder.none,
                 ),
@@ -313,18 +313,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
           ),
           //SizedBox(height: 10,),
           Padding(
-              padding: const EdgeInsets.only(left: 25),
+              padding: EdgeInsets.only(left: 25),
               child: Text.rich(
                 TextSpan(
                   children: [
-                    const TextSpan(
+                    TextSpan(
                         text: 'Remarks',
                         style: TextStyle(color: Colors.black, fontSize: 20)),
                     WidgetSpan(
                         child: SizedBox(
                       width: MediaQuery.of(context).devicePixelRatio,
                     )),
-                    const WidgetSpan(child: Icon(Icons.more_horiz)),
+                    WidgetSpan(child: Icon(Icons.more_horiz)),
                     // TextSpan(text: 'to add'),
                   ],
                 ),
@@ -367,18 +367,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
                           fontFamily: 'ReadexPro',
                           fontSize: 15),
                       textCancel: "NO",
-                      cancelTextColor: const Color(0xff685D5D),
+                      cancelTextColor: Color(0xff685D5D),
                       textConfirm: "YES",
                       confirmTextColor: Colors.lightGreenAccent,
                       radius: 40,
-                      buttonColor: const Color(0xff685D5D),
+                      buttonColor: Color(0xff685D5D),
                       //barrierDismissible: false,
-                      backgroundColor: const Color(0xff009AFF),
+                      backgroundColor: Color(0xff009AFF),
                       onConfirm: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const MachineryReport()));
+                                builder: (context) => MachineryReport()));
                       },
                     );
                   },
