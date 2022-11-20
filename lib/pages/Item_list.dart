@@ -83,7 +83,7 @@ class _ItemPageState extends State<ItemPage> {
                       ),
                     ),
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const ItemDetailPage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const Additem()));
                     },
                   ),
                 ],
@@ -160,7 +160,7 @@ class _ItemPageState extends State<ItemPage> {
                         ),
                       ),
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> const Additem()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemDetailPage(cont : userList1[index].keys.elementAt(0).toString())));
                       },
                     ),
                     // child : Card(child: Center(child: Text(userList1[index].keys.elementAt(0).toString())))

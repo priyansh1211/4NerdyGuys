@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ItemDetailPage extends StatefulWidget {
-  const ItemDetailPage({Key? key}) : super(key: key);
+  final String cont;
+  const ItemDetailPage({Key? key, required this.cont}) : super(key: key);
 
   @override
   State<ItemDetailPage> createState() => _ItemDetailPageState();
@@ -34,7 +35,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.07375,
                     left: MediaQuery.of(context).size.width * 0.05555,
-                    child: const Text('Add new item',
+                    child: const Text('Items Details',
                         style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
                   ),
 
@@ -101,9 +102,21 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
 
                         Container(
 
-                          height: 300,
+                          height: 200,
                           width: MediaQuery.of(context).size.width,
-                          color: Color(0xffA6D1E6),
+                          margin: const EdgeInsets.only(left: 20,right: 20),
+                          color: const Color(0xffA6D1E6),
+                          child: Column(
+                            children: [
+                              const Text("Information of Item",style: TextStyle(fontSize: 30, fontFamily: 'Inter',color: Colors.white),),
+                              SizedBox(height: 20,),
+                              Text(widget.cont,style: const TextStyle(fontSize: 18, fontFamily: 'Inter',color: Colors.white),),
+                              SizedBox(height: 20,),
+                              const Text("CC043",style: TextStyle(fontSize: 18, fontFamily: 'Inter',color: Colors.white),),
+                              SizedBox(height: 20,),
+                              const Text("Flooring",style: TextStyle(fontSize: 18, fontFamily: 'Inter',color:  Colors.white),),
+                            ],
+                          ),
 
                         ),
 

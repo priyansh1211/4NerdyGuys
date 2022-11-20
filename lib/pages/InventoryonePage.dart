@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/Item_list.dart';
 
 class InventoryPage extends StatefulWidget {
   const InventoryPage({Key? key}) : super(key: key);
@@ -7,6 +8,9 @@ class InventoryPage extends StatefulWidget {
 }
 
 class _InventoryPageState extends State<InventoryPage> {
+
+  List userList1 = ['Sanskruti', 'Antriksh' , 'Nakshtra','Shruti'];
+
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
@@ -53,229 +57,87 @@ class _InventoryPageState extends State<InventoryPage> {
               margin: EdgeInsets.only(
                 top: screensize.height * 0.38,
               ),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Container(
-                      width: screensize.width * 0.81,
-                      height: screensize.height * 0.17625,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(27.0),
-                        color: const Color(0xffBDE6F1),
-                      ),
-                      child: InkWell(
-                        child: Row(
-                          children: [
-                            Container(
-                              width: screensize.width * 0.35,
-                              height: screensize.height * 0.16,
-                              margin: EdgeInsets.only(
-                                left: screensize.width * 0.045,
-                                top: screensize.height * 0.02,
-                              ),
-                              alignment: Alignment.center,
-                              child: Center(
-                                child: Column(
-                                  children: const [
-                                    Text(
-                                      'Sanskruti',
-                                      style: TextStyle(
-                                          fontFamily: 'Readxpro', fontSize: 25),
-                                    ),
-                                    Text(
-                                      'Ongoing Site',
-                                      style: TextStyle(
-                                          fontFamily: 'Readxpro', fontSize: 15),
-                                    ),
-                                    Text(
-                                      '73%',
-                                      style: TextStyle(
-                                          fontFamily: 'Readxpro', fontSize: 30),
-                                    ),
-                                  ],
-                                ),
-                              ),
+
+              child: ListView.builder(
+                  itemCount: userList1.length,
+                  itemBuilder: (context, i) {
+                    return InkWell(child: Container(
+
+                      margin: const EdgeInsets.only(bottom: 50,left: 20,right: 20),
+                      decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.0)),color: Color(0xffBDE6F1),),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: screensize.width * 0.35,
+                            height: screensize.height * 0.16,
+                            margin: EdgeInsets.only(
+                              left: screensize.width * 0.045,
+                              top: screensize.height * 0.02,
                             ),
-                            Container(
-                              width: screensize.width * 0.34,
-                              height: screensize.height * 0.13,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(27.0),
-                                color: const Color(0xffFFFFFF),
-                              ),
-                              margin: EdgeInsets.only(
-                                left: screensize.width * 0.03,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: const <Widget>[
+                            alignment: Alignment.center,
+                            child: Center(
+                              child: Column(
+                                children:  [
                                   Text(
-                                    'Tasks',
-                                    style: TextStyle(
-                                        fontFamily: 'Readxpro', fontSize: 23),
+                                    userList1[i],
+                                    style: const TextStyle(
+                                        fontFamily: 'Readxpro', fontSize: 25),
                                   ),
-                                  Text(
-                                    '46%',
+                                  const Text(
+                                    'Ongoing Site',
                                     style: TextStyle(
-                                        fontFamily: 'Readxpro', fontSize: 23),
+                                        fontFamily: 'Readxpro', fontSize: 15),
+                                  ),
+                                  const Text(
+                                    '73%',
+                                    style: TextStyle(
+                                        fontFamily: 'Readxpro', fontSize: 30),
                                   ),
                                 ],
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: screensize.width * 0.81,
-                      height: screensize.height * 0.17625,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(27.0),
-                        color: const Color(0xffBDE6F1),
-                      ),
-                      margin: EdgeInsets.only(
-                        top: screensize.height * 0.03,
-                      ),
-                      child: InkWell(
-                        child: Row(
-                          children: [
-                            Container(
-                              width: screensize.width * 0.35,
-                              height: screensize.height * 0.16,
-                              margin: EdgeInsets.only(
-                                left: screensize.width * 0.045,
-                                top: screensize.height * 0.02,
-                              ),
-                              alignment: Alignment.center,
-                              child: Center(
-                                child: Column(
-                                  children: const [
-                                    Text(
-                                      'Antriksh',
-                                      style: TextStyle(
-                                          fontFamily: 'Readxpro', fontSize: 25),
-                                    ),
-                                    Text(
-                                      'Ongoing Site',
-                                      style: TextStyle(
-                                          fontFamily: 'Readxpro', fontSize: 15),
-                                    ),
-                                    Text(
-                                      '\n50%',
-                                      style: TextStyle(
-                                          fontFamily: 'Readxpro', fontSize: 30),
-                                    ),
-                                  ],
+                          ),
+                          Container(
+                            width: screensize.width * 0.34,
+                            height: screensize.height * 0.13,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(27.0),
+                              color: const Color(0xffFFFFFF),
+                            ),
+                            margin: EdgeInsets.only(
+                              left: screensize.width * 0.03,
+                            ),
+                            child: Row(
+                              mainAxisAlignment:
+                              MainAxisAlignment.spaceEvenly,
+                              children: const <Widget>[
+                                Text(
+                                  'Tasks',
+                                  style: TextStyle(
+                                      fontFamily: 'Readxpro', fontSize: 23),
                                 ),
-                              ),
-                            ),
-                            Container(
-                              width: screensize.width * 0.35,
-                              height: screensize.height * 0.13,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(27.0),
-                                color: const Color(0xffFFFFFF),
-                              ),
-                              margin: EdgeInsets.only(
-                                left: screensize.width * 0.03,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: const <Widget>[
-                                  Text(
-                                    'Tasks',
-                                    style: TextStyle(
-                                        fontFamily: 'Readxpro', fontSize: 23),
-                                  ),
-                                  Text(
-                                    '70%',
-                                    style: TextStyle(
-                                        fontFamily: 'Readxpro', fontSize: 23),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: screensize.width * 0.81,
-                      height: screensize.height * 0.17625,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(27.0),
-                        color: const Color(0xffBDE6F1),
-                      ),
-                      margin: EdgeInsets.only(top: screensize.height * 0.03),
-                      child: InkWell(
-                        child: Row(
-                          children: [
-                            Container(
-                              width: screensize.width * 0.35,
-                              height: screensize.height * 0.16,
-                              margin: EdgeInsets.only(
-                                left: screensize.width * 0.045,
-                                top: screensize.height * 0.02,
-                              ),
-                              alignment: Alignment.center,
-                              child: Center(
-                                child: Column(
-                                  children: const [
-                                    Text(
-                                      'Nakshtra',
-                                      style: TextStyle(
-                                          fontFamily: 'Readxpro', fontSize: 25),
-                                    ),
-                                    Text(
-                                      'Ongoing Site',
-                                      style: TextStyle(
-                                          fontFamily: 'Readxpro', fontSize: 15),
-                                    ),
-                                    Text(
-                                      '\n60%',
-                                      style: TextStyle(
-                                          fontFamily: 'Readxpro', fontSize: 30),
-                                    ),
-                                  ],
+                                Text(
+                                  '46%',
+                                  style: TextStyle(
+                                      fontFamily: 'Readxpro', fontSize: 23),
                                 ),
-                              ),
+                              ],
                             ),
-                            Container(
-                              width: screensize.width * 0.35,
-                              height: screensize.height * 0.13,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(27.0),
-                                color: const Color(0xffFFFFFF),
-                              ),
-                              margin: EdgeInsets.only(
-                                left: screensize.width * 0.03,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: const <Widget>[
-                                  Text(
-                                    'Tasks',
-                                    style: TextStyle(
-                                        fontFamily: 'Readxpro', fontSize: 23),
-                                  ),
-                                  Text(
-                                    '55%',
-                                    style: TextStyle(
-                                        fontFamily: 'Readxpro', fontSize: 23),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+
+
+
+
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ),
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const ItemPage()));
+                    },);
+
+                  }),
+
+
             ),
           ],
         ),

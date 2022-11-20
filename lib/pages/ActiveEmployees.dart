@@ -7,21 +7,26 @@ class ActiveEmployees extends StatefulWidget {
 }
 
 class _ActiveEmployeesState extends State<ActiveEmployees> {
-  List User_Name_List = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F'
+  List<Map<String, int>> userList1 = [
+    {'Sanskruti': 10},
+    {'Antriksh': 15},
+    {'Nakshtra': 18}
   ];
-  List Site_name = ['Sanskruti', 'Antriksh', 'Bougainvilla'];
-  List Block_no = ['A', 'B', 'C'];
+  final fkey = GlobalKey<FormState>();
+  TextEditingController message = TextEditingController();
+  TextEditingController number = TextEditingController();
+
+  get i => null;
 
   @override
   Widget build(BuildContext context) {
-    var screensize = MediaQuery.of(context).size;
     return Scaffold(
+      // floatingActionButton: SizedBox(
+      //   width: 64,
+      //   height: 45,
+      //   child:
+      // ),
+      //floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       backgroundColor: const Color(0xffE7EAEB),
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -40,97 +45,143 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
           ),
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Container(
-              padding: const EdgeInsets.only(left: 15),
-              height: 35,
-              width: 225,
-              margin: const EdgeInsets.only(right: 125),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade100,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child:  Text.rich(
-                TextSpan(
-                  children: [
-                    const TextSpan(text: 'Junior Engineer',style: TextStyle(color: Colors.black, fontSize: 20)),
-                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                    WidgetSpan(child:Icon(Icons.arrow_drop_down),
-                    ),
-                  ],
+          Container(
+            width: 328,
+            height: 150,
+            padding: const EdgeInsets.all(5),
+            child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
                 ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: User_Name_List.length,
-              itemBuilder: (context, i) {
-                return Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Container(
-                    height: 135,
-                    width: 328,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color(0xff89CFFD),
-                    ),
-                    child: Column(
+                color: const Color(0xff89CFFD),
+                elevation: 12,
+                child: Column(
+                  children: [
+                    Row(
                       children: [
-                        Row(
-                          children: [
-                            Icon(Icons.circle_rounded),
-                            Text(User_Name_List[i]),
-                          ],
+                        const Expanded(
+                          flex: 1,
+                          child: Icon(Icons.circle),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Container(
-                            padding: const EdgeInsets.only(left: 15),
-                            height: 35,
-                            width: 225,
-                            margin: const EdgeInsets.only(right: 125),
-                            decoration: BoxDecoration(
-                              color: Colors.blue.shade100,
-                              borderRadius: BorderRadius.circular(20),
+                        const Expanded(flex: 3, child: Text("VISHWAS BHATT")),
+                        Expanded(
+                          flex: 2,
+                          child: FloatingActionButton(
+                            shape:
+                            BeveledRectangleBorder(borderRadius: BorderRadius.circular(5.1)),
+                            backgroundColor: const Color(0xff89CFFD),
+                            child: Row(
+                              children: const [Icon(Icons.add), Text("New site")],
                             ),
-                            child:  Text.rich(
-                              TextSpan(
-                                children: [
-                                  const TextSpan(text: 'Junior Engineer',style: TextStyle(color: Colors.black, fontSize: 20)),
-                                  WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                                  WidgetSpan(child:Icon(Icons.arrow_drop_down),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            onPressed: () {
+                              showDialog(
+                                  barrierDismissible: true,
+                                  context: context,
+                                  builder: (_) {
+                                    return AlertDialog(
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                                      content: Form(
+                                          key: fkey,
+                                          child: SizedBox(
+                                            width: 100,
+                                            height: 200,
+                                            child: Column(
+                                              children: [
+                                                TextFormField(
+                                                  decoration: const InputDecoration(
+                                                      labelText: 'Enter Site Name'),
+                                                  controller: message,
+                                                  validator: (value) {
+                                                    if (value == null || value.isEmpty) {
+                                                      return "Enter Something";
+                                                    }
+                                                    return null;
+                                                  },
+                                                ),
+                                                TextFormField(
+                                                  decoration: const InputDecoration(
+                                                      labelText: 'Enter The Block Number'),
+                                                  controller: number,
+                                                  validator: (value) {
+                                                    if (value == null || value.isEmpty) {
+                                                      return "Enter Number";
+                                                    }
+                                                    return null;
+                                                  },
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                                  children: [
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 20),
+                                                      child: ElevatedButton(
+                                                        onPressed: () {
+                                                          if (fkey.currentState!.validate()) {
+                                                            userList1.add({
+                                                              message.text: int.parse(number.text)
+                                                            });
+                                                            Navigator.pop(context);
+                                                            number.clear();
+                                                            message.clear();
+                                                            setState(() {});
+                                                          }
+                                                        },
+                                                        child: const Text('Add'),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 20),
+                                                      child: ElevatedButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(context);
+                                                        },
+                                                        child: const Text('Cancel'),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          )),
+                                    );
+                                  });
+                            },
                           ),
-                        ),
-                        ListView.builder(
-                            itemBuilder: (context,i){
-                              return Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(Site_name[i]),
-                                      SizedBox(width: 20,),
-                                      Text(Block_no[i]),
-                                    ],
-                                  ),
-                                ],
-                              );
-                            })
+                        )
                       ],
                     ),
-                  ),
-                );
-              },
-            ),
+                    Container(
+                      margin: const EdgeInsets.only(right: 125),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: const [
+                              Text("Sanskruti"),
+                              Text("B"),
+                            ],
+                          ), Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: const [
+                              Text("Sanskruti"),
+                              Text("B"),
+                            ],
+                          ), Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: const [
+                              Text("Sanskruti"),
+                              Text("B"),
+                            ],
+                          ),],
+                      ),
+                    ),
+                  ],
+                )),
           ),
         ],
       ),

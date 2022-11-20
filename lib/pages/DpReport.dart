@@ -6,6 +6,7 @@ import 'package:flutter_app/pages/MaterialReport.dart';
 import 'package:flutter_app/pages/NextDayPlanning.dart';
 import 'package:flutter_app/pages/TargetVsAchieved.dart';
 import 'package:flutter_app/pages/WorkDoneToday.dart';
+import 'package:flutter_app/pages/tasks.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class DpReportPage extends StatefulWidget {
@@ -147,7 +148,9 @@ class _DpReportPageState extends State<DpReportPage> {
                                 ),
                               ),
                             ),
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const TasksPage()));
+                            },
                           ),
                         ),
                       ],
