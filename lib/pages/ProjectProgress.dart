@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'package:table_calendar/table_calendar.dart';
 class ProjectProgress extends StatefulWidget {
   const ProjectProgress({Key? key}) : super(key: key);
 
@@ -44,7 +45,36 @@ class _ProjectProgressState extends State<ProjectProgress> {
           ),
         ],
       ),
+     body: ListView(
+       shrinkWrap: true,
+       children: [
+         Padding(
+           padding: const EdgeInsets.all(20),
+           child: Container(
+               padding: const EdgeInsets.only(left: 20),
+               height: 30,
+               margin: const EdgeInsets.only(right: 160),
+               decoration: BoxDecoration(
+                 color: Colors.blue.shade100,
+                 borderRadius: BorderRadius.circular(20),
+               ),
+               child: Text.rich(
+                 TextSpan(
+                   children: [
+                     TextSpan(text: 'Select Block',style: TextStyle(color: Colors.black, fontSize: 20)),
+                     WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                     WidgetSpan(child: Icon(Icons.add)),
+                   ],
+                 ),
+               )
+           ),
+         ),
+         const SizedBox(
+           height: 10,
+         ),
 
+       ],
+     ),
     );
   }
 }

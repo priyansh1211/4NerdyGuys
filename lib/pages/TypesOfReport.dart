@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/DpReport.dart';
+import 'package:flutter_app/pages/ProjectProgress.dart';
 
 class TypesOfReport extends StatefulWidget {
   final String projectName;
@@ -106,9 +107,9 @@ class _TypesOfReportState extends State<TypesOfReport> {
                         right: 30,
                         bottom: 60,
                         child: Text(
-                          widget.projectName,//"Daily Progress Report",
+                          "Daily Progress Report",//"Daily Progress Report",
                           style: const TextStyle(
-                            fontSize: 16,
+                            fontSize: 13,
                             fontFamily: 'ReadexPro',
                             fontWeight: FontWeight.w600,
                             //color: Color(0xffBDE6F1),
@@ -222,9 +223,9 @@ class _TypesOfReportState extends State<TypesOfReport> {
                         right: 30,
                         bottom: 60,
                         child: Text(
-                          "Site Progress Report",
+                          "Project Progress Review",
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 13,
                             fontFamily: 'ReadexPro',
                             fontWeight: FontWeight.w600,
                             //color: Color(0xffBDE6F1),
@@ -245,7 +246,7 @@ class _TypesOfReportState extends State<TypesOfReport> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const DpReportPage()));
+                          builder: (context) => const ProjectProgress()));
                 },
               ),
 
