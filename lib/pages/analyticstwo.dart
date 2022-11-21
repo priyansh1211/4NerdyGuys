@@ -133,11 +133,11 @@ class _analyticsTwoPageState extends State<analyticsTwoPage>{
                         alignment: Alignment.centerLeft,
                         child: Image.asset(
                           'assets/images/febuary.jpeg',
-                          width: screensize.width * 0.35,
-                          height: screensize.height * 0.16,
+                          width: 55,
+                          height: 50,
                         ),
                         margin: EdgeInsets.only(
-                            left: screensize.width * 0.045),
+                            left: 20,top:10),
                         /*child: SubscriberChart(
                           data: data,
                         )*/
