@@ -14,6 +14,7 @@ class TypesOfReport extends StatefulWidget {
 }
 
 class _TypesOfReportState extends State<TypesOfReport> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,15 +101,15 @@ class _TypesOfReportState extends State<TypesOfReport> {
                             Icons.add_box_rounded,
                             size: 30,
                           )),
-                      const Positioned(
+                      Positioned(
                         height: 40,
                         width: 110,
                         right: 30,
                         bottom: 60,
                         child: Text(
-                          "Daily Progress Report",
-                          style: TextStyle(
-                            fontSize: 16,
+                          "Daily Progress Report",//"Daily Progress Report",
+                          style: const TextStyle(
+                            fontSize: 13,
                             fontFamily: 'ReadexPro',
                             fontWeight: FontWeight.w600,
                             //color: Color(0xffBDE6F1),
@@ -129,7 +130,7 @@ class _TypesOfReportState extends State<TypesOfReport> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => DpReportPage(pName : widget.projectName,)));
+                          builder: (context) => DpReportPage(pName: widget.projectName,)));
                 },
               ),
 
@@ -222,9 +223,9 @@ class _TypesOfReportState extends State<TypesOfReport> {
                         right: 30,
                         bottom: 60,
                         child: Text(
-                          "Site Progress Report",
+                          "Project Progress Review",
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 13,
                             fontFamily: 'ReadexPro',
                             fontWeight: FontWeight.w600,
                             //color: Color(0xffBDE6F1),

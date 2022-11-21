@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/InventoryonePage.dart';
+import 'package:flutter_app/pages/analytics.dart';
 import 'package:flutter_app/pages/tasks.dart';
 
 class SelectPage extends StatefulWidget {
@@ -154,10 +155,10 @@ class _SelectPageState extends State<SelectPage> {
                           ],
                         ),
                         onTap: () {
-                          /*Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const TasksPage()));*/
+                                  builder: (context) => const analyticsPage()));
                           //print('Go to Analytics Page');
                         },
                       ),

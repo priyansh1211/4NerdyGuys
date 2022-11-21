@@ -12,12 +12,12 @@ class analyticsPage extends StatefulWidget {
 }
 
 class _analyticsPageState extends State<analyticsPage>{
-  /*final List<SubscriberSeries> data = [
+  final List<SubscriberSeries> data = [
     SubscriberSeries(year: '7/23', subScribers: 400000, barColor: charts.ColorUtil.fromDartColor(Color(0xffA6D1E6))),
     SubscriberSeries(year: '7/24', subScribers: 50000, barColor: charts.ColorUtil.fromDartColor(Color(0xffA6D1E6))),
     SubscriberSeries(year: '7/25', subScribers: 312000, barColor: charts.ColorUtil.fromDartColor(Color(0xffA6D1E6))),
     SubscriberSeries(year: '7/26', subScribers: 360000, barColor: charts.ColorUtil.fromDartColor(Color(0xffA6D1E6))),
-  ];*/
+  ];
   List ListforMonth = [
     'January',
     'February',
@@ -88,7 +88,7 @@ class _analyticsPageState extends State<analyticsPage>{
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'January',
-                              style: TextStyle(fontSize: 20,fontFamily: 'Opensas'),
+                              style: TextStyle(fontSize: 20,fontFamily: 'Opensans'),
                             ),
                           ),
                         ),
@@ -130,17 +130,19 @@ class _analyticsPageState extends State<analyticsPage>{
                   Row(
                     children: [
                       Container(
-                        alignment: Alignment.center,
+                        /*alignment: Alignment.center,
                         child: Image.asset(
                           'assets/images/january.jpeg',
                           width: 55,
                           height: 50,
-                        ),
-                        margin: EdgeInsets.only(
-                            left: 20,top:10),
-                        /*child: SubscriberChart(
+                        ),*/
+                        width: screensize.width*0.9111,
+                        height: screensize.height*0.23375,
+                        margin: EdgeInsets.only(left : 15,
+                            top:50),
+                        child: SubscriberChart(
                           data: data,
-                        )*/
+                        )
                       ),
                     ],
                   ),

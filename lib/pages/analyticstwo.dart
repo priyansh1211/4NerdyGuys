@@ -12,12 +12,12 @@ class analyticsTwoPage extends StatefulWidget {
 }
 
 class _analyticsTwoPageState extends State<analyticsTwoPage>{
-  /*final List<SubscriberSeries> data = [
+  final List<SubscriberSeries> data = [
     SubscriberSeries(year: '7/23', subScribers: 400000, barColor: charts.ColorUtil.fromDartColor(Color(0xffA6D1E6))),
-    SubscriberSeries(year: '7/24', subScribers: 50000, barColor: charts.ColorUtil.fromDartColor(Color(0xffA6D1E6))),
-    SubscriberSeries(year: '7/25', subScribers: 312000, barColor: charts.ColorUtil.fromDartColor(Color(0xffA6D1E6))),
+    SubscriberSeries(year: '7/24', subScribers: 80000, barColor: charts.ColorUtil.fromDartColor(Color(0xffA6D1E6))),
+    SubscriberSeries(year: '7/25', subScribers: 305000, barColor: charts.ColorUtil.fromDartColor(Color(0xffA6D1E6))),
     SubscriberSeries(year: '7/26', subScribers: 360000, barColor: charts.ColorUtil.fromDartColor(Color(0xffA6D1E6))),
-  ];*/
+  ];
   List ListforMonth = [
     'January',
     'February',
@@ -120,8 +120,7 @@ class _analyticsTwoPageState extends State<analyticsTwoPage>{
                             ],
                           ),
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => const analyticsPage()));
+                            Navigator.of(context).pop();
                             print("go to other month");},
                         ),
                       ),
@@ -130,17 +129,19 @@ class _analyticsTwoPageState extends State<analyticsTwoPage>{
                   Row(
                     children: [
                       Container(
-                        alignment: Alignment.centerLeft,
+                        /*alignment: Alignment.centerLeft,
                         child: Image.asset(
                           'assets/images/febuary.jpeg',
                           width: 55,
                           height: 50,
-                        ),
+                        ),*/
+                        width: screensize.width * 0.9111,
+                        height: screensize.height * 0.23375,
                         margin: EdgeInsets.only(
-                            left: 20,top:10),
-                        /*child: SubscriberChart(
+                            left: 15,top:50),
+                        child: SubscriberChart(
                           data: data,
-                        )*/
+                        )
                       ),
                     ],
                   ),
