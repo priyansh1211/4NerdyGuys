@@ -73,13 +73,13 @@ class _SelectPageState extends State<SelectPage> {
                           children: [
                             Container(
                               alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(
+                                  left: screensize.width * 0.045),
                               child: Image.asset(
                                 'assets/images/dash_board_one.png',
                                 width: screensize.width * 0.35,
                                 height: screensize.height * 0.16,
                               ),
-                              margin: EdgeInsets.only(
-                                  left: screensize.width * 0.045),
                             ),
                             Container(
                               width: screensize.width * 0.35,
@@ -127,13 +127,13 @@ class _SelectPageState extends State<SelectPage> {
                         child: Row(
                           children: [
                             Container(
+                              margin: EdgeInsets.only(
+                                  left: screensize.width * 0.045),
                               child: Image.asset(
                                 'assets/images/pie_chart.png',
                                 width: screensize.width * 0.35,
                                 height: screensize.height * 0.16,
                               ),
-                              margin: EdgeInsets.only(
-                                  left: screensize.width * 0.045),
                             ),
                             Container(
                               width: screensize.width * 0.35,
@@ -158,7 +158,7 @@ class _SelectPageState extends State<SelectPage> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const TasksPage()));*/
-                          print('Go to Analytics Page');
+                          //print('Go to Analytics Page');
                         },
                       ),
                     ),
@@ -182,13 +182,13 @@ class _SelectPageState extends State<SelectPage> {
                           children: [
                             Container(
                               alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(
+                                  left: screensize.width * 0.045),
                               child: Image.asset(
                                 'assets/images/checklist.png',
                                 width: screensize.width * 0.35,
                                 height: screensize.height * 0.16,
                               ),
-                              margin: EdgeInsets.only(
-                                  left: screensize.width * 0.045),
                             ),
                             Container(
                               width: screensize.width * 0.35,

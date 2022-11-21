@@ -103,11 +103,11 @@ class _DpReportPageState extends State<DpReportPage> {
                               ),
 
                               Positioned(
-                                top: MediaQuery.of(context).size.height*0.12-75,//MediaQuery.of(context).size.height*0.020,
+                                top: MediaQuery.of(context).size.height*0.12-79,//MediaQuery.of(context).size.height*0.020,
                                 left : MediaQuery.of(context).size.width*0.6275833,
 
                                   child: CircularPercentIndicator(
-                                    radius: 90.0,
+                                    radius: 45.0,//90.0
                                     backgroundColor: Colors.white,
                                     percent: 0.8,
                                     progressColor: const Color(0xff242F9B),

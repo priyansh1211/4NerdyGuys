@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/ActiveEmployees.dart';
-import 'package:flutter_app/pages/Edit_Project.dart';
+import 'package:flutter_app/pages/Contact_Us.dart';
+import 'package:flutter_app/pages/DashboardPage.dart';
 import 'package:flutter_app/pages/Project.dart';
 
 class HomePage extends StatefulWidget {
@@ -174,7 +175,9 @@ class _HomePageState extends State<HomePage> {
 
                               ],
                             ),
-                            onTap: (){},
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const DashboardPage()));
+                            },
                           )
                         ),
                       ],
@@ -276,7 +279,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> const EditProjectPage()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> const ContactPage()));
                             },
                           )
                         ),

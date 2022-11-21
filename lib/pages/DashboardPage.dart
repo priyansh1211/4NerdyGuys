@@ -9,7 +9,7 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-   List<Map<String, int>> userList1 = [
+  List<Map<String, int>> userList1 = [
     {'Sanskruti': 10},
     {'Antriksh': 15},
     {'Nakshtra': 18},
@@ -20,9 +20,9 @@ class _DashboardPageState extends State<DashboardPage> {
     {'Antriksh': 15},
     {'Nakshtra': 18}
   ];
-   
+
   String a = '';
-  
+
   String getString(int index)
   {
     a= userList1[index].keys.elementAt(0).toString();
@@ -81,7 +81,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             top: 69,
                             left: 16,
                             child: Text(
-                               userList1[index].keys.elementAt(0).toString(),
+                              userList1[index].keys.elementAt(0).toString(),
 
                               style:
                               const TextStyle(fontSize: 18, fontFamily: 'Inter'),
@@ -104,7 +104,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                     ),
                     onTap: () {
-                     //Navigator.push(context, MaterialPageRoute(builder: (context) => TypesOfReport(projectName: userList1[index].keys.elementAt(0).toString(),)));
+                      //Navigator.push(context, MaterialPageRoute(builder: (context) => TypesOfReport(projectName: userList1[index].keys.elementAt(0).toString(),)));
 
                       Navigator.push(context, MaterialPageRoute(builder: (context) => const SelectPage()));
                     },
@@ -116,6 +116,6 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
         ],
       ),
-      );
+    );
   }
 }

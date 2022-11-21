@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class ActiveEmployees extends StatefulWidget {
   const ActiveEmployees({Key? key}) : super(key: key);
 
@@ -7,21 +8,27 @@ class ActiveEmployees extends StatefulWidget {
 }
 
 class _ActiveEmployeesState extends State<ActiveEmployees> {
-  List User_Name_List = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F'
+  List<Map<String, String>> userList1 = [
+    {'Sanskruti': 'A'},
+    {'Antriksh': 'C'},
+    {'Nakshtra': 'B'}
   ];
-  List Site_name = ['Sanskruti', 'Antriksh', 'Bougainvilla'];
-  List Block_no = ['A', 'B', 'C'];
+  final fkey = GlobalKey<FormState>();
+  TextEditingController message = TextEditingController();
+  TextEditingController number = TextEditingController();
+  int inc = 0;
+
+  get i => null;
 
   @override
   Widget build(BuildContext context) {
-    var screensize = MediaQuery.of(context).size;
     return Scaffold(
+      // floatingActionButton: SizedBox(
+      //   width: 64,
+      //   height: 45,
+      //   child:
+      // ),
+      //floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       backgroundColor: const Color(0xffE7EAEB),
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -40,100 +47,319 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Container(
-              padding: const EdgeInsets.only(left: 15),
-              height: 35,
-              width: 225,
-              margin: const EdgeInsets.only(right: 125),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade100,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child:  Text.rich(
-                TextSpan(
-                  children: [
-                    const TextSpan(text: 'Junior Engineer',style: TextStyle(color: Colors.black, fontSize: 20)),
-                    WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                    WidgetSpan(child:Icon(Icons.arrow_drop_down),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: User_Name_List.length,
-              itemBuilder: (context, i) {
-                return Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Container(
-                    height: 135,
-                    width: 328,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color(0xff89CFFD),
-                    ),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Icon(Icons.circle_rounded),
-                            Text(User_Name_List[i]),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Container(
-                            padding: const EdgeInsets.only(left: 15),
-                            height: 35,
-                            width: 225,
-                            margin: const EdgeInsets.only(right: 125),
-                            decoration: BoxDecoration(
-                              color: Colors.blue.shade100,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child:  Text.rich(
-                              TextSpan(
-                                children: [
-                                  const TextSpan(text: 'Junior Engineer',style: TextStyle(color: Colors.black, fontSize: 20)),
-                                  WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                                  WidgetSpan(child:Icon(Icons.arrow_drop_down),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        ListView.builder(
-                            itemBuilder: (context,i){
-                              return Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(Site_name[i]),
-                                      SizedBox(width: 20,),
-                                      Text(Block_no[i]),
-                                    ],
-                                  ),
-                                ],
-                              );
-                            })
-                      ],
+      body: Container(
+        margin: EdgeInsets.only(
+            left: MediaQuery.of(context).size.width * 0.04444, top: 20),
+        width: MediaQuery.of(context).size.width * 0.9111,
+        height: MediaQuery.of(context).size.height * 0.16875 + inc,
+        decoration: const BoxDecoration(
+          color: Color(0xff89CFFD),
+          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 10,
+              left: 5,
+              child: Row(
+                children:  [
+                  const Icon(Icons.circle),
+                  const Text("Vishwas Bhatt"),
+                  Container(
+                    margin: const EdgeInsets.only(left: 110),
+                    width: 30,
+                    height: 30,
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: FloatingActionButton(
+                        shape: BeveledRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.1)),
+                        backgroundColor: const Color(0xff89CFFD),
+                        child: const Icon(Icons.add),
+
+                        onPressed: () {
+                          showDialog(
+                              barrierDismissible: true,
+                              context: context,
+                              builder: (_) {
+                                return AlertDialog(
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10.0))),
+                                  content: Form(
+                                      key: fkey,
+                                      child: SizedBox(
+                                        width: 100,
+                                        height: 200,
+                                        child: Column(
+                                          children: [
+                                            TextFormField(
+                                              decoration:
+                                              const InputDecoration(
+                                                  labelText:
+                                                  'Enter Site Name'),
+                                              controller: message,
+                                              validator: (value) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
+                                                  return "Enter Something";
+                                                }
+                                                return null;
+                                              },
+                                            ),
+                                            TextFormField(
+                                              decoration: const InputDecoration(
+                                                  labelText:
+                                                  'Enter The Block Number'),
+                                              controller: number,
+                                              validator: (value) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
+                                                  return "Enter Number";
+                                                }
+                                                return null;
+                                              },
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment
+                                                  .spaceAround,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                  const EdgeInsets.only(
+                                                      top: 20),
+                                                  child: ElevatedButton(
+                                                    onPressed: () {
+                                                      if (fkey.currentState!
+                                                          .validate()) {
+                                                        userList1.add({
+                                                          message.text: number.text
+                                                        });
+                                                        Navigator.pop(
+                                                            context);
+                                                        number.clear();
+                                                        message.clear();
+                                                        inc = inc + 20;
+                                                        setState(() {});
+                                                      }
+                                                    },
+                                                    child:
+                                                    const Text('Add'),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                  const EdgeInsets.only(
+                                                      top: 20),
+                                                  child: ElevatedButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(
+                                                          context);
+                                                    },
+                                                    child: const Text(
+                                                        'Cancel'),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      )),
+                                );
+                              });
+                        },
+                      ),
                     ),
                   ),
-                );
-              },
+                ],
+              ),
             ),
-          ),
-        ],
+            Padding(padding: const EdgeInsets.only(top: 85),
+              child: ListView.builder(
+                  itemCount: userList1.length,
+                  itemBuilder: (context, j) {
+                    return Container(
+                      margin: const EdgeInsets.only(right: 125),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(userList1[j].keys.elementAt(0).toString()),
+                              Text(userList1[j].values.elementAt(0).toString()),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  }),),
+
+          ],
+        ),
       ),
+      // body: ListView(
+      //   children: [
+      //     Container(
+      //       width: 328,
+      //       height: 150,
+      //       padding: const EdgeInsets.all(5),
+      //       child: Card(
+      //           shape: RoundedRectangleBorder(
+      //             borderRadius: BorderRadius.circular(15),
+      //           ),
+      //           color: const Color(0xff89CFFD),
+      //           elevation: 12,
+      //           child: Column(
+      //             children: [
+      //               Row(
+      //                 children: [
+      //                   const Expanded(
+      //                     flex: 1,
+      //                     child: Icon(Icons.circle),
+      //                   ),
+      //                   const Expanded(flex: 3, child: Text("VISHWAS BHATT")),
+      //                   Expanded(
+      //                     flex: 2,
+      //                     child: FloatingActionButton(
+      //                       shape: BeveledRectangleBorder(
+      //                           borderRadius: BorderRadius.circular(5.1)),
+      //                       backgroundColor: const Color(0xff89CFFD),
+      //                       child: Row(
+      //                         children: const [
+      //                           Icon(Icons.add),
+      //                           Text("New site")
+      //                         ],
+      //                       ),
+      //                       onPressed: () {
+      //                         showDialog(
+      //                             barrierDismissible: true,
+      //                             context: context,
+      //                             builder: (_) {
+      //                               return AlertDialog(
+      //                                 shape: const RoundedRectangleBorder(
+      //                                     borderRadius: BorderRadius.all(
+      //                                         Radius.circular(10.0))),
+      //                                 content: Form(
+      //                                     key: fkey,
+      //                                     child: SizedBox(
+      //                                       width: 100,
+      //                                       height: 200,
+      //                                       child: Column(
+      //                                         children: [
+      //                                           TextFormField(
+      //                                             decoration:
+      //                                                 const InputDecoration(
+      //                                                     labelText:
+      //                                                         'Enter Site Name'),
+      //                                             controller: message,
+      //                                             validator: (value) {
+      //                                               if (value == null ||
+      //                                                   value.isEmpty) {
+      //                                                 return "Enter Something";
+      //                                               }
+      //                                               return null;
+      //                                             },
+      //                                           ),
+      //                                           TextFormField(
+      //                                             decoration: const InputDecoration(
+      //                                                 labelText:
+      //                                                     'Enter The Block Number'),
+      //                                             controller: number,
+      //                                             validator: (value) {
+      //                                               if (value == null ||
+      //                                                   value.isEmpty) {
+      //                                                 return "Enter Number";
+      //                                               }
+      //                                               return null;
+      //                                             },
+      //                                           ),
+      //                                           Row(
+      //                                             mainAxisAlignment:
+      //                                                 MainAxisAlignment
+      //                                                     .spaceAround,
+      //                                             crossAxisAlignment:
+      //                                                 CrossAxisAlignment.end,
+      //                                             children: [
+      //                                               Padding(
+      //                                                 padding:
+      //                                                     const EdgeInsets.only(
+      //                                                         top: 20),
+      //                                                 child: ElevatedButton(
+      //                                                   onPressed: () {
+      //                                                     if (fkey.currentState!
+      //                                                         .validate()) {
+      //                                                       userList1.add({
+      //                                                         message.text:
+      //                                                             int.parse(
+      //                                                                 number
+      //                                                                     .text)
+      //                                                       });
+      //                                                       Navigator.pop(
+      //                                                           context);
+      //                                                       number.clear();
+      //                                                       message.clear();
+      //                                                       setState(() {});
+      //                                                     }
+      //                                                   },
+      //                                                   child:
+      //                                                       const Text('Add'),
+      //                                                 ),
+      //                                               ),
+      //                                               Padding(
+      //                                                 padding:
+      //                                                     const EdgeInsets.only(
+      //                                                         top: 20),
+      //                                                 child: ElevatedButton(
+      //                                                   onPressed: () {
+      //                                                     Navigator.pop(
+      //                                                         context);
+      //                                                   },
+      //                                                   child: const Text(
+      //                                                       'Cancel'),
+      //                                                 ),
+      //                                               )
+      //                                             ],
+      //                                           ),
+      //                                         ],
+      //                                       ),
+      //                                     )),
+      //                               );
+      //                             });
+      //                       },
+      //                     ),
+      //                   )
+      //                 ],
+      //               ),
+      //               ListView.builder(
+      //                   itemCount: userList1.length,
+      //                   itemBuilder: (context, j) {
+      //                     return Container(
+      //                       margin: const EdgeInsets.only(right: 125),
+      //                       child: Column(
+      //                         children: [
+      //                           Row(
+      //                             mainAxisAlignment:
+      //                                 MainAxisAlignment.spaceEvenly,
+      //                             children: [
+      //                               Text(userList1[j]
+      //                                   .keys
+      //                                   .elementAt(0)
+      //                                   .toString()),
+      //                               const Text("B"),
+      //                             ],
+      //                           ),
+      //                         ],
+      //                       ),
+      //                     );
+      //                   })
+      //             ],
+      //           )),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
