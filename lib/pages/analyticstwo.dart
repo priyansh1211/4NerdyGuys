@@ -87,7 +87,7 @@ class _analyticsTwoPageState extends State<analyticsTwoPage>{
                             margin: EdgeInsets.only(top: screensize.height * 0.004,left: screensize.width * 0.05),
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'January',
+                              'Febuary',
                               style: TextStyle(fontSize: 20,fontFamily: 'Opensas'),
                             ),
                           ),
@@ -110,7 +110,7 @@ class _analyticsTwoPageState extends State<analyticsTwoPage>{
                               Positioned(
                                   left: screensize.width * 0.05,
                                   top: screensize.height * 0.08,
-                                  child: Text('Febuary',style: TextStyle(fontFamily: 'Opensas',fontSize: 20),)
+                                  child: Text('March',style: TextStyle(fontFamily: 'Opensas',fontSize: 20),)
                               ),
                               Positioned(
                                 right: screensize.width * 0.1,
