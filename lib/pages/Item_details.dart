@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:flutter_app/pages/fileforanalyticsone.dart';
+import 'package:flutter_app/pages/forchartanalytics.dart';
+//import 'package:flutter_app/pages/analyticstwo.dart';
+
 class ItemDetailPage extends StatefulWidget {
   final String cont;
   const ItemDetailPage({Key? key, required this.cont}) : super(key: key);
@@ -9,12 +14,20 @@ class ItemDetailPage extends StatefulWidget {
 }
 
 class _ItemDetailPageState extends State<ItemDetailPage> {
+
+  final List<SubscriberSeries> data = [
+    SubscriberSeries(year: '7/23', subScribers: 400000, barColor: charts.ColorUtil.fromDartColor(const Color(0xffA6D1E6))),
+    SubscriberSeries(year: '7/24', subScribers: 50000, barColor: charts.ColorUtil.fromDartColor(const Color(0xffA6D1E6))),
+    SubscriberSeries(year: '7/25', subScribers: 312000, barColor: charts.ColorUtil.fromDartColor(const Color(0xffA6D1E6))),
+    SubscriberSeries(year: '7/26', subScribers: 360000, barColor: charts.ColorUtil.fromDartColor(const Color(0xffA6D1E6))),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
+          SizedBox(
               //height: MediaQuery.of(context).size.height*0.33,
               width: MediaQuery.of(context).size.width,
               child: Stack(
@@ -99,6 +112,21 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                           ),
                           onTap: (){},
                         ),
+                        Container(
+                          /*alignment: Alignment.center,
+                        child: Image.asset(
+                          'assets/images/january.jpeg',
+                          width: 55,
+                          height: 50,
+                        ),*/
+                            width: MediaQuery.of(context).size.width*0.9111,
+                            height: MediaQuery.of(context).size.height*0.23375,
+                            margin: const EdgeInsets.only(left : 15,
+                                top:50),
+                            child: SubscriberChart(
+                              data: data,
+                            )
+                        ),
 
                         Container(
 
@@ -109,11 +137,11 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                           child: Column(
                             children: [
                               const Text("Information of Item",style: TextStyle(fontSize: 30, fontFamily: 'Inter',color: Colors.white),),
-                              SizedBox(height: 20,),
+                              const SizedBox(height: 20,),
                               Text(widget.cont,style: const TextStyle(fontSize: 18, fontFamily: 'Inter',color: Colors.white),),
-                              SizedBox(height: 20,),
+                              const SizedBox(height: 20,),
                               const Text("CC043",style: TextStyle(fontSize: 18, fontFamily: 'Inter',color: Colors.white),),
-                              SizedBox(height: 20,),
+                              const SizedBox(height: 20,),
                               const Text("Flooring",style: TextStyle(fontSize: 18, fontFamily: 'Inter',color:  Colors.white),),
                             ],
                           ),
