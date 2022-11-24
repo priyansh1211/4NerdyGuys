@@ -9,8 +9,10 @@ class MachineryReport extends StatefulWidget {
 }
 
 class _MachineryReportState extends State<MachineryReport> {
+  List<String> column_name =['Remarks'];
   int number = 1;
-
+  final fkey = GlobalKey<FormState>();
+  TextEditingController message = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,9 +55,70 @@ class _MachineryReportState extends State<MachineryReport> {
           children: [
             OutlinedButton(
                 onPressed: () {
-                  setState(() {
-                    number = number + 1;
-                  });
+                  {
+                    showDialog(
+                        barrierDismissible: true,
+                        context: context,
+                        builder: (_) {
+                          return AlertDialog(
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                            content: Form(
+                                key: fkey,
+                                child: SizedBox(
+                                  width: 100,
+                                  height: 200,
+                                  child: Column(
+                                    children: [
+                                      TextFormField(
+                                        decoration: const InputDecoration(
+                                            labelText: 'Enter Column Name'),
+                                        controller: message,
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return "Enter Something";
+                                          }
+                                          return null;
+                                        },
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(top: 20),
+                                            child: ElevatedButton(
+                                              onPressed: () {
+                                                if (fkey.currentState!.validate()) {
+                                                  column_name.add(message.text);
+                                                  Navigator.pop(context);
+                                                  message.clear();
+                                                  setState(() {
+                                                    number = number + 1;
+                                                  });
+                                                }
+                                              },
+                                              child: const Text('Add'),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(top: 20),
+                                            child: ElevatedButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text('Cancel'),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                )),
+                          );
+                        });
+                  }
                 },
                 child: const Text("Add a column")),
             SizedBox(height: 20,),
@@ -135,6 +198,7 @@ class _MachineryReportState extends State<MachineryReport> {
                 ),
               ),
             ),
+
             //SizedBox(height: 10,),
             // Padding(
             //     padding: const EdgeInsets.only(right: 190),
@@ -184,8 +248,8 @@ class _MachineryReportState extends State<MachineryReport> {
                           child: Text.rich(
                             TextSpan(
                               children: [
-                                const TextSpan(
-                                    text: 'Remarks',
+                                 TextSpan(
+                                     text:column_name[i].toString(),
                                     style: TextStyle(
                                         color: Colors.black, fontSize: 20)),
                                 WidgetSpan(
