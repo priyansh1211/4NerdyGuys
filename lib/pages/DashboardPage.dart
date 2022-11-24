@@ -13,12 +13,7 @@ class _DashboardPageState extends State<DashboardPage> {
     {'Sanskruti': 10},
     {'Antriksh': 15},
     {'Nakshtra': 18},
-    {'Sanskruti': 10},
-    {'Antriksh': 15},
-    {'Nakshtra': 18},
-    {'Sanskruti': 10},
-    {'Antriksh': 15},
-    {'Nakshtra': 18}
+    {'Shruti' : 25},
   ];
 
   String a = '';

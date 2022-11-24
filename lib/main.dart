@@ -1,4 +1,7 @@
+//import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_app/pages/home_page.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +22,7 @@ void main() {
       'ResetPassword': (context) => const ResetPassword(),
     },
   ));
+   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
 }
 
 class MyApp extends StatelessWidget {

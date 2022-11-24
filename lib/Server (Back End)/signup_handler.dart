@@ -5,7 +5,7 @@ import 'dart:async';
 
 class SignupHandler {
 
-  String baseurl = "http://192.168.1.7:5000/user/register";
+  String baseurl = "http://192.168.1.2:5000/user/register";
   var log = Logger();
 
   Future<dynamic> get(String url) async {
@@ -20,13 +20,17 @@ class SignupHandler {
   Future<dynamic> post( String username, String email,String password ,String designation)
   async {
     String url = formater();
+    Map<String, String> requestHeaders =
+    {'Content-type': 'application/json',
+      'Accept': 'application/json',};
+
     final response = await http.post(Uri.parse(url),body : jsonEncode(<String, String>{
       'username' : username,
       'email' : email,
       'password' : password,
       'designation' : designation,
 
-    }));
+    }), headers: requestHeaders);
 
 
 

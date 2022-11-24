@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// again
+import 'package:flutter_app/pages/pdf_conv.dart';
 class OwnerPage extends StatefulWidget{
   const OwnerPage ({Key? key}) : super(key:key);
   @override
@@ -113,7 +113,10 @@ class _OwnerPageState extends State<OwnerPage>{
                             children: <Widget>[
                               ElevatedButton(
                                 child: const Text("View Report"),
-                                onPressed: () {print("Go to view page");},
+                                onPressed: () async {
+                                  final pdfFile = await PdfApi.generateTable();
+
+                                  PdfApi.openFile(pdfFile);},
                               ),
                             ],
                           ),

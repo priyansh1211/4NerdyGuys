@@ -18,7 +18,10 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _passwordCtrler = new TextEditingController();
   bool _obsecuretext = true;
 
-  Map map1=new Map<String,dynamic>();
+  Map map1=Map<String,dynamic>();
+
+  final fkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     // final isKeyboard = MediaQuery.of(context).viewInsets.bottom!=0;
@@ -60,13 +63,15 @@ class _LoginPageState extends State<LoginPage> {
                             const SizedBox(
                               height: 40,
                             ),
-                            Column(
+                            Form(
+                            key: fkey,
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 30, right: 30),
-                                  child: TextField(
+                                  child: TextFormField(
                                     controller: _userEmailCtrler,
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
@@ -85,6 +90,12 @@ class _LoginPageState extends State<LoginPage> {
                                       filled: true,
                                       fillColor: const Color(0xffEEF2FF),
                                     ),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return "Enter Email";
+                                      }
+                                      return null;
+                                    },
                                   ),
                                 ),
                                 const SizedBox(
@@ -93,14 +104,14 @@ class _LoginPageState extends State<LoginPage> {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 30, right: 30),
-                                  child: TextField(
+                                  child: TextFormField(
                                     controller: _passwordCtrler,
                                     obscureText: _obsecuretext,
                                     decoration: InputDecoration(
                                       suffixIcon: GestureDetector(
                                         onTap: () {
                                           setState(() =>
-                                              _obsecuretext = !_obsecuretext);
+                                          _obsecuretext = !_obsecuretext);
                                         },
                                         child: Icon(_obsecuretext
                                             ? Icons.visibility
@@ -122,10 +133,16 @@ class _LoginPageState extends State<LoginPage> {
                                       filled: true,
                                       fillColor: const Color(0xffEEF2FF),
                                     ),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return "Enter Password";
+                                      }
+                                      return null;
+                                    },
                                   ),
                                 ),
                               ],
-                            ),
+                            ),),
                             const SizedBox(
                               height: 15,
                             ),
@@ -160,7 +177,10 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             MaterialButton(
                               onPressed : () {
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> const OTP()));
+                                if (fkey.currentState!.validate()){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const OTP()));
+                                }
+
     },
 
                                 // onPressed: () async {
