@@ -1,5 +1,6 @@
-import 'dart:io';
 import 'dart:convert';
+import 'dart:io';
+
 //import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,27 +14,37 @@ class TargetVsAchieved extends StatefulWidget {
 }
 
 class _TargetVsAchievedState extends State<TargetVsAchieved> {
-  File? selectedImage;
+  File? selectedImageFromCamera;
+  File? selectedImageFromGallery;
   String base64Image = "";
 
   Future<void> chooseImage(type) async {
     // ignore: prefer_typing_uninitialized_variables
-    var image;
+    var imageFromCamera;
+    var imageFromGallery;
     if (type == "camera") {
-      image = await ImagePicker().pickImage(
+      imageFromCamera = await ImagePicker().pickImage(
         source: ImageSource.camera,
       );
-    } else if(type=="gallery") {
-      image = await ImagePicker().pickImage(
+    }
+    if(type=="gallery") {
+      imageFromGallery = await ImagePicker().pickImage(
         source: ImageSource.gallery,
       );
     }
-    if (image != null) {
+    if (imageFromCamera != null) {
       setState(() {
-        selectedImage = File(image.path);
-        base64Image = base64Encode(selectedImage!.readAsBytesSync());
+        selectedImageFromCamera = File(imageFromCamera.path);
+        base64Image = base64Encode(selectedImageFromCamera!.readAsBytesSync());
         // won't have any error now
       });
+      if(imageFromGallery!=null)
+        {
+          setState((){
+            selectedImageFromGallery=File(imageFromGallery.path);
+            base64Image=base64Encode(selectedImageFromGallery!.readAsBytesSync());
+          });
+        }
     }
   }
 
@@ -376,10 +387,10 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
          //          color: Colors.grey.shade200,
          //          borderRadius: BorderRadius.circular(50)
          //        ),
-         //        width: 100,
-         //        height: 100,
-         //        child: Icon(
-         //          Icons.photo_library_outlined,
+          //        width: 100,
+          // const height: 100,
+          //        child: Icon(
+          //          Icons.photo_library_outlined,
          //          color: Colors.grey.shade800,
          //        ),
          //      ),
@@ -389,18 +400,19 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             radius: 60,
             backgroundColor: Colors.red,
             child: Padding(
-              padding: EdgeInsets.only(left: 10,right: 10), // Border radius
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              // Border radius
               child: ClipOval(
-                  child: selectedImage != null
+                  child: selectedImageFromCamera != null
                       ? Image.file(
-                    selectedImage!,
-                    fit: BoxFit.cover,
-                    height: 100,
-                    width: 100,
-                  )
+                          selectedImageFromCamera!,
+                          fit: BoxFit.cover,
+                          height: 100,
+                          width: 100,
+                        )
                       : Image.network(
-                    'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
-                    fit: BoxFit.cover,
+                          'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
+                          fit: BoxFit.cover,
                     height: 100,
                     width: 100,
                   )),
@@ -418,9 +430,9 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
             child: Padding(
               padding: const EdgeInsets.all(8), // Border radius
               child: ClipOval(
-                  child: selectedImage != null
+                  child: selectedImageFromGallery != null
                       ? Image.file(
-                    selectedImage!,
+                    selectedImageFromGallery!,
                     fit: BoxFit.cover,
                     height: 100,
                     width: 100,
