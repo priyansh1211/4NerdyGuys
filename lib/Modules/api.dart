@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart';
 
 class Api {
-  final URL = "http://localhost:5000/user";
+  final URL = "http://172.20.10.4:5000/user";
 
   Future<Map?> fetchData() async {
     try {
@@ -31,6 +31,7 @@ class Api {
 
   Future<Map?> loginApi (Map map1) async{
     try {
+      print("login : $map1");
       final response = await post(Uri.parse("${URL}/login"),body: jsonEncode(map1),headers: {"Content-Type": "application/json"});
       Map map2 = jsonDecode(response.body)as Map<String,dynamic>;
       print("login : $map2");

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Modules/api.dart';
 import 'package:flutter_app/pages/ForgotPassword.dart';
 import 'package:flutter_app/pages/OTP.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -18,7 +20,6 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _passwordCtrler = new TextEditingController();
   bool _obsecuretext = true;
 
-  Map map1=Map<String,dynamic>();
 
   final fkey = GlobalKey<FormState>();
 
@@ -176,41 +177,40 @@ class _LoginPageState extends State<LoginPage> {
                               height: 20,
                             ),
                             MaterialButton(
-                              onPressed : () {
-                                if (fkey.currentState!.validate()){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const OTP()));
-                                }
+    //                           onPressed : () {
+    //                             if (fkey.currentState!.validate()){
+    //                               Navigator.push(context, MaterialPageRoute(builder: (context)=> const OTP()));
+    //                             }
+    //
+    // },
+                                onPressed: () async {
+                                  Api api = new Api();
+                                  Map map = new Map();
+                                  map['email'] = _userEmailCtrler.text;
+                                  map['password'] = _passwordCtrler.text;
+                                  if (_userEmailCtrler.text.isNotEmpty &&
+                                      _passwordCtrler.text.isNotEmpty) {
+                                    Map response = await api.loginApi(map)
+                                        as Map<String, dynamic>;
+                                    SharedPreferences? preferences =
+                                        await SharedPreferences.getInstance();
+                                    print("REQUEST: ====================> " +
+                                        response.toString());
+                                    setState(() {
+                                      if (response["status"] == "success") {
+                                        preferences.setString(
+                                            "UserName", _userEmailCtrler.text);
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => const OTP()),
+                                        );
+                                      } else {
 
-    },
-
-                                // onPressed: () async {
-                                //   Api api = new Api();
-                                //   Map map = new Map();
-                                //   map['email'] = _userEmailCtrler.text;
-                                //   map['password'] = _passwordCtrler.text;
-                                //   if (_userEmailCtrler.text.isNotEmpty &&
-                                //       _passwordCtrler.text.isNotEmpty) {
-                                //     Map response = await api.loginApi(map1)
-                                //         as Map<String, dynamic>;
-                                //     SharedPreferences? preferences =
-                                //         await SharedPreferences.getInstance();
-                                //     print("REQUEST: ====================> " +
-                                //         response.toString());
-                                //     setState(() {
-                                //       if (response["status"] == "success") {
-                                //         preferences.setString(
-                                //             "UserName", _userEmailCtrler.text);
-                                //         Navigator.push(
-                                //           context,
-                                //           MaterialPageRoute(
-                                //               builder: (context) => const OTP()),
-                                //         );
-                                //       } else {
-                                //
-                                //       }
-                                //     });
-                                //   }
-                                // },
+                                      }
+                                    });
+                                  }
+                                },
                                 child: Container(
                                   height: 55,
                                   margin: const EdgeInsets.symmetric(
