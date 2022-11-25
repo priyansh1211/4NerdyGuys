@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter_app/pages/DpReport.dart';
 import 'package:flutter_app/pages/TypesOfReport.dart';
+import 'package:flutter_app/pages/drawerpage.dart';
 
 class ProjectPage extends StatefulWidget {
   const ProjectPage({Key? key}) : super(key: key);
@@ -43,6 +44,7 @@ class _ProjectPageState extends State<ProjectPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: DrawerPage(),
       floatingActionButton: SizedBox(
         width: 64,
         height: 45,
@@ -142,7 +144,7 @@ class _ProjectPageState extends State<ProjectPage> {
           ),
           Positioned(
               left: 20,
-              top: 23,
+              top: 50,
               child: InkWell(
                 child: const Icon(
                   Icons.arrow_back_ios,
@@ -153,27 +155,38 @@ class _ProjectPageState extends State<ProjectPage> {
           ),
           const Positioned(
             left: 55,
-            top: 20,
+            top: 50,
             child: Text(
               "Projects",
               style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
             ),
           ),
           Align(
-            alignment: const Alignment(0.94, -0.96),
-            child: CircleAvatar(
-              radius: 25,
-              backgroundColor: Colors.white,
-              child: Center(
-                child: Icon(
-                  Icons.person,
-                  size: 20,
-                  color: Colors.blue[500],
+            alignment: const Alignment(0.94, -0.9),
+              child: CircleAvatar(
+                radius: 25,
+                backgroundColor: Colors.white,
+                child: Center(
+                  child: Icon(
+                    Icons.person,
+                    size: 20,
+                    color: Colors.blue[500],
+                  ),
                 ),
+              ),
+          ),
+          Align(
+            alignment: const Alignment(0.94,-0.9),
+            child: Builder(
+              builder: (context) => IconButton(
+                icon: Icon(Icons.menu),
+                iconSize: 30,
+                color: Colors.transparent,
+                onPressed: () => Scaffold.of(context).openEndDrawer(),
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
               ),
             ),
           ),
-
           Container(
             padding: EdgeInsets.only(
                 top: MediaQuery.of(context).size.height * 0.09,

@@ -130,12 +130,6 @@ class _analyticsPageState extends State<analyticsPage>{
                   Row(
                     children: [
                       Container(
-                        /*alignment: Alignment.center,
-                        child: Image.asset(
-                          'assets/images/january.jpeg',
-                          width: 55,
-                          height: 50,
-                        ),*/
                         width: screensize.width*0.9111,
                         height: screensize.height*0.23375,
                         margin: EdgeInsets.only(left : 15,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter_app/pages/TypesOfReport.dart';
 import 'package:flutter_app/pages/select_page.dart';
+import 'package:flutter_app/pages/drawerpage.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -18,22 +19,40 @@ class _DashboardPageState extends State<DashboardPage> {
 
   String a = '';
 
-  String getString(int index)
-  {
-    a= userList1[index].keys.elementAt(0).toString();
+  String getString(int index) {
+    a = userList1[index].keys.elementAt(0).toString();
     return a;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: DrawerPage(),
       body: Stack(
         children: [
-          const Positioned(top : 23, left : 60,child: Text("Dashboard",style: TextStyle(fontSize: 30),)),
-
+          Positioned(
+            left: 330,
+            top: 48,
+            child: Builder(
+              builder: (context) => IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: () => Scaffold.of(context).openEndDrawer(),
+                //tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                color: Color(0xff000000),
+                iconSize: 30,
+              ),
+            ),
+          ),
+          const Positioned(
+              top: 58,
+              left: 60,
+              child: Text(
+                "Dashboard",
+                style: TextStyle(fontSize: 30),
+              )),
           Positioned(
             left: 20,
-            top: 23,
+            top: 58,
             child: InkWell(
               child: const Icon(
                 Icons.arrow_back_ios,
@@ -44,7 +63,6 @@ class _DashboardPageState extends State<DashboardPage> {
               },
             ),
           ),
-
           Container(
             padding: EdgeInsets.only(
                 top: MediaQuery.of(context).size.height * 0.09,
@@ -77,12 +95,10 @@ class _DashboardPageState extends State<DashboardPage> {
                             left: 16,
                             child: Text(
                               userList1[index].keys.elementAt(0).toString(),
-
-                              style:
-                              const TextStyle(fontSize: 18, fontFamily: 'Inter'),
+                              style: const TextStyle(
+                                  fontSize: 18, fontFamily: 'Inter'),
                             ),
                           ),
-
                           const Positioned(
                             top: 90,
                             left: 17,
@@ -94,14 +110,16 @@ class _DashboardPageState extends State<DashboardPage> {
                                   color: Color(0xff796A6A)),
                             ),
                           ),
-
                         ],
                       ),
                     ),
                     onTap: () {
                       //Navigator.push(context, MaterialPageRoute(builder: (context) => TypesOfReport(projectName: userList1[index].keys.elementAt(0).toString(),)));
 
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const SelectPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SelectPage()));
                     },
                   ),
                   // child : Card(child: Center(child: Text(userList1[index].keys.elementAt(0).toString())))

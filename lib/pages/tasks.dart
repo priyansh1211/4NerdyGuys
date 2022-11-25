@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/drawerpage.dart';
 
 class TasksPage extends StatefulWidget {
   const TasksPage({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class _TasksPageState extends State<TasksPage> {
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
     return Scaffold(
+      endDrawer: DrawerPage(),
       body: Center(
         child: Stack(
           children: [
@@ -30,6 +32,19 @@ class _TasksPageState extends State<TasksPage> {
                 onTap: () {
                   Navigator.of(context).pop();
                 },
+              ),
+            ),
+            Positioned(
+              left: 330,
+              top: 46,
+              child: Builder(
+                builder: (context) => IconButton(
+                  icon: Icon(Icons.menu),
+                  iconSize: 30,
+                  color: Color(0xff000000),
+                  onPressed: () => Scaffold.of(context).openEndDrawer(),
+                  tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                ),
               ),
             ),
             Positioned(
