@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/Project.dart';
 import 'package:flutter_app/pages/TypesOfReport.dart';
 import 'package:get/get.dart';
+import 'package:flutter_app/pages/drawerpage.dart';
 
 //import 'package:intl/intl.dart';
 class ProjectProgress extends StatefulWidget {
@@ -56,10 +57,12 @@ class _ProjectProgressState extends State<ProjectProgress> {
     _nameController.dispose();
     super.dispose();
   }
-
+  var scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: DrawerPage(),
+      key: scaffoldKey,
       backgroundColor: const Color(0xffE5E5E5),
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -78,10 +81,11 @@ class _ProjectProgressState extends State<ProjectProgress> {
           ),
         ),
         actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: GestureDetector(
-                onTap: () {},
+          Positioned(
+            left: 20,
+            /*child: GestureDetector(
+                //onTap: () => Scaffold.of(context).openEndDrawer(),
+              //onTap: () {scaffoldKey.currentState.openEndDrawer();},
                 child: const CircleAvatar(
                   radius: 20,
                   backgroundColor: Colors.white,
@@ -90,7 +94,17 @@ class _ProjectProgressState extends State<ProjectProgress> {
                     size: 30,
                     color: Colors.blue,
                   ),
-                )),
+                )),*/
+            child: Builder(
+              builder: (context) => ElevatedButton(
+                  onPressed: () => Scaffold.of(context).openEndDrawer(),
+                  child:Icon(Icons.person,size:30,color:Colors.blue),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+                  backgroundColor: Colors.white,
+                ),
+              ),
+            ),
           ),
         ],
       ),

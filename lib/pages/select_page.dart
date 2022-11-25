@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/InventoryonePage.dart';
 import 'package:flutter_app/pages/analytics.dart';
 import 'package:flutter_app/pages/tasks.dart';
+import 'package:flutter_app/pages/drawerpage.dart';
 
 class SelectPage extends StatefulWidget {
   const SelectPage({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class _SelectPageState extends State<SelectPage> {
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
     return Scaffold(
+      endDrawer: DrawerPage(),
       body: Center(
         child: Stack(children: [
           Container(
@@ -28,6 +30,19 @@ class _SelectPageState extends State<SelectPage> {
               width: screensize.width,
               height: screensize.height * 0.36,
               fit: BoxFit.cover,
+            ),
+          ),
+          Positioned(
+            left: 330,
+            top: 48,
+            child: Builder(
+              builder: (context) => IconButton(
+                icon: Icon(Icons.menu),
+                iconSize: 30,
+                color: Color(0xff000000),
+                onPressed: () => Scaffold.of(context).openEndDrawer(),
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              ),
             ),
           ),
           Positioned(

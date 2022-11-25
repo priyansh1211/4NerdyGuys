@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/Item_list.dart';
+import 'package:flutter_app/pages/drawerpage.dart';
 
 class InventoryPage extends StatefulWidget {
   const InventoryPage({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class _InventoryPageState extends State<InventoryPage> {
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
     return Scaffold(
+      endDrawer: DrawerPage(),
       body: Center(
         child: Stack(
           children: [
@@ -30,6 +32,19 @@ class _InventoryPageState extends State<InventoryPage> {
                 width: screensize.width,
                 height: screensize.height * 0.36,
                 fit: BoxFit.cover,
+              ),
+            ),
+            Positioned(
+              left: 330,
+              top: 46,
+              child: Builder(
+                builder: (context) => IconButton(
+                  icon: Icon(Icons.menu),
+                  iconSize: 30,
+                  color: Color(0xff000000),
+                  onPressed: () => Scaffold.of(context).openEndDrawer(),
+                  tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                ),
               ),
             ),
             Positioned(
