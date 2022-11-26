@@ -98,11 +98,11 @@ class _ProjectProgressState extends State<ProjectProgress> {
             child: Builder(
               builder: (context) => ElevatedButton(
                   onPressed: () => Scaffold.of(context).openEndDrawer(),
-                  child:Icon(Icons.person,size:30,color:Colors.blue),
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                   backgroundColor: Colors.white,
                 ),
+                  child:Icon(Icons.person,size:30,color:Colors.blue),
               ),
             ),
           ),

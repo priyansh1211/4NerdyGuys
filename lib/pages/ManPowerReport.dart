@@ -178,20 +178,20 @@ class _ManPowerReportState extends State<ManPowerReport> {
                   }
                 },
                 child: const Text("Add a column")),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Padding(
-                padding: EdgeInsets.only(right: 210),
+                padding: const EdgeInsets.only(right: 210),
                 child: Text.rich(
                   TextSpan(
                     children: [
-                      TextSpan(
+                      const TextSpan(
                           text: 'Agency',
                           style: TextStyle(color: Colors.black, fontSize: 20)),
                       WidgetSpan(
                           child: SizedBox(
                             width: MediaQuery.of(context).devicePixelRatio,
                           )),
-                      WidgetSpan(child: Icon(Icons.more_horiz)),
+                      const WidgetSpan(child: Icon(Icons.more_horiz)),
                       // TextSpan(text: 'to add'),
                     ],
                   ),
@@ -233,18 +233,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
               ),
             ),
             Padding(
-                padding: EdgeInsets.only(right: 170),
+                padding: const EdgeInsets.only(right: 170),
                 child: Text.rich(
                   TextSpan(
                     children: [
-                      TextSpan(
+                      const TextSpan(
                           text: 'Description',
                           style: TextStyle(color: Colors.black, fontSize: 20)),
                       WidgetSpan(
                           child: SizedBox(
                             width: MediaQuery.of(context).devicePixelRatio,
                           )),
-                      WidgetSpan(child: Icon(Icons.more_horiz)),
+                      const WidgetSpan(child: Icon(Icons.more_horiz)),
                       // TextSpan(text: 'to add'),
                     ],
                   ),
@@ -269,18 +269,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
             ),
             //SizedBox(height: 10,),
             Padding(
-                padding: EdgeInsets.only(right:220),
+                padding: const EdgeInsets.only(right:220),
                 child: Text.rich(
                   TextSpan(
                     children: [
-                      TextSpan(
+                      const TextSpan(
                           text: 'Skilled',
                           style: TextStyle(color: Colors.black, fontSize: 20)),
                       WidgetSpan(
                           child: SizedBox(
                             width: MediaQuery.of(context).devicePixelRatio,
                           )),
-                      WidgetSpan(child: Icon(Icons.more_horiz)),
+                      const WidgetSpan(child: Icon(Icons.more_horiz)),
                       // TextSpan(text: 'to add'),
                     ],
                   ),
@@ -299,7 +299,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                   controller: number1,
                   autocorrect: true,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: '1',
                     border: InputBorder.none,
                   ),
@@ -308,18 +308,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
             ),
             //SizedBox(height: 10,),
             Padding(
-                padding: EdgeInsets.only(right: 200),
+                padding: const EdgeInsets.only(right: 200),
                 child: Text.rich(
                   TextSpan(
                     children: [
-                      TextSpan(
+                      const TextSpan(
                           text: 'Unskilled',
                           style: TextStyle(color: Colors.black, fontSize: 20)),
                       WidgetSpan(
                           child: SizedBox(
                             width: MediaQuery.of(context).devicePixelRatio,
                           )),
-                      WidgetSpan(child: Icon(Icons.more_horiz)),
+                      const WidgetSpan(child: Icon(Icons.more_horiz)),
                       // TextSpan(text: 'to add'),
                     ],
                   ),
@@ -338,7 +338,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                   controller: number2,
                   autocorrect: true,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: '1',
                     border: InputBorder.none,
                   ),
@@ -396,7 +396,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                               children: [
                                 TextSpan(
                                     text:column_name[i].toString(),
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.black, fontSize: 20)),
                                 WidgetSpan(
                                     child: SizedBox(

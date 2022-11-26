@@ -107,7 +107,7 @@ class _TypesOfReportState extends State<TypesOfReport> {
                         right: 30,
                         bottom: 60,
                         child: Text(
-                          "Daily Progress Report",//"Daily Progress Report",
+                          "Daily Progress Report",
                           style: const TextStyle(
                             fontSize: 13,
                             fontFamily: 'ReadexPro',

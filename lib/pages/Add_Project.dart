@@ -2,18 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
 import 'package:flutter_app/pages/Project.dart';
 
-class EditProjectPage extends StatefulWidget {
-
-  final String newprojectName;
-  final int newfloors;
-  final int newblocks;
-  const EditProjectPage({Key? key, required this.newprojectName, required this.newfloors, required this.newblocks}) : super(key: key);
+class AddProjectPage extends StatefulWidget {
+  const AddProjectPage({Key? key}) : super(key: key);
 
   @override
-  State<EditProjectPage> createState() => _EditProjectPageState();
+  State<AddProjectPage> createState() => _AddProjectPageState();
 }
 
-class _EditProjectPageState extends State<EditProjectPage> {
+class _AddProjectPageState extends State<AddProjectPage> {
   TextEditingController projectname = TextEditingController();
   TextEditingController floors = TextEditingController();
   TextEditingController blocks = TextEditingController();
@@ -47,7 +43,8 @@ class _EditProjectPageState extends State<EditProjectPage> {
               children: [
                 const Align(
                   alignment: Alignment.topLeft,
-                  child: Text('Edit Name', style: TextStyle(fontSize: 16)),
+                  child: Text('Add New Project Name',
+                      style: TextStyle(fontSize: 16)),
                 ),
                 const SizedBox(
                   height: 5,
@@ -55,18 +52,17 @@ class _EditProjectPageState extends State<EditProjectPage> {
                 Flexible(
                   child: TextFormField(
                     controller: projectname,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       filled: true,
-                      hintText: widget.newprojectName,
                       fillColor: Colors.white,
-                      border: const OutlineInputBorder(),
-                      enabledBorder: const OutlineInputBorder(
+                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8)),
                           borderSide: BorderSide(color: Colors.white)),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "Enter Something";
+                        return "Enter Project Name ";
                       }
                       return null;
                     },
@@ -77,7 +73,7 @@ class _EditProjectPageState extends State<EditProjectPage> {
                 ),
                 const Align(
                   alignment: Alignment.topLeft,
-                  child: Text('Edit no. of floors',
+                  child: Text('Add no. of floors',
                       style: TextStyle(fontSize: 16)),
                 ),
                 const SizedBox(
@@ -86,12 +82,11 @@ class _EditProjectPageState extends State<EditProjectPage> {
                 Flexible(
                   child: TextFormField(
                     controller: floors,
-                    decoration: InputDecoration(
-                      hintText: widget.newfloors.toString(),
+                    decoration: const InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
-                      border: const OutlineInputBorder(),
-                      enabledBorder: const OutlineInputBorder(
+                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8)),
                           borderSide: BorderSide(color: Colors.white)),
                     ),
@@ -108,7 +103,7 @@ class _EditProjectPageState extends State<EditProjectPage> {
                 ),
                 const Align(
                   alignment: Alignment.topLeft,
-                  child: Text('Edit no. of block',
+                  child: Text('Add no. of block',
                       style: TextStyle(fontSize: 16)),
                 ),
                 const SizedBox(
@@ -117,12 +112,11 @@ class _EditProjectPageState extends State<EditProjectPage> {
                 Flexible(
                   child: TextFormField(
                     controller: blocks,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       filled: true,
-                      hintText: widget.newblocks.toString(),
                       fillColor: Colors.white,
-                      border: const OutlineInputBorder(),
-                      enabledBorder: const OutlineInputBorder(
+                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8)),
                           borderSide: BorderSide(color: Colors.white)),
                     ),
@@ -141,31 +135,30 @@ class _EditProjectPageState extends State<EditProjectPage> {
             height: MediaQuery.of(context).size.height * 0.075,
           ),
           Align(
-              alignment: Alignment.topCenter,
-              child: SizedBox(
-                width: 86,
-                height: 38,
-                child: FloatingActionButton(
-                  shape: BeveledRectangleBorder(
-                      borderRadius: BorderRadius.circular(3.1)),
-                  backgroundColor: const Color(0xff6BC4FF),
-                  onPressed: () async {
-                    bool? response = await p.editProject({
-                      "oldprojectname" : widget.newprojectName.toString(),
-                      "project_name": projectname.text,
-                      "floors": floors.text,
-                      "blocks": blocks.text
-                    });
+            alignment: Alignment.topCenter,
+            child: SizedBox(
+              width: 86,
+              height: 38,
 
-                    if (response == true) {
-                      Navigator.of(context).pop();
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ProjectPage()));
-                    }
+              child: FloatingActionButton(
+              shape: BeveledRectangleBorder(
+                  borderRadius: BorderRadius.circular(3.1)),
+              backgroundColor: const Color(0xff6BC4FF),
+              onPressed: () async {
+                bool? response = await p.addProject({
+                  "project_name": projectname.text,
+                  "floors": floors.text,
+                  "blocks": blocks.text
+                });
 
-                  },
-                  child: const Text("Save"),
-                ),
-              )),
+                if (response == true) {
+                  Navigator.of(context).pop();
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ProjectPage()));
+                }
+              },
+              child: const Text("Add"),
+            ),)
+          ),
         ],
       ),
     );

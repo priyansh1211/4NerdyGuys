@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 //import 'package:get/get.dart';
-// import 'package:flutter_app/Server%20(Back%20End)/signup_handler.dart';
+import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
 // import 'package:flutter_app/pages/LoginPage.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter_app/pages/LoginPage.dart';
@@ -70,6 +70,7 @@ class _SignUpState extends State<SignUp> {
   // }
 
   final fkey = GlobalKey<FormState>();
+  final NetworkHandler p = NetworkHandler();
 
   // List<int> _getDividersIndexes() {
   //   List<int> dividersIndexes = [];
@@ -290,6 +291,13 @@ class _SignUpState extends State<SignUp> {
                               MaterialButton(
                                   onPressed: () {
                                     if (fkey.currentState!.validate()) {
+
+                                       p.post({"username": name.text ,"email":email.text ,"password": password.text , "designation": downvalue});
+
+                                       //  Future<dynamic>  map = p.listproject() ;
+                                       // print("${map} =>>>>>>>");
+
+
                                       bool NotUser = false;
                                       int i;
                                       for (i = 0; i < userList.length; i++) {

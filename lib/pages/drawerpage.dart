@@ -3,13 +3,30 @@ import 'package:flutter_app/pages/Contact_Us.dart';
 import 'package:flutter_app/pages/DashboardPage.dart';
 import 'package:flutter_app/pages/LoginPage.dart';
 import 'package:flutter_app/pages/Project.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerPage extends StatefulWidget {
+  const DrawerPage({super.key});
+
   @override
   State<DrawerPage> createState() => _DrawerPageState();
 }
 
 class _DrawerPageState extends State<DrawerPage> {
+
+  late SharedPreferences logindata;
+
+  @override
+  void initState() {
+
+    super.initState();
+    initial();
+  }
+
+  void initial() async{
+    logindata = await SharedPreferences.getInstance();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -18,12 +35,12 @@ class _DrawerPageState extends State<DrawerPage> {
         children: [
           ListTile(
             leading:
-                Icon(Icons.arrow_back_ios, color: Color(0xff000000), size: 28),
+                const Icon(Icons.arrow_back_ios, color: Color(0xff000000), size: 28),
             onTap: () {
               Navigator.of(context).pop();
             },
           ),
-          ListTile(
+          const ListTile(
             title: Align(
                 alignment: Alignment.centerRight,
                 child: Text('Vishwas',
@@ -37,33 +54,33 @@ class _DrawerPageState extends State<DrawerPage> {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.home, color: Color(0xff000000), size: 28),
-            title: Text('Projects',
+            leading: const Icon(Icons.home, color: Color(0xff000000), size: 28),
+            title: const Text('Projects',
                 style: TextStyle(
                     color: Color(0xff635E5E),
                     fontFamily: 'Opensans',
                     fontSize: 18)),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ProjectPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProjectPage()));
               print('go to project');
             },
           ),
           ListTile(
-            leading: Icon(Icons.train, color: Color(0xff000000), size: 28),
-            title: Text('Dashboard',
+            leading: const Icon(Icons.train, color: Color(0xff000000), size: 28),
+            title: const Text('Dashboard',
                 style: TextStyle(
                     color: Color(0xff635E5E),
                     fontFamily: 'Opensans',
                     fontSize: 18)),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => DashboardPage()));
+                  MaterialPageRoute(builder: (context) => const DashboardPage()));
               //print('go to Dashboard page');
             },
           ),
           ListTile(
-            leading: Icon(Icons.person, size: 28, color: Color(0xff000000)),
-            title: Text('Profile',
+            leading: const Icon(Icons.person, size: 28, color: Color(0xff000000)),
+            title: const Text('Profile',
                 style: TextStyle(
                     color: Color(0xff635E5E),
                     fontFamily: 'Opensans',
@@ -74,24 +91,27 @@ class _DrawerPageState extends State<DrawerPage> {
           ),
           ListTile(
             leading:
-                Icon(Icons.account_circle, size: 28, color: Color(0xff000000)),
-            title: Text('Contact us',
+                const Icon(Icons.account_circle, size: 28, color: Color(0xff000000)),
+            title: const Text('Contact us',
                 style: TextStyle(
                     color: Color(0xff635E5E),
                     fontSize: 18,
                     fontFamily: 'Opensans')),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ContactPage()));
+                  MaterialPageRoute(builder: (context) => const ContactPage()));
             },
           ),
           Container(
-            margin: EdgeInsets.only(top: 300, left: 150),
+            margin: const EdgeInsets.only(top: 300, left: 150),
             child: InkWell(
-                child: Text('Log out', style: TextStyle(fontSize: 18)),
+                child: const Text('Log out', style: TextStyle(fontSize: 18)),
                 onTap: () {
+
+                  logindata.setBool("login", true);
+
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginPage()));
+                      MaterialPageRoute(builder: (context) => const LoginPage()));
                 }),
           ),
         ],

@@ -50,7 +50,7 @@ class _AfterPageState extends State<AfterPage> {
               left: 20,
               top: 23,
               child: InkWell(
-                child: Icon(
+                child: const Icon(
                   Icons.arrow_back_ios,
                   size: 30,
                 ),
@@ -63,7 +63,7 @@ class _AfterPageState extends State<AfterPage> {
             Positioned(
               top: 20,
               left: MediaQuery.of(context).size.width * 0.5 - 80,
-              child: Text(
+              child: const Text(
                 "Contact Us",
                 style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
               ),

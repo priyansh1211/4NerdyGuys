@@ -69,7 +69,7 @@ class _DpReportPageState extends State<DpReportPage> {
               alignment: const Alignment(0.94,-0.94),
               child: Builder(
                 builder: (context) => IconButton(
-                  icon: Icon(Icons.menu),
+                  icon: const Icon(Icons.menu),
                   iconSize: 30,
                   color: Colors.transparent,
                   onPressed: () => Scaffold.of(context).openEndDrawer(),
@@ -115,9 +115,7 @@ class _DpReportPageState extends State<DpReportPage> {
                                   ),
                                 ),
                                 Positioned(
-                                  top: MediaQuery.of(context).size.height *
-                                          0.12 -
-                                      100, //MediaQuery.of(context).size.height*0.020,
+                                  top: MediaQuery.of(context).size.height * 0.03125 - 10 , //MediaQuery.of(context).size.height*0.020,
                                   left: MediaQuery.of(context).size.width *
                                       0.6275833,
 

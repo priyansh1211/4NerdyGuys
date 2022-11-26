@@ -6,7 +6,7 @@ import 'package:flutter_app/pages/analytics.dart';
 class SubscriberChart extends StatelessWidget {
   final List<SubscriberSeries> data;
 
-  SubscriberChart({required this.data});
+  const SubscriberChart({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class SubscriberChart extends StatelessWidget {
 
     return Container(
       height: 200,
-      padding: EdgeInsets.only(left:5),
+      padding: const EdgeInsets.only(left:5),
       child: Card(
         child: Padding(
           padding: const EdgeInsets.only(left: 2),

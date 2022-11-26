@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
 
 class Additem extends StatefulWidget {
   const Additem({Key? key}) : super(key: key);
@@ -8,6 +9,17 @@ class Additem extends StatefulWidget {
 }
 
 class _AdditemState extends State<Additem> {
+
+
+  TextEditingController item_name = TextEditingController();
+  TextEditingController item_code = TextEditingController();
+  TextEditingController item_group = TextEditingController();
+  TextEditingController item_description = TextEditingController();
+  TextEditingController item_quantity = TextEditingController();
+
+
+  NetworkHandler p = NetworkHandler();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(//SingleChildScrollView()
@@ -65,6 +77,7 @@ class _AdditemState extends State<Additem> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: TextFormField(
+                        controller: item_name,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             enabledBorder: OutlineInputBorder(
@@ -82,6 +95,7 @@ class _AdditemState extends State<Additem> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: TextFormField(
+                        controller: item_code,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             enabledBorder: OutlineInputBorder(
@@ -99,6 +113,7 @@ class _AdditemState extends State<Additem> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: TextFormField(
+                        controller: item_group,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             enabledBorder: OutlineInputBorder(
@@ -116,6 +131,7 @@ class _AdditemState extends State<Additem> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: TextFormField(
+                        controller: item_description,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             enabledBorder: OutlineInputBorder(
@@ -133,6 +149,7 @@ class _AdditemState extends State<Additem> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: TextFormField(
+                        controller: item_quantity,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             enabledBorder: OutlineInputBorder(
@@ -159,7 +176,16 @@ class _AdditemState extends State<Additem> {
                           child: Text('Add item', style: TextStyle(fontSize: 20)),
                         ),
                       ),
-                      onTap: (){},
+                      onTap: () async {
+
+                        bool? response = await p.addItems({"project_name": "Sanskruti","item_name": item_name.text,"item_code" : item_code.text, "item_group" : item_group.text, "item_description" : item_description.text, "total_quantity" : item_quantity.text});
+
+                        if(response == true)
+                          {
+                            Navigator.of(context).pop();
+                          }
+
+                      },
                     ),
                   ],
                 ),
