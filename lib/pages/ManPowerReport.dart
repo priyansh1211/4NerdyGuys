@@ -177,21 +177,31 @@ class _ManPowerReportState extends State<ManPowerReport> {
                         });
                   }
                 },
-                child: const Text("Add a column")),
-            const SizedBox(height: 20,),
+                child: const Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                          text: 'Add a column',
+                          style: TextStyle(color: Colors.black, fontSize: 20)),
+                      WidgetSpan(child: Icon(Icons.add)),
+                      // TextSpan(text: 'to add'),
+                    ],
+                  ),
+                )),
+            SizedBox(height: 20,),
             Padding(
-                padding: const EdgeInsets.only(right: 210),
+                padding: EdgeInsets.only(right: 210),
                 child: Text.rich(
                   TextSpan(
                     children: [
-                      const TextSpan(
+                      TextSpan(
                           text: 'Agency',
                           style: TextStyle(color: Colors.black, fontSize: 20)),
                       WidgetSpan(
                           child: SizedBox(
                             width: MediaQuery.of(context).devicePixelRatio,
                           )),
-                      const WidgetSpan(child: Icon(Icons.more_horiz)),
+                      WidgetSpan(child: Icon(Icons.more_horiz)),
                       // TextSpan(text: 'to add'),
                     ],
                   ),
@@ -233,18 +243,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.only(right: 170),
+                padding: EdgeInsets.only(right: 170),
                 child: Text.rich(
                   TextSpan(
                     children: [
-                      const TextSpan(
+                      TextSpan(
                           text: 'Description',
                           style: TextStyle(color: Colors.black, fontSize: 20)),
                       WidgetSpan(
                           child: SizedBox(
                             width: MediaQuery.of(context).devicePixelRatio,
                           )),
-                      const WidgetSpan(child: Icon(Icons.more_horiz)),
+                      WidgetSpan(child: Icon(Icons.more_horiz)),
                       // TextSpan(text: 'to add'),
                     ],
                   ),
@@ -269,18 +279,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
             ),
             //SizedBox(height: 10,),
             Padding(
-                padding: const EdgeInsets.only(right:220),
+                padding: EdgeInsets.only(right:220),
                 child: Text.rich(
                   TextSpan(
                     children: [
-                      const TextSpan(
+                      TextSpan(
                           text: 'Skilled',
                           style: TextStyle(color: Colors.black, fontSize: 20)),
                       WidgetSpan(
                           child: SizedBox(
                             width: MediaQuery.of(context).devicePixelRatio,
                           )),
-                      const WidgetSpan(child: Icon(Icons.more_horiz)),
+                      WidgetSpan(child: Icon(Icons.more_horiz)),
                       // TextSpan(text: 'to add'),
                     ],
                   ),
@@ -299,7 +309,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                   controller: number1,
                   autocorrect: true,
                   keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: '1',
                     border: InputBorder.none,
                   ),
@@ -308,18 +318,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
             ),
             //SizedBox(height: 10,),
             Padding(
-                padding: const EdgeInsets.only(right: 200),
+                padding: EdgeInsets.only(right: 200),
                 child: Text.rich(
                   TextSpan(
                     children: [
-                      const TextSpan(
+                      TextSpan(
                           text: 'Unskilled',
                           style: TextStyle(color: Colors.black, fontSize: 20)),
                       WidgetSpan(
                           child: SizedBox(
                             width: MediaQuery.of(context).devicePixelRatio,
                           )),
-                      const WidgetSpan(child: Icon(Icons.more_horiz)),
+                      WidgetSpan(child: Icon(Icons.more_horiz)),
                       // TextSpan(text: 'to add'),
                     ],
                   ),
@@ -338,7 +348,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                   controller: number2,
                   autocorrect: true,
                   keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: '1',
                     border: InputBorder.none,
                   ),
@@ -396,7 +406,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                               children: [
                                 TextSpan(
                                     text:column_name[i].toString(),
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black, fontSize: 20)),
                                 WidgetSpan(
                                     child: SizedBox(
