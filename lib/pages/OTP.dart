@@ -115,7 +115,7 @@ class _OTPState extends State<OTP> {
                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                  children: [
                    OtpTimerButton(
-                     backgroundColor: Color(0xffC7D3F9),
+                     backgroundColor: const Color(0xffC7D3F9),
                      //textColor: Color(0xffC7D3F9),
                      height: 51,
                    //  buttonType: ButtonType.text_button, // or ButtonType.outlined_button
@@ -126,7 +126,7 @@ class _OTPState extends State<OTP> {
                    //  loadingIndicatorColor: Colors.red,
                      controller: controller,
                      onPressed: () {},
-                     text: Text('Resend OTP',style: TextStyle(
+                     text: const Text('Resend OTP',style: TextStyle(
                          color: Colors.white,
                          fontWeight: FontWeight.bold,
                          fontSize:18,

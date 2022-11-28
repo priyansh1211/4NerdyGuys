@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
+import 'package:flutter_app/pages/Item_list.dart';
 
 class Additem extends StatefulWidget {
-  const Additem({Key? key}) : super(key: key);
+
+  String projectName;
+  Additem({Key? key, required this.projectName}) : super(key: key);
 
   @override
   State<Additem> createState() => _AdditemState();
@@ -178,11 +181,12 @@ class _AdditemState extends State<Additem> {
                       ),
                       onTap: () async {
 
-                        bool? response = await p.addItems({"project_name": "Sanskruti","item_name": item_name.text,"item_code" : item_code.text, "item_group" : item_group.text, "item_description" : item_description.text, "total_quantity" : item_quantity.text});
+                        bool? response = await p.addItems({"project_name" : widget.projectName.toString(),"item_name": item_name.text,"item_code" : item_code.text, "item_group" : item_group.text, "item_description" : item_description.text, "total_quantity" : item_quantity.text});
 
                         if(response == true)
                           {
                             Navigator.of(context).pop();
+                            Navigator.push(context, MaterialPageRoute(builder: (context) =>  ItemPage(projectName: widget.projectName.toString(),)));
                           }
 
                       },

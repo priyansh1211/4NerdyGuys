@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
 import 'package:flutter_app/pages/Add_Project.dart';
 import 'package:flutter_app/pages/Edit_Project.dart';
-//import 'package:flutter_app/pages/DpReport.dart';
 import 'package:flutter_app/pages/TypesOfReport.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
 
@@ -14,53 +13,24 @@ class ProjectPage extends StatefulWidget {
 }
 
 class _ProjectPageState extends State<ProjectPage> {
-  //List userList1 = ['asdad', 'sqwqws' , 'dssadaa','asasadc','dsaddas','dasdqwq'];
-  // List<Map<String, int>> userList1 = [
-  //   {'Sanskruti': 10},
-  //   {'Antriksh': 15},
-  //   {'Nakshtra': 18}
-  // ];
-  // List userList2 = ['saaa', 'asdwqd'];
   final fkey = GlobalKey<FormState>();
 
   NetworkHandler p = NetworkHandler();
 
-  // TextEditingController message = TextEditingController();
-  // TextEditingController number = TextEditingController();
-
-  // void addUserData(User user) {
-  //   setState(() {
-  //     userList.add(user);
-  //   });
-  // }
-
-  // void showUserDialog() {
-  //   showDialog(
-  //       context: context,
-  //       builder: (_) {
-  //         return AlertDialog(
-  //           content: AddUserDialog(addUserData),
-  //           shape: RoundedRectangleBorder(
-  //             borderRadius: BorderRadius.circular(10),
-  //           ),
-  //         );
-  //       });
-  // }
-
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: FutureBuilder<List>(
+    return Scaffold(
+      endDrawer: const DrawerPage(),
+        body: FutureBuilder<List>(
           builder: (context, snapshot) {
             if(snapshot.connectionState == ConnectionState.waiting)
             {
-              return Container(width: MediaQuery.of(context).size.width,height: MediaQuery.of(context).size.height,color: Colors.white,child: Center(child: CircularProgressIndicator(),),);
+              return Container(width: MediaQuery.of(context).size.width,height: MediaQuery.of(context).size.height,color: Colors.white,child: const Center(child: CircularProgressIndicator(),),);
             }
             if(snapshot.hasData){
 
               return Scaffold(
-                endDrawer: DrawerPage(),
+                //endDrawer: const DrawerPage(),
                 floatingActionButton: SizedBox(
                   width: 64,
                   height: 45,
@@ -111,30 +81,27 @@ class _ProjectPageState extends State<ProjectPage> {
                     ),
                     Align(
                       alignment: const Alignment(0.94, -0.9),
-                      child: CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Colors.white,
-                        child: Center(
-                          child: Icon(
-                            Icons.person,
-                            size: 20,
-                            color: Colors.blue[500],
+                      child: InkWell(
+                          child: const Icon(
+                            Icons.menu,
+                            size: 30,
+                            color: Colors.black,
                           ),
+                            onTap: () => Scaffold.of(context).openEndDrawer(),
                         ),
                       ),
-                    ),
-                    Align(
-                      alignment: const Alignment(0.94, -0.9),
-                      child: Builder(
-                        builder: (context) => IconButton(
-                          icon: const Icon(Icons.menu),
-                          iconSize: 30,
-                          color: Colors.transparent,
-                          onPressed: () => Scaffold.of(context).openEndDrawer(),
-                          tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-                        ),
-                      ),
-                    ),
+                    // Align(
+                    //   alignment: const Alignment(0.94, -0.9),
+                    //   child: Builder(
+                    //     builder: (context) => IconButton(
+                    //       icon: const Icon(Icons.menu),
+                    //       iconSize: 30,
+                    //       color: Colors.transparent,
+                    //       onPressed: () => Scaffold.of(context).openEndDrawer(),
+                    //       tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                    //     ),
+                    //   ),
+                    // ),
                     Container(
                       padding: EdgeInsets.only(
                           top: MediaQuery.of(context).size.height * 0.15,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
-//import 'package:flutter_app/pages/TypesOfReport.dart';
 import 'package:flutter_app/pages/select_page.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
 
@@ -11,23 +10,9 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  // List<Map<String, int>> userList1 = [
-  //   {'Sanskruti': 10},
-  //   {'Antriksh': 15},
-  //   {'Nakshtra': 18},
-  //   {'Shruti' : 25},
-  // ];
-
 
   NetworkHandler p = NetworkHandler();
-
   String a = '';
-
-  // String getString(int index) {
-  //   a = userList1[index].keys.elementAt(0).toString();
-  //   return a;
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,32 +57,29 @@ class _DashboardPageState extends State<DashboardPage> {
                       style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
                     ),
                   ),
+                  Align(
+                    alignment: const Alignment(0.94, -0.9),
+                    child:  InkWell(
+                      child: Icon(
+                        Icons.menu,
+                        size: 30,
+                        color: Colors.black,
+                      ),
+                        onTap: () => Scaffold.of(context).openEndDrawer(),
+                    ),
+                      ),
                   // Align(
                   //   alignment: const Alignment(0.94, -0.9),
-                  //   child: CircleAvatar(
-                  //     radius: 25,
-                  //     backgroundColor: Colors.white,
-                  //     child: Center(
-                  //       child: Icon(
-                  //         Icons.person,
-                  //         size: 20,
-                  //         color: Colors.blue[500],
-                  //       ),
+                  //   child: Builder(
+                  //     builder: (context) => IconButton(
+                  //       icon: const Icon(Icons.menu),
+                  //       iconSize: 30,
+                  //       color: Colors.transparent,
+                  //       onPressed: () => Scaffold.of(context).openEndDrawer(),
+                  //       tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
                   //     ),
                   //   ),
                   // ),
-                  Align(
-                    alignment: const Alignment(0.94, -0.9),
-                    child: Builder(
-                      builder: (context) => IconButton(
-                        icon: const Icon(Icons.menu),
-                        iconSize: 30,
-                        color: Colors.transparent,
-                        onPressed: () => Scaffold.of(context).openEndDrawer(),
-                        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-                      ),
-                    ),
-                  ),
                   Container(
                     padding: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height * 0.15,
@@ -154,7 +136,7 @@ class _DashboardPageState extends State<DashboardPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const SelectPage()));
+                                      builder: (context) =>  SelectPage(projectName: snapshot.data![index]["project_name"].toString(),)));
                             },
                           ),
                         );

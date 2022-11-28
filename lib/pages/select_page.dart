@@ -5,7 +5,9 @@ import 'package:flutter_app/pages/tasks.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
 
 class SelectPage extends StatefulWidget {
-  const SelectPage({Key? key}) : super(key: key);
+
+  String projectName;
+  SelectPage({Key? key , required this.projectName}) : super(key: key);
   @override
   State<SelectPage> createState() => _SelectPageState();
 }
@@ -120,7 +122,7 @@ class _SelectPageState extends State<SelectPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const ItemPage()));
+                                  builder: (context) => ItemPage(projectName: widget.projectName.toString(),)));
                         },
                       ),
                     ),
