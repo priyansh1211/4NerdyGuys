@@ -121,8 +121,8 @@ class _ItemPageState extends State<ItemPage> {
                 itemCount: userList1.length,
                 itemBuilder: (BuildContext context, int index) {
                   return SizedBox(
-                    height: 137,//MediaQuery.of(context).size.height*0.17125,
-                    width: 160,//MediaQuery.of(context).size.width*0.44444,
+                    height: MediaQuery.of(context).size.height*0.17125,//137
+                    width: MediaQuery.of(context).size.width*0.44444,//160
                     //margin: const EdgeInsets.only(left: 20, right: 20),
                     child: InkWell(
                       child: Card(
@@ -145,9 +145,9 @@ class _ItemPageState extends State<ItemPage> {
                                 const TextStyle(fontSize: 20, fontFamily: 'ReadexPro'),
                               ),
                             ),
-                            const Positioned(
-                              top: 140,
-                              left: 20,
+                            Positioned(
+                              top: MediaQuery.of(context).size.height * 0.107525 + 40,
+                              left: MediaQuery.of(context).size.width * 0.086111,
                               child: Text(
                                 "Used - \nTotal -",
                                 style: TextStyle(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/InventoryonePage.dart';
+import 'package:flutter_app/pages/Item_list.dart';
 import 'package:flutter_app/pages/analytics.dart';
 import 'package:flutter_app/pages/tasks.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
@@ -120,7 +120,7 @@ class _SelectPageState extends State<SelectPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const InventoryPage()));
+                                  builder: (context) => const ItemPage()));
                         },
                       ),
                     ),

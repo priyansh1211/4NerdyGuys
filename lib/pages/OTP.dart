@@ -1,17 +1,25 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
 //import 'package:flutter/services.dart';
 import 'package:flutter_app/pages/home_page.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:otp_timer_button/otp_timer_button.dart';
 class OTP extends StatefulWidget {
-  const OTP({Key? key}) : super(key: key);
+  String email;
+  OTP({Key? key, required this.email}) : super(key: key);
 
   @override
   State<OTP> createState() => _OTPState();
 }
 
 class _OTPState extends State<OTP> {
+
+  late String OtpCode;
+
+  NetworkHandler p = NetworkHandler();
+
   @override
   Widget build(BuildContext context) {
     OtpTimerButtonController controller = OtpTimerButtonController();
@@ -79,6 +87,8 @@ class _OTPState extends State<OTP> {
 
                   },
                   onSubmit: (String verificationCode){
+
+                    OtpCode = verificationCode;
                     showDialog(context: context, builder: (context){
                       return AlertDialog(
                         title: const Text('Verification Code'),
@@ -125,11 +135,23 @@ class _OTPState extends State<OTP> {
                      duration: 120,
                    ),
                    MaterialButton(
-                       onPressed: () {
-                         Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const HomePage()),
-                         );
+                       onPressed: () async {
+
+                         final response = await p.OtpVerification({"userID" : widget.email.toString(), "otp" : OtpCode});
+                         if(response == true)
+                           {
+
+                             Navigator.push(
+                               context,
+                               MaterialPageRoute(builder: (context) => const HomePage()),
+                             );
+                           }
+                         else
+                           {
+                             print("Something Went Wrong");
+                           }
+
+
                        },
                        child: Container(
                          height: 51,

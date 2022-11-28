@@ -147,8 +147,6 @@ class _ProjectPageState extends State<ProjectPage> {
                         itemCount: snapshot.data?.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
-                            height: 200,
-                            width: 148,
                             margin: const EdgeInsets.only(left: 15, right: 15),
                             child: InkWell(
                               child: Card(
@@ -164,7 +162,7 @@ class _ProjectPageState extends State<ProjectPage> {
                                     ),
                                     Positioned(
                                         top: 10,
-                                        left : 100,
+                                        left : MediaQuery.of(context).size.width*0.35 - 20,
                                         child: InkWell(child: const Icon(Icons.edit),onTap: () {
                                           Navigator.of(context).pop();
                                           Navigator.push(context, MaterialPageRoute(builder: (context) => EditProjectPage(newprojectName: snapshot.data![index]["project_name"].toString(), newfloors: snapshot.data![index]["floors"], newblocks: snapshot.data![index]["blocks"], ) ) );
