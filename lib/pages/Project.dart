@@ -15,11 +15,11 @@ class ProjectPage extends StatefulWidget {
 
 class _ProjectPageState extends State<ProjectPage> {
   //List userList1 = ['asdad', 'sqwqws' , 'dssadaa','asasadc','dsaddas','dasdqwq'];
-  List<Map<String, int>> userList1 = [
-    {'Sanskruti': 10},
-    {'Antriksh': 15},
-    {'Nakshtra': 18}
-  ];
+  // List<Map<String, int>> userList1 = [
+  //   {'Sanskruti': 10},
+  //   {'Antriksh': 15},
+  //   {'Nakshtra': 18}
+  // ];
   // List userList2 = ['saaa', 'asdwqd'];
   final fkey = GlobalKey<FormState>();
 
@@ -164,7 +164,7 @@ class _ProjectPageState extends State<ProjectPage> {
                                     ),
                                     Positioned(
                                         top: 10,
-                                        left : 120,
+                                        left : 100,
                                         child: InkWell(child: const Icon(Icons.edit),onTap: () {
                                           Navigator.of(context).pop();
                                           Navigator.push(context, MaterialPageRoute(builder: (context) => EditProjectPage(newprojectName: snapshot.data![index]["project_name"].toString(), newfloors: snapshot.data![index]["floors"], newblocks: snapshot.data![index]["blocks"], ) ) );

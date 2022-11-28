@@ -22,13 +22,20 @@ class _LoginPageState extends State<LoginPage> {
   bool _obsecuretext = true;
   late SharedPreferences logindata;
   late bool newu;
+  late bool isloading;
 
 
   final fkey = GlobalKey<FormState>();
 
   @override
   void initState() {
-    const CircularProgressIndicator();
+
+    isloading = true;
+    Future.delayed(const Duration(seconds: 2), (){
+      setState(() {
+        isloading = false;
+      });
+    });
     super.initState();
     check_if_already_login();
   }
@@ -37,7 +44,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     // final isKeyboard = MediaQuery.of(context).viewInsets.bottom!=0;
-    return Scaffold(
+    return isloading?  Container(
+      color: Colors.white,
+      child: const Center(child: CircularProgressIndicator(),),) : Scaffold(
         body: Stack(
           children: [
             ListView(

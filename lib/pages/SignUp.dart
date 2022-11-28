@@ -294,10 +294,6 @@ class _SignUpState extends State<SignUp> {
 
                                        p.post({"username": name.text ,"email":email.text ,"password": password.text , "designation": downvalue});
 
-                                       //  Future<dynamic>  map = p.listproject() ;
-                                       // print("${map} =>>>>>>>");
-
-
                                       bool NotUser = false;
                                       int i;
                                       for (i = 0; i < userList.length; i++) {

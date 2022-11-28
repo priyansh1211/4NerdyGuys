@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart';
 
 class Api {
-  final URL = "http://192.168.1.5:5000/user";//172.20.10.4
+  final URL = "http://192.168.1.7:5000/user";//172.20.10.4
 
   Future<Map?> fetchData() async {
     try {

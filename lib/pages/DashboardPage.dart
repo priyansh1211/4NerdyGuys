@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
 //import 'package:flutter_app/pages/TypesOfReport.dart';
 import 'package:flutter_app/pages/select_page.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
@@ -10,124 +11,166 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  List<Map<String, int>> userList1 = [
-    {'Sanskruti': 10},
-    {'Antriksh': 15},
-    {'Nakshtra': 18},
-    {'Shruti' : 25},
-  ];
+  // List<Map<String, int>> userList1 = [
+  //   {'Sanskruti': 10},
+  //   {'Antriksh': 15},
+  //   {'Nakshtra': 18},
+  //   {'Shruti' : 25},
+  // ];
+
+
+  NetworkHandler p = NetworkHandler();
 
   String a = '';
 
-  String getString(int index) {
-    a = userList1[index].keys.elementAt(0).toString();
-    return a;
-  }
+  // String getString(int index) {
+  //   a = userList1[index].keys.elementAt(0).toString();
+  //   return a;
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: DrawerPage(),
-      body: Stack(
-        children: [
-          Positioned(
-            left: 330,
-            top: 48,
-            child: Builder(
-              builder: (context) => IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: () => Scaffold.of(context).openEndDrawer(),
-                //tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-                color: Color(0xff000000),
-                iconSize: 30,
-              ),
-            ),
-          ),
-          const Positioned(
-              top: 58,
-              left: 60,
-              child: Text(
-                "Dashboard",
-                style: TextStyle(fontSize: 30),
-              )),
-          Positioned(
-            left: 20,
-            top: 58,
-            child: InkWell(
-              child: const Icon(
-                Icons.arrow_back_ios,
-                size: 30,
-              ),
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * 0.09,
-                bottom: MediaQuery.of(context).size.height * 0.030,
-                right: MediaQuery.of(context).size.height * 0.020,
-                left: MediaQuery.of(context).size.height * 0.020),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, mainAxisSpacing: 15),
-              itemCount: userList1.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  height: 200,
-                  width: 148,
-                  margin: const EdgeInsets.only(left: 15, right: 15),
-                  child: InkWell(
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      elevation: 10.0,
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            top: 13,
-                            left: 11,
-                            child: Image.asset('assets/images/proj_2.png'),
-                          ),
-                          Positioned(
-                            top: 69,
-                            left: 16,
-                            child: Text(
-                              userList1[index].keys.elementAt(0).toString(),
-                              style: const TextStyle(
-                                  fontSize: 18, fontFamily: 'Inter'),
-                            ),
-                          ),
-                          const Positioned(
-                            top: 90,
-                            left: 17,
-                            child: Text(
-                              "Ongoing Site",
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  fontFamily: 'Inter',
-                                  color: Color(0xff796A6A)),
-                            ),
-                          ),
-                        ],
+      endDrawer: const DrawerPage(),
+      body: FutureBuilder<List>(
+        builder: (context, snapshot) {
+          if(snapshot.connectionState == ConnectionState.waiting)
+          {
+            return Container(width: MediaQuery.of(context).size.width,height: MediaQuery.of(context).size.height,color: Colors.white,child: const Center(child: CircularProgressIndicator(),),);
+          }
+          if(snapshot.hasData){
+
+            return Scaffold(
+              //endDrawer: const DrawerPage(),
+
+              body: Container(
+                color: const Color(0xffE5E5E5),
+
+                child: Stack(children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Color(0xffE5E5E5),
+                    ),
+                  ),
+                  Positioned(
+                      left: 20,
+                      top: 50,
+                      child: InkWell(
+                        child: const Icon(
+                          Icons.arrow_back_ios,
+                          size: 30,
+                        ),
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                      )),
+                  const Positioned(
+                    left: 55,
+                    top: 50,
+                    child: Text(
+                      "Dashboard",
+                      style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
+                    ),
+                  ),
+                  // Align(
+                  //   alignment: const Alignment(0.94, -0.9),
+                  //   child: CircleAvatar(
+                  //     radius: 25,
+                  //     backgroundColor: Colors.white,
+                  //     child: Center(
+                  //       child: Icon(
+                  //         Icons.person,
+                  //         size: 20,
+                  //         color: Colors.blue[500],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  Align(
+                    alignment: const Alignment(0.94, -0.9),
+                    child: Builder(
+                      builder: (context) => IconButton(
+                        icon: const Icon(Icons.menu),
+                        iconSize: 30,
+                        color: Colors.transparent,
+                        onPressed: () => Scaffold.of(context).openEndDrawer(),
+                        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
                       ),
                     ),
-                    onTap: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context) => TypesOfReport(projectName: userList1[index].keys.elementAt(0).toString(),)));
-
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SelectPage()));
-                    },
                   ),
-                  // child : Card(child: Center(child: Text(userList1[index].keys.elementAt(0).toString())))
-                );
-              },
-            ),
-          ),
-        ],
+                  Container(
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * 0.15,
+                        bottom: MediaQuery.of(context).size.height * 0.10,
+                        right: MediaQuery.of(context).size.height * 0.020,
+                        left: MediaQuery.of(context).size.height * 0.020),
+                    child: GridView.builder(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2, mainAxisSpacing: 15),
+                      itemCount: snapshot.data?.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          height: 200,
+                          width: 148,
+                          margin: const EdgeInsets.only(left: 15, right: 15),
+                          child: InkWell(
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0)),
+                              elevation: 10.0,
+                              child: Stack(
+                                children: [
+                                  Positioned(
+                                    top: 13,
+                                    left: 11,
+                                    child: Image.asset('assets/images/proj_2.png'),
+                                  ),
+
+                                  Positioned(
+                                    top: 69,
+                                    left: 16,
+                                    child: Text(
+                                      style: const TextStyle(
+                                          fontSize: 18, fontFamily: 'Inter'),
+                                      //userList1[index].keys.elementAt(0).toString(),
+                                      snapshot.data![index]["project_name"].toString(),
+                                    ),
+                                  ),
+                                  const Positioned(
+                                    top: 90,
+                                    left: 17,
+                                    child: Text(
+                                      "Ongoing Site",
+                                      style: TextStyle(
+                                          fontSize: 10,
+                                          fontFamily: 'Inter',
+                                          color: Color(0xff796A6A)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const SelectPage()));
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ]),
+                // child:
+              ),
+            );
+          }
+
+          return const Text("Something Went Wrong");
+        },
+        future: p.listproject(),
+
       ),
     );
   }
