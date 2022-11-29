@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/MachineryReport.dart';
@@ -11,6 +13,7 @@ class ManPowerReport extends StatefulWidget {
 }
 
 class _ManPowerReportState extends State<ManPowerReport> {
+  late String _chosenValue;
   final List<String> items = [
     'Add new column',
   ];
@@ -68,6 +71,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
   int number = 1;
   final fkey = GlobalKey<FormState>();
   TextEditingController message = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final number1 = TextEditingController();
@@ -110,98 +114,134 @@ class _ManPowerReportState extends State<ManPowerReport> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            OutlinedButton(
-                onPressed: () {
-                  {
-                    showDialog(
-                        barrierDismissible: true,
-                        context: context,
-                        builder: (_) {
-                          return AlertDialog(
-                            shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                            content: Form(
-                                key: fkey,
-                                child: SizedBox(
-                                  width: 100,
-                                  height: 200,
-                                  child: Column(
-                                    children: [
-                                      TextFormField(
-                                        decoration: const InputDecoration(
-                                            labelText: 'Enter Column Name'),
-                                        controller: message,
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return "Enter Something";
-                                          }
-                                          return null;
-                                        },
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                        crossAxisAlignment: CrossAxisAlignment.end,
+            Row(
+              children: [
+                Expanded(child: OutlinedButton(
+                    onPressed: () {
+                      {
+                        showDialog(
+                            barrierDismissible: true,
+                            context: context,
+                            builder: (_) {
+                              return AlertDialog(
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10.0))),
+                                content: Form(
+                                    key: fkey,
+                                    child: SizedBox(
+                                      width: 100,
+                                      height: 200,
+                                      child: Column(
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(top: 20),
-                                            child: ElevatedButton(
-                                              onPressed: () {
-                                                if (fkey.currentState!.validate()) {
-                                                  column_name.add(message.text);
-                                                  Navigator.pop(context);
-                                                  message.clear();
-                                                  setState(() {
-                                                    number = number + 1;
-                                                  });
-                                                }
-                                              },
-                                              child: const Text('Add'),
-                                            ),
+                                          TextFormField(
+                                            decoration: const InputDecoration(
+                                                labelText: 'Enter Column Name'),
+                                            controller: message,
+                                            validator: (value) {
+                                              if (value == null ||
+                                                  value.isEmpty) {
+                                                return "Enter Something";
+                                              }
+                                              return null;
+                                            },
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(top: 20),
-                                            child: ElevatedButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text('Cancel'),
-                                            ),
-                                          )
+                                          Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                            crossAxisAlignment: CrossAxisAlignment
+                                                .end,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 20),
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    if (fkey.currentState!
+                                                        .validate()) {
+                                                      column_name.add(
+                                                          message.text);
+                                                      Navigator.pop(context);
+                                                      message.clear();
+                                                      setState(() {
+                                                        number = number + 1;
+                                                      });
+                                                    }
+                                                  },
+                                                  child: const Text('Add'),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 20),
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: const Text('Cancel'),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ],
                                       ),
-                                    ],
-                                  ),
-                                )),
-                          );
-                        });
-                  }
-                },
-                child: const Text.rich(
-                  TextSpan(
-                    children: [
+                                    )),
+                              );
+                            });
+                      }
+                    },
+                    child: const Text.rich(
                       TextSpan(
-                          text: 'Add a column',
-                          style: TextStyle(color: Colors.black, fontSize: 20)),
-                      WidgetSpan(child: Icon(Icons.add)),
-                      // TextSpan(text: 'to add'),
-                    ],
+                        children: [
+                          TextSpan(
+                              text: 'Add a column',
+                              style: TextStyle(
+                                  color: Colors.black, fontSize: 20)),
+                          WidgetSpan(child: Icon(Icons.add)),
+                          // TextSpan(text: 'to add'),
+                        ],
+                      ),
+                    )),),
+                Expanded(child: DropdownButton<String>(
+                  items: <String>[
+                    'A',
+                    'B',
+                    'C',
+                    'D',
+
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  hint: const Text('Select a blocks', style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600),
                   ),
-                )),
-            SizedBox(height: 20,),
+                  onChanged: (String? value){
+                    setState((){
+                      _chosenValue=value!;
+                    });
+                  },
+                ),),
+              ],
+            ),
+            const SizedBox(height: 20,),
             Padding(
-                padding: EdgeInsets.only(right: 210),
+                padding: const EdgeInsets.only(right: 210),
                 child: Text.rich(
                   TextSpan(
                     children: [
-                      TextSpan(
+                      const TextSpan(
                           text: 'Agency',
                           style: TextStyle(color: Colors.black, fontSize: 20)),
                       WidgetSpan(
                           child: SizedBox(
                             width: MediaQuery.of(context).devicePixelRatio,
                           )),
-                      WidgetSpan(child: Icon(Icons.more_horiz)),
+                      const WidgetSpan(child: Icon(Icons.more_horiz)),
                       // TextSpan(text: 'to add'),
                     ],
                   ),
@@ -243,18 +283,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
               ),
             ),
             Padding(
-                padding: EdgeInsets.only(right: 170),
+                padding: const EdgeInsets.only(right: 170),
                 child: Text.rich(
                   TextSpan(
                     children: [
-                      TextSpan(
+                      const TextSpan(
                           text: 'Description',
                           style: TextStyle(color: Colors.black, fontSize: 20)),
                       WidgetSpan(
                           child: SizedBox(
                             width: MediaQuery.of(context).devicePixelRatio,
                           )),
-                      WidgetSpan(child: Icon(Icons.more_horiz)),
+                      const WidgetSpan(child: Icon(Icons.more_horiz)),
                       // TextSpan(text: 'to add'),
                     ],
                   ),
@@ -279,18 +319,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
             ),
             //SizedBox(height: 10,),
             Padding(
-                padding: EdgeInsets.only(right:220),
+                padding: const EdgeInsets.only(right:220),
                 child: Text.rich(
                   TextSpan(
                     children: [
-                      TextSpan(
+                      const TextSpan(
                           text: 'Skilled',
                           style: TextStyle(color: Colors.black, fontSize: 20)),
                       WidgetSpan(
                           child: SizedBox(
                             width: MediaQuery.of(context).devicePixelRatio,
                           )),
-                      WidgetSpan(child: Icon(Icons.more_horiz)),
+                      const WidgetSpan(child: Icon(Icons.more_horiz)),
                       // TextSpan(text: 'to add'),
                     ],
                   ),
@@ -309,7 +349,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                   controller: number1,
                   autocorrect: true,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: '1',
                     border: InputBorder.none,
                   ),
@@ -318,18 +358,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
             ),
             //SizedBox(height: 10,),
             Padding(
-                padding: EdgeInsets.only(right: 200),
+                padding: const EdgeInsets.only(right: 200),
                 child: Text.rich(
                   TextSpan(
                     children: [
-                      TextSpan(
+                      const TextSpan(
                           text: 'Unskilled',
                           style: TextStyle(color: Colors.black, fontSize: 20)),
                       WidgetSpan(
                           child: SizedBox(
                             width: MediaQuery.of(context).devicePixelRatio,
                           )),
-                      WidgetSpan(child: Icon(Icons.more_horiz)),
+                      const WidgetSpan(child: Icon(Icons.more_horiz)),
                       // TextSpan(text: 'to add'),
                     ],
                   ),
@@ -348,7 +388,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                   controller: number2,
                   autocorrect: true,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: '1',
                     border: InputBorder.none,
                   ),
@@ -406,7 +446,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                               children: [
                                 TextSpan(
                                     text:column_name[i].toString(),
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.black, fontSize: 20)),
                                 WidgetSpan(
                                     child: SizedBox(
