@@ -15,16 +15,27 @@ class DrawerPage extends StatefulWidget {
 class _DrawerPageState extends State<DrawerPage> {
 
   late SharedPreferences logindata;
+  String name = "";
 
   @override
   void initState() {
 
     super.initState();
     initial();
+
+    if(name.isEmpty)
+      {
+        initial();
+      }
   }
 
   void initial() async{
     logindata = await SharedPreferences.getInstance();
+    name = logindata.getString("UserName")!;
+    if(name.isEmpty)
+    {
+      initial();
+    }
   }
 
   @override
@@ -40,12 +51,12 @@ class _DrawerPageState extends State<DrawerPage> {
               Navigator.of(context).pop();
             },
           ),
-          const ListTile(
+           ListTile(
             title: Align(
                 alignment: Alignment.centerRight,
-                child: Text('Vishwas',
-                    style: TextStyle(fontSize:20, fontFamily: 'Readxpro'))),
-            trailing: CircleAvatar(
+                child: Text(name,
+                    style: const TextStyle(fontSize:20, fontFamily: 'Readxpro'))),
+            trailing: const CircleAvatar(
               radius: 25,
               backgroundColor: Color(0xffFFFFFF),
               child: Center(
@@ -62,7 +73,6 @@ class _DrawerPageState extends State<DrawerPage> {
                     fontSize: 18)),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const ProjectPage()));
-              print('go to project');
             },
           ),
           ListTile(
@@ -75,7 +85,6 @@ class _DrawerPageState extends State<DrawerPage> {
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const DashboardPage()));
-              //print('go to Dashboard page');
             },
           ),
           ListTile(
@@ -86,7 +95,6 @@ class _DrawerPageState extends State<DrawerPage> {
                     fontFamily: 'Opensans',
                     fontSize: 18)),
             onTap: () {
-              print('go to profile');
             },
           ),
           ListTile(

@@ -57,7 +57,7 @@ class _AfterPageState extends State<AfterPage> {
                 onTap: () {
                   Navigator.of(context).pop();
                   Navigator.of(context).push(MaterialPageRoute(builder: (_) => const HomePage()) );
-                },
+                  },
               ),
             ),
             Positioned(
