@@ -22,20 +22,11 @@ class _DrawerPageState extends State<DrawerPage> {
 
     super.initState();
     initial();
-
-    if(name.isEmpty)
-      {
-        initial();
-      }
   }
 
   void initial() async{
     logindata = await SharedPreferences.getInstance();
     name = logindata.getString("UserName")!;
-    if(name.isEmpty)
-    {
-      initial();
-    }
   }
 
   @override

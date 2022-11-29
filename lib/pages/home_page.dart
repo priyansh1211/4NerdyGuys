@@ -21,14 +21,12 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     initial();
     super.initState();
-    if(name.isEmpty)
-      {
-        initState();
-      }
+
 
   }
 
   void initial() async {
+
     SharedPreferences? preferences = await SharedPreferences.getInstance();
     name = preferences.getString("UserName")!;
     print(MediaQuery.of(context).size.width);
