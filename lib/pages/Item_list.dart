@@ -44,15 +44,14 @@ class _ItemPageState extends State<ItemPage> {
                 children: [
 
                   Container(
-                    padding: const EdgeInsets.only(
-                      top: 80,
+                    padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height*0.0825 + 10,
                       left: 16,
                     ),
                     child: Row(
                       children: [
-                        Flexible(
+                        Expanded(
                           child: TextFormField(
-
                             decoration: const InputDecoration(
                                 filled: true,
                                 fillColor: Colors.white,
@@ -79,7 +78,7 @@ class _ItemPageState extends State<ItemPage> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.all(Radius.circular(10))
                             ),
-                            margin: const EdgeInsets.only(left: 80,
+                            margin: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.111111,
                                 right: 16),
                             child: Stack(
                               children: const [
@@ -103,10 +102,10 @@ class _ItemPageState extends State<ItemPage> {
                       ],
                     ),
                   ),
-                  const Positioned(
-                      top: 49+130,
+                  Positioned(
+                      top: MediaQuery.of(context).size.height * 0.17875 + 15,
                       left: 25,
-                      child: Text('My items')),
+                      child: Text('My items',style: TextStyle(fontSize: 25),)),
 
 
                   Positioned(

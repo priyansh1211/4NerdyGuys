@@ -29,6 +29,8 @@ class _LoginPageState extends State<LoginPage> {
 
   NetworkHandler p = NetworkHandler();
 
+  late String userName;
+
   @override
   void initState() {
 
@@ -67,10 +69,9 @@ class _LoginPageState extends State<LoginPage> {
                           const SizedBox(
                             height: 20,
                           ),
-                          Expanded(
-                            child: Image.asset(
+                          Image.asset(
                                 'assets/images/login_page_pic.jpeg'),
-                          ),
+
                           Container(
                             width: MediaQuery
                                 .of(context)
@@ -228,20 +229,20 @@ class _LoginPageState extends State<LoginPage> {
                                       map['password'] = _passwordCtrler.text;
                                       if (_userEmailCtrler.text.isNotEmpty &&
                                           _passwordCtrler.text.isNotEmpty) {
-                                        bool? response = await p.loginApi({"email": _userEmailCtrler.text.toString(), "password" : _passwordCtrler.text.toString()});
+                                        List? response = await p.loginApi({"email": _userEmailCtrler.text.toString(), "password" : _passwordCtrler.text.toString()});
                                         //     as Map<String, dynamic>;
                                         SharedPreferences? preferences =
                                         await SharedPreferences.getInstance();
                                         // print("REQUEST: ====================> " +
                                         //     response.toString());
                                         setState(() {
-                                          if (response == true) {
+                                          if (response!.isNotEmpty) {
 
                                             logindata.setBool("login", false);
 
                                             preferences.setString(
                                                 "UserName",
-                                                _userEmailCtrler.text);
+                                                response[0]["username"].toString());
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
@@ -296,7 +297,8 @@ class _LoginPageState extends State<LoginPage> {
                                             fontSize: 20,
                                             fontFamily: 'ReadexPro'),
                                       ),
-                                    )
+                                    ),
+
                                   ],
                                 ),
                               ],

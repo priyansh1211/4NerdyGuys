@@ -45,7 +45,7 @@ class _ContactPageState extends State<ContactPage> {
                       Positioned(
                         top: 60,
                         left: MediaQuery.of(context).size.width*0.5 - 130,
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'How can we help you?',
                             style: TextStyle(fontSize: 30),
@@ -99,7 +99,7 @@ class _ContactPageState extends State<ContactPage> {
             Stack(
               children: [
                 Container(
-                  color: Color(0xffE5E5E5),
+                  color: const Color(0xffE5E5E5),
                   // margin: EdgeInsets.only(
                   //     top: MediaQuery.of(context).size.height * 0.4575),
                   padding: const EdgeInsets.only(left: 30, right: 30),
@@ -197,7 +197,7 @@ class _ContactPageState extends State<ContactPage> {
                       Container(
                         height: 60,
                         width: 200,
-                        margin: EdgeInsets.only(bottom: 20),
+                        margin: const EdgeInsets.only(bottom: 20),
                         child: FloatingActionButton.extended(
                           onPressed: () async {
                             bool? response = await p.contactDeveloper({

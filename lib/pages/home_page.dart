@@ -4,6 +4,7 @@ import 'package:flutter_app/pages/Contact_Us.dart';
 import 'package:flutter_app/pages/DashboardPage.dart';
 import 'package:flutter_app/pages/Project.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,6 +14,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  String name = "";
+
+  @override
+  void initState() {
+    initial();
+    super.initState();
+
+
+  }
+
+  void initial() async {
+
+    SharedPreferences? preferences = await SharedPreferences.getInstance();
+    name = preferences.getString("UserName")!;
+    print(MediaQuery.of(context).size.width);
+
+  }
+
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
@@ -35,8 +55,8 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Positioned(
-            left: 330,
-            top: 50,
+            left: MediaQuery.of(context).size.width*0.875,
+            top: 35,
             child: Builder(
               builder: (context) => IconButton(
                 icon: Icon(Icons.menu),
@@ -72,9 +92,9 @@ class _HomePageState extends State<HomePage> {
           ),
           Positioned(
             top: screensize.height * 0.3675 + 37,
-            left: screensize.width * 0.5 - 65,
-            child: const Text(
-              "VISHWAS",
+            left: screensize.width * 0.5 - 40 - name.length,
+            child:Text(
+              name,
               style: TextStyle(
                 fontSize: 30,
                 fontFamily: 'ReadexPro',
