@@ -63,13 +63,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
   //String? _chosenValue;
   List<String> column_name =['Remarks'];
   int number = 1;
+  int number_agency=1;
+  int number_work=1;
   final fkey = GlobalKey<FormState>();
+  //final fkey_agency=GlobalKey<FormState>();
   TextEditingController message = TextEditingController();
-
+  TextEditingController msg_agency = TextEditingController();
+  TextEditingController msg_work = TextEditingController();
+  TextEditingController number1 = TextEditingController();
+  TextEditingController number2 = TextEditingController();
+  String resulttext = "0";
   @override
   Widget build(BuildContext context) {
-    final number1 = TextEditingController();
-    final number2 = TextEditingController();
     return Scaffold(
       backgroundColor: const Color(0xffE5E5E5),
       appBar: AppBar(
@@ -109,8 +114,11 @@ class _ManPowerReportState extends State<ManPowerReport> {
         child: Column(
           children: [
             Row(
+              //crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Expanded(child: OutlinedButton(
+                const SizedBox(width: 10,),
+                OutlinedButton(
                     onPressed: () {
                       {
                         showDialog(
@@ -186,200 +194,105 @@ class _ManPowerReportState extends State<ManPowerReport> {
                     },
                     child: const Text.rich(
                       TextSpan(
-                          children: [
-                            TextSpan(
-                                text: 'Add a column',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 20)),
-                            WidgetSpan(child: Icon(Icons.add)),
-                            // TextSpan(text: 'to add'),
-                          ],
-                        ),
-                      )),),
-                Expanded(
-                  child: DropdownButton(
-                    hint:Text("Select a block") ,
-                      value: selectedValue,
-                      icon: Icon(Icons.keyboard_arrow_down),
-                      items: Blocks.map((String items){
-                        return DropdownMenuItem(
-                            value: items,
-                            child: Text(items),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue){
-                        setState((){
-                           selectedValue = newValue!;
-                          //selectedValue=newValue!;
-                        });
-                      },
-                  ),
+                        children: [
+                          TextSpan(
+                              text: 'Add a column',
+                              style: TextStyle(
+                                  color: Colors.black, fontSize: 20)),
+                          WidgetSpan(child: Icon(Icons.add)),
+                          // TextSpan(text: 'to add'),
+                        ],
+                      ),
+                    )),
+                 const SizedBox(width: 10,),
+                DropdownButton(
+                  hint:Text(selectedValue),
+                  // value: selectedValue,
+                  icon: const Icon(Icons.keyboard_arrow_down),
+                  items: Blocks.map((String items){
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue){
+                    setState((){
+                      selectedValue = newValue!;
+                      //selectedValue=newValue!;
+                    });
+                  },
                 ),
+                const SizedBox(width: 10,),
               ],
             ),
             const SizedBox(height: 20,),
-            Padding(
-                padding: const EdgeInsets.only(right: 210),
-                child: Text.rich(
-                  TextSpan(
-                    children: [
-                      const TextSpan(
-                          text: 'Agency',
-                          style: TextStyle(color: Colors.black, fontSize: 20)),
-                      WidgetSpan(
-                          child: SizedBox(
-                            width: MediaQuery.of(context).devicePixelRatio,
-                          )),
-                      const WidgetSpan(child: Icon(Icons.add_circle_outline)),
-                      // TextSpan(text: 'to add'),
-                    ],
-                  ),
-                )),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Container(
-                padding: const EdgeInsets.only(left: 20),
-                height: 50,
-                margin: const EdgeInsets.only(right: 150),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: const TextField(
-                  decoration: InputDecoration(
-                    // hintText: '-Give Work Description-',
-                    border: InputBorder.none,
-                  ),
+          OutlinedButton(
+              onPressed: () {
+                {
+                  setState((){
+                    number_agency=number_agency+1;
+                  });
+                }
+              },
+              child: const Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                        text: 'Agency',
+                        style: TextStyle(
+                            color: Colors.black, fontSize: 20)),
+                    WidgetSpan(child: Icon(Icons.add)),
+                    // TextSpan(text: 'to add'),
+                  ],
                 ),
               ),
-            ),
-            Padding(
-                padding: const EdgeInsets.only(right: 170),
-                child: Text.rich(
-                  TextSpan(
-                    children: [
-                      const TextSpan(
-                          text: 'Description',
-                          style: TextStyle(color: Colors.black, fontSize: 20)),
-                      WidgetSpan(
-                          child: SizedBox(
-                            width: MediaQuery.of(context).devicePixelRatio,
-                          )),
-                      const WidgetSpan(child: Icon(Icons.more_horiz)),
-                      // TextSpan(text: 'to add'),
-                    ],
-                  ),
-                )),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Container(
-                padding: const EdgeInsets.only(left: 20),
-                height: 50,
-                margin: const EdgeInsets.only(right: 100),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: const TextField(
-                  decoration: InputDecoration(
-                    hintText: '-Give Work Description-',
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
-            ),
-            //SizedBox(height: 10,),
-            Padding(
-                padding: const EdgeInsets.only(right:220),
-                child: Text.rich(
-                  TextSpan(
-                    children: [
-                      const TextSpan(
-                          text: 'Skilled',
-                          style: TextStyle(color: Colors.black, fontSize: 20)),
-                      WidgetSpan(
-                          child: SizedBox(
-                            width: MediaQuery.of(context).devicePixelRatio,
-                          )),
-                      const WidgetSpan(child: Icon(Icons.more_horiz)),
-                      // TextSpan(text: 'to add'),
-                    ],
-                  ),
-                )),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Container(
-                padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
-                height: 55,
-                margin: const EdgeInsets.only(right: 260),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: TextField(
-                  controller: number1,
-                  autocorrect: true,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    hintText: '1',
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
-            ),
-            //SizedBox(height: 10,),
-            Padding(
-                padding: const EdgeInsets.only(right: 200),
-                child: Text.rich(
-                  TextSpan(
-                    children: [
-                      const TextSpan(
-                          text: 'Unskilled',
-                          style: TextStyle(color: Colors.black, fontSize: 20)),
-                      WidgetSpan(
-                          child: SizedBox(
-                            width: MediaQuery.of(context).devicePixelRatio,
-                          )),
-                      const WidgetSpan(child: Icon(Icons.more_horiz)),
-                      // TextSpan(text: 'to add'),
-                    ],
-                  ),
-                )),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Container(
-                padding: const EdgeInsets.only(left: 10, top: 8, bottom: 8),
-                height: 55,
-                margin: const EdgeInsets.only(right: 260),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: TextField(
-                  controller: number2,
-                  autocorrect: true,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    hintText: '1',
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
-            ),
-            //SizedBox(height: 10,),
+          ),
             // Padding(
-            //     padding: const EdgeInsets.only(right: 190),
+            //     padding: const EdgeInsets.only(right: 210),
             //     child: Text.rich(
             //       TextSpan(
             //         children: [
             //           const TextSpan(
-            //               text: 'Remarks',
-            //               style: TextStyle(
-            //                   color: Colors.black, fontSize: 20)),
+            //               text: 'Agency',
+            //               style: TextStyle(color: Colors.black, fontSize: 20)),
             //           WidgetSpan(
             //               child: SizedBox(
-            //                 width:
-            //                 MediaQuery.of(context).devicePixelRatio,
+            //                 width: MediaQuery.of(context).devicePixelRatio,
+            //               )),
+            //           const WidgetSpan(child: Icon(Icons.add_circle_outline)),
+            //           // TextSpan(text: 'to add'),
+            //         ],
+            //       ),
+            //     )),
+            // Padding(
+            //   padding: const EdgeInsets.all(20),
+            //   child: Container(
+            //     padding: const EdgeInsets.only(left: 20),
+            //     height: 50,
+            //     margin: const EdgeInsets.only(right: 150),
+            //     decoration: BoxDecoration(
+            //       color: Colors.white,
+            //       borderRadius: BorderRadius.circular(20),
+            //     ),
+            //     child: const TextField(
+            //       decoration: InputDecoration(
+            //         // hintText: '-Give Work Description-',
+            //         border: InputBorder.none,
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // Padding(
+            //     padding: const EdgeInsets.only(right: 170),
+            //     child: Text.rich(
+            //       TextSpan(
+            //         children: [
+            //           const TextSpan(
+            //               text: 'Description',
+            //               style: TextStyle(color: Colors.black, fontSize: 20)),
+            //           WidgetSpan(
+            //               child: SizedBox(
+            //                 width: MediaQuery.of(context).devicePixelRatio,
             //               )),
             //           const WidgetSpan(child: Icon(Icons.more_horiz)),
             //           // TextSpan(text: 'to add'),
@@ -389,7 +302,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
             // Padding(
             //   padding: const EdgeInsets.all(20),
             //   child: Container(
-            //     padding: const EdgeInsets.only(left: 12),
+            //     padding: const EdgeInsets.only(left: 20),
             //     height: 50,
             //     margin: const EdgeInsets.only(right: 100),
             //     decoration: BoxDecoration(
@@ -398,11 +311,363 @@ class _ManPowerReportState extends State<ManPowerReport> {
             //     ),
             //     child: const TextField(
             //       decoration: InputDecoration(
+            //         hintText: '-Give Work Description-',
             //         border: InputBorder.none,
             //       ),
             //     ),
             //   ),
             // ),
+            // //SizedBox(height: 10,),
+            // Padding(
+            //     padding: const EdgeInsets.only(right:220),
+            //     child: Text.rich(
+            //       TextSpan(
+            //         children: [
+            //           const TextSpan(
+            //               text: 'Skilled',
+            //               style: TextStyle(color: Colors.black, fontSize: 20)),
+            //           WidgetSpan(
+            //               child: SizedBox(
+            //                 width: MediaQuery.of(context).devicePixelRatio,
+            //               )),
+            //           const WidgetSpan(child: Icon(Icons.more_horiz)),
+            //           // TextSpan(text: 'to add'),
+            //         ],
+            //       ),
+            //     )),
+            // Padding(
+            //   padding: const EdgeInsets.all(20),
+            //   child: Container(
+            //     padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
+            //     height: 55,
+            //     margin: const EdgeInsets.only(right: 260),
+            //     decoration: BoxDecoration(
+            //       color: Colors.white,
+            //       borderRadius: BorderRadius.circular(20),
+            //     ),
+            //     child: TextField(
+            //       controller: number1,
+            //       autocorrect: true,
+            //       keyboardType: TextInputType.number,
+            //       decoration: const InputDecoration(
+            //         hintText: '1',
+            //         border: InputBorder.none,
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // //SizedBox(height: 10,),
+            // Padding(
+            //     padding: const EdgeInsets.only(right: 200),
+            //     child: Text.rich(
+            //       TextSpan(
+            //         children: [
+            //           const TextSpan(
+            //               text: 'Unskilled',
+            //               style: TextStyle(color: Colors.black, fontSize: 20)),
+            //           WidgetSpan(
+            //               child: SizedBox(
+            //                 width: MediaQuery.of(context).devicePixelRatio,
+            //               )),
+            //           const WidgetSpan(child: Icon(Icons.more_horiz)),
+            //           // TextSpan(text: 'to add'),
+            //         ],
+            //       ),
+            //     )),
+            // Padding(
+            //   padding: const EdgeInsets.all(20),
+            //   child: Container(
+            //     padding: const EdgeInsets.only(left: 10, top: 8, bottom: 8),
+            //     height: 55,
+            //     margin: const EdgeInsets.only(right: 260),
+            //     decoration: BoxDecoration(
+            //       color: Colors.white,
+            //       borderRadius: BorderRadius.circular(20),
+            //     ),
+            //     child: TextField(
+            //       controller: number2,
+            //       autocorrect: true,
+            //       keyboardType: TextInputType.number,
+            //       decoration: const InputDecoration(
+            //         hintText: '1',
+            //         border: InputBorder.none,
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // //SizedBox(height: 10,),
+            // // Padding(
+            // //     padding: const EdgeInsets.only(right: 190),
+            // //     child: Text.rich(
+            // //       TextSpan(
+            // //         children: [
+            // //           const TextSpan(
+            // //               text: 'Remarks',
+            // //               style: TextStyle(
+            // //                   color: Colors.black, fontSize: 20)),
+            // //           WidgetSpan(
+            // //               child: SizedBox(
+            // //                 width:
+            // //                 MediaQuery.of(context).devicePixelRatio,
+            // //               )),
+            // //           const WidgetSpan(child: Icon(Icons.more_horiz)),
+            // //           // TextSpan(text: 'to add'),
+            // //         ],
+            // //       ),
+            // //     )),
+            // // Padding(
+            // //   padding: const EdgeInsets.all(20),
+            // //   child: Container(
+            // //     padding: const EdgeInsets.only(left: 12),
+            // //     height: 50,
+            // //     margin: const EdgeInsets.only(right: 100),
+            // //     decoration: BoxDecoration(
+            // //       color: Colors.white,
+            // //       borderRadius: BorderRadius.circular(20),
+            // //     ),
+            // //     child: const TextField(
+            // //       decoration: InputDecoration(
+            // //         border: InputBorder.none,
+            // //       ),
+            // //     ),
+            // //   ),
+            // // ),
+            //agency listview.builder
+            ListView.builder(
+              physics: const ScrollPhysics(parent: null),
+              shrinkWrap: true,
+              itemBuilder: (BuildContext context, int i) {
+                return SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Padding(
+                          padding: const EdgeInsets.only(right: 210),
+                          child: Text.rich(
+                            TextSpan(
+                              children: [
+                                const TextSpan(
+                                    text: 'Agency',
+                                    style: TextStyle(color: Colors.black, fontSize: 20)),
+                                WidgetSpan(
+                                    child: SizedBox(
+                                      width: MediaQuery.of(context).devicePixelRatio,
+                                    )),
+                                const WidgetSpan(child: Icon(Icons.add_sharp)),
+                                // TextSpan(text: 'to add'),
+                              ],
+                            ),
+                          )),
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 20),
+                          height: 50,
+                          margin: const EdgeInsets.only(right: 150),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const TextField(
+                            decoration: InputDecoration(
+                              // hintText: '-Give Work Description-',
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                      OutlinedButton(
+                        onPressed: () {
+                          {
+                            setState((){
+                              number_work=number_work+1;
+                            });
+                          }
+                        },
+                        child: const Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                  text: 'Agency',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 20)),
+                              WidgetSpan(child: Icon(Icons.add)),
+                              // TextSpan(text: 'to add'),
+                            ],
+                          ),
+                        ),
+                      ),
+                      ListView.builder(
+                        physics: ScrollPhysics(parent: null),
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context,int i){
+                          return Column(
+                            children: [
+                              Padding(
+                                  padding: const EdgeInsets.only(right: 170),
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        const TextSpan(
+                                            text: 'Work Description',
+                                            style: TextStyle(color: Colors.black, fontSize: 20)),
+                                        WidgetSpan(
+                                            child: SizedBox(
+                                              width: MediaQuery.of(context).devicePixelRatio,
+                                            )),
+                                        const WidgetSpan(child: Icon(Icons.more_horiz)),
+                                        // TextSpan(text: 'to add'),
+                                      ],
+                                    ),
+                                  )),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Container(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  height: 50,
+                                  margin: const EdgeInsets.only(right: 100),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      hintText: '-Give Work Description-',
+                                      border: InputBorder.none,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              //SizedBox(height: 10,),
+                              Padding(
+                                  padding: const EdgeInsets.only(right:220),
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        const TextSpan(
+                                            text: 'Skilled',
+                                            style: TextStyle(color: Colors.black, fontSize: 20)),
+                                        WidgetSpan(
+                                            child: SizedBox(
+                                              width: MediaQuery.of(context).devicePixelRatio,
+                                            )),
+                                        // const WidgetSpan(child: Icon(Icons.more_horiz)),
+                                        // TextSpan(text: 'to add'),
+                                      ],
+                                    ),
+                                  ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Container(
+                                  padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
+                                  height: 55,
+                                  margin: const EdgeInsets.only(right: 260),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: TextField(
+                                    controller: number1,
+                                    autocorrect: true,
+                                    keyboardType: TextInputType.number,
+                                    decoration: const InputDecoration(
+                                      hintText: '1',
+                                      border: InputBorder.none,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              //SizedBox(height: 10,),
+                              Padding(
+                                  padding: const EdgeInsets.only(right: 200),
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        const TextSpan(
+                                            text: 'Unskilled',
+                                            style: TextStyle(color: Colors.black, fontSize: 20)),
+                                        WidgetSpan(
+                                            child: SizedBox(
+                                              width: MediaQuery.of(context).devicePixelRatio,
+                                            )),
+                                        const WidgetSpan(child: Icon(Icons.more_horiz)),
+                                        // TextSpan(text: 'to add'),
+                                      ],
+                                    ),
+                                  )),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Container(
+                                  padding: const EdgeInsets.only(left: 10, top: 8, bottom: 8),
+                                  height: 55,
+                                  margin: const EdgeInsets.only(right: 260),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: TextField(
+                                    controller: number2,
+                                    autocorrect: true,
+                                    keyboardType: TextInputType.number,
+                                    decoration: const InputDecoration(
+                                      hintText: '1',
+                                      border: InputBorder.none,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                  padding: const EdgeInsets.only(right:220),
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        const TextSpan(
+                                            text: 'Total',
+                                            style: TextStyle(color: Colors.black, fontSize: 20)),
+                                        WidgetSpan(
+                                            child: SizedBox(
+                                              width: MediaQuery.of(context).devicePixelRatio,
+                                            )),
+                                        const WidgetSpan(child: Icon(Icons.more_horiz)),
+                                        // TextSpan(text: 'to add'),
+                                      ],
+                                    ),
+                                  )),
+                              SizedBox(height: 10,),
+                              Container(
+                                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.04),
+                                height: 62,
+                                margin: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.775),
+                                child: FloatingActionButton(
+                                  onPressed: (){
+                                    setState(() {
+                                      int total = int.parse(number1.text)+int.parse(number2.text);
+                                      resulttext = total.toString();
+                                    });
+                                  },
+                                  child: Text(resulttext,style: TextStyle(color: Colors.black),),
+                                  backgroundColor: Colors.white,
+                                  isExtended: true,
+
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                  elevation: 0,
+                                ),
+                                // padding: EdgeInsets.only(right: 0),
+                              ),
+                              SizedBox(height: 10,),
+                            ],
+                          );
+                        },
+                      ),
+
+                    ],
+                  ),
+                );
+              },
+              itemCount: number_agency,
+
+            ),
+            //column listview.builder
             ListView.builder(
               physics: const ScrollPhysics(parent: null),
               shrinkWrap: true,

@@ -147,7 +147,7 @@ class _InventoryPageState extends State<InventoryPage> {
                       ),
                     ),
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ItemPage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ItemPage(projectName: '',)));
                     },);
 
                   }),
