@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
 import 'package:flutter_app/pages/ActiveEmployees.dart';
 import 'package:flutter_app/pages/Contact_Us.dart';
 import 'package:flutter_app/pages/DashboardPage.dart';
@@ -11,35 +12,43 @@ class HomePage extends StatefulWidget {
 
   @override
   State<HomePage> createState() => _HomePageState();
+
 }
 
 class _HomePageState extends State<HomePage> {
 
   String name = "";
+  
+  NetworkHandler p = NetworkHandler();
 
   @override
   void initState() {
-    initial();
+    initial().then(updateName);
     super.initState();
-
-
   }
 
-  void initial() async {
 
+  Future <String> initial() async {
     SharedPreferences? preferences = await SharedPreferences.getInstance();
     name = preferences.getString("UserName")!;
-    print(MediaQuery.of(context).size.width);
+    return name;
+  }
 
+  void updateName(String name) {
+    setState(() {
+      this.name = name;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
     return Scaffold(
-        endDrawer: DrawerPage(),
+        endDrawer: const DrawerPage(),
         body: Center(
-            child: Stack(children: [
+            child: Stack(
+                alignment: Alignment.center,
+                children: [
           Container(
             decoration: const BoxDecoration(
               color: Color(0xffE5E5E5),
@@ -59,16 +68,16 @@ class _HomePageState extends State<HomePage> {
             top: 35,
             child: Builder(
               builder: (context) => IconButton(
-                icon: Icon(Icons.menu),
+                icon: const Icon(Icons.menu),
                 onPressed: () => Scaffold.of(context).openEndDrawer(),
                 tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-                color: Color(0xff000000),
+                color: const Color(0xff000000),
                 iconSize: 30,
               ),
             ),
           ),
           const Positioned(
-            left: 30,
+           left: 30,
             top: 50,
             child: Text(
               "Home",
@@ -90,17 +99,44 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+
+
+
           Positioned(
             top: screensize.height * 0.3675 + 37,
-            left: screensize.width * 0.5 - 40 - name.length,
+            //left: screensize.width * 0.5 - 40 - name.length,
             child:Text(
               name,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 30,
                 fontFamily: 'ReadexPro',
               ),
             ),
           ),
+          // FutureBuilder(builder: (context,snapshot) {
+          //   if(ConnectionState == ConnectionState.waiting)
+          //     {
+          //       return Container(width: MediaQuery.of(context).size.width,height: MediaQuery.of(context).size.height,color: Colors.white,child: const Center(child: CircularProgressIndicator(),),);
+          //     }
+          //   if(snapshot.hasData)
+          //     {
+          //       return Positioned(
+          //           top: screensize.height * 0.3675 + 37,
+          //           left: screensize.width * 0.5 - 40,// - name.length,
+          //           child:Text(
+          //             snapshot.data!.toString(),
+          //             style: const TextStyle(
+          //               fontSize: 30,
+          //               fontFamily: 'ReadexPro',
+          //             ),
+          //           ),
+          //         );
+          //     }
+          //     return const Text("Something Went Wrong");
+          // },
+          //   future: p.Username({"email" : email}),
+          // ),
+
           Container(
             width: MediaQuery.of(context).size.width,
             margin: EdgeInsets.only(

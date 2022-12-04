@@ -52,6 +52,7 @@ class _ItemPageState extends State<ItemPage> {
                       children: [
                         Expanded(
                           child: TextFormField(
+
                             decoration: const InputDecoration(
                                 filled: true,
                                 fillColor: Colors.white,

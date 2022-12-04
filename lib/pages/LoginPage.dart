@@ -243,6 +243,9 @@ class _LoginPageState extends State<LoginPage> {
                                             preferences.setString(
                                                 "UserName",
                                                 response[0]["username"].toString());
+                                            preferences.setString(
+                                                "Email",
+                                                response[0]["email"].toString());
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(

@@ -19,14 +19,25 @@ class _DrawerPageState extends State<DrawerPage> {
 
   @override
   void initState() {
-
+    initial().then(updateName);
     super.initState();
-    initial();
   }
 
-  void initial() async{
-    logindata = await SharedPreferences.getInstance();
-    name = logindata.getString("UserName")!;
+
+  Future <String> initial() async {
+    SharedPreferences? preferences = await SharedPreferences.getInstance();
+    name = preferences.getString("UserName")!;
+    return name;
+  }
+  Future <void> logout() async {
+    SharedPreferences? preferences = await SharedPreferences.getInstance();
+     preferences.setBool('login',true);
+  }
+
+  void updateName(String name) {
+    setState(() {
+      this.name = name;
+    });
   }
 
   @override
@@ -107,7 +118,7 @@ class _DrawerPageState extends State<DrawerPage> {
                 child: const Text('Log out', style: TextStyle(fontSize: 18)),
                 onTap: () {
 
-                  logindata.setBool("login", true);
+                  logout();
 
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const LoginPage()));

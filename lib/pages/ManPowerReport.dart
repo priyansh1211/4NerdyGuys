@@ -1,6 +1,4 @@
 import 'dart:core';
-
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/MachineryReport.dart';
 import 'package:get/get.dart';
@@ -13,47 +11,43 @@ class ManPowerReport extends StatefulWidget {
 }
 
 class _ManPowerReportState extends State<ManPowerReport> {
-  late String _chosenValue;
-  final List<String> items = [
-    'Add new column',
-  ];
-  final List<String> Agency = [
-    'Steel',
-    'Shuttering',
-    'Concrete',
-    'Brick Masonary',
-  ];
+  // String? _chosenValue;
 
-  String? selectedValue;
+  // final List<String> items = [
+  //   'Add new column',
+  // ];
+  List<String> Blocks = ['A', 'B', 'C', 'D', 'E', 'F'];
 
-  List<DropdownMenuItem<String>> _addDividersAfterItems(List<String> items) {
-    List<DropdownMenuItem<String>> menuItems = [];
-    for (var item in items) {
-      menuItems.addAll(
-        [
-          DropdownMenuItem<String>(
-            value: item,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text(
-                item,
-                style: const TextStyle(
-                  fontSize: 14,
-                ),
-              ),
-            ),
-          ),
-          //If it's last item, we will not add Divider after it.
-          if (item != items.last)
-            const DropdownMenuItem<String>(
-              enabled: false,
-              child: Divider(),
-            ),
-        ],
-      );
-    }
-    return menuItems;
-  }
+  String selectedValue="Select a block";
+
+  // List<DropdownMenuItem<String>> _addDividersAfterItems(List<String> items) {
+  //   List<DropdownMenuItem<String>> menuItems = [];
+  //   for (var item in items) {
+  //     menuItems.addAll(
+  //       [
+  //         DropdownMenuItem<String>(
+  //           value: item,
+  //           child: Padding(
+  //             padding: const EdgeInsets.symmetric(horizontal: 8.0),
+  //             child: Text(
+  //               item,
+  //               style: const TextStyle(
+  //                 fontSize: 14,
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //         //If it's last item, we will not add Divider after it.
+  //         if (item != items.last)
+  //           const DropdownMenuItem<String>(
+  //             enabled: false,
+  //             child: Divider(),
+  //           ),
+  //       ],
+  //     );
+  //   }
+  //   return menuItems;
+  // }
 
   /*List<int> _getDividersIndexes() {
     List<int> dividersIndexes = [];
@@ -115,8 +109,10 @@ class _ManPowerReportState extends State<ManPowerReport> {
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(child: OutlinedButton(
+                SizedBox(width: 50,),
+                OutlinedButton(
                     onPressed: () {
                       {
                         showDialog(
@@ -201,31 +197,26 @@ class _ManPowerReportState extends State<ManPowerReport> {
                           // TextSpan(text: 'to add'),
                         ],
                       ),
-                    )),),
-                Expanded(child: DropdownButton<String>(
-                  items: <String>[
-                    'A',
-                    'B',
-                    'C',
-                    'D',
-
-                  ].map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
+                    )),
+                SizedBox(width: 50,),
+                DropdownButton(
+                  hint:Text(selectedValue) ,
+                  icon: Icon(Icons.keyboard_arrow_down),
+                  items: Blocks.map((String items){
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
                     );
                   }).toList(),
-                  hint: const Text('Select a blocks', style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600),
-                  ),
-                  onChanged: (String? value){
+                  onChanged: (String? newValue){
                     setState((){
-                      _chosenValue=value!;
+                      selectedValue = newValue!;
+                      //selectedValue=newValue!;
                     });
                   },
-                ),),
+                ),
+                SizedBox(width: 50,),
+
               ],
             ),
             const SizedBox(height: 20,),
@@ -241,7 +232,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                           child: SizedBox(
                             width: MediaQuery.of(context).devicePixelRatio,
                           )),
-                      const WidgetSpan(child: Icon(Icons.more_horiz)),
+                      const WidgetSpan(child: Icon(Icons.add_circle_outline)),
                       // TextSpan(text: 'to add'),
                     ],
                   ),
@@ -256,28 +247,10 @@ class _ManPowerReportState extends State<ManPowerReport> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton2(
-                    isExpanded: true,
-                    hint: const TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: '-Select Agency-',
-                      ),
-                    ),
-                    items: _addDividersAfterItems(Agency),
-                    //customItemsIndexes: _getDividersIndexes(),
-                    //customItemsHeight: 4,
-                    value: selectedValue,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedValue = value as String;
-                      });
-                    },
-                    buttonHeight: 40,
-                    buttonWidth: 140,
-                    itemHeight: 40,
-                    itemPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: const TextField(
+                  decoration: InputDecoration(
+                    // hintText: '-Give Work Description-',
+                    border: InputBorder.none,
                   ),
                 ),
               ),

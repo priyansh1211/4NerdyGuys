@@ -1,10 +1,7 @@
-//import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/pages/home_page.dart';
 import 'package:get/get.dart';
-
 import './pages/ForgotPassword.dart';
 import './pages/LoginPage.dart';
 import './pages/ResetPassword.dart';
@@ -29,12 +26,13 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   autoLogin() async{
     SharedPreferences  prefs = await SharedPreferences.getInstance();
-    bool? LoggedIn = prefs.getBool('LoggedIn');
+    bool? LoggedIn = prefs.getBool('login');
+    String? name = prefs.getString('UserName');
 
-    if(LoggedIn==true){
-      return HomePage();
+    if(LoggedIn != true){
+      return const HomePage();
     }else{
-      return SignUp();
+      return const SignUp();
     }
   }
 
@@ -49,7 +47,7 @@ class MyApp extends StatelessWidget {
           if (snapshot.hasData){
             return snapshot.data;
           }else{
-            return SignUp();
+            return const SignUp();
           }
       },
 
