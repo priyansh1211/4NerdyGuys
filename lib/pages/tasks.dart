@@ -8,6 +8,15 @@ class TasksPage extends StatefulWidget {
 }
 
 class _TasksPageState extends State<TasksPage> {
+  List Listfordate = [
+    '1-8',
+  ];
+  List Listfortask = [
+    'After finishing work',
+  ];
+  final fkey = GlobalKey<FormState>();
+  TextEditingController for_date = TextEditingController();
+  TextEditingController for_task = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
@@ -65,18 +74,100 @@ class _TasksPageState extends State<TasksPage> {
                       child: Icon(Icons.calendar_today, size: 25),
                     ),
                     Container(
+                      margin: EdgeInsets.only(left: screensize.width * 0.02),
                       child: Text(
-                        '+ Add Task',
+                        'Add Task',
                         style: TextStyle(fontFamily: 'Readxpro', fontSize: 25),
                       ),
                     ),
                   ],
                 ),
+                onTap: () {
+                  showDialog(
+                      barrierDismissible: true,
+                      context: context,
+                      builder: (_){
+                        return AlertDialog(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                          content: Form(
+                            key: fkey,
+                            child: SizedBox(
+                              width: 100,
+                              height: 230,
+                              child: Column(
+                                children: [
+                                  TextFormField(
+                                    decoration: InputDecoration(
+                                      labelText: 'Enter date ',
+                                    ),
+                                    controller: for_date,
+                                    validator: (value){
+                                      if (value == null || value.isEmpty) {
+                                        return "Enter Date";
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                  TextFormField(
+                                    decoration: InputDecoration(
+                                      labelText: "Enter Task Detail",
+                                    ),
+                                    controller: for_task,
+                                    validator: (value){
+                                      if(value == null || value.isEmpty){
+                                        return "Enter about Task";
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 20),
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            if(fkey.currentState!.validate()){
+                                              Listfordate.add({
+                                                for_date.text
+                                              });
+                                              Listfortask.add({
+                                                for_task.text
+                                              });
+                                              Navigator.pop(context);
+                                              for_date.clear();
+                                              for_task.clear();
+                                              setState(() {});
+                                            }
+                                          },
+                                          child: const Text('Add'),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 20,),
+                                        child: ElevatedButton (
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text('Cancel'),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                  );
+                },
               ),
             ),
             Container(
               width: screensize.width * 0.91,
-              height: screensize.height * 0.17625,
+              height: screensize.height * 0.15625,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24.0),
                 color: const Color(0xffBDE6F1),
@@ -98,9 +189,9 @@ class _TasksPageState extends State<TasksPage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(
-                      top: screensize.height * (0.01 / 6),
-                    ),
+                    /*margin: EdgeInsets.only(
+                      top: screensize.height * 0.0001,
+                    ),*/
                     child: Text(
                       'After finishing \nShow reports to sir',
                       style: TextStyle(fontSize: 20, fontFamily: 'Readxpro'),
@@ -111,13 +202,13 @@ class _TasksPageState extends State<TasksPage> {
             ),
             Container(
               width: screensize.width * 0.91,
-              height: screensize.height * 0.17625,
+              height: screensize.height * 0.15625,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24.0),
                 color: const Color(0xffBDE6F1),
               ),
               margin: EdgeInsets.only(
-                top: screensize.height * 0.37125,
+                top: screensize.height * 0.36125,
                 left: screensize.width * 0.04,
               ),
               child: Column(
@@ -134,7 +225,7 @@ class _TasksPageState extends State<TasksPage> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: screensize.height * (0.01 / 6),
+                        //top: screensize.height * (0.01 / 6),
                         left: screensize.width * 0.105),
                     child: Text(
                       'Check Progress in block',
@@ -146,13 +237,13 @@ class _TasksPageState extends State<TasksPage> {
             ),
             Container(
               width: screensize.width * 0.91,
-              height: screensize.height * 0.17625,
+              height: screensize.height * 0.15625,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24.0),
                 color: const Color(0xffBDE6F1),
               ),
               margin: EdgeInsets.only(
-                top: screensize.height * 0.56125,
+                top: screensize.height * 0.54125,
                 left: screensize.width * 0.04,
               ),
               child: Column(
@@ -181,13 +272,13 @@ class _TasksPageState extends State<TasksPage> {
             ),
             Container(
               width: screensize.width * 0.91,
-              height: screensize.height * 0.17625,
+              height: screensize.height * 0.15625,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24.0),
                 color: const Color(0xffBDE6F1),
               ),
               margin: EdgeInsets.only(
-                top: screensize.height * 0.76125,
+                top: screensize.height * 0.73125,
                 left: screensize.width * 0.04,
               ),
               child: Column(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
+import 'package:flutter_app/Modules/api.dart';
 import 'package:flutter_app/pages/ForgotPassword.dart';
 import 'package:flutter_app/pages/OTP.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,8 +26,6 @@ class _LoginPageState extends State<LoginPage> {
 
 
   final fkey = GlobalKey<FormState>();
-
-  NetworkHandler p = NetworkHandler();
 
   @override
   void initState() {
@@ -67,10 +65,9 @@ class _LoginPageState extends State<LoginPage> {
                           const SizedBox(
                             height: 20,
                           ),
-                          Expanded(
-                            child: Image.asset(
+                            Image.asset(
                                 'assets/images/login_page_pic.jpeg'),
-                          ),
+
                           Container(
                             width: MediaQuery
                                 .of(context)
@@ -223,12 +220,14 @@ class _LoginPageState extends State<LoginPage> {
                                   //
                                   // },
                                     onPressed: () async {
+                                      Api api = Api();
                                       Map map = {};
                                       map['email'] = _userEmailCtrler.text;
                                       map['password'] = _passwordCtrler.text;
                                       if (_userEmailCtrler.text.isNotEmpty &&
                                           _passwordCtrler.text.isNotEmpty) {
-                                        bool? response = await p.loginApi({"email": _userEmailCtrler.text.toString(), "password" : _passwordCtrler.text.toString()});
+                                        bool? response = await api.loginApi(
+                                            map);
                                         //     as Map<String, dynamic>;
                                         SharedPreferences? preferences =
                                         await SharedPreferences.getInstance();
