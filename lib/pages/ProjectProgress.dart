@@ -12,6 +12,11 @@ class ProjectProgress extends StatefulWidget {
 }
 
 class _ProjectProgressState extends State<ProjectProgress> {
+  List<String> Blocks = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+  String selectedValue="Select a block";
+
+
   final List<TextEditingController> _controllers = [];
   final List<TextField> _fields = [];
   final _dateChoose = TextEditingController();
@@ -140,6 +145,12 @@ class _ProjectProgressState extends State<ProjectProgress> {
   late TextEditingController _nameController;
   static List<String> friendsList = [];
 
+  int number_foundation = 1;
+  int number_milestone = 1;
+  TextEditingController msg_foundation = TextEditingController();
+  TextEditingController msg_milestone = TextEditingController();
+  final fkey = GlobalKey<FormState>();
+  List<String> foundation_name = [''];
   @override
   void initState() {
     super.initState();
@@ -202,380 +213,511 @@ class _ProjectProgressState extends State<ProjectProgress> {
           ),
         ],
       ),
-      body: ListView(
-        shrinkWrap: true,
-        children: [
-          Expanded(
-            child: Row(
-              children: [
-                const SizedBox(height: 20,),
-                Padding(
-                  padding: const EdgeInsets.only(left:12),
-                  child: Container(
-                      padding: const EdgeInsets.only(left: 10),
-                     // width: EdgeInsets.only(right: 10.0)
-                      height: 30,
-                      margin: const EdgeInsets.only(right: 5),
-                      decoration: BoxDecoration(
-                        color: Colors.blue.shade100,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text.rich(
-                        TextSpan(
-                          children: [
-                            const TextSpan(text: 'Select Block',style: TextStyle(color: Colors.black, fontSize: 20)),
-                            WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                            // WidgetSpan(child: Icon(Icons.arrow_drop_up)),
-                            const WidgetSpan(child: Icon(Icons.arrow_drop_down)),
-                          ],
-                        ),
-                      )
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 25),
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  const TextSpan(
-                      text: 'Choose Date',
-                      style: TextStyle(color: Colors.black, fontSize: 20)),
-                  WidgetSpan(
-                      child: SizedBox(
-                        width: MediaQuery
-                            .of(context)
-                            .devicePixelRatio,
-                      )),
-                  // const WidgetSpan(child: Icon(Icons.date_range)),
-                  // TextSpan(text: 'to add'),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Container(
-              padding: const EdgeInsets.only(left: 12),
-              height: 55,
-              margin: const EdgeInsets.only(right: 100),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: TextField(
-                style: const TextStyle(color: Colors.black54),
-                decoration: const InputDecoration(
-                  hintText: 'Choose Date',
-                  border: InputBorder.none,
-                  suffixIcon: Icon(Icons.calendar_month_rounded),
-                ),
-                controller: _dateChoose,
-                onTap: () {
-                  displayDateChoose(context);
-                },
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 25),
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  const TextSpan(
-                      text: 'Floor',
-                      style: TextStyle(color: Colors.black, fontSize: 20)),
-                  WidgetSpan(
-                      child: SizedBox(
-                        width: MediaQuery
-                            .of(context)
-                            .devicePixelRatio,
-                      )),
-                  // const WidgetSpan(child: Icon(Icons.date_range)),
-                  // TextSpan(text: 'to add'),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Container(
-              padding: const EdgeInsets.only(left: 12),
-              height: 55,
-              margin: const EdgeInsets.only(right: 60),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: const TextField(
-                style: TextStyle(color: Colors.black54),
-                decoration: InputDecoration(
-                    hintText: 'Enter Foundation',
-                    border: InputBorder.none,
-                    suffixIcon: Icon(Icons.add)),
-              ),
-            ),
-          ),
-          // Padding(
-          //   padding: const EdgeInsets.only(left: 25),
-          //   child: Text.rich(
-          //     TextSpan(
-          //       children: [
-          //         const TextSpan(
-          //           //text: 'Choose Date',
-          //             style: TextStyle(color: Colors.black, fontSize: 20)),
-          //         WidgetSpan(
-          //             child: SizedBox(
-          //               width: MediaQuery
-          //                   .of(context)
-          //                   .devicePixelRatio,
-          //             )),
-          //         // const WidgetSpan(child: Icon(Icons.date_range)),
-          //         // TextSpan(text: 'to add'),
-          //       ],
-          //     ),
-          //   ),
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.all(20),
-          //   child: ,
-          // ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Expanded(child: Container(
-               // padding: const EdgeInsets.only(left: 12),
-                height: 50,
-                //margin: const EdgeInsets.only(right: 180),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: TextField(
-                  style: const TextStyle(color: Colors.black54),
-                  decoration: const InputDecoration(
-                    hintText: 'Date',
-                    border: InputBorder.none,
-                    suffixIcon: Icon(Icons.calendar_month_rounded),
-                  ),
-                  controller: _dateFloor,
-                  onTap: () {
-                    displayDateFloor(context);
-                  },
-                ),
-              )),
-              const Expanded(child: Text("To",style: TextStyle(),)),
-              Expanded(child: Container(
-               // padding: const EdgeInsets.only(left: 12),
-                height: 55,
-                //margin: const EdgeInsets.only(right: 180),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: TextField(
-                  style: const TextStyle(color: Colors.black54),
-                  decoration: const InputDecoration(
-                    hintText: 'Date',
-                    border: InputBorder.none,
-                    suffixIcon: Icon(Icons.calendar_month_rounded),
-                  ),
-                  controller: _dateFloor,
-                  onTap: () {
-                    displayDateFloor(context);
-                  },
-                ),
-              )),
-            ],
-          ),
-          const SizedBox(height: 20,),
-          Padding(
-            padding: const EdgeInsets.only(left: 75),
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  const TextSpan(
-                      text: 'Planned Vs Achieved',
-                      style: TextStyle(color: Colors.black, fontSize: 23)),
-                  WidgetSpan(
-                      child: SizedBox(
-                        width: MediaQuery
-                            .of(context)
-                            .devicePixelRatio,
-                      )),
-                  // const WidgetSpan(child: Icon(Icons.date_range)),
-                  // TextSpan(text: 'to add'),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(height: 20,),
-          Padding(
-            padding: const EdgeInsets.only(left: 25),
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  const TextSpan(
-                      text: 'Milestones',
-                      style: TextStyle(color: Colors.black, fontSize: 20)),
-                  WidgetSpan(
-                      child: SizedBox(
-                        width: MediaQuery
-                            .of(context)
-                            .devicePixelRatio,
-                      )),
-                  // const WidgetSpan(child: Icon(Icons.date_range)),
-                  // TextSpan(text: 'to add'),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Container(
-              padding: const EdgeInsets.only(left: 12),
-              height: 55,
-              margin: const EdgeInsets.only(right: 60),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: const TextField(
-                style: TextStyle(color: Colors.black54),
-                decoration: InputDecoration(
-                    hintText: 'Enter milestone',
-                    border: InputBorder.none,
-                    suffixIcon: Icon(Icons.add)),
-              ),
-            ),
-          ),
-          // Padding(
-          //   padding: const EdgeInsets.all(20),
-          //   child: Container(
-          //     padding: const EdgeInsets.only(left: 12),
-          //     height: 55,
-          //     margin: const EdgeInsets.only(right: 180),
-          //     decoration: BoxDecoration(
-          //       color: Colors.white,
-          //       borderRadius: BorderRadius.circular(20),
-          //     ),
-          //     child: TextField(
-          //       style: const TextStyle(color: Colors.black54),
-          //       decoration: const InputDecoration(
-          //         hintText: 'Date',
-          //         border: InputBorder.none,
-          //         suffixIcon: Icon(Icons.calendar_month_rounded),
-          //       ),
-          //       controller: _dateMilestone,
-          //       onTap: () {
-          //         displayDateMilestone(context);
-          //       },
-          //     ),
-          //   ),
-          // ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Expanded(child: Container(
-                // padding: const EdgeInsets.only(left: 12),
-                height: 50,
-                //margin: const EdgeInsets.only(right: 180),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: TextField(
-                  style: const TextStyle(color: Colors.black54),
-                  decoration: const InputDecoration(
-                    hintText: 'Date',
-                    border: InputBorder.none,
-                    suffixIcon: Icon(Icons.calendar_month_rounded),
-                  ),
-                  controller: _dateFloor,
-                  onTap: () {
-                    displayDateFloor(context);
-                  },
-                ),
-              )),
-              const Expanded(child: Text("To",style: TextStyle(),)),
-              Expanded(child: Container(
-                // padding: const EdgeInsets.only(left: 12),
-                height: 55,
-                //margin: const EdgeInsets.only(right: 180),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: TextField(
-                  style: const TextStyle(color: Colors.black54),
-                  decoration: const InputDecoration(
-                    hintText: 'Date',
-                    border: InputBorder.none,
-                    suffixIcon: Icon(Icons.calendar_month_rounded),
-                  ),
-                  controller: _dateFloor,
-                  onTap: () {
-                    displayDateFloor(context);
-                  },
-                ),
-              )),
-            ],
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ElevatedButton(onPressed: () {
-                  Get.defaultDialog(
-                    middleText: "Do you want to continue?",
-                    titleStyle: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'ReadexPro',
-                        fontSize: 15),
-                    middleTextStyle: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'ReadexPro',
-                        fontSize: 15),
-                    textCancel: "NO",
-                    cancelTextColor: const Color(0xff685D5D),
-                    textConfirm: "YES",
-                    confirmTextColor: Colors.lightGreenAccent,
-                    radius: 40,
-                    buttonColor: const Color(0xff685D5D),
-                    //barrierDismissible: false,
-                    backgroundColor: const Color(0xff009AFF),
-                    onConfirm: () {
-                      Navigator
-                          .push(context, MaterialPageRoute(builder: (context)
-                      =>
-                      const ProjectPage()
-                      ),
-                      );
-                    },
-                  );
-                }, child: const Text(
-                  "Make Report",
-                  // style: TextStyle(
-                  //     color: Colors.white,
-                  //     fontWeight: FontWeight.bold,
-                  //     fontFamily: 'ReadexPro',
-                  //     fontSize: 15),
-                ),
-                ),
-              ],
-            ),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+             children: [
+               Row(
+                 //crossAxisAlignment: CrossAxisAlignment.center,
+                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+                 children: [
+                   const SizedBox(width: 10,),
+                   const SizedBox(width: 10,),
+                   DropdownButton(
+                     hint:Text(selectedValue),
+                     // value: selectedValue,
+                     icon: const Icon(Icons.keyboard_arrow_down),
+                     items: Blocks.map((String items){
+                       return DropdownMenuItem(
+                         value: items,
+                         child: Text(items),
+                       );
+                     }).toList(),
+                     onChanged: (String? newValue){
+                       setState((){
+                         selectedValue = newValue!;
+                         //selectedValue=newValue!;
+                       });
+                     },
+                   ),
+                   const SizedBox(width: 10,),
+                 ],
+               ),
+               Padding(
+                 padding: const EdgeInsets.only(right: 220),
+                 child: Text.rich(
+                   TextSpan(
+                     children: [
+                       const TextSpan(
+                         locale: Locale(AutofillHints.birthdayYear),
+                           text: 'Choose Date',
+                           style: TextStyle(color: Colors.black, fontSize: 20)),
+                       WidgetSpan(
+                           child: SizedBox(
+                             width: MediaQuery
+                                 .of(context)
+                                 .devicePixelRatio,
+                           )),
+                       // const WidgetSpan(child: Icon(Icons.date_range)),
+                       // TextSpan(text: 'to add'),
+                     ],
+                   ),
+                 ),
+               ),
+               Padding(
+                 padding: const EdgeInsets.all(20),
+                 child: Container(
+                   padding: const EdgeInsets.only(left: 12),
+                   height: 55,
+                   margin: const EdgeInsets.only(right: 100),
+                   decoration: BoxDecoration(
+                     color: Colors.white,
+                     borderRadius: BorderRadius.circular(20),
+                   ),
+                   child: TextField(
+                     style: const TextStyle(color: Colors.black54),
+                     decoration: const InputDecoration(
+                       hintText: 'Choose Date',
+                       border: InputBorder.none,
+                       suffixIcon: Icon(Icons.calendar_month_rounded),
+                     ),
+                     controller: _dateChoose,
+                     onTap: () {
+                       displayDateChoose(context);
+                     },
+                   ),
+                 ),
+               ),
+               Padding(
+                   padding: const EdgeInsets.only(right: 290),
+                   child: Text.rich(
+                     TextSpan(
+                       children: [
+                         const TextSpan(text: 'Floor',style: TextStyle(color: Colors.black, fontSize: 20)),
+                         WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                         WidgetSpan(child: OutlinedButton(
+                            onPressed: () {
+                              {
+                                showDialog(
+                                    barrierDismissible: true,
+                                    context: context,
+                                    builder: (_) {
+                                      return AlertDialog(
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10.0))),
+                                        content: Form(
+                                            key: fkey,
+                                            child: SizedBox(
+                                              width: 100,
+                                              height: 200,
+                                              child: Column(
+                                                children: [
+                                                  TextFormField(
+                                                    decoration: const InputDecoration(
+                                                        labelText: 'Enter Foundation Name'),
+                                                    controller: msg_foundation,
+                                                    validator: (value) {
+                                                      if (value == null ||
+                                                          value.isEmpty) {
+                                                        return "Enter Something";
+                                                      }
+                                                      return null;
+                                                    },
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                    MainAxisAlignment.spaceAround,
+                                                    crossAxisAlignment: CrossAxisAlignment
+                                                        .end,
+                                                    children: [
+                                                      Padding(
+                                                        padding: const EdgeInsets.only(
+                                                            top: 20),
+                                                        child: ElevatedButton(
+                                                          onPressed: () {
+                                                            if (fkey.currentState!
+                                                                .validate()) {
+                                                              foundation_name.add(
+                                                                  msg_foundation.text);
+                                                              Navigator.pop(context);
+                                                              msg_foundation.clear();
+                                                              setState(() {
+                                                                number_foundation = number_foundation + 1;
+                                                              });
+                                                            }
+                                                          },
+                                                          child: const Text('Add'),
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding: const EdgeInsets.only(
+                                                            top: 20),
+                                                        child: ElevatedButton(
+                                                          onPressed: () {
+                                                            Navigator.pop(context);
+                                                          },
+                                                          child: const Text('Cancel'),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            )),
+                                      );
+                                    });
+                              }
+                            },
+                            child: const Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(
+                                      //text: 'Floor',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 20)),
+                                  WidgetSpan(child: Icon(Icons.add)),
+                                  // TextSpan(text: 'to add'),
+                                ],
+                              ),
+                            )),),
+                         // TextSpan(text: 'to add'),
+                       ],
+                     ),
+                   )
+               ),
+               ListView.builder(
+                 physics: const ScrollPhysics(parent: null),
+                 shrinkWrap: true,
+                 itemBuilder: (BuildContext context, int i) {
+                   return SingleChildScrollView(
+                     child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                       children: [
+
+                         Padding(
+                           padding: const EdgeInsets.all(20),
+                           child: Container(
+                             padding: const EdgeInsets.only(left: 12),
+                             height: 55,
+                             margin: const EdgeInsets.only(right: 60),
+                             decoration: BoxDecoration(
+                               color: Colors.white,
+                               borderRadius: BorderRadius.circular(20),
+                             ),
+                             child: const TextField(
+                               style: TextStyle(color: Colors.black54),
+                               decoration: InputDecoration(
+                                   hintText: 'Enter Foundation',
+                                   border: InputBorder.none,
+                                   //suffixIcon: Icon(Icons.add)
+                               ),
+                             ),
+                           ),
+                         ),
+                         // Padding(
+                         //   padding: const EdgeInsets.only(left: 25),
+                         //   child: Text.rich(
+                         //     TextSpan(
+                         //       children: [
+                         //         const TextSpan(
+                         //           //text: 'Choose Date',
+                         //             style: TextStyle(color: Colors.black, fontSize: 20)),
+                         //         WidgetSpan(
+                         //             child: SizedBox(
+                         //               width: MediaQuery
+                         //                   .of(context)
+                         //                   .devicePixelRatio,
+                         //             )),
+                         //         // const WidgetSpan(child: Icon(Icons.date_range)),
+                         //         // TextSpan(text: 'to add'),
+                         //       ],
+                         //     ),
+                         //   ),
+                         // ),
+                         // Padding(
+                         //   padding: const EdgeInsets.all(20),
+                         //   child: ,
+                         // ),
+                         Row(
+                           crossAxisAlignment: CrossAxisAlignment.center,
+                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                           children: [
+                             SizedBox(width: MediaQuery.of(context).size.width*0.04,),
+                             Expanded(child: Padding(
+                               padding:EdgeInsets.only(bottom: 2,top: 5),
+                               child: Container(
+                                 padding: const EdgeInsets.only(left: 1),
+                                 height: 50,
+                                 margin: EdgeInsets.all(1),
+                                 decoration: BoxDecoration(
+                                   color: Colors.white,
+                                   borderRadius: BorderRadius.circular(20),
+                                 ),
+                                 child: TextField(
+                                   style: const TextStyle(color: Colors.black54),
+                                   decoration: const InputDecoration(
+                                     hintTextDirection: TextDirection.rtl,
+                                     hintText: 'Date',
+                                     border: InputBorder.none,
+                                     suffixIcon: Icon(Icons.calendar_month_rounded),
+                                   ),
+                                   controller: _dateFloor,
+                                   onTap: () {
+                                     displayDateFloor(context);
+                                   },
+                                 ),
+                               ),
+                             )),
+                             SizedBox(width: MediaQuery.of(context).size.width*0.094,),
+                             const Expanded(child: Text("To",style: TextStyle(),)),
+                             Expanded(child: Container(
+                               // padding: const EdgeInsets.only(left: 12),
+                               height: 55,
+                               //margin: const EdgeInsets.only(right: 180),
+                               decoration: BoxDecoration(
+                                 color: Colors.white,
+                                 borderRadius: BorderRadius.circular(20),
+                               ),
+                               child: TextField(
+                                 style: const TextStyle(color: Colors.black54),
+                                 decoration: const InputDecoration(
+                                   hintText: 'Date',
+                                   border: InputBorder.none,
+                                   suffixIcon: Icon(Icons.calendar_month_rounded),
+                                 ),
+                                 controller: _dateFloor,
+                                 onTap: () {
+                                   displayDateFloor(context);
+                                 },
+                               ),
+                             )),
+                             SizedBox(width: 20,),
+                           ],
+                         ),
+                       ],
+                     ),
+                   );
+                 },
+                 itemCount: number_foundation,
+               ),
+               Padding(
+                   padding: const EdgeInsets.only(right: 290),
+                   child: Text.rich(
+                     TextSpan(
+                       children: [
+                         const TextSpan(text: 'Milestones',style: TextStyle(color: Colors.black, fontSize: 20)),
+                         WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
+                         WidgetSpan(child: OutlinedButton(
+                             onPressed: () {
+                               {
+                                 showDialog(
+                                     barrierDismissible: true,
+                                     context: context,
+                                     builder: (_) {
+                                       return AlertDialog(
+                                         shape: const RoundedRectangleBorder(
+                                             borderRadius: BorderRadius.all(
+                                                 Radius.circular(10.0))),
+                                         content: Form(
+                                             key: fkey,
+                                             child: SizedBox(
+                                               width: 100,
+                                               height: 200,
+                                               child: Column(
+                                                 children: [
+                                                   TextFormField(
+                                                     decoration: const InputDecoration(
+                                                         labelText: 'Enter Foundation Name'),
+                                                     controller: msg_foundation,
+                                                     validator: (value) {
+                                                       if (value == null ||
+                                                           value.isEmpty) {
+                                                         return "Enter Something";
+                                                       }
+                                                       return null;
+                                                     },
+                                                   ),
+                                                   Row(
+                                                     mainAxisAlignment:
+                                                     MainAxisAlignment.spaceAround,
+                                                     crossAxisAlignment: CrossAxisAlignment
+                                                         .end,
+                                                     children: [
+                                                       Padding(
+                                                         padding: const EdgeInsets.only(
+                                                             top: 20),
+                                                         child: ElevatedButton(
+                                                           onPressed: () {
+                                                             if (fkey.currentState!
+                                                                 .validate()) {
+                                                               foundation_name.add(
+                                                                   msg_foundation.text);
+                                                               Navigator.pop(context);
+                                                               msg_foundation.clear();
+                                                               setState(() {
+                                                                 number_foundation = number_foundation + 1;
+                                                               });
+                                                             }
+                                                           },
+                                                           child: const Text('Add'),
+                                                         ),
+                                                       ),
+                                                       Padding(
+                                                         padding: const EdgeInsets.only(
+                                                             top: 20),
+                                                         child: ElevatedButton(
+                                                           onPressed: () {
+                                                             Navigator.pop(context);
+                                                           },
+                                                           child: const Text('Cancel'),
+                                                         ),
+                                                       )
+                                                     ],
+                                                   ),
+                                                 ],
+                                               ),
+                                             )),
+                                       );
+                                     });
+                               }
+                             },
+                             child: const Text.rich(
+                               TextSpan(
+                                 children: [
+                                   TextSpan(
+                                     //text: 'Floor',
+                                       style: TextStyle(
+                                           color: Colors.black, fontSize: 20)),
+                                   WidgetSpan(child: Icon(Icons.add)),
+                                   // TextSpan(text: 'to add'),
+                                 ],
+                               ),
+                             )),),
+                         // TextSpan(text: 'to add'),
+                       ],
+                     ),
+                   )
+               ),
+               ListView.builder(
+                 physics: const ScrollPhysics(parent: null),
+                 shrinkWrap: true,
+                 itemBuilder: (BuildContext context, int i) {
+                   return SingleChildScrollView(
+                     child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                       children: [
+
+                         Padding(
+                           padding: const EdgeInsets.all(20),
+                           child: Container(
+                             padding: const EdgeInsets.only(left: 12),
+                             height: 55,
+                             margin: const EdgeInsets.only(right: 60),
+                             decoration: BoxDecoration(
+                               color: Colors.white,
+                               borderRadius: BorderRadius.circular(20),
+                             ),
+                             child: const TextField(
+                               style: TextStyle(color: Colors.black54),
+                               decoration: InputDecoration(
+                                 hintText: 'Enter Foundation',
+                                 border: InputBorder.none,
+                                 //suffixIcon: Icon(Icons.add)
+                               ),
+                             ),
+                           ),
+                         ),
+                         // Padding(
+                         //   padding: const EdgeInsets.only(left: 25),
+                         //   child: Text.rich(
+                         //     TextSpan(
+                         //       children: [
+                         //         const TextSpan(
+                         //           //text: 'Choose Date',
+                         //             style: TextStyle(color: Colors.black, fontSize: 20)),
+                         //         WidgetSpan(
+                         //             child: SizedBox(
+                         //               width: MediaQuery
+                         //                   .of(context)
+                         //                   .devicePixelRatio,
+                         //             )),
+                         //         // const WidgetSpan(child: Icon(Icons.date_range)),
+                         //         // TextSpan(text: 'to add'),
+                         //       ],
+                         //     ),
+                         //   ),
+                         // ),
+                         // Padding(
+                         //   padding: const EdgeInsets.all(20),
+                         //   child: ,
+                         // ),
+                         Row(
+                           crossAxisAlignment: CrossAxisAlignment.center,
+                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                           children: [
+                             SizedBox(width: MediaQuery.of(context).size.width*0.04,),
+                             Expanded(child: Padding(
+                               padding:EdgeInsets.only(bottom: 2,top: 5),
+                               child: Container(
+                                 padding: const EdgeInsets.only(left: 1),
+                                 height: 50,
+                                 margin: EdgeInsets.all(1),
+                                 decoration: BoxDecoration(
+                                   color: Colors.white,
+                                   borderRadius: BorderRadius.circular(20),
+                                 ),
+                                 child: TextField(
+                                   style: const TextStyle(color: Colors.black54),
+                                   decoration: const InputDecoration(
+                                     hintTextDirection: TextDirection.rtl,
+                                     hintText: 'Date',
+                                     border: InputBorder.none,
+                                     suffixIcon: Icon(Icons.calendar_month_rounded),
+                                   ),
+                                   controller: _dateFloor,
+                                   onTap: () {
+                                     displayDateFloor(context);
+                                   },
+                                 ),
+                               ),
+                             )),
+                             SizedBox(width: MediaQuery.of(context).size.width*0.094,),
+                             const Expanded(child: Text("To",style: TextStyle(),)),
+                             Expanded(child: Container(
+                               // padding: const EdgeInsets.only(left: 12),
+                               height: 55,
+                               //margin: const EdgeInsets.only(right: 180),
+                               decoration: BoxDecoration(
+                                 color: Colors.white,
+                                 borderRadius: BorderRadius.circular(20),
+                               ),
+                               child: TextField(
+                                 style: const TextStyle(color: Colors.black54),
+                                 decoration: const InputDecoration(
+                                   hintText: 'Date',
+                                   border: InputBorder.none,
+                                   suffixIcon: Icon(Icons.calendar_month_rounded),
+                                 ),
+                                 controller: _dateFloor,
+                                 onTap: () {
+                                   displayDateFloor(context);
+                                 },
+                               ),
+                             )),
+                             SizedBox(width: 20,),
+                           ],
+                         ),
+                       ],
+                     ),
+                   );
+                 },
+                 itemCount: number_milestone,
+               ),
+
+             ],
+        ),
       ),
     );
   }
