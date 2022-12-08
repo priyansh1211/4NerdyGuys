@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/Project.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
+import 'package:get/get.dart';
+
 class ProjectProgress extends StatefulWidget {
   const ProjectProgress({Key? key}) : super(key: key);
 
@@ -146,7 +149,7 @@ class _ProjectProgressState extends State<ProjectProgress> {
   TextEditingController msg_foundation = TextEditingController();
   TextEditingController msg_milestone = TextEditingController();
   final fkey = GlobalKey<FormState>();
-  List<String> foundation_name = [''];
+  List<String> foundation_name = ['Enter Foundation'];
   @override
   void initState() {
     super.initState();
@@ -282,125 +285,32 @@ class _ProjectProgressState extends State<ProjectProgress> {
                    ),
                  ),
                ),
-               Row(
-                 children: [
-                   Container(
-                     width: MediaQuery.of(context).size.width,
-                     child: Padding(
-                         padding: const EdgeInsets.only(right: 290),
-                         child: Text.rich(
-                           TextSpan(
-                             children: [
-                               const TextSpan(
-                                 //locale: Locale(AutofillHints.birthdayYear),
-                                   text: 'Floor',
-                                   style: TextStyle(color: Colors.black, fontSize: 20)),
-                               // WidgetSpan(
-                               //     child: SizedBox(
-                               //       width: MediaQuery
-                               //           .of(context)
-                               //           .devicePixelRatio,
-                               //     )),
-                               WidgetSpan(child: OutlinedButton(
-                                   onPressed: () {
-                                     {
-                                       showDialog(
-                                           barrierDismissible: true,
-                                           context: context,
-                                           builder: (_) {
-                                             return AlertDialog(
-                                               shape: const RoundedRectangleBorder(
-                                                   borderRadius: BorderRadius.all(
-                                                       Radius.circular(10.0))),
-                                               content: Form(
-                                                   key: fkey,
-                                                   child: SizedBox(
-                                                     width: 100,
-                                                     height: 200,
-                                                     child: Column(
-                                                       children: [
-                                                         TextFormField(
-                                                           decoration: const InputDecoration(
-                                                               labelText: 'Enter Foundation Name'),
-                                                           controller: msg_foundation,
-                                                           validator: (value) {
-                                                             if (value == null ||
-                                                                 value.isEmpty) {
-                                                               return "Enter Something";
-                                                             }
-                                                             return null;
-                                                           },
-                                                         ),
-                                                         Row(
-                                                           mainAxisAlignment:
-                                                           MainAxisAlignment.spaceAround,
-                                                           crossAxisAlignment: CrossAxisAlignment
-                                                               .end,
-                                                           children: [
-                                                             Padding(
-                                                               padding: const EdgeInsets.only(
-                                                                   top: 20),
-                                                               child: ElevatedButton(
-                                                                 onPressed: () {
-                                                                   if (fkey.currentState!
-                                                                       .validate()) {
-                                                                     foundation_name.add(
-                                                                         msg_foundation.text);
-                                                                     Navigator.pop(context);
-                                                                     msg_foundation.clear();
-                                                                     setState(() {
-                                                                       number_foundation = number_foundation + 1;
-                                                                     });
-                                                                   }
-                                                                 },
-                                                                 child: const Text('Add'),
-                                                               ),
-                                                             ),
-                                                             Padding(
-                                                               padding: const EdgeInsets.only(
-                                                                   top: 20),
-                                                               child: ElevatedButton(
-                                                                 onPressed: () {
-                                                                   Navigator.pop(context);
-                                                                 },
-                                                                 child: const Text('Cancel'),
-                                                               ),
-                                                             )
-                                                           ],
-                                                         ),
-                                                       ],
-                                                     ),
-                                                   )),
-                                             );
-                                           });
-                                     }
-                                   },
-                                   child: const Text.rich(
-                                     TextSpan(
-                                       children: [
-                                         TextSpan(
-                                           //text: 'Floor',
-                                             style: TextStyle(
-                                                 color: Colors.black, fontSize: 20)),
-                                         WidgetSpan(child: Icon(Icons.add)),
-                                         // TextSpan(text: 'to add'),
-                                       ],
-                                     ),
-                                   )
-                               ),
-                               ),
-                               // WidgetSpan(
-                               //     child: SizedBox(
-                               //       width: MediaQuery
-                               //           .of(context)
-                               //           .devicePixelRatio,
-                               //     )),
-                             ],
-                           ),
-                         )
+               Container(
+                 padding: EdgeInsets.only(right: 225),
+                 child: OutlinedButton(
+                   onPressed: () {
+                     {
+                       setState(() {
+                         number_foundation=number_foundation+1;
+                       });
+                     }
+                   },
+                   child: Text.rich(
+                     TextSpan(
+                       children: [
+                         const TextSpan(
+                             text: 'Floor',
+                             style: TextStyle(color: Colors.black, fontSize: 20)),
+                         WidgetSpan(
+                             child: SizedBox(
+                               width: MediaQuery.of(context).devicePixelRatio,
+                             )),
+                         const WidgetSpan(child: Icon(Icons.add_sharp,color: Colors.black,)),
+                         // TextSpan(text: 'to add'),
+                       ],
                      ),
                    ),
-                 ],
+                 ),
                ),
                ListView.builder(
                  physics: const ScrollPhysics(parent: null),
@@ -411,51 +321,24 @@ class _ProjectProgressState extends State<ProjectProgress> {
                        crossAxisAlignment: CrossAxisAlignment.start,
                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                        children: [
-
                          Padding(
-                           padding: const EdgeInsets.all(20),
+                           padding: const EdgeInsets.all(15),
                            child: Container(
-                             padding: const EdgeInsets.only(left: 12),
+                             padding: const EdgeInsets.only(left: 22,right: 23),
                              height: 55,
-                             margin: const EdgeInsets.only(right: 60),
+                             //margin: const EdgeInsets.only(right: 0),
                              decoration: BoxDecoration(
                                color: Colors.white,
                                borderRadius: BorderRadius.circular(20),
                              ),
                              child: const TextField(
-                               style: TextStyle(color: Colors.black54),
                                decoration: InputDecoration(
-                                   hintText: 'Enter Foundation',
-                                   border: InputBorder.none,
-                                   //suffixIcon: Icon(Icons.add)
+                                 hintText: 'Enter Foundation',
+                                 border: InputBorder.none,
                                ),
                              ),
                            ),
                          ),
-                         // Padding(
-                         //   padding: const EdgeInsets.only(left: 25),
-                         //   child: Text.rich(
-                         //     TextSpan(
-                         //       children: [
-                         //         const TextSpan(
-                         //           //text: 'Choose Date',
-                         //             style: TextStyle(color: Colors.black, fontSize: 20)),
-                         //         WidgetSpan(
-                         //             child: SizedBox(
-                         //               width: MediaQuery
-                         //                   .of(context)
-                         //                   .devicePixelRatio,
-                         //             )),
-                         //         // const WidgetSpan(child: Icon(Icons.date_range)),
-                         //         // TextSpan(text: 'to add'),
-                         //       ],
-                         //     ),
-                         //   ),
-                         // ),
-                         // Padding(
-                         //   padding: const EdgeInsets.all(20),
-                         //   child: ,
-                         // ),
                          Row(
                            crossAxisAlignment: CrossAxisAlignment.center,
                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -539,110 +422,33 @@ class _ProjectProgressState extends State<ProjectProgress> {
                    ),
                  ),
                ),
-               Row(
-                 children: [
-                   Container(
-                     width: MediaQuery.of(context).size.width,
-                     child:Padding(
-                         padding: const EdgeInsets.only(right: 290),
-                         child: Text.rich(
-                           TextSpan(
-                             children: [
-                               const TextSpan(text: 'Milestones',style: TextStyle(color: Colors.black)),
-                               //WidgetSpan(child: SizedBox(width: MediaQuery.of(context).devicePixelRatio,)),
-                               WidgetSpan(child: OutlinedButton(
-                                   onPressed: () {
-                                     {
-                                       showDialog(
-                                           barrierDismissible: true,
-                                           context: context,
-                                           builder: (_) {
-                                             return AlertDialog(
-                                               shape: const RoundedRectangleBorder(
-                                                   borderRadius: BorderRadius.all(
-                                                       Radius.circular(5.0))),
-                                               content: Form(
-                                                   key: fkey,
-                                                   child: SizedBox(
-                                                     width: 90,
-                                                     height: 180,
-                                                     child: Column(
-                                                       children: [
-                                                         TextFormField(
-                                                           decoration: const InputDecoration(
-                                                               labelText: 'Enter Milestone Name'),
-                                                           controller: msg_foundation,
-                                                           validator: (value) {
-                                                             if (value == null ||
-                                                                 value.isEmpty) {
-                                                               return "Enter Something";
-                                                             }
-                                                             return null;
-                                                           },
-                                                         ),
-                                                         Row(
-                                                           mainAxisAlignment:
-                                                           MainAxisAlignment.spaceAround,
-                                                           crossAxisAlignment: CrossAxisAlignment
-                                                               .end,
-                                                           children: [
-                                                             Padding(
-                                                               padding: const EdgeInsets.only(
-                                                                   top: 20),
-                                                               child: ElevatedButton(
-                                                                 onPressed: () {
-                                                                   if (fkey.currentState!
-                                                                       .validate()) {
-                                                                     foundation_name.add(
-                                                                         msg_foundation.text);
-                                                                     Navigator.pop(context);
-                                                                     msg_foundation.clear();
-                                                                     setState(() {
-                                                                       number_foundation = number_foundation + 1;
-                                                                     });
-                                                                   }
-                                                                 },
-                                                                 child: const Text('Add'),
-                                                               ),
-                                                             ),
-                                                             Padding(
-                                                               padding: const EdgeInsets.only(
-                                                                   top: 20),
-                                                               child: ElevatedButton(
-                                                                 onPressed: () {
-                                                                   Navigator.pop(context);
-                                                                 },
-                                                                 child: const Text('Cancel'),
-                                                               ),
-                                                             )
-                                                           ],
-                                                         ),
-                                                       ],
-                                                     ),
-                                                   )),
-                                             );
-                                           });
-                                     }
-                                   },
-                                   child: const Text.rich(
-                                     TextSpan(
-                                       children: [
-                                         TextSpan(
-                                           //text: 'Floor',
-                                             style: TextStyle(
-                                                 color: Colors.black, fontSize: 20)),
-                                         WidgetSpan(child: Icon(Icons.add,size: 25,color: Colors.black,)),
-                                         // TextSpan(text: 'to add'),
-                                       ],
-                                     ),
-                                   )),),
-                               // TextSpan(text: 'to add'),
-                             ],
-                           ),
-                         )
-                     ) ,
+               SizedBox(height: 10,),
+               Container(
+                 padding: EdgeInsets.only(right: 225),
+                 child: OutlinedButton(
+                   onPressed: () {
+                     {
+                       setState(() {
+                         number_milestone=number_milestone+1;
+                       });
+                     }
+                   },
+                   child: Text.rich(
+                     TextSpan(
+                       children: [
+                         const TextSpan(
+                             text: 'Milestone',
+                             style: TextStyle(color: Colors.black,fontSize: 17)),
+                         WidgetSpan(
+                             child: SizedBox(
+                               width: MediaQuery.of(context).devicePixelRatio,
+                             )),
+                         const WidgetSpan(child: Icon(Icons.add_sharp,color: Colors.black,)),
+                         // TextSpan(text: 'to add'),
+                       ],
+                     ),
                    ),
-                 ],
+                 ),
                ),
                ListView.builder(
                  physics: const ScrollPhysics(parent: null),
@@ -673,55 +479,37 @@ class _ProjectProgressState extends State<ProjectProgress> {
                              ),
                            ),
                          ),
-                         // Padding(
-                         //   padding: const EdgeInsets.all(20),
-                         //   child: Container(
-                         //     padding: const EdgeInsets.only(left: 12),
-                         //     height: 55,
-                         //     margin: const EdgeInsets.only(right: 180),
-                         //     decoration: BoxDecoration(
-                         //       color: Colors.white,
-                         //       borderRadius: BorderRadius.circular(20),
-                         //     ),
-                         //     child: TextField(
-                         //       style: const TextStyle(color: Colors.black54),
-                         //       decoration: const InputDecoration(
-                         //         hintText: 'Date',
-                         //         border: InputBorder.none,
-                         //         suffixIcon: Icon(Icons.calendar_month_rounded),
-                         //       ),
-                         //       controller: _dateMilestone,
-                         //       onTap: () {
-                         //         displayDateMilestone(context);
-                         //       },
-                         //     ),
-                         //   ),
-                         // ),
                          Row(
                            crossAxisAlignment: CrossAxisAlignment.center,
                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                            children: [
-                             Expanded(child: Container(
-                               // padding: const EdgeInsets.only(left: 12),
-                               height: 50,
-                               //margin: const EdgeInsets.only(right: 180),
-                               decoration: BoxDecoration(
-                                 color: Colors.white,
-                                 borderRadius: BorderRadius.circular(20),
-                               ),
-                               child: TextField(
-                                 style: const TextStyle(color: Colors.black54),
-                                 decoration: const InputDecoration(
-                                   hintText: 'Date',
-                                   border: InputBorder.none,
-                                   suffixIcon: Icon(Icons.calendar_month_rounded),
+                             SizedBox(width: MediaQuery.of(context).size.width*0.04,),
+                             Expanded(child: Padding(
+                               padding:const EdgeInsets.only(bottom: 2,top: 5),
+                               child: Container(
+                                 padding: const EdgeInsets.only(left: 1),
+                                 height: 50,
+                                 margin: const EdgeInsets.all(1),
+                                 decoration: BoxDecoration(
+                                   color: Colors.white,
+                                   borderRadius: BorderRadius.circular(20),
                                  ),
-                                 controller: _dateFloor,
-                                 onTap: () {
-                                   displayDateFloor(context);
-                                 },
+                                 child: TextField(
+                                   style: const TextStyle(color: Colors.black54),
+                                   decoration: const InputDecoration(
+                                     hintTextDirection: TextDirection.rtl,
+                                     hintText: 'Date',
+                                     border: InputBorder.none,
+                                     suffixIcon: Icon(Icons.calendar_month_rounded),
+                                   ),
+                                   controller: _dateMilestone,
+                                   onTap: () {
+                                     displayDateFloor(context);
+                                   },
+                                 ),
                                ),
                              )),
+                             SizedBox(width: MediaQuery.of(context).size.width*0.094,),
                              const Expanded(child: Text("To",style: TextStyle(),)),
                              Expanded(child: Container(
                                // padding: const EdgeInsets.only(left: 12),
@@ -738,12 +526,13 @@ class _ProjectProgressState extends State<ProjectProgress> {
                                    border: InputBorder.none,
                                    suffixIcon: Icon(Icons.calendar_month_rounded),
                                  ),
-                                 controller: _dateFloor,
+                                 controller: _dateMilestone,
                                  onTap: () {
                                    displayDateFloor(context);
                                  },
                                ),
                              )),
+                             const SizedBox(width: 20,),
                            ],
                          ),
                        ],
@@ -751,6 +540,54 @@ class _ProjectProgressState extends State<ProjectProgress> {
                    );
                  },
                  itemCount: number_milestone,
+               ),
+               Center(
+                 child: Column(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   crossAxisAlignment: CrossAxisAlignment.center,
+                   children: [
+                     ElevatedButton(
+                       onPressed: () {
+                         Get.defaultDialog(
+                           middleText: "Do you want to continue?",
+                           titleStyle: const TextStyle(
+                               color: Colors.white,
+                               fontWeight: FontWeight.bold,
+                               fontFamily: 'ReadexPro',
+                               fontSize: 15),
+                           middleTextStyle: const TextStyle(
+                               color: Colors.white,
+                               fontWeight: FontWeight.bold,
+                               fontFamily: 'ReadexPro',
+                               fontSize: 15),
+                           textCancel: "NO",
+                           cancelTextColor: const Color(0xff685D5D),
+                           textConfirm: "YES",
+                           confirmTextColor: Colors.lightGreenAccent,
+                           radius: 40,
+                           buttonColor: const Color(0xff685D5D),
+                           //barrierDismissible: false,
+                           backgroundColor: const Color(0xff009AFF),
+                           onConfirm: () {
+                             Navigator.push(
+                                 context,
+                                 MaterialPageRoute(
+                                     builder: (context) =>
+                                     ProjectPage()));
+                           },
+                         );
+                       },
+                       child: const Text(
+                         "Make Report",
+                         // style: TextStyle(
+                         //     color: Colors.white,
+                         //     fontWeight: FontWeight.bold,
+                         //     fontFamily: 'ReadexPro',
+                         //     fontSize: 15),
+                       ),
+                     ),
+                   ],
+                 ),
                ),
              ],
         ),
