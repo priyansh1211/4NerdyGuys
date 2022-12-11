@@ -24,6 +24,7 @@ class SubscriberChart extends StatelessWidget {
       height: 200,
       padding: const EdgeInsets.only(left:5),
       child: Card(
+
         child: Padding(
           padding: const EdgeInsets.only(left: 2),
           child: Column(

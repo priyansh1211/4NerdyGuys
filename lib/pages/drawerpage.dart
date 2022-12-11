@@ -15,16 +15,29 @@ class DrawerPage extends StatefulWidget {
 class _DrawerPageState extends State<DrawerPage> {
 
   late SharedPreferences logindata;
+  String name = "";
 
   @override
   void initState() {
-
+    initial().then(updateName);
     super.initState();
-    initial();
   }
 
-  void initial() async{
-    logindata = await SharedPreferences.getInstance();
+
+  Future <String> initial() async {
+    SharedPreferences? preferences = await SharedPreferences.getInstance();
+    name = preferences.getString("UserName")!;
+    return name;
+  }
+  Future <void> logout() async {
+    SharedPreferences? preferences = await SharedPreferences.getInstance();
+     preferences.setBool('login',true);
+  }
+
+  void updateName(String name) {
+    setState(() {
+      this.name = name;
+    });
   }
 
   @override
@@ -40,12 +53,12 @@ class _DrawerPageState extends State<DrawerPage> {
               Navigator.of(context).pop();
             },
           ),
-          const ListTile(
+           ListTile(
             title: Align(
                 alignment: Alignment.centerRight,
-                child: Text('Vishwas',
-                    style: TextStyle(fontSize:20, fontFamily: 'Readxpro'))),
-            trailing: CircleAvatar(
+                child: Text(name,
+                    style: const TextStyle(fontSize:20, fontFamily: 'Readxpro'))),
+            trailing: const CircleAvatar(
               radius: 25,
               backgroundColor: Color(0xffFFFFFF),
               child: Center(
@@ -62,7 +75,6 @@ class _DrawerPageState extends State<DrawerPage> {
                     fontSize: 18)),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const ProjectPage()));
-              print('go to project');
             },
           ),
           ListTile(
@@ -75,7 +87,6 @@ class _DrawerPageState extends State<DrawerPage> {
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const DashboardPage()));
-              //print('go to Dashboard page');
             },
           ),
           ListTile(
@@ -86,7 +97,6 @@ class _DrawerPageState extends State<DrawerPage> {
                     fontFamily: 'Opensans',
                     fontSize: 18)),
             onTap: () {
-              print('go to profile');
             },
           ),
           ListTile(
@@ -108,7 +118,7 @@ class _DrawerPageState extends State<DrawerPage> {
                 child: const Text('Log out', style: TextStyle(fontSize: 18)),
                 onTap: () {
 
-                  logindata.setBool("login", true);
+                  logout();
 
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const LoginPage()));

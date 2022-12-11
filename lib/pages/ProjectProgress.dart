@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/Project.dart';
-import 'package:flutter_app/pages/TypesOfReport.dart';
-import 'package:get/get.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
+import 'package:get/get.dart';
 
 //import 'package:intl/intl.dart';
 class ProjectProgress extends StatefulWidget {
@@ -98,11 +97,11 @@ class _ProjectProgressState extends State<ProjectProgress> {
             child: Builder(
               builder: (context) => ElevatedButton(
                   onPressed: () => Scaffold.of(context).openEndDrawer(),
-                  child:Icon(Icons.person,size:30,color:Colors.blue),
                 style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-                  backgroundColor: Colors.white,
-                ),
+                    shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50),
+                ),),
+                  child:Icon(Icons.person,size:30,color:Colors.blue),
               ),
             ),
           ),
