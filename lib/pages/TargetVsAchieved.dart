@@ -24,6 +24,8 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
   File? selectedImageFromGallery;
   String base64Image = "";
 
+  File? pickedTargetImage;
+  File? pickedAchievedImage;
   Future<void> chooseImage(type) async {
     // ignore: prefer_typing_uninitialized_variables
     var imageFromCamera;
@@ -32,8 +34,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
       imageFromCamera = await ImagePicker().pickImage(
         source: ImageSource.camera,
       );
-    }
-    if(type=="gallery") {
+    } else if (type == "gallery") {
       imageFromGallery = await ImagePicker().pickImage(
         source: ImageSource.gallery,
       );
@@ -106,9 +107,152 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
   //         );
   //       });
   // }
+  void TargetImagePickerOption() {
+    Get.bottomSheet(
+      SingleChildScrollView(
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10.0),
+            topRight: Radius.circular(10.0),
+          ),
+          child: Container(
+            color: Colors.white,
+            height: 250,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Text(
+                    "Pick Image From",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      pickTargetImage(ImageSource.camera);
+                    },
+                    icon: const Icon(Icons.camera),
+                    label: const Text("CAMERA"),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      pickTargetImage(ImageSource.gallery);
+                    },
+                    icon: const Icon(Icons.image),
+                    label: const Text("GALLERY"),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(Icons.close),
+                    label: const Text("CANCEL"),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+  void AchievedImagePickerOption() {
+    Get.bottomSheet(
+      SingleChildScrollView(
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10.0),
+            topRight: Radius.circular(10.0),
+          ),
+          child: Container(
+            color: Colors.white,
+            height: 250,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Text(
+                    "Pick Image From",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      pickAchievedImage(ImageSource.camera);
+                    },
+                    icon: const Icon(Icons.camera),
+                    label: const Text("CAMERA"),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      pickAchievedImage(ImageSource.gallery);
+                    },
+                    icon: const Icon(Icons.image),
+                    label: const Text("GALLERY"),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(Icons.close),
+                    label: const Text("CANCEL"),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+  pickTargetImage(ImageSource imageType) async {
+    try {
+      final photo = await ImagePicker().pickImage(source: imageType);
+      if (photo == null) return;
+      final tempImage = File(photo.path);
+      setState(() {
+        pickedTargetImage = tempImage;
+      });
+
+      Get.back();
+    } catch (error) {
+      debugPrint(error.toString());
+    }
+  }
+
+  pickAchievedImage(ImageSource imageType) async {
+    try {
+      final photo = await ImagePicker().pickImage(source: imageType);
+      if (photo == null) return;
+      final tempImage = File(photo.path);
+      setState(() {
+        pickedAchievedImage = tempImage;
+      });
+
+      Get.back();
+    } catch (error) {
+      debugPrint(error.toString());
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
-  //  var screensize = MediaQuery.of(context).size;
+    //  var screensize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: const Color(0xffE5E5E5),
       appBar: AppBar(
@@ -147,7 +291,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             OutlinedButton(
                 onPressed: () {
                   {
@@ -216,7 +360,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
                   }
                 },
                 child: const Text("Add a column")),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Padding(
                 padding: const EdgeInsets.only(right: 60),
                 child: Text.rich(
@@ -469,7 +613,7 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
                               children: [
                                 TextSpan(
                                     text:column_name[i].toString(),
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.black, fontSize: 20)),
                                 WidgetSpan(
                                     child: SizedBox(
@@ -503,63 +647,85 @@ class _TargetVsAchievedState extends State<TargetVsAchieved> {
                 );
               },
               itemCount: number,
+            ),
 
+            ClipOval(
+                child: pickedTargetImage != null
+                    ? Image.file(
+                        pickedTargetImage!,
+                        width: 170,
+                        height: 170,
+                        fit: BoxFit.cover,
+                      )
+                    : Image.network(
+                        'https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg',
+                        width: 170,
+                        height: 170,
+                        fit: BoxFit.cover,
+                      ),
+              ),
+            // Positioned(
+            //   bottom: 0,
+            //   right: 5,
+            //   child: IconButton(
+            //     onPressed: imagePickerOption,
+            //     icon: const Icon(
+            //       Icons.add_a_photo_outlined,
+            //       color: Colors.blue,
+            //       size: 30,
+            //     ),
+            //   ),
+            // ),
+            const SizedBox(
+              height: 20,
             ),
-            CircleAvatar(
-              radius: 60,
-              backgroundColor: Colors.red,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                // Border radius
-                child: ClipOval(
-                    child: selectedImageFromCamera != null
-                        ? Image.file(
-                      selectedImageFromCamera!,
-                      fit: BoxFit.cover,
-                      height: 100,
-                      width: 100,
-                    )
-                        : Image.network(
-                      'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
-                      fit: BoxFit.cover,
-                      height: 100,
-                      width: 100,
-                    )),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton.icon(
+                  onPressed: TargetImagePickerOption,
+                  icon: const Icon(Icons.add_a_photo_sharp),
+                  label: const Text('Target Image')),
+            ),
+
+            ClipOval(
+              child: pickedAchievedImage != null
+                  ? Image.file(
+                pickedAchievedImage!,
+                width: 170,
+                height: 170,
+                fit: BoxFit.cover,
+              )
+                  : Image.network(
+                'https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg',
+                width: 170,
+                height: 170,
+                fit: BoxFit.cover,
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                chooseImage("camera");
-              },
-              child: const Text("Target Image from camera"),
+            // Positioned(
+            //   bottom: 0,
+            //   right: 5,
+            //   child: IconButton(
+            //     onPressed: imagePickerOption,
+            //     icon: const Icon(
+            //       Icons.add_a_photo_outlined,
+            //       color: Colors.blue,
+            //       size: 30,
+            //     ),
+            //   ),
+            // ),
+            const SizedBox(
+              height: 20,
             ),
-            CircleAvatar(
-              radius: 60,
-              backgroundColor: Colors.red,
-              child: Padding(
-                padding: const EdgeInsets.all(8), // Border radius
-                child: ClipOval(
-                    child: selectedImageFromGallery != null
-                        ? Image.file(
-                      selectedImageFromGallery!,
-                      fit: BoxFit.cover,
-                      height: 100,
-                      width: 100,
-                    )
-                        : Image.network(
-                      'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
-                      fit: BoxFit.cover,
-                      height: 100,
-                      width: 100,
-                    )),
-              ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton.icon(
+                  onPressed: AchievedImagePickerOption,
+                  icon: const Icon(Icons.add_a_photo_sharp),
+                  label: const Text('Achieved Image')),
             ),
-            ElevatedButton(
-              onPressed: () {
-                chooseImage("gallery");
-              },
-              child: const Text("Achieved Image From Gallery"),
-            ),
+
+
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
