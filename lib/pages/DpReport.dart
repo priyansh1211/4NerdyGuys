@@ -191,6 +191,7 @@ class _DpReportPageState extends State<DpReportPage> {
                             ),
                           ),
                           onTap: () {
+                            print("Man Power Report");
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

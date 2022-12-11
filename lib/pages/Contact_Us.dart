@@ -44,7 +44,7 @@ class _ContactPageState extends State<ContactPage> {
                         ),
 
                         const Positioned(
-                          top: 60,
+                          top: 70,
                           child: FittedBox(
                             fit: BoxFit.cover,
                             child: Text(

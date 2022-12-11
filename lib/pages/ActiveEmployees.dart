@@ -364,7 +364,9 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => AddProjectBlocks(
-                                            name: snapshot.data![i]["email"]
+                                        name : snapshot.data![i]["username"].toString(),
+                                        designation : snapshot.data![i]["designation"].toString(),
+                                            email: snapshot.data![i]["email"]
                                                 .toString(),
                                           )));
                             },
