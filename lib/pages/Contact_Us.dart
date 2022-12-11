@@ -24,80 +24,88 @@ class _ContactPageState extends State<ContactPage> {
         child: ListView(
           shrinkWrap: true,
           children: [
-            Stack(
-              children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    color: Color(0xffBDE6F1),
-                  ),
-                ),
-                Positioned(
-                  top: 200,
-                  child: Stack(
-                    children: [
-                      Image.asset(
-                        'assets/images/Polygon_contact.png',
-                        width: MediaQuery.of(context).size.width,
-                        //height: MediaQuery.of(context).size.height * 0.7,
-                        fit: BoxFit.fill,
-                        color: const Color(0xffE5E5E5),
-                      ),
-                      Positioned(
-                        top: 60,
-                        left: MediaQuery.of(context).size.width*0.5 - 130,
-                        child: const Center(
-                          child: Text(
-                            'How can we help you?',
-                            style: TextStyle(fontSize: 30),
+
+            Container(
+              color: const Color(0xffBDE6F1),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Positioned(
+                    top: 200,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/images/Polygon_contact.png',
+                          width: MediaQuery.of(context).size.width,
+                          //height: MediaQuery.of(context).size.height * 0.7,
+                          fit: BoxFit.fill,
+                          color: const Color(0xffE5E5E5),
+                        ),
+
+                        const Positioned(
+                          top: 60,
+                          child: FittedBox(
+                            fit: BoxFit.cover,
+                            child: Text(
+                              'How can we help you?',
+                              style: TextStyle(fontSize: 30),
+                            ),
                           ),
-                        )),
-                    ],
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Image.asset(
-                    'assets/images/contact_bgimage.png',
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.42,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                // const Align(
-                //   alignment: Alignment.center,
-                //   child: Text(
-                //     'How can we help you?',
-                //     style: TextStyle(fontSize: 30),
-                //   ),
-                // ),
+                        ),
 
-                Positioned(
-                  left: 20,
-                  top: 23,
-                  child: InkWell(
-                    child: const Icon(
-                      Icons.arrow_back_ios,
-                      size: 30,
+
+                      ],
                     ),
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
                   ),
-                ),
-                Positioned(
-                  top: 20,
-                  left: MediaQuery.of(context).size.width * 0.5 - 80,
-                  child: const Text(
-                    "Contact Us",
-                    style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
-                  ),
-                ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Image.asset(
+                      'assets/images/contact_bgimage.png',
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 0.42,
+                      fit: BoxFit.contain,
 
-              ],
+                      //color: Color(0xffBDE6F1),
+
+                    ),
+                  ),
+                  // const Align(
+                  //   alignment: Alignment.center,
+                  //   child: Text(
+                  //     'How can we help you?',
+                  //     style: TextStyle(fontSize: 30),
+                  //   ),
+                  // ),
+
+                  Positioned(
+                    left: 20,
+                    top: 23,
+                    child: InkWell(
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                        size: 30,
+                      ),
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ),
+                  const Positioned(
+                    top: 20,
+                    //left: MediaQuery.of(context).size.width * 0.5 - 80,
+                    child: Text(
+                      "Contact Us",
+                      style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
+                    ),
+                  ),
+                ],
+              ),
             ),
 
             Stack(
               children: [
+
                 Container(
                   color: const Color(0xffE5E5E5),
                   // margin: EdgeInsets.only(
@@ -220,29 +228,9 @@ class _ContactPageState extends State<ContactPage> {
                     ],
                   ),
                 ),
+
               ],
             ),
-            // Positioned(
-            //   left: 20,
-            //   top: 23,
-            //   child: InkWell(
-            //     child: const Icon(
-            //       Icons.arrow_back_ios,
-            //       size: 30,
-            //     ),
-            //     onTap: () {
-            //       Navigator.of(context).pop();
-            //     },
-            //   ),
-            // ),
-            // Positioned(
-            //   top: 20,
-            //   left: MediaQuery.of(context).size.width * 0.5 - 80,
-            //   child: const Text(
-            //     "Contact Us",
-            //     style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
-            //   ),
-            // ),
           ],
         ),
       ),

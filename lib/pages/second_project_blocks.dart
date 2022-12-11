@@ -111,13 +111,12 @@ class _SecondProjectBlocksState extends State<SecondProjectBlocks> {
                         FloatingActionButton(
                           onPressed: () async {
                             //List m = () as List;
-                            Map<String, dynamic> m = await p.listtoSave();
+                            Map<String, dynamic> m = await p.listtoSave({"email" : widget.email.toString()});
 
                             bool notInMap = true;
                             for (int i = 0; i < m.keys.length; i++) {
                               if (m.keys.elementAt(i).toString() ==
                                   widget.projectName.toString()) {
-                                print("In For Loop");
                                 notInMap = false;
                                 for (var element in m.values.elementAt(i)) {
                                   if (!forApi.contains(element)) {
@@ -127,6 +126,7 @@ class _SecondProjectBlocksState extends State<SecondProjectBlocks> {
                               }
                             }
                             forApi.sort();
+                           // print("========> ${m}");
 
                             if (!notInMap) {
                               m.update(widget.projectName.toString(),
@@ -137,8 +137,8 @@ class _SecondProjectBlocksState extends State<SecondProjectBlocks> {
                               m[widget.projectName] = forApi;
                             }
 
-                            print(widget.email);
-                            print("========> ${m}");
+                           // print(widget.email);
+                           // print("========> ${m}");
 
                             p.updateActiveEmployees({"email": widget.email.toString(), "permitted_site" : m});
 

@@ -256,14 +256,15 @@ class _SignUpState extends State<SignUp> {
                                         color: const Color(0xffEEF2FF),
                                         child: DropdownButtonHideUnderline(
                                         child: DropdownButton2(
+
                                           //isExpanded: true,
                                           dropdownDecoration: const BoxDecoration(color: Color(0xffEEF2FF)),
-                                          hint: Padding( padding: const EdgeInsets.only(left: 20), child: Text(downvalue),),
+                                          hint: Padding( padding: const EdgeInsets.only(left: 13), child: Text(downvalue),),
 
                                           items: Designation.map((String Designation){
                                             return DropdownMenuItem(
                                               value : Designation,
-                                              child: Padding(padding: const EdgeInsets.only(left: 20),child: Text(Designation),),
+                                              child: Padding(padding: const EdgeInsets.only(left: 13),child: Text(Designation),),
 
                                             );
                                           }).toList(),
@@ -279,6 +280,7 @@ class _SignUpState extends State<SignUp> {
                                           itemPadding:
                                           const EdgeInsets.symmetric(
                                               horizontal: 8.0),
+
                                         ),
                                       ),),
                                     ),

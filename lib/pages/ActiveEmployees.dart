@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
@@ -51,12 +52,93 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
 
   // List of items in our dropdown menu
   var items = [
+    'All',
     'Junior Engineer',
     'Senior Engineer',
     'Project Manager',
   ];
 
   String b = "";
+
+  Future<void> temp(
+      String name, String designation, Map<String, dynamic> site) {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      barrierColor: Colors.black12, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          elevation: 100,
+          backgroundColor: const Color.fromRGBO(137, 180, 253, 1),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          content: SingleChildScrollView(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 1,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                          flex: 3,
+                          child:
+                              Text(name, style: const TextStyle(fontSize: 20))),
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          designation,
+                          style: const TextStyle(fontSize: 15),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                    ],
+                  ),
+                  ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: site.keys.length,
+                      itemBuilder: (context, j) {
+                        List<dynamic> m =
+                            site.values.elementAt(j) as List<dynamic>;
+                        String a = "";
+                        for (var element in m) {
+                          a += element + " ";
+                        }
+                        return Row(
+                          children: [
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: Text(
+                                site.keys.elementAt(j).toString(),
+                                style: const TextStyle(fontSize: 17),
+                              ),
+                            ),
+                            Expanded(
+                                flex: 5,
+                                child: Text(
+                                  a,
+                                  overflow: TextOverflow.visible,
+                                  style: const TextStyle(fontSize: 17),
+                                )),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                          ],
+                        );
+                      }),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   final fkey = GlobalKey<FormState>();
   TextEditingController message = TextEditingController();
@@ -68,7 +150,7 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<List>(
+      body: StreamBuilder<List>(
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Container(
@@ -108,141 +190,185 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
                         style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
                       ),
                     ),
+
+                    const Positioned(
+                      top: 14,
+                      right: 24,
+                      child: Icon(Icons.notifications,size: 30,color: Colors.black38,),
+                    ),
+
+                    const Positioned(
+                      top: 10,
+                      right: 20,
+                      child: Icon(Icons.notifications,size: 30,color: Color.fromRGBO(107, 177, 253, 1),),
+                    ),
+
                     Container(
                       margin: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * 0.1025 - 20,
+                          top: MediaQuery.of(context).size.height * 0.1025,
                           left: 30),
-                      width: MediaQuery.of(context).size.width * 0.625,
+                      //width: MediaQuery.of(context).size.width * 0.625,
                       decoration: const BoxDecoration(
-                          color: Color(0xff89CFFD),
+                          color: Color.fromRGBO(137, 207, 253, 0.46),
                           borderRadius: BorderRadius.all(Radius.circular(6.0))),
                       child: DropdownButton2(
+                        buttonWidth: MediaQuery.of(context).size.width * 0.625,
                         dropdownDecoration:
-                            const BoxDecoration(color: Color(0xff89CFFD)),
+                            const BoxDecoration(color: Color.fromRGBO(137, 207, 253, 1,),
+                            ),
                         style: const TextStyle(color: Colors.black),
                         underline: Container(),
-                        icon: Padding(
-                          padding: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width * 0.25 -
-                                  dropdownvalue.length -
-                                  10),
-                          child: const Icon(Icons.keyboard_arrow_down),
+
+                        //icon:  Padding(padding: EdgeInsets.only(left: 20,),child: const Icon(Icons.keyboard_arrow_down),),
+
+                        hint: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text(dropdownvalue),
                         ),
-                        hint: Text(dropdownvalue),
+                        icon: const Padding(
+                          padding: EdgeInsets.only(right: 20),
+                          child: Icon(Icons.keyboard_arrow_down),
+                        ),
+
                         items: items.map((String items) {
                           return DropdownMenuItem(
                             value: items,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: Text(items),
-                            ),
+                            child: Text(items),
                           );
                         }).toList(),
                         onChanged: (String? newValue) {
                           setState(() {
                             dropdownvalue = newValue!;
-                            userList = [];
-                            if (newValue.toString() != 'Select Role') {
-                              for (int i = 0; i < userRole.length; i++) {
-                                if (userRole[i].keys.elementAt(0).toString() ==
-                                    newValue.toString()) {
-                                  userList.add(userRole[i]
-                                      .values
-                                      .elementAt(0)
-                                      .toString());
-                                }
-                              }
-                            }
                           });
                         },
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 150, bottom: 20),
+                      margin: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * 0.175,
+                          bottom: 20),
                       child: ListView.builder(
                         itemCount: snapshot.data?.length,
                         itemBuilder: (context, i) {
-                          return InkWell(
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                  left: MediaQuery.of(context).size.width *
-                                      0.04444,
-                                  top: 20,
-                                  right: MediaQuery.of(context).size.width *
-                                      0.04444,
-                                ),
-                                width:
-                                    MediaQuery.of(context).size.width * 0.9111,
-                                height: MediaQuery.of(context).size.height *
-                                        0.16875 +
-                                    snapshot.data![i].length * 2,
-                                decoration: const BoxDecoration(
-                                  color: Color.fromRGBO(137, 207, 253, 0.46),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0)),
-                                ),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        const Icon(Icons.circle, size: 15),
-                                        Text(snapshot.data![i]["username"]
-                                            .toString()),
-                                        Text(snapshot.data![i]["designation"]
-                                            .toString()),
-                                      ],
-                                    ),
-                                    Expanded(
-                                      child: ListView.builder(
-                                          itemCount: snapshot
-                                              .data![i]["permitted_site"]
-                                              .length,
-                                          itemBuilder: (context, j) {
-                                            b = snapshot.data![i]["email"].toString();
-                                            List<dynamic> m = snapshot
-                                                .data![i]["permitted_site"]
-                                                .values
-                                                .elementAt(j) as List<dynamic>;
-                                            String a = "";
-                                            for (var element in m) {
-                                              a += element + " ";
-                                            }
-                                            return Row(
-                                              children: [
-                                                Expanded(
-                                                  flex: 1,
-                                                  child: Text(
-                                                    snapshot
-                                                        .data![i]
-                                                            ["permitted_site"]
-                                                        .keys
-                                                        .elementAt(j)
-                                                        .toString(),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                    flex: 3,
-                                                    child: Text(
-                                                      a,
-                                                      overflow:
-                                                          TextOverflow.visible,
-                                                    )),
-                                              ],
-                                            );
-                                          }),
-                                    ),
-                                  ],
-                                ),
+                          return GestureDetector(
+                            onLongPress: () {
+                              temp(
+                                  snapshot.data![i]["username"].toString(),
+                                  snapshot.data![i]["designation"].toString(),
+                                  snapshot.data![i]["permitted_site"]);
+                            },
+                            child: Container(
+                              // transform: Matrix4.identity(),
+                              //   duration: const Duration(milliseconds: 50),
+                              margin: EdgeInsets.only(
+                                left:
+                                    MediaQuery.of(context).size.width * 0.04444,
+                                top: 20,
+                                right:
+                                    MediaQuery.of(context).size.width * 0.04444,
                               ),
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => AddProjectBlocks(
-                                              name: snapshot.data![i]["email"]
+                              padding: const EdgeInsets.only(bottom: 20),
+                              width: MediaQuery.of(context).size.width * 0.9111,
+                              height:
+                                  MediaQuery.of(context).size.height * 0.16875,
+                              decoration: const BoxDecoration(
+                                color: Color.fromRGBO(137, 207, 253, 0.46),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20.0)),
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 10, right: 5),
+                                        child: Icon(Icons.circle, size: 13),
+                                      ),
+                                      Expanded(
+                                          flex: 3,
+                                          child: Text(
+                                              snapshot.data![i]["username"]
                                                   .toString(),
-                                            )));
-                              });
+                                              style: const TextStyle(
+                                                  fontSize: 20))),
+                                      Expanded(
+                                        flex: 2,
+                                        child: Text(
+                                          snapshot.data![i]["designation"]
+                                              .toString(),
+                                          style: const TextStyle(fontSize: 15),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 50,
+                                      ),
+                                    ],
+                                  ),
+                                  Flexible(
+                                    flex: 1,
+                                    child: ListView.builder(
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemCount: snapshot
+                                            .data![i]["permitted_site"].length,
+                                        itemBuilder: (context, j) {
+                                          b = snapshot.data![i]["email"]
+                                              .toString();
+                                          List<dynamic> m = snapshot
+                                              .data![i]["permitted_site"].values
+                                              .elementAt(j) as List<dynamic>;
+                                          String a = "";
+                                          for (var element in m) {
+                                            a += element + " ";
+                                          }
+                                          return Row(
+                                            children: [
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                              Expanded(
+                                                flex: 1,
+                                                child: Text(
+                                                  snapshot
+                                                      .data![i]
+                                                          ["permitted_site"]
+                                                      .keys
+                                                      .elementAt(j)
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                      fontSize: 17),
+                                                ),
+                                              ),
+                                              Expanded(
+                                                  flex: 3,
+                                                  child: Text(
+                                                    a,
+                                                    overflow:
+                                                        TextOverflow.visible,
+                                                    style: const TextStyle(
+                                                        fontSize: 17),
+                                                  )),
+                                            ],
+                                          );
+                                        }),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AddProjectBlocks(
+                                            name: snapshot.data![i]["email"]
+                                                .toString(),
+                                          )));
+                            },
+                          );
                         },
                       ),
                     ),
@@ -253,7 +379,7 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
           }
           return const Text("Something Went Wrong");
         },
-        future: p.listActiveEmployeers(),
+        stream: p.listActiveEmployeer({"search_by" : dropdownvalue}),
       ),
     );
   }

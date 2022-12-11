@@ -22,7 +22,7 @@ class _DpReportPageState extends State<DpReportPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: DrawerPage(),
+      endDrawer: const DrawerPage(),
       body: Center(
         child: Stack(
           children: [

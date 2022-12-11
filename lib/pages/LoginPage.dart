@@ -237,11 +237,12 @@ class _LoginPageState extends State<LoginPage> {
                                             preferences.setString(
                                                 "Email",
                                                 response[0]["email"].toString());
-                                            Navigator.push(
+                                            Navigator.pushReplacement(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (
-                                                      context) => const OTP()),
+                                                      context) => OTP(email : response[0]["email"].toString()
+                                                  )),
                                             );
                                           }
                                         });
