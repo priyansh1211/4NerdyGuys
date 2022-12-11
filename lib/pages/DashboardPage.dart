@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
 import 'package:flutter_app/pages/select_page.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -60,7 +61,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   Align(
                     alignment: const Alignment(0.94, -0.9),
                     child:  InkWell(
-                      child: Icon(
+                      child: const Icon(
                         Icons.menu,
                         size: 30,
                         color: Colors.black,
@@ -83,9 +84,10 @@ class _DashboardPageState extends State<DashboardPage> {
                   Container(
                     padding: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height * 0.15,
-                        bottom: MediaQuery.of(context).size.height * 0.10,
-                        right: MediaQuery.of(context).size.height * 0.020,
-                        left: MediaQuery.of(context).size.height * 0.020),
+                        bottom: MediaQuery.of(context).size.height * 0.05,
+                        //right: MediaQuery.of(context).size.height * 0.020,
+                        //left: MediaQuery.of(context).size.height * 0.020
+          ),
                     child: GridView.builder(
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2, mainAxisSpacing: 15),
@@ -129,6 +131,30 @@ class _DashboardPageState extends State<DashboardPage> {
                                           color: Color(0xff796A6A)),
                                     ),
                                   ),
+
+                                  const Padding(padding: EdgeInsets.only(bottom: 50,left: 25),
+                                    child: Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: Text("40 %",style: TextStyle(
+                                        fontSize: 13,
+                                        fontFamily: 'Inter',
+                                      )),
+                                    ),),
+
+                                  Padding(padding: const EdgeInsets.only(bottom: 30),child: Align(
+                                    alignment: Alignment.bottomLeft,
+                                    child: LinearPercentIndicator(
+                                      width: MediaQuery.of(context).size.width*0.38888,
+                                      animation: true,
+                                      barRadius: const Radius.circular(10),
+                                      padding: const EdgeInsets.only(left: 20,right: 10),
+                                      lineHeight: 17.0,
+                                      percent: 0.4,
+                                      backgroundColor: const Color(0xffE5E5E5),
+                                      progressColor: const Color(0xffBDE6F1),
+                                    ),
+                                  ),),
+
                                 ],
                               ),
                             ),

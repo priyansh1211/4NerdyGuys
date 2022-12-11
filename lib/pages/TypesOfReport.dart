@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/DpReport.dart';
 import 'package:flutter_app/pages/ProjectProgress.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TypesOfReport extends StatefulWidget {
   final String projectName;
@@ -15,6 +16,26 @@ class TypesOfReport extends StatefulWidget {
 
 class _TypesOfReportState extends State<TypesOfReport> {
 
+  String name = "";
+
+  @override
+  void initState() {
+    initial().then(updateName);
+    super.initState();
+  }
+
+
+  Future <String> initial() async {
+    SharedPreferences? preferences = await SharedPreferences.getInstance();
+    name = preferences.getString("UserName")!;
+    return name;
+  }
+
+  void updateName(String name) {
+    setState(() {
+      this.name = name;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +49,7 @@ class _TypesOfReportState extends State<TypesOfReport> {
             padding: const EdgeInsets.only(left: 20, right: 10),
             child: TextField(
               decoration: InputDecoration(
-                hintText: "Hello,Vishwas",
+                hintText: "Hello, ${name}",
                 hintStyle: const TextStyle(
                   fontFamily: "ReadexPro",
                   fontSize: 30,
@@ -101,14 +122,14 @@ class _TypesOfReportState extends State<TypesOfReport> {
                             Icons.add_box_rounded,
                             size: 30,
                           )),
-                      Positioned(
+                      const Positioned(
                         height: 40,
                         width: 110,
                         right: 30,
                         bottom: 60,
                         child: Text(
                           "Daily Progress Report",
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 13,
                             fontFamily: 'ReadexPro',
                             fontWeight: FontWeight.w600,

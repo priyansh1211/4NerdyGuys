@@ -22,22 +22,17 @@ class _LoginPageState extends State<LoginPage> {
   bool _obsecuretext = true;
   late SharedPreferences logindata;
   late bool newu;
-  late bool isloading;
 
 
   final fkey = GlobalKey<FormState>();
 
   NetworkHandler p = NetworkHandler();
 
+  late String userName;
+
   @override
   void initState() {
-
-    isloading = true;
-    Future.delayed(const Duration(seconds: 2), (){
-      setState(() {
-        isloading = false;
-      });
-    });
+    const CircularProgressIndicator();
     super.initState();
     check_if_already_login();
   }
@@ -46,9 +41,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     // final isKeyboard = MediaQuery.of(context).viewInsets.bottom!=0;
-    return isloading?  Container(
-      color: Colors.white,
-      child: const Center(child: CircularProgressIndicator(),),) : Scaffold(
+    return Scaffold(
         body: Stack(
           children: [
             ListView(
@@ -67,10 +60,9 @@ class _LoginPageState extends State<LoginPage> {
                           const SizedBox(
                             height: 20,
                           ),
-                          Expanded(
-                            child: Image.asset(
+                          Image.asset(
                                 'assets/images/login_page_pic.jpeg'),
-                          ),
+
                           Container(
                             width: MediaQuery
                                 .of(context)
@@ -228,25 +220,28 @@ class _LoginPageState extends State<LoginPage> {
                                       map['password'] = _passwordCtrler.text;
                                       if (_userEmailCtrler.text.isNotEmpty &&
                                           _passwordCtrler.text.isNotEmpty) {
-                                        bool? response = await p.loginApi({"email": _userEmailCtrler.text.toString(), "password" : _passwordCtrler.text.toString()});
+                                        List? response = await p.loginApi({"email": _userEmailCtrler.text.toString(), "password" : _passwordCtrler.text.toString()});
                                         //     as Map<String, dynamic>;
                                         SharedPreferences? preferences =
                                         await SharedPreferences.getInstance();
                                         // print("REQUEST: ====================> " +
                                         //     response.toString());
                                         setState(() {
-                                          if (response == true) {
+                                          if (response!.isNotEmpty) {
 
                                             logindata.setBool("login", false);
 
                                             preferences.setString(
                                                 "UserName",
-                                                _userEmailCtrler.text);
+                                                response[0]["username"].toString());
+                                            preferences.setString(
+                                                "Email",
+                                                response[0]["email"].toString());
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (
-                                                      context) =>  OTP(email: _userEmailCtrler.text.toString())),
+                                                      context) => const OTP()),
                                             );
                                           }
                                         });
@@ -296,7 +291,8 @@ class _LoginPageState extends State<LoginPage> {
                                             fontSize: 20,
                                             fontFamily: 'ReadexPro'),
                                       ),
-                                    )
+                                    ),
+
                                   ],
                                 ),
                               ],

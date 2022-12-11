@@ -194,8 +194,6 @@ class _AddProjectBlocksState extends State<AddProjectBlocks> {
                   ),
                 ],
               ),
-
-
             ],
           ),
         );

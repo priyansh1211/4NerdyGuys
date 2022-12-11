@@ -14,6 +14,7 @@ class _AfterPageState extends State<AfterPage> {
     return Scaffold(
       body: Center(
         child: Stack(
+          alignment: Alignment.center,
           children: [
             Container(
               decoration: const BoxDecoration(
@@ -39,13 +40,14 @@ class _AfterPageState extends State<AfterPage> {
                 fit: BoxFit.contain,
               ),
             ),
-            const Align(
-              alignment: Alignment.center,
+            const Padding(padding: EdgeInsets.only(left: 20,right: 20),
+            child: FittedBox(
+              fit: BoxFit.cover,
               child: Text(
                 'Thank you for contacting us\nYour reply has been recorded',
                 style: TextStyle(fontSize: 30),
               ),
-            ),
+            ),),
             Positioned(
               left: 20,
               top: 23,
@@ -56,14 +58,14 @@ class _AfterPageState extends State<AfterPage> {
                 ),
                 onTap: () {
                   Navigator.of(context).pop();
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_) => const HomePage()) );
-                  },
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const HomePage()));
+                },
               ),
             ),
-            Positioned(
+            const Positioned(
               top: 20,
-              left: MediaQuery.of(context).size.width * 0.5 - 80,
-              child: const Text(
+              child: Text(
                 "Contact Us",
                 style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
               ),

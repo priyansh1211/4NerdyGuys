@@ -12,7 +12,7 @@ class NetworkHandler {
   {'Content-type': 'application/json',
     'Accept': 'application/json',};
 
-  String baseurl = "http://192.168.108.77:5000/user";
+  String baseurl = "http://192.168.1.2:5000/user";
   var log = Logger();
 
   Future<dynamic> get(String url) async {
@@ -70,6 +70,7 @@ class NetworkHandler {
 
     String url = formater("/verifyOTP");
 
+    log.i(body);
     final response = await http.post(Uri.parse(url),body : jsonEncode(body), headers: requestHeaders);
 
 
@@ -157,14 +158,14 @@ class NetworkHandler {
     return false;
   }
 
-  Future<Map<String,dynamic>> listtoSave()
+  Future<Map<String,dynamic>> listtoSave(Map<String,String> body)
   async {
+
+
 
     String url = formater("/getActive");
 
-    final response = await http.get(Uri.parse(url));
-
-    //final response = await http.post(add,body : jsonEncode(""), headers: requestHeaders);
+    final response = await http.post(Uri.parse(url),body : jsonEncode(body), headers: requestHeaders);
 
     final Map<String,dynamic> map = jsonDecode(response.body);
     // log.i(map);
@@ -180,20 +181,23 @@ class NetworkHandler {
   }
 
 
-  Future<List> listActiveEmployeers()
-  async {
+  Stream<List> listActiveEmployeer(Map<String, String> body)
+  async* {
 
     String url = formater("/getActiveEmployee");
+    while(true)
+      {
+        Future.delayed(const Duration(seconds : 1));
+        final response = await http.post(Uri.parse(url),body : jsonEncode(body), headers: requestHeaders);
 
-    final response = await http.get(Uri.parse(url));
-    final List map = jsonDecode(response.body);
+        final List map = jsonDecode(response.body);
 
-    if(response.statusCode == 200 || response.statusCode == 201 )
-    {
-      return map;
-    }
+        if(response.statusCode == 200 || response.statusCode == 201 )
+        {
+          yield map;
+        }
+      }
 
-    return [];
   }
 
   Future<List> listproject()
@@ -245,6 +249,7 @@ class NetworkHandler {
 
   Future<List> listitem(Map<String, String> body)
   async {
+    log.i(body);
 
     String url = formater("/getitems");
 
@@ -253,7 +258,7 @@ class NetworkHandler {
     //final response = await http.post(add,body : jsonEncode(""), headers: requestHeaders);
 
     final List map = jsonDecode(response.body);
-    // log.i(map);
+    log.i(map);
     //print("$map ==++++>>");
 
     if(response.statusCode == 200 || response.statusCode == 201 )
@@ -263,6 +268,29 @@ class NetworkHandler {
     }
     log.i(response.body);
     return [];
+  }
+
+  Stream<List> listitemdetails(Map<String, String> body)
+  async* {
+
+    String url = formater("/getitemsdetails");
+
+    while(true)
+      {
+        Future.delayed(const Duration(milliseconds: 100 ));
+        final response = await http.post(Uri.parse(url),body : jsonEncode(body), headers: requestHeaders);
+
+        final List map = jsonDecode(response.body);
+
+        if(response.statusCode == 200 || response.statusCode == 201 )
+        {
+          //log.i(response.body);
+          yield map;
+        }
+      }
+
+
+
   }
 
   Future<bool?> addItems( Map <String,String> body)
@@ -280,6 +308,40 @@ class NetworkHandler {
     }
     log.i(response.body);
     log.i(response.statusCode);
+    return false;
+  }
+
+  Future<bool> updateItems(Map<String, dynamic> body)
+  async {
+
+    String url = formater("/updateitems");
+    log.i(body);
+
+    final response = await http.post(Uri.parse(url),body : jsonEncode(body), headers: requestHeaders);
+
+    if(response.statusCode == 200 || response.statusCode == 201 )
+    {
+      log.i(response.body);
+      return true;
+    }
+
+    return false;
+  }
+
+  Future<bool> updateQuantityItems(Map<String, dynamic> body)
+  async {
+
+    String url = formater("/updatequantityitems");
+    log.i(body);
+
+    final response = await http.post(Uri.parse(url),body : jsonEncode(body), headers: requestHeaders);
+
+    if(response.statusCode == 200 || response.statusCode == 201 )
+    {
+      log.i(response.body);
+      return true;
+    }
+
     return false;
   }
 

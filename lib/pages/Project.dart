@@ -4,6 +4,7 @@ import 'package:flutter_app/pages/Add_Project.dart';
 import 'package:flutter_app/pages/Edit_Project.dart';
 import 'package:flutter_app/pages/TypesOfReport.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class ProjectPage extends StatefulWidget {
   const ProjectPage({Key? key}) : super(key: key);
@@ -105,9 +106,10 @@ class _ProjectPageState extends State<ProjectPage> {
                     Container(
                       padding: EdgeInsets.only(
                           top: MediaQuery.of(context).size.height * 0.15,
-                          bottom: MediaQuery.of(context).size.height * 0.10,
-                          right: MediaQuery.of(context).size.height * 0.020,
-                          left: MediaQuery.of(context).size.height * 0.020),
+                          bottom: MediaQuery.of(context).size.height * 0.05,
+                       //   right: MediaQuery.of(context).size.height * 0.020,
+                      //    left: MediaQuery.of(context).size.height * 0.020
+                      ),
                       child: GridView.builder(
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2, mainAxisSpacing: 15),
@@ -127,13 +129,25 @@ class _ProjectPageState extends State<ProjectPage> {
                                       left: 11,
                                       child: Image.asset('assets/images/proj_2.png'),
                                     ),
-                                    Positioned(
-                                        top: 10,
-                                        left : MediaQuery.of(context).size.width*0.35 - 20,
+                                    // Positioned(
+                                    //     top: 10,
+                                    //     left : MediaQuery.of(context).size.width*0.35 - 20,
+                                    //     child: InkWell(child: const Icon(Icons.edit),onTap: () {
+                                    //       Navigator.of(context).pop();
+                                    //       Navigator.push(context, MaterialPageRoute(builder: (context) => EditProjectPage(newprojectName: snapshot.data![index]["project_name"].toString(), newfloors: snapshot.data![index]["floors"], newblocks: snapshot.data![index]["blocks"], ) ) );
+                                    //     },)),
+
+                                    Padding(padding: const EdgeInsets.only(right: 10,top: 10),
+
+                                      child: Align(
+                                        alignment: Alignment.topRight,
                                         child: InkWell(child: const Icon(Icons.edit),onTap: () {
                                           Navigator.of(context).pop();
                                           Navigator.push(context, MaterialPageRoute(builder: (context) => EditProjectPage(newprojectName: snapshot.data![index]["project_name"].toString(), newfloors: snapshot.data![index]["floors"], newblocks: snapshot.data![index]["blocks"], ) ) );
-                                        },)),
+                                        },),
+                                      ),
+                                    ),
+
                                     Positioned(
                                       top: 69,
                                       left: 16,
@@ -155,6 +169,30 @@ class _ProjectPageState extends State<ProjectPage> {
                                             color: Color(0xff796A6A)),
                                       ),
                                     ),
+
+                                    const Padding(padding: EdgeInsets.only(bottom: 50,left: 25),
+                                    child: Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: Text("40 %",style: TextStyle(
+                                          fontSize: 13,
+                                          fontFamily: 'Inter',
+                                          )),
+                                    ),),
+
+                                    Padding(padding: const EdgeInsets.only(bottom: 30),child: Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: LinearPercentIndicator(
+                                        width: MediaQuery.of(context).size.width*0.38888,
+                                        animation: true,
+                                        barRadius: const Radius.circular(10),
+                                        padding: const EdgeInsets.only(left: 20,right: 10),
+                                        lineHeight: 17.0,
+                                        percent: 0.4,
+                                        backgroundColor: const Color(0xffE5E5E5),
+                                        progressColor: const Color(0xffBDE6F1),
+                                      ),
+                                    ),),
+
                                   ],
                                 ),
                               ),

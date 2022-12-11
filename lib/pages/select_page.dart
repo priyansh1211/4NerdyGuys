@@ -4,6 +4,7 @@ import 'package:flutter_app/pages/analytics.dart';
 import 'package:flutter_app/pages/tasks.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
 
+// ignore: must_be_immutable
 class SelectPage extends StatefulWidget {
 
   String projectName;
@@ -17,7 +18,7 @@ class _SelectPageState extends State<SelectPage> {
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
     return Scaffold(
-      endDrawer: DrawerPage(),
+      endDrawer: const DrawerPage(),
       body: Center(
         child: Stack(children: [
           Container(
@@ -34,31 +35,30 @@ class _SelectPageState extends State<SelectPage> {
               fit: BoxFit.cover,
             ),
           ),
-          Positioned(
-            left: 330,
-            top: 48,
+          Align(
+            alignment: const Alignment(0.94, -0.9),
             child: Builder(
               builder: (context) => IconButton(
-                icon: Icon(Icons.menu),
+                icon: const Icon(Icons.menu),
                 iconSize: 30,
-                color: Color(0xff000000),
+                color: const Color(0xff000000),
                 onPressed: () => Scaffold.of(context).openEndDrawer(),
                 tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
               ),
             ),
           ),
           Positioned(
-            left: 30,
-            top: 46,
-            child: InkWell(
+              left: 20,
+              top: 50,
+              child: InkWell(
                 child: const Icon(
                   Icons.arrow_back_ios,
                   size: 30,
                 ),
                 onTap: () {
                   Navigator.of(context).pop();
-                }),
-          ),
+                },
+              )),
           const Positioned(
             left: 30,
             top: 100,

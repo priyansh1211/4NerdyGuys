@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/MachineryReport.dart';
@@ -497,7 +499,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                         ),
                       ),
                       ListView.builder(
-                        physics: ScrollPhysics(parent: null),
+                        physics: const ScrollPhysics(parent: null),
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context,int i){
                           return Column(
@@ -633,7 +635,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                                       ],
                                     ),
                                   )),
-                              SizedBox(height: 10,),
+                              const SizedBox(height: 10,),
                               Container(
                                 padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.04),
                                 height: 62,
@@ -645,16 +647,16 @@ class _ManPowerReportState extends State<ManPowerReport> {
                                       resulttext = total.toString();
                                     });
                                   },
-                                  child: Text(resulttext,style: TextStyle(color: Colors.black),),
                                   backgroundColor: Colors.white,
                                   isExtended: true,
 
                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                                   elevation: 0,
+                                  child: Text(resulttext,style: const TextStyle(color: Colors.black),),
                                 ),
                                 // padding: EdgeInsets.only(right: 0),
                               ),
-                              SizedBox(height: 10,),
+                              const SizedBox(height: 10,),
                             ],
                           );
                         },
