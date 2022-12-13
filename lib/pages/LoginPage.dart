@@ -241,7 +241,7 @@ class _LoginPageState extends State<LoginPage> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (
-                                                      context) => const OTP()),
+                                                      context) => OTP(email : response[0]["email"].toString())),
                                             );
                                           }
                                         });

@@ -12,7 +12,7 @@ class NetworkHandler {
   {'Content-type': 'application/json',
     'Accept': 'application/json',};
 
-  String baseurl = "http://192.168.1.2:5000/user";
+  String baseurl = "http://192.168.1.8:5000/user";
   var log = Logger();
 
   Future<dynamic> get(String url) async {
