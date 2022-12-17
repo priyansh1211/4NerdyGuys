@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/Contact_Us.dart';
-import 'package:flutter_app/pages/DashboardPage.dart';
-import 'package:flutter_app/pages/LoginPage.dart';
+import 'package:flutter_app/pages/Contact-Us/Contact_Us.dart';
+import 'package:flutter_app/pages/Dashboard/DashboardPage.dart';
+import 'package:flutter_app/pages/Auth/LoginPage.dart';
 import 'package:flutter_app/pages/Project.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

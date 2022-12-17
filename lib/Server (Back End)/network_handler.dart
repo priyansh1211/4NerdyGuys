@@ -12,7 +12,7 @@ class NetworkHandler {
   {'Content-type': 'application/json',
     'Accept': 'application/json',};
 
-  String baseurl = "http://192.168.108.77:5000/user";
+  String baseurl = "http://192.168.159.77:5000/user";
   var log = Logger();
 
   Future<dynamic> get(String url) async {
@@ -44,7 +44,7 @@ class NetworkHandler {
   Future<List?> loginApi (Map <String,String> body) async{
     try {
       String url = formater("/login");
-      //print("login : $body");
+      print("login : $body");
       final response = await http.post(Uri.parse(url),body: jsonEncode(body),headers: {"Content-Type": "application/json"});
       // Map map2 = jsonDecode(response.body)as Map<String,dynamic>;
       // // print("login : $map2");

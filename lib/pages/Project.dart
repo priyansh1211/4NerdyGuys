@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
-import 'package:flutter_app/pages/Add_Project.dart';
-import 'package:flutter_app/pages/Edit_Project.dart';
-import 'package:flutter_app/pages/TypesOfReport.dart';
+import 'package:flutter_app/pages/Dashboard/Add_Project.dart';
+import 'package:flutter_app/pages/Project/Edit_Project.dart';
+import 'package:flutter_app/pages/Reports/TypesOfReport.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
 
 class ProjectPage extends StatefulWidget {

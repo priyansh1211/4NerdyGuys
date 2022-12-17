@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:flutter_app/pages/fileforanalyticsone.dart';
+import 'package:flutter_app/pages/Dashboard/fileforanalyticsone.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_app/pages/forchartanalytics.dart';
+import 'package:flutter_app/pages/Dashboard/forchartanalytics.dart';
 import 'package:flutter_app/pages/analyticstwo.dart';
 
 class analyticsPage extends StatefulWidget {
