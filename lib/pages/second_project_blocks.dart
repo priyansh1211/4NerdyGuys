@@ -96,7 +96,7 @@ class _SecondProjectBlocksState extends State<SecondProjectBlocks> {
 
                 Container(
                   padding:
-                  const EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 5),
+                  const EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
                     color: const Color(0xffAECAEC),
@@ -114,7 +114,7 @@ class _SecondProjectBlocksState extends State<SecondProjectBlocks> {
 
                     validator: (values) {
                       if (values == null || values.isEmpty) {
-                        return "Required";
+                        return "  Required";
                       }
                       return null;
                     },
@@ -153,38 +153,46 @@ class _SecondProjectBlocksState extends State<SecondProjectBlocks> {
                 ElevatedButton(
                   onPressed: () async {
                     //List m = () as List;
-                    Map<String, dynamic> m = await p.listtoSave({"email" : widget.email.toString()});
+                    if(fkey.currentState!.validate()){
+                      Map<String, dynamic> m = await p.listtoSave({"email" : widget.email.toString()});
 
-                    bool notInMap = true;
-                    for (int i = 0; i < m.keys.length; i++) {
-                      if (m.keys.elementAt(i).toString() ==
-                          widget.projectName.toString()) {
-                        notInMap = false;
-                        for (var element in m.values.elementAt(i)) {
-                          if (!forApi.contains(element)) {
-                            forApi.add(element.toString());
+                      bool notInMap = true;
+                      //print(m.keys.toString() == "none");
+                      if(m.keys.elementAt(0) == "none" && m.values.elementAt(0) == "none")
+                        {
+                          m.clear();
+                        }
+
+                      for (int i = 0; i < m.keys.length; i++) {
+                        if (m.keys.elementAt(i).toString() ==
+                            widget.projectName.toString()) {
+                          notInMap = false;
+                          for (var element in m.values.elementAt(i)) {
+                            if (!forApi.contains(element)) {
+                              forApi.add(element.toString());
+                            }
                           }
                         }
                       }
+                      forApi.sort();
+                      //print("========> ${m}");
+
+                      if (!notInMap) {
+                        m.update(widget.projectName.toString(),
+                                (value) => forApi);
+                      }
+
+                      if (notInMap) {
+                        m[widget.projectName] = forApi;
+                      }
+                      //
+                      // // print(widget.email);
+                      //print("========> ${m}");
+
+                      p.updateActiveEmployees({"email": widget.email.toString(), "permitted_site" : m});
+                       //ignore: use_build_context_synchronously
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const ActiveEmployees()));
                     }
-                    forApi.sort();
-                    // print("========> ${m}");
-
-                    if (!notInMap) {
-                      m.update(widget.projectName.toString(),
-                              (value) => forApi);
-                    }
-
-                    if (notInMap) {
-                      m[widget.projectName] = forApi;
-                    }
-
-                    // print(widget.email);
-                    // print("========> ${m}");
-
-                    p.updateActiveEmployees({"email": widget.email.toString(), "permitted_site" : m});
-                    // ignore: use_build_context_synchronously
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const ActiveEmployees()));
                   },
 
                   style: const ButtonStyle(elevation: MaterialStatePropertyAll(10),backgroundColor: MaterialStatePropertyAll(Color(0xffAECAEC),),shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(21))))),
@@ -201,105 +209,6 @@ class _SecondProjectBlocksState extends State<SecondProjectBlocks> {
               ],
             ),
           ),
-
-
-
-
-
-          // ListView(
-          //   children: [
-          //     Column(
-          //       children: [
-          //         Container(
-          //           margin: EdgeInsets.only(
-          //               top: MediaQuery.of(context).size.height * 0.10875,
-          //               left: MediaQuery.of(context).size.width * 0.04444,
-          //               right: MediaQuery.of(context).size.width * 0.04444),
-          //           height: 100,
-          //           width: 200,
-          //           decoration: BoxDecoration(
-          //             borderRadius: BorderRadius.circular(16),
-          //             color: const Color(0xffAECAEC),
-          //           ),
-          //         ),
-          //         Container(
-          //           //MediaQuery.of(context).size.width * 0.9111,
-          //           margin: EdgeInsets.only(
-          //               top: MediaQuery.of(context).size.height * 0.10875,
-          //               left: MediaQuery.of(context).size.width * 0.04444,
-          //               right: MediaQuery.of(context).size.width * 0.04444),
-          //           padding: const EdgeInsets.only(
-          //             left: 30,
-          //             right: 30,
-          //           ),
-          //           decoration: BoxDecoration(
-          //             borderRadius: BorderRadius.circular(16),
-          //             color: const Color(0xffAECAEC),
-          //           ),
-          //           child: Column(
-          //             crossAxisAlignment: CrossAxisAlignment.center,
-          //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //             children: [
-          //               const SizedBox(
-          //                 height: 5,
-          //               ),
-          //
-          //               const SizedBox(
-          //                 height: 15,
-          //               ),
-          //               FloatingActionButton(
-          //                 onPressed: () async {
-          //                   //List m = () as List;
-          //                   Map<String, dynamic> m = await p.listtoSave({"email" : widget.email.toString()});
-          //
-          //                   bool notInMap = true;
-          //                   for (int i = 0; i < m.keys.length; i++) {
-          //                     if (m.keys.elementAt(i).toString() ==
-          //                         widget.projectName.toString()) {
-          //                       notInMap = false;
-          //                       for (var element in m.values.elementAt(i)) {
-          //                         if (!forApi.contains(element)) {
-          //                           forApi.add(element.toString());
-          //                         }
-          //                       }
-          //                     }
-          //                   }
-          //                   forApi.sort();
-          //                  // print("========> ${m}");
-          //
-          //                   if (!notInMap) {
-          //                     m.update(widget.projectName.toString(),
-          //                         (value) => forApi);
-          //                   }
-          //
-          //                   if (notInMap) {
-          //                     m[widget.projectName] = forApi;
-          //                   }
-          //
-          //                  // print(widget.email);
-          //                  // print("========> ${m}");
-          //
-          //                   p.updateActiveEmployees({"email": widget.email.toString(), "permitted_site" : m});
-          //
-          //
-          //
-          //                 },
-          //                 child: const SizedBox(
-          //                   height: 50,
-          //                   width: 150,
-          //                   child: Icon(Icons.add),
-          //                 ),
-          //               )
-          //             ],
-          //           ),
-          //         ),
-          //         SizedBox(
-          //           height: MediaQuery.of(context).size.height * 0.075,
-          //         ),
-          //       ],
-          //     ),
-          //   ],
-          // ),
         ],
       ),
     );

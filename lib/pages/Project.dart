@@ -5,6 +5,8 @@ import 'package:flutter_app/pages/Edit_Project.dart';
 import 'package:flutter_app/pages/TypesOfReport.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class ProjectPage extends StatefulWidget {
   const ProjectPage({Key? key}) : super(key: key);
@@ -17,6 +19,33 @@ class _ProjectPageState extends State<ProjectPage> {
   final fkey = GlobalKey<FormState>();
 
   NetworkHandler p = NetworkHandler();
+
+  bool designation = false;
+
+  @override
+  void initState() {
+    initial().then(updateDesignation);
+    super.initState();
+  }
+
+  Future<bool> initial() async {
+    SharedPreferences? preferences = await SharedPreferences.getInstance();
+    if(preferences.getString("Designation") == 'Owner' ||
+        preferences.getString("Designation") == 'Project Manager')
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  void updateDesignation(bool designation) {
+    setState(() {
+      this.designation = designation;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +60,8 @@ class _ProjectPageState extends State<ProjectPage> {
             if(snapshot.hasData){
 
               return Scaffold(
-                //endDrawer: const DrawerPage(),
-                floatingActionButton: SizedBox(
+
+                floatingActionButton: designation ? SizedBox(
                   width: 64,
                   height: 45,
                   child: FloatingActionButton(
@@ -48,8 +77,8 @@ class _ProjectPageState extends State<ProjectPage> {
                       );
                     },
                   ),
-                ),
-                floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+                ) : null,
+                floatingActionButtonLocation: designation ? FloatingActionButtonLocation.centerFloat : null,
 
                 body: Container(
                   color: const Color(0xffE5E5E5),
@@ -107,8 +136,8 @@ class _ProjectPageState extends State<ProjectPage> {
                       padding: EdgeInsets.only(
                           top: MediaQuery.of(context).size.height * 0.15,
                           bottom: MediaQuery.of(context).size.height * 0.05,
-                       //   right: MediaQuery.of(context).size.height * 0.020,
-                      //    left: MediaQuery.of(context).size.height * 0.020
+                         right: MediaQuery.of(context).size.height * 0.015,
+                         left: MediaQuery.of(context).size.height * 0.015
                       ),
                       child: GridView.builder(
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -116,29 +145,23 @@ class _ProjectPageState extends State<ProjectPage> {
                         itemCount: snapshot.data?.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
-                            margin: const EdgeInsets.only(left: 15, right: 15),
+                            margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.0111111, right: MediaQuery.of(context).size.width * 0.0111111),
                             child: InkWell(
                               child: Card(
+                                 margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.022222,right: MediaQuery.of(context).size.width * 0.02222),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0)),
                                 elevation: 10.0,
                                 child: Stack(
+                                  alignment: Alignment.center,
                                   children: [
-                                    Positioned(
-                                      top: 13,
-                                      left: 11,
+
+                                    Padding(padding: const EdgeInsets.only(top: 13,left: 8),child: Align(
+                                      alignment: Alignment.topLeft,
                                       child: Image.asset('assets/images/proj_2.png'),
-                                    ),
-                                    // Positioned(
-                                    //     top: 10,
-                                    //     left : MediaQuery.of(context).size.width*0.35 - 20,
-                                    //     child: InkWell(child: const Icon(Icons.edit),onTap: () {
-                                    //       Navigator.of(context).pop();
-                                    //       Navigator.push(context, MaterialPageRoute(builder: (context) => EditProjectPage(newprojectName: snapshot.data![index]["project_name"].toString(), newfloors: snapshot.data![index]["floors"], newblocks: snapshot.data![index]["blocks"], ) ) );
-                                    //     },)),
+                                    ),),
 
-                                    Padding(padding: const EdgeInsets.only(right: 10,top: 10),
-
+                                    designation? Padding(padding: const EdgeInsets.only(right: 10,top: 10),
                                       child: Align(
                                         alignment: Alignment.topRight,
                                         child: InkWell(child: const Icon(Icons.edit),onTap: () {
@@ -146,22 +169,22 @@ class _ProjectPageState extends State<ProjectPage> {
                                           Navigator.push(context, MaterialPageRoute(builder: (context) => EditProjectPage(newprojectName: snapshot.data![index]["project_name"].toString(), newfloors: snapshot.data![index]["floors"], newblocks: snapshot.data![index]["blocks"], ) ) );
                                         },),
                                       ),
-                                    ),
+                                    ) : Container(),
 
                                     Positioned(
-                                      top: 69,
-                                      left: 16,
+                                      top: MediaQuery.of(context).size.height * 0.08625,
+                                      left: MediaQuery.of(context).size.height * 0.0239166,
                                       child: Text(
                                           style: const TextStyle(
                                             fontSize: 18, fontFamily: 'Inter'),
-                                        //userList1[index].keys.elementAt(0).toString(),
                                         snapshot.data![index]["project_name"].toString(),
                                       ),
                                     ),
-                                    const Positioned(
-                                      top: 90,
-                                      left: 17,
-                                      child: Text(
+
+                                    Positioned(
+                                      top: MediaQuery.of(context).size.height * 0.1125,
+                                      left: MediaQuery.of(context).size.height * 0.0239166,
+                                      child: const Text(
                                         "Ongoing Site",
                                         style: TextStyle(
                                             fontSize: 10,
@@ -170,27 +193,26 @@ class _ProjectPageState extends State<ProjectPage> {
                                       ),
                                     ),
 
-                                    const Padding(padding: EdgeInsets.only(bottom: 50,left: 25),
+                                    Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.04125,left:MediaQuery.of(context).size.width * 0.04125),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
-                                      child: Text("40 %",style: TextStyle(
+                                      child: Text(" ${snapshot.data![index]["progress"].toString()} %",style: const TextStyle(
                                           fontSize: 13,
                                           fontFamily: 'Inter',
                                           )),
                                     ),),
 
-                                    Padding(padding: const EdgeInsets.only(bottom: 30),child: Align(
-                                      alignment: Alignment.bottomLeft,
+                                    Positioned(
+                                      bottom: MediaQuery.of(context).size.height*0.0175,
                                       child: LinearPercentIndicator(
-                                        width: MediaQuery.of(context).size.width*0.38888,
-                                        animation: true,
-                                        barRadius: const Radius.circular(10),
-                                        padding: const EdgeInsets.only(left: 20,right: 10),
-                                        lineHeight: 17.0,
-                                        percent: 0.4,
-                                        backgroundColor: const Color(0xffE5E5E5),
-                                        progressColor: const Color(0xffBDE6F1),
-                                      ),
+                                      width: MediaQuery.of(context).size.width*0.38888,
+                                      animation: true,
+                                      barRadius: const Radius.circular(10),
+                                      padding: const EdgeInsets.only(left: 10,right: 10),
+                                      lineHeight: 17.0,
+                                      percent: snapshot.data![index]["progress"]/10,
+                                      backgroundColor: const Color(0xffE5E5E5),
+                                      progressColor: const Color(0xffBDE6F1),
                                     ),),
 
                                   ],
@@ -202,7 +224,23 @@ class _ProjectPageState extends State<ProjectPage> {
                                     MaterialPageRoute(
                                         builder: (context) => TypesOfReport(
                                           projectName: snapshot.data![index]["project_name"].toString(),
+                                          progress : snapshot.data![index]["progress"],
                                         )));
+                                // if(designation)
+                                //   {
+                                //     Navigator.push(
+                                //         context,
+                                //         MaterialPageRoute(
+                                //             builder: (context) => const OwnerPage()));
+                                //   }
+                                // else {
+                                //     Navigator.push(
+                                //         context,
+                                //         MaterialPageRoute(
+                                //             builder: (context) => TypesOfReport(
+                                //               projectName: snapshot.data![index]["project_name"].toString(),
+                                //             )));
+                                //   }
                               },
                             ),
                           );

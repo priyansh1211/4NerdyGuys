@@ -28,13 +28,14 @@ class PdfApi {
 
     pdf.addPage(pw.Page( pageFormat : PdfPageFormat.a4 ,build: (pw.Context context) {
       return pw.Container(
-          child: pw.Column(
+          child: pw.Table(
               children: [
-                pw.Text("text1"),
-                pw.Text("text1"),
-                pw.Text("text1"),
-                pw.Text("text1"),
-                pw.Text("text1"),
+                pw.TableRow(children: [pw.Text("text1"),
+                  pw.Text("text1"),
+                  pw.Text("text1"),
+                  pw.Text("text1"),
+                  pw.Text("text1"),]),
+
               ]
           )
       );

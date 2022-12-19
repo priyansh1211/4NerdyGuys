@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/DesignRequirement.dart';
 import 'package:flutter_app/pages/MachineryReport.dart';
@@ -12,13 +14,15 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class DpReportPage extends StatefulWidget {
   final String pName;
-  const DpReportPage({Key? key, required this.pName}) : super(key: key);
+  final int prog;
+  const DpReportPage({Key? key, required this.pName, required this.prog}) : super(key: key);
 
   @override
   State<DpReportPage> createState() => _DpReportPageState();
 }
 
 class _DpReportPageState extends State<DpReportPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,10 +50,10 @@ class _DpReportPageState extends State<DpReportPage> {
             const Positioned(
               left: 50,
               top: 30,
-              child: Text(
+              child: FittedBox(fit: BoxFit.fitWidth,child: Text(
                 "Daily Project Report",
-                style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
-              ),
+                style: TextStyle(fontSize: 25,fontWeight: FontWeight.w400, fontFamily: 'OpenSans'),
+              ),),
             ),
             Align(
               alignment: const Alignment(0.94, -0.94),
@@ -66,14 +70,15 @@ class _DpReportPageState extends State<DpReportPage> {
               ),
             ),
             Align(
-              alignment: const Alignment(0.94,-0.94),
+              alignment: const Alignment(0.94, -0.94),
               child: Builder(
                 builder: (context) => IconButton(
                   icon: const Icon(Icons.menu),
                   iconSize: 30,
                   color: Colors.transparent,
                   onPressed: () => Scaffold.of(context).openEndDrawer(),
-                  tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                  tooltip:
+                      MaterialLocalizations.of(context).openAppDrawerTooltip,
                 ),
               ),
             ),
@@ -115,21 +120,23 @@ class _DpReportPageState extends State<DpReportPage> {
                                   ),
                                 ),
                                 Positioned(
-                                  top: MediaQuery.of(context).size.height * 0.03125 - 10 , //MediaQuery.of(context).size.height*0.020,
+                                  top: MediaQuery.of(context).size.height *
+                                          0.03125 -
+                                      10, //MediaQuery.of(context).size.height*0.020,
                                   left: MediaQuery.of(context).size.width *
                                       0.6275833,
 
                                   child: CircularPercentIndicator(
                                     radius: 45.0,
                                     backgroundColor: Colors.white,
-                                    percent: 0.8,
+                                    percent: widget.prog/10,
                                     progressColor: const Color(0xff242F9B),
                                     lineWidth: 9,
                                     circularStrokeCap: CircularStrokeCap.round,
                                     animation: true,
                                     animationDuration: 3000,
-                                    center: const Text('80%',
-                                        style: TextStyle(
+                                    center: Text("${widget.prog} %",
+                                        style: const TextStyle(
                                             fontSize: 17,
                                             fontWeight: FontWeight.bold,
                                             color: Color(0xff242F9B))),
@@ -178,119 +185,115 @@ class _DpReportPageState extends State<DpReportPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Stack(
-                      children: [
-                        InkWell(
-                          child: Card(
+
+                    InkWell(
+                      child: Stack(
+                        children: [
+                          Card(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
                             child: SizedBox(
                               height:
-                                  MediaQuery.of(context).size.height * 0.1825,
+                              MediaQuery.of(context).size.height * 0.1825,
                               width: MediaQuery.of(context).size.width * 0.444,
                             ),
                           ),
-                          onTap: () {
-                            print("Man Power Report");
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ManPowerReport()));
-                          },
-                        ),
-                        Positioned(
-                          top: MediaQuery.of(context).size.height * 0.0141375,
-                          left: MediaQuery.of(context).size.width * 0.04972,
-                          child: const Text(
-                            "Man power\nreport",
-                            style: TextStyle(
-                                fontSize: 17,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold),
+                          Positioned(
+                            top: MediaQuery.of(context).size.height * 0.0141375,
+                            left: MediaQuery.of(context).size.width * 0.04972,
+                            child: const Text(
+                              "Man power\nreport",
+                              style: TextStyle(
+                                  fontSize: 17,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
-                        ),
-                        Positioned(
-                          top: MediaQuery.of(context).size.height * 0.0861125,
-                          left: MediaQuery.of(context).size.width * 0.182777,
-                          child: Image.asset(
-                            'assets/images/Data_analysis.png',
-                            width: MediaQuery.of(context).size.width * 0.2611,
-                            height:
-                                MediaQuery.of(context).size.height * 0.0963875,
+                          Positioned(
+                            top: MediaQuery.of(context).size.height * 0.0861125,
+                            left: MediaQuery.of(context).size.width * 0.182777,
+                            child: Image.asset(
+                              'assets/images/Data_analysis.png',
+                              width: MediaQuery.of(context).size.width * 0.2611,
+                              height: MediaQuery.of(context).size.height *
+                                  0.0963875,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ManPowerReport()));
+                      },
                     ),
-                    Stack(
-                      children: [
-                        InkWell(
-                          child: Card(
+
+                    InkWell(
+                      child: Stack(
+                        children: [
+                          Card(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
                             child: SizedBox(
                               height:
-                                  MediaQuery.of(context).size.height * 0.1825,
+                              MediaQuery.of(context).size.height * 0.1825,
                               width: MediaQuery.of(context).size.width * 0.444,
                             ),
                           ),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const MachineryReport()));
-                          },
-                        ),
-                        Positioned(
-                          top: MediaQuery.of(context).size.height * 0.0171375,
-                          left: MediaQuery.of(context).size.width * 0.04972,
-                          child: const Text(
-                            "Machinery\nreport",
-                            style: TextStyle(
-                                fontSize: 17,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold),
+                          Positioned(
+                            top: MediaQuery.of(context).size.height * 0.0171375,
+                            left: MediaQuery.of(context).size.width * 0.04972,
+                            child: const Text(
+                              "Machinery\nreport",
+                              style: TextStyle(
+                                  fontSize: 17,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
-                        ),
-                        Positioned(
-                          top: MediaQuery.of(context).size.height * 0.0861125,
-                          left: MediaQuery.of(context).size.width * 0.182777,
-                          child: Image.asset(
-                            'assets/images/Data_analysis.png',
-                            width: MediaQuery.of(context).size.width * 0.2611,
-                            height:
-                                MediaQuery.of(context).size.height * 0.0963875,
+                          Positioned(
+                            top: MediaQuery.of(context).size.height * 0.0861125,
+                            left: MediaQuery.of(context).size.width * 0.182777,
+                            child: Image.asset(
+                              'assets/images/Data_analysis.png',
+                              width: MediaQuery.of(context).size.width * 0.2611,
+                              height:
+                              MediaQuery.of(context).size.height * 0.0963875,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
+                      onTap: () {
+                        print("Machinery Report");
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const MachineryReport()));
+                      },
                     ),
+
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Stack(
+
+                    InkWell(
+                      child : Stack(
                       children: [
-                        InkWell(
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.1825,
-                              width: MediaQuery.of(context).size.width * 0.444,
-                            ),
+                        Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          child: SizedBox(
+                            height:
+                            MediaQuery.of(context).size.height * 0.1825,
+                            width: MediaQuery.of(context).size.width * 0.444,
                           ),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const WorkDoneToday()));
-                          },
                         ),
+
                         Positioned(
                           top: MediaQuery.of(context).size.height * 0.0141375,
                           left: MediaQuery.of(context).size.width * 0.04972,
@@ -309,31 +312,31 @@ class _DpReportPageState extends State<DpReportPage> {
                             'assets/images/marketer.png',
                             width: MediaQuery.of(context).size.width * 0.2611,
                             height:
-                                MediaQuery.of(context).size.height * 0.0963875,
+                            MediaQuery.of(context).size.height * 0.0963875,
                           ),
                         ),
                       ],
-                    ),
-                    Stack(
+                    ),onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              const WorkDoneToday()));
+                    },),
+
+                    InkWell(
+                      child : Stack(
                       children: [
-                        InkWell(
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.1825,
-                              width: MediaQuery.of(context).size.width * 0.444,
-                            ),
+                        Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          child: SizedBox(
+                            height:
+                            MediaQuery.of(context).size.height * 0.1825,
+                            width: MediaQuery.of(context).size.width * 0.444,
                           ),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const MaterialReport()));
-                          },
                         ),
+
                         Positioned(
                           top: MediaQuery.of(context).size.height * 0.0141375,
                           left: MediaQuery.of(context).size.width * 0.04972,
@@ -352,37 +355,39 @@ class _DpReportPageState extends State<DpReportPage> {
                             'assets/images/marketer.png',
                             width: MediaQuery.of(context).size.width * 0.2611,
                             height:
-                                MediaQuery.of(context).size.height * 0.0963875,
+                            MediaQuery.of(context).size.height * 0.0963875,
                           ),
                         ),
                       ],
-                    ),
+                    ), onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              const MaterialReport()));
+                    },),
+
+
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Stack(
+
+                    InkWell(
+                      child:Stack(
                       children: [
-                        InkWell(
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.1825,
-                              width: MediaQuery.of(context).size.width * 0.444,
-                            ),
+                        Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          child: SizedBox(
+                            height:
+                            MediaQuery.of(context).size.height * 0.1825,
+                            width: MediaQuery.of(context).size.width * 0.444,
                           ),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const DesignRequirement()));
-                          },
                         ),
+
                         Positioned(
                           top: MediaQuery.of(context).size.height * 0.0141375,
                           left: MediaQuery.of(context).size.width * 0.04972,
@@ -401,31 +406,33 @@ class _DpReportPageState extends State<DpReportPage> {
                             'assets/images/Data_analysis2.png',
                             width: MediaQuery.of(context).size.width * 0.2611,
                             height:
-                                MediaQuery.of(context).size.height * 0.0963875,
+                            MediaQuery.of(context).size.height * 0.0963875,
                           ),
                         ),
                       ],
-                    ),
-                    Stack(
+                    ), onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              const DesignRequirement()));
+                    },
+                      ),
+
+
+                    InkWell(
+                      child: Stack(
                       children: [
-                        InkWell(
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.1825,
-                              width: MediaQuery.of(context).size.width * 0.444,
-                            ),
+                        Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          child: SizedBox(
+                            height:
+                            MediaQuery.of(context).size.height * 0.1825,
+                            width: MediaQuery.of(context).size.width * 0.444,
                           ),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const NextDayPlanning()));
-                          },
                         ),
+
                         Positioned(
                           top: MediaQuery.of(context).size.height * 0.0141375,
                           left: MediaQuery.of(context).size.width * 0.04972,
@@ -444,36 +451,39 @@ class _DpReportPageState extends State<DpReportPage> {
                             'assets/images/Data_analysis2.png',
                             width: MediaQuery.of(context).size.width * 0.2611,
                             height:
-                                MediaQuery.of(context).size.height * 0.0963875,
+                            MediaQuery.of(context).size.height * 0.0963875,
                           ),
                         ),
                       ],
                     ),
+
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const NextDayPlanning()));
+                      },),
+
+
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Stack(
+                    InkWell(
+                      child: Stack(
                       children: [
-                        InkWell(
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.08,
-                              width: MediaQuery.of(context).size.width * 0.9111,
-                            ),
+                        Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          child: SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.08,
+                            width: MediaQuery.of(context).size.width * 0.9111,
                           ),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const TargetVsAchieved()));
-                          },
                         ),
+
                         Positioned(
                           top: MediaQuery.of(context).size.height * 0.0141375,
                           left: MediaQuery.of(context).size.width * 0.04972,
@@ -492,11 +502,18 @@ class _DpReportPageState extends State<DpReportPage> {
                             'assets/images/testing.png',
                             width: MediaQuery.of(context).size.width * 0.1833,
                             height:
-                                MediaQuery.of(context).size.height * 0.05125,
+                            MediaQuery.of(context).size.height * 0.05125,
                           ),
                         ),
                       ],
                     ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const TargetVsAchieved()));
+                      },),
                   ],
                 ),
               ],

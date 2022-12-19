@@ -22,7 +22,7 @@ class ItemDetailPage extends StatefulWidget {
 class _ItemDetailPageState extends State<ItemDetailPage> {
   final List<SubscriberSeries> data = [
     SubscriberSeries(
-        year: '7/23',
+        year: '1-7',
         subScribers: 400000,
         barColor: charts.ColorUtil.fromDartColor(const Color(0xffA6D1E6))),
     SubscriberSeries(
@@ -62,6 +62,13 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
       a[index] = changeToColor;
     });
   }
+  //
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   data.add(SubscriberSeries(year: year, subScribers: subScribers, barColor: charts.ColorUtil.fromDartColor(const Color(0xffA6D1E6)));
+  // }
 
   NetworkHandler p = NetworkHandler();
 
@@ -87,6 +94,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
           }
 
           if (snapshot.hasData) {
+            //print(data[0].year.runtimeType);
             return Scaffold(
                 body: ListView(
               children: [

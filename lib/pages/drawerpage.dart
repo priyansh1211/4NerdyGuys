@@ -3,6 +3,7 @@ import 'package:flutter_app/pages/Contact_Us.dart';
 import 'package:flutter_app/pages/DashboardPage.dart';
 import 'package:flutter_app/pages/LoginPage.dart';
 import 'package:flutter_app/pages/Project.dart';
+import 'package:flutter_app/pages/profile_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerPage extends StatefulWidget {
@@ -97,6 +98,7 @@ class _DrawerPageState extends State<DrawerPage> {
                     fontFamily: 'Opensans',
                     fontSize: 18)),
             onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage()));
             },
           ),
           ListTile(
@@ -119,6 +121,11 @@ class _DrawerPageState extends State<DrawerPage> {
                 onTap: () {
 
                   logout();
+
+                  Navigator.popUntil(
+                    context,
+                    ModalRoute.withName('/'),
+                  );
 
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const LoginPage()));

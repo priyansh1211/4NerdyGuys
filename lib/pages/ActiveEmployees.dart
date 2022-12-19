@@ -1,9 +1,10 @@
 // ignore: file_names
+
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
 import 'package:flutter_app/pages/add_project_blocks.dart';
-
+import 'package:flutter_app/pages/notification_page.dart';
 class ActiveEmployees extends StatefulWidget {
   const ActiveEmployees({Key? key}) : super(key: key);
 
@@ -12,41 +13,6 @@ class ActiveEmployees extends StatefulWidget {
 }
 
 class _ActiveEmployeesState extends State<ActiveEmployees> {
-  List userList = [
-    'Vishwaas',
-    'Vishwaas12',
-    'Vishwaas13',
-    'Vishwaas14',
-    'Abc',
-    'Abc12',
-    'Abc13',
-    'Abc14',
-    'XYZ',
-    'XYZ12',
-    'XYZ13',
-    'XYZ14'
-  ];
-
-  List<Map<String, dynamic>> userList1 = [
-    {'Sanskruti': 'A'},
-    {'Antriksh': 'C'},
-    {'Nakshtra': 'B'}
-  ];
-
-  List<Map<String, dynamic>> userRole = [
-    {'Junior Engineer': 'Vishwaas'},
-    {'Junior Engineer': 'Vishwaas12'},
-    {'Junior Engineer': 'Vishwaas13'},
-    {'Junior Engineer': 'Vishwaas14'},
-    {'Senior Engineer': 'Abc'},
-    {'Senior Engineer': 'Abc12'},
-    {'Senior Engineer': 'Abc13'},
-    {'Senior Engineer': 'Abc14'},
-    {'Project Manager': 'XYZ'},
-    {'Project Manager': 'XYZ12'},
-    {'Project Manager': 'XYZ13'},
-    {'Project Manager': 'XYZ14'},
-  ];
 
   String dropdownvalue = 'Select Role';
 
@@ -65,7 +31,7 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
     return showDialog<void>(
       context: context,
       barrierDismissible: true,
-      barrierColor: Colors.black12, // user must tap button!
+      barrierColor: Colors.black87, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
           elevation: 100,
@@ -80,14 +46,14 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
                   Row(
                     children: [
                       Expanded(
-                          flex: 3,
+                          flex: 4,
                           child:
                               Text(name, style: const TextStyle(fontSize: 20))),
                       Expanded(
                         flex: 2,
                         child: Text(
                           designation,
-                          style: const TextStyle(fontSize: 15),
+                          style: const TextStyle(fontSize: 12),
                         ),
                       ),
                       const SizedBox(
@@ -95,6 +61,7 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 20,),
                   ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
@@ -112,7 +79,7 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
                               width: 20,
                             ),
                             Expanded(
-                              flex: 3,
+                              flex: 4,
                               child: Text(
                                 site.keys.elementAt(j).toString(),
                                 style: const TextStyle(fontSize: 17),
@@ -143,7 +110,6 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
   final fkey = GlobalKey<FormState>();
   TextEditingController message = TextEditingController();
   TextEditingController number = TextEditingController();
-  int inc = 0;
 
   NetworkHandler p = NetworkHandler();
 
@@ -190,19 +156,32 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
                         style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
                       ),
                     ),
-
-                    const Positioned(
+                   /* const Positioned(
                       top: 14,
                       right: 24,
-                      child: Icon(Icons.notifications,size: 30,color: Colors.black38,),
-                    ),
-
-                    const Positioned(
+                      child: Icon(
+                        Icons.notifications,
+                        size: 30,
+                        color: Colors.black38,
+                      ),
+                    ),*/
+                     Positioned(
                       top: 10,
                       right: 20,
-                      child: Icon(Icons.notifications,size: 30,color: Color.fromRGBO(107, 177, 253, 1),),
-                    ),
+                      child: InkWell(
+                        child: Stack(
+                          children: const [
+                            Icon(Icons.notifications_active_rounded,color: Color.fromRGBO(
+                                45, 163, 222, 0.4588235294117647),size: 30),
 
+                            Positioned(top: 1,right: 1,child: Icon(Icons.circle,size: 10,color: Colors.red,),),
+                          ],
+                        ),
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationPage()));
+                        },
+                      ),
+                    ),
                     Container(
                       margin: EdgeInsets.only(
                           top: MediaQuery.of(context).size.height * 0.1025,
@@ -213,9 +192,14 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
                           borderRadius: BorderRadius.all(Radius.circular(6.0))),
                       child: DropdownButton2(
                         buttonWidth: MediaQuery.of(context).size.width * 0.625,
-                        dropdownDecoration:
-                            const BoxDecoration(color: Color.fromRGBO(137, 207, 253, 1,),
-                            ),
+                        dropdownDecoration: const BoxDecoration(
+                          color: Color.fromRGBO(
+                            137,
+                            207,
+                            253,
+                            1,
+                          ),
+                        ),
                         style: const TextStyle(color: Colors.black),
                         underline: Container(),
 
@@ -247,131 +231,233 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
                       margin: EdgeInsets.only(
                           top: MediaQuery.of(context).size.height * 0.175,
                           bottom: 20),
-                      child: ListView.builder(
-                        itemCount: snapshot.data?.length,
-                        itemBuilder: (context, i) {
-                          return GestureDetector(
-                            onLongPress: () {
-                              temp(
-                                  snapshot.data![i]["username"].toString(),
-                                  snapshot.data![i]["designation"].toString(),
-                                  snapshot.data![i]["permitted_site"]);
-                            },
-                            child: Container(
-                              // transform: Matrix4.identity(),
-                              //   duration: const Duration(milliseconds: 50),
-                              margin: EdgeInsets.only(
-                                left:
+                      child: Theme(
+                        data: Theme.of(context).copyWith(
+                          // ignore: deprecated_member_use
+                          androidOverscrollIndicator:
+                          AndroidOverscrollIndicator.values[0],
+                        ),
+                        child: ListView.builder(
+                          itemCount: snapshot.data?.length,
+                          itemBuilder: (context, i) {
+                            if(snapshot.data![i]["permitted_site"].values.toString() == "none".toString())
+                            {
+                              return InkWell(
+
+                                child: Container(
+                                  // transform: Matrix4.identity(),
+                                  //   duration: const Duration(milliseconds: 50),
+                                  margin: EdgeInsets.only(
+                                    left:
                                     MediaQuery.of(context).size.width * 0.04444,
-                                top: 20,
-                                right:
+                                    top: 20,
+                                    right:
                                     MediaQuery.of(context).size.width * 0.04444,
-                              ),
-                              padding: const EdgeInsets.only(bottom: 20),
-                              width: MediaQuery.of(context).size.width * 0.9111,
-                              height:
+                                  ),
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  width: MediaQuery.of(context).size.width * 0.9111,
+                                  height:
                                   MediaQuery.of(context).size.height * 0.16875,
-                              decoration: const BoxDecoration(
-                                color: Color.fromRGBO(137, 207, 253, 0.46),
-                                borderRadius:
+                                  decoration: const BoxDecoration(
+                                    color: Color.fromRGBO(137, 207, 253, 0.46),
+                                    borderRadius:
                                     BorderRadius.all(Radius.circular(20.0)),
-                              ),
-                              child: Column(
-                                children: [
-                                  Row(
+                                  ),
+                                  child: Column(
                                     children: [
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      const Padding(
-                                        padding:
+                                      Row(
+                                        children: [
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          const Padding(
+                                            padding:
                                             EdgeInsets.only(left: 10, right: 5),
-                                        child: Icon(Icons.circle, size: 13),
-                                      ),
-                                      Expanded(
-                                          flex: 3,
-                                          child: Text(
-                                              snapshot.data![i]["username"]
+                                            child: Icon(Icons.circle, size: 13),
+                                          ),
+                                          Expanded(
+                                              flex: 3,
+                                              child: Text(
+                                                  snapshot.data![i]["username"]
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                      fontSize: 20))),
+                                          Expanded(
+                                            flex: 2,
+                                            child: Text(
+                                              snapshot.data![i]["designation"]
                                                   .toString(),
-                                              style: const TextStyle(
-                                                  fontSize: 20))),
-                                      Expanded(
-                                        flex: 2,
-                                        child: Text(
-                                          snapshot.data![i]["designation"]
-                                              .toString(),
-                                          style: const TextStyle(fontSize: 15),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 50,
+                                              style: const TextStyle(fontSize: 15),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 50,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                  Flexible(
-                                    flex: 1,
-                                    child: ListView.builder(
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        itemCount: snapshot
-                                            .data![i]["permitted_site"].length,
-                                        itemBuilder: (context, j) {
-                                          b = snapshot.data![i]["email"]
-                                              .toString();
-                                          List<dynamic> m = snapshot
-                                              .data![i]["permitted_site"].values
-                                              .elementAt(j) as List<dynamic>;
-                                          String a = "";
-                                          for (var element in m) {
-                                            a += element + " ";
-                                          }
-                                          return Row(
-                                            children: [
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                              Expanded(
-                                                flex: 1,
-                                                child: Text(
-                                                  snapshot
-                                                      .data![i]
-                                                          ["permitted_site"]
-                                                      .keys
-                                                      .elementAt(j)
-                                                      .toString(),
-                                                  style: const TextStyle(
-                                                      fontSize: 17),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                  flex: 3,
-                                                  child: Text(
-                                                    a,
-                                                    overflow:
-                                                        TextOverflow.visible,
-                                                    style: const TextStyle(
-                                                        fontSize: 17),
-                                                  )),
-                                            ],
-                                          );
-                                        }),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => AddProjectBlocks(
-                                        name : snapshot.data![i]["username"].toString(),
-                                        designation : snapshot.data![i]["designation"].toString(),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => AddProjectBlocks(
+                                            name: snapshot.data![i]["username"]
+                                                .toString(),
+                                            designation: snapshot.data![i]
+                                            ["designation"]
+                                                .toString(),
                                             email: snapshot.data![i]["email"]
                                                 .toString(),
                                           )));
-                            },
-                          );
-                        },
+                                },
+                              );
+                            }
+                            else
+                            {
+                              return GestureDetector(
+                                onLongPress: () {
+                                  temp(
+                                      snapshot.data![i]["username"].toString(),
+                                      snapshot.data![i]["designation"].toString(),
+                                      snapshot.data![i]["permitted_site"]);
+                                },
+                                child: Container(
+                                  // transform: Matrix4.identity(),
+                                  //   duration: const Duration(milliseconds: 50),
+                                  margin: EdgeInsets.only(
+                                    left:
+                                    MediaQuery.of(context).size.width * 0.04444,
+                                    top: 20,
+                                    right:
+                                    MediaQuery.of(context).size.width * 0.04444,
+                                  ),
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  width: MediaQuery.of(context).size.width * 0.9111,
+                                  height:
+                                  MediaQuery.of(context).size.height * 0.16875,
+                                  decoration: const BoxDecoration(
+                                    color: Color.fromRGBO(137, 207, 253, 0.46),
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(20.0)),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          const Padding(
+                                            padding:
+                                            EdgeInsets.only(left: 10, right: 5),
+                                            child: Icon(Icons.circle, size: 13),
+                                          ),
+                                          Expanded(
+                                              flex: 3,
+                                              child: Text(
+                                                  snapshot.data![i]["username"]
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                      fontSize: 20))),
+                                          Expanded(
+                                            flex: 2,
+                                            child: Text(
+                                              snapshot.data![i]["designation"]
+                                                  .toString(),
+                                              style: const TextStyle(fontSize: 15),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 50,
+                                          ),
+                                        ],
+                                      ),
+                                      Flexible(
+                                        flex: 1,
+                                        child: snapshot.data![i]["permitted_site"].length>0? ListView.builder(
+                                          physics:
+                                          const NeverScrollableScrollPhysics(),
+                                          itemCount: snapshot
+                                              .data![i]["permitted_site"].length,
+                                          itemBuilder: (context, j) {
+                                            if (snapshot.data![i]
+                                            ["permitted_site"].keys.elementAt(
+                                                j).toString() != "none") {
+
+                                              b = snapshot.data![i]["email"]
+                                                  .toString();
+                                              List<dynamic> m = snapshot
+                                                  .data![i]["permitted_site"]
+                                                  .values
+                                                  .elementAt(j) as List<
+                                                  dynamic>;
+
+                                              String a = "";
+
+                                              for (var element in m) {
+                                                a += element + " ";
+                                              }
+                                              return Row(
+                                                children: [
+                                                  const SizedBox(
+                                                    width: 20,
+                                                  ),
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: Text(
+                                                      snapshot
+                                                          .data![i]
+                                                      ["permitted_site"]
+                                                          .keys
+                                                          .elementAt(j)
+                                                          .toString(),
+                                                      style: const TextStyle(
+                                                          fontSize: 17),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                      flex: 2,
+                                                      child: Text(
+                                                        a,
+                                                        overflow:
+                                                        TextOverflow.visible,
+                                                        style: const TextStyle(
+                                                            fontSize: 17,color: Colors.black45),
+                                                      )),
+                                                ],
+                                              );
+                                            }
+                                            else {
+                                              return Container();
+                                            }
+                                          },
+
+                                        ):Container(),),
+                                    ],
+                                  ),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => AddProjectBlocks(
+                                            name: snapshot.data![i]["username"]
+                                                .toString(),
+                                            designation: snapshot.data![i]
+                                            ["designation"]
+                                                .toString(),
+                                            email: snapshot.data![i]["email"]
+                                                .toString(),
+                                          )));
+                                },
+                              );
+                            }
+
+                            //return Text(snapshot.data![i]["permitted_site"].toString());
+                          },
+                        ),
                       ),
                     ),
                   ],
@@ -381,7 +467,7 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
           }
           return const Text("Something Went Wrong");
         },
-        stream: p.listActiveEmployeer({"search_by" : dropdownvalue}),
+        stream: p.listActiveEmployeer({"search_by": dropdownvalue}),
       ),
     );
   }

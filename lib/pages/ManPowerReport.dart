@@ -1,9 +1,7 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'dart:core';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/MachineryReport.dart';
-import 'package:get/get.dart';
+// import 'package:flutter_app/pages/MachineryReport.dart';
+// import 'package:get/get.dart';
 
 class ManPowerReport extends StatefulWidget {
   const ManPowerReport({Key? key}) : super(key: key);
@@ -13,7 +11,7 @@ class ManPowerReport extends StatefulWidget {
 }
 
 class _ManPowerReportState extends State<ManPowerReport> {
- // String? _chosenValue;
+  // String? _chosenValue;
 
   // final List<String> items = [
   //   'Add new column',
@@ -64,6 +62,11 @@ class _ManPowerReportState extends State<ManPowerReport> {
 
   //String? _chosenValue;
   List<String> column_name =['Remarks'];
+
+  List<String> Agency_name =[];
+
+  List<String> WorkDescription_name=[''];
+
   int number = 1;
   int number_agency=1;
   int number_work=1;
@@ -74,6 +77,9 @@ class _ManPowerReportState extends State<ManPowerReport> {
   TextEditingController msg_work = TextEditingController();
   TextEditingController number1 = TextEditingController();
   TextEditingController number2 = TextEditingController();
+  List<TextEditingController> Agency = List.generate(1, (index) => TextEditingController()) ;
+  var agencylist = [[1]];
+
   String resulttext = "0";
   @override
   Widget build(BuildContext context) {
@@ -115,6 +121,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+
             Row(
               //crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -206,7 +213,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                         ],
                       ),
                     )),
-                 const SizedBox(width: 10,),
+                const SizedBox(width: 10,),
                 DropdownButton(
                   hint:Text(selectedValue),
                   // value: selectedValue,
@@ -228,10 +235,13 @@ class _ManPowerReportState extends State<ManPowerReport> {
               ],
             ),
             const SizedBox(height: 20,),
-          OutlinedButton(
+
+            OutlinedButton(
               onPressed: () {
                 {
                   setState((){
+                    Agency.add(TextEditingController());
+                    agencylist.add([1]);
                     number_agency=number_agency+1;
                   });
                 }
@@ -248,193 +258,8 @@ class _ManPowerReportState extends State<ManPowerReport> {
                   ],
                 ),
               ),
-          ),
-            // Padding(
-            //     padding: const EdgeInsets.only(right: 210),
-            //     child: Text.rich(
-            //       TextSpan(
-            //         children: [
-            //           const TextSpan(
-            //               text: 'Agency',
-            //               style: TextStyle(color: Colors.black, fontSize: 20)),
-            //           WidgetSpan(
-            //               child: SizedBox(
-            //                 width: MediaQuery.of(context).devicePixelRatio,
-            //               )),
-            //           const WidgetSpan(child: Icon(Icons.add_circle_outline)),
-            //           // TextSpan(text: 'to add'),
-            //         ],
-            //       ),
-            //     )),
-            // Padding(
-            //   padding: const EdgeInsets.all(20),
-            //   child: Container(
-            //     padding: const EdgeInsets.only(left: 20),
-            //     height: 50,
-            //     margin: const EdgeInsets.only(right: 150),
-            //     decoration: BoxDecoration(
-            //       color: Colors.white,
-            //       borderRadius: BorderRadius.circular(20),
-            //     ),
-            //     child: const TextField(
-            //       decoration: InputDecoration(
-            //         // hintText: '-Give Work Description-',
-            //         border: InputBorder.none,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // Padding(
-            //     padding: const EdgeInsets.only(right: 170),
-            //     child: Text.rich(
-            //       TextSpan(
-            //         children: [
-            //           const TextSpan(
-            //               text: 'Description',
-            //               style: TextStyle(color: Colors.black, fontSize: 20)),
-            //           WidgetSpan(
-            //               child: SizedBox(
-            //                 width: MediaQuery.of(context).devicePixelRatio,
-            //               )),
-            //           const WidgetSpan(child: Icon(Icons.more_horiz)),
-            //           // TextSpan(text: 'to add'),
-            //         ],
-            //       ),
-            //     )),
-            // Padding(
-            //   padding: const EdgeInsets.all(20),
-            //   child: Container(
-            //     padding: const EdgeInsets.only(left: 20),
-            //     height: 50,
-            //     margin: const EdgeInsets.only(right: 100),
-            //     decoration: BoxDecoration(
-            //       color: Colors.white,
-            //       borderRadius: BorderRadius.circular(20),
-            //     ),
-            //     child: const TextField(
-            //       decoration: InputDecoration(
-            //         hintText: '-Give Work Description-',
-            //         border: InputBorder.none,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // //SizedBox(height: 10,),
-            // Padding(
-            //     padding: const EdgeInsets.only(right:220),
-            //     child: Text.rich(
-            //       TextSpan(
-            //         children: [
-            //           const TextSpan(
-            //               text: 'Skilled',
-            //               style: TextStyle(color: Colors.black, fontSize: 20)),
-            //           WidgetSpan(
-            //               child: SizedBox(
-            //                 width: MediaQuery.of(context).devicePixelRatio,
-            //               )),
-            //           const WidgetSpan(child: Icon(Icons.more_horiz)),
-            //           // TextSpan(text: 'to add'),
-            //         ],
-            //       ),
-            //     )),
-            // Padding(
-            //   padding: const EdgeInsets.all(20),
-            //   child: Container(
-            //     padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
-            //     height: 55,
-            //     margin: const EdgeInsets.only(right: 260),
-            //     decoration: BoxDecoration(
-            //       color: Colors.white,
-            //       borderRadius: BorderRadius.circular(20),
-            //     ),
-            //     child: TextField(
-            //       controller: number1,
-            //       autocorrect: true,
-            //       keyboardType: TextInputType.number,
-            //       decoration: const InputDecoration(
-            //         hintText: '1',
-            //         border: InputBorder.none,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // //SizedBox(height: 10,),
-            // Padding(
-            //     padding: const EdgeInsets.only(right: 200),
-            //     child: Text.rich(
-            //       TextSpan(
-            //         children: [
-            //           const TextSpan(
-            //               text: 'Unskilled',
-            //               style: TextStyle(color: Colors.black, fontSize: 20)),
-            //           WidgetSpan(
-            //               child: SizedBox(
-            //                 width: MediaQuery.of(context).devicePixelRatio,
-            //               )),
-            //           const WidgetSpan(child: Icon(Icons.more_horiz)),
-            //           // TextSpan(text: 'to add'),
-            //         ],
-            //       ),
-            //     )),
-            // Padding(
-            //   padding: const EdgeInsets.all(20),
-            //   child: Container(
-            //     padding: const EdgeInsets.only(left: 10, top: 8, bottom: 8),
-            //     height: 55,
-            //     margin: const EdgeInsets.only(right: 260),
-            //     decoration: BoxDecoration(
-            //       color: Colors.white,
-            //       borderRadius: BorderRadius.circular(20),
-            //     ),
-            //     child: TextField(
-            //       controller: number2,
-            //       autocorrect: true,
-            //       keyboardType: TextInputType.number,
-            //       decoration: const InputDecoration(
-            //         hintText: '1',
-            //         border: InputBorder.none,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // //SizedBox(height: 10,),
-            // // Padding(
-            // //     padding: const EdgeInsets.only(right: 190),
-            // //     child: Text.rich(
-            // //       TextSpan(
-            // //         children: [
-            // //           const TextSpan(
-            // //               text: 'Remarks',
-            // //               style: TextStyle(
-            // //                   color: Colors.black, fontSize: 20)),
-            // //           WidgetSpan(
-            // //               child: SizedBox(
-            // //                 width:
-            // //                 MediaQuery.of(context).devicePixelRatio,
-            // //               )),
-            // //           const WidgetSpan(child: Icon(Icons.more_horiz)),
-            // //           // TextSpan(text: 'to add'),
-            // //         ],
-            // //       ),
-            // //     )),
-            // // Padding(
-            // //   padding: const EdgeInsets.all(20),
-            // //   child: Container(
-            // //     padding: const EdgeInsets.only(left: 12),
-            // //     height: 50,
-            // //     margin: const EdgeInsets.only(right: 100),
-            // //     decoration: BoxDecoration(
-            // //       color: Colors.white,
-            // //       borderRadius: BorderRadius.circular(20),
-            // //     ),
-            // //     child: const TextField(
-            // //       decoration: InputDecoration(
-            // //         border: InputBorder.none,
-            // //       ),
-            // //     ),
-            // //   ),
-            // // ),
-            //agency listview.builder
+            ),
+
             ListView.builder(
               physics: const ScrollPhysics(parent: null),
               shrinkWrap: true,
@@ -469,8 +294,13 @@ class _ManPowerReportState extends State<ManPowerReport> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          child: const TextField(
-                            decoration: InputDecoration(
+                          child: TextField(
+                            onChanged: (value){
+                              Agency_name.add(value);
+                            },
+                            controller : Agency[i],
+
+                            decoration: const InputDecoration(
                               // hintText: '-Give Work Description-',
                               border: InputBorder.none,
                             ),
@@ -481,6 +311,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                         onPressed: () {
                           {
                             setState((){
+                              agencylist[i].add(1);
                               number_work=number_work+1;
                             });
                           }
@@ -489,7 +320,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                           TextSpan(
                             children: [
                               TextSpan(
-                                  text: 'Agency',
+                                  text: 'Work Description',
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 20)),
                               WidgetSpan(child: Icon(Icons.add)),
@@ -501,26 +332,10 @@ class _ManPowerReportState extends State<ManPowerReport> {
                       ListView.builder(
                         physics: const ScrollPhysics(parent: null),
                         shrinkWrap: true,
+                        itemCount: agencylist[i].length,
                         itemBuilder: (BuildContext context,int i){
                           return Column(
                             children: [
-                              Padding(
-                                  padding: const EdgeInsets.only(right: 170),
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        const TextSpan(
-                                            text: 'Work Description',
-                                            style: TextStyle(color: Colors.black, fontSize: 20)),
-                                        WidgetSpan(
-                                            child: SizedBox(
-                                              width: MediaQuery.of(context).devicePixelRatio,
-                                            )),
-                                        const WidgetSpan(child: Icon(Icons.more_horiz)),
-                                        // TextSpan(text: 'to add'),
-                                      ],
-                                    ),
-                                  )),
                               Padding(
                                 padding: const EdgeInsets.all(20),
                                 child: Container(
@@ -592,7 +407,7 @@ class _ManPowerReportState extends State<ManPowerReport> {
                                             child: SizedBox(
                                               width: MediaQuery.of(context).devicePixelRatio,
                                             )),
-                                        const WidgetSpan(child: Icon(Icons.more_horiz)),
+                                        //const WidgetSpan(child: Icon(Icons.more_horiz)),
                                         // TextSpan(text: 'to add'),
                                       ],
                                     ),
@@ -630,17 +445,18 @@ class _ManPowerReportState extends State<ManPowerReport> {
                                             child: SizedBox(
                                               width: MediaQuery.of(context).devicePixelRatio,
                                             )),
-                                        const WidgetSpan(child: Icon(Icons.more_horiz)),
+                                       // const WidgetSpan(child: Icon(Icons.more_horiz)),
                                         // TextSpan(text: 'to add'),
                                       ],
                                     ),
                                   )),
-                              const SizedBox(height: 10,),
+                               const SizedBox(height: 10,),
                               Container(
                                 padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.04),
                                 height: 62,
                                 margin: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.775),
                                 child: FloatingActionButton(
+                                  heroTag: "Total${i.toString()}",
                                   onPressed: (){
                                     setState(() {
                                       int total = int.parse(number1.text)+int.parse(number2.text);
@@ -660,13 +476,14 @@ class _ManPowerReportState extends State<ManPowerReport> {
                             ],
                           );
                         },
+
                       ),
 
                     ],
                   ),
                 );
               },
-              itemCount: number_agency,
+              itemCount: agencylist.length,
 
             ),
             //column listview.builder
@@ -727,34 +544,37 @@ class _ManPowerReportState extends State<ManPowerReport> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Get.defaultDialog(
-                        middleText: "Do you want to continue?",
-                        titleStyle: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'ReadexPro',
-                            fontSize: 15),
-                        middleTextStyle: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'ReadexPro',
-                            fontSize: 15),
-                        textCancel: "NO",
-                        cancelTextColor: const Color(0xff685D5D),
-                        textConfirm: "YES",
-                        confirmTextColor: Colors.lightGreenAccent,
-                        radius: 40,
-                        buttonColor: const Color(0xff685D5D),
-                        //barrierDismissible: false,
-                        backgroundColor: const Color(0xff009AFF),
-                        onConfirm: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                  const MachineryReport()));
-                        },
-                      );
+
+                      print(agencylist);
+
+                      // Get.defaultDialog(
+                      //   middleText: "Do you want to continue?",
+                      //   titleStyle: const TextStyle(
+                      //       color: Colors.white,
+                      //       fontWeight: FontWeight.bold,
+                      //       fontFamily: 'ReadexPro',
+                      //       fontSize: 15),
+                      //   middleTextStyle: const TextStyle(
+                      //       color: Colors.white,
+                      //       fontWeight: FontWeight.bold,
+                      //       fontFamily: 'ReadexPro',
+                      //       fontSize: 15),
+                      //   textCancel: "NO",
+                      //   cancelTextColor: const Color(0xff685D5D),
+                      //   textConfirm: "YES",
+                      //   confirmTextColor: Colors.lightGreenAccent,
+                      //   radius: 40,
+                      //   buttonColor: const Color(0xff685D5D),
+                      //   //barrierDismissible: false,
+                      //   backgroundColor: const Color(0xff009AFF),
+                      //   onConfirm: () {
+                      //     Navigator.push(
+                      //         context,
+                      //         MaterialPageRoute(
+                      //             builder: (context) =>
+                      //             const MachineryReport()));
+                      //   },
+                      // );
                     },
                     child: const Text(
                       "Make Report",

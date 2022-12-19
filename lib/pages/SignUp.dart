@@ -1,10 +1,10 @@
+// ignore: file_names
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 //import 'package:get/get.dart';
 import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
 // import 'package:flutter_app/pages/LoginPage.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter_app/pages/LoginPage.dart';
 //import 'package:flutter_app/pages/home_page.dart';
 
@@ -36,7 +36,7 @@ class _SignUpState extends State<SignUp> {
 
   String? selectedValue;
 
-  String downvalue = 'Select Designation';
+  String downvalue = 'Designation';
 
 
   //
@@ -255,10 +255,17 @@ class _SignUpState extends State<SignUp> {
                                         width: MediaQuery.of(context).size.width,
                                         color: const Color(0xffEEF2FF),
                                         child: DropdownButtonHideUnderline(
-                                        child: DropdownButton2(
+                                        child: DropdownButtonFormField<String>(
 
                                           //isExpanded: true,
-                                          dropdownDecoration: const BoxDecoration(color: Color(0xffEEF2FF)),
+                                          validator: (value) {
+                                            if (value == null || value.isEmpty) {
+                                              return "Select Designation";
+                                            }
+                                            return null;
+                                          },
+
+                                          decoration: const InputDecoration(hoverColor: Color(0xffEEF2FF)),
                                           hint: Padding( padding: const EdgeInsets.only(left: 13), child: Text(downvalue),),
 
                                           items: Designation.map((String Designation){
@@ -270,16 +277,17 @@ class _SignUpState extends State<SignUp> {
                                           }).toList(),
 
                                           onChanged: (String? value) {
+
                                             setState(() {
                                               downvalue = value!;
                                             });
                                           },
-                                          buttonHeight: 50,
-                                          buttonWidth: 280,
-                                          itemHeight: 40,
-                                          itemPadding:
-                                          const EdgeInsets.symmetric(
-                                              horizontal: 8.0),
+                                          // buttonHeight: 50,
+                                          // buttonWidth: 280,
+                                          // itemHeight: 40,
+                                          // itemPadding:
+                                          // const EdgeInsets.symmetric(
+                                          //     horizontal: 8.0),
 
                                         ),
                                       ),),

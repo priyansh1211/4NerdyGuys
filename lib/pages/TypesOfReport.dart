@@ -7,8 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class TypesOfReport extends StatefulWidget {
   final String projectName;
+  final int progress;
 
-    const TypesOfReport({Key? key, required this.projectName}) : super(key: key);
+    const TypesOfReport({Key? key, required this.projectName,required this.progress}) : super(key: key);
 
   @override
   State<TypesOfReport> createState() => _TypesOfReportState();
@@ -49,7 +50,7 @@ class _TypesOfReportState extends State<TypesOfReport> {
             padding: const EdgeInsets.only(left: 20, right: 10),
             child: TextField(
               decoration: InputDecoration(
-                hintText: "Hello, ${name}",
+                hintText: "Hello, $name",
                 hintStyle: const TextStyle(
                   fontFamily: "ReadexPro",
                   fontSize: 30,
@@ -151,7 +152,7 @@ class _TypesOfReportState extends State<TypesOfReport> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => DpReportPage(pName: widget.projectName,)));
+                          builder: (context) => DpReportPage(pName: widget.projectName, prog : widget.progress )));
                 },
               ),
 
