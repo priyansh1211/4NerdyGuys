@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
+import 'package:intl/intl.dart';
 
 class TasksPage extends StatefulWidget {
   const TasksPage({Key? key}) : super(key: key);
@@ -8,11 +9,50 @@ class TasksPage extends StatefulWidget {
 }
 
 class _TasksPageState extends State<TasksPage> {
+  List listforstartdate = [];
+  List listforendDate = [];
+  List listfortask = [];
+  final fkey = GlobalKey<FormState>();
+  final _dateC1 = TextEditingController();
+  final _dateC2 = TextEditingController();
+  final _taskdetail = TextEditingController();
+//for start date , date picker
+  Future displayDatePicker1(BuildContext context) async {
+    var date = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+    if (date != null) {
+      var formatteddate = DateFormat('dd/MM/yyyy').format(date);
+      setState(() {
+        _dateC1.text = formatteddate.toString().split(" ")[0];
+      });
+    }
+  }
+
+// for end date , date picker
+  Future displayDatePicker2(BuildContext context) async {
+    var date = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+    if (date != null) {
+      var formatteddate = DateFormat('dd/MM/yyyy').format(date);
+      setState(() {
+        _dateC2.text = formatteddate.toString().split(" ")[0];
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
     return Scaffold(
-      endDrawer: DrawerPage(),
+      endDrawer: const DrawerPage(),
       body: Center(
         child: Stack(
           children: [
@@ -39,20 +79,21 @@ class _TasksPageState extends State<TasksPage> {
               top: 46,
               child: Builder(
                 builder: (context) => IconButton(
-                  icon: Icon(Icons.menu),
+                  icon: const Icon(Icons.menu),
                   iconSize: 30,
-                  color: Color(0xff000000),
+                  color: const Color(0xff000000),
                   onPressed: () => Scaffold.of(context).openEndDrawer(),
-                  tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                  tooltip:
+                      MaterialLocalizations.of(context).openAppDrawerTooltip,
                 ),
               ),
             ),
             Positioned(
               left: 30,
               top: screensize.height * 0.118,
-              child: Text(
+              child: const Text(
                 'Tasks',
-                style: TextStyle(fontFamily: 'Readxpro', fontSize: 25),
+                style: TextStyle(fontFamily: 'Opensans', fontSize: 25),
               ),
             ),
             Positioned(
@@ -62,157 +103,186 @@ class _TasksPageState extends State<TasksPage> {
                 child: Row(
                   children: [
                     Container(
-                      child: Icon(Icons.calendar_today, size: 25),
+                      child: const Icon(Icons.calendar_today, size: 25),
                     ),
                     Container(
-                      child: Text(
-                        '+ Add Task',
-                        style: TextStyle(fontFamily: 'Readxpro', fontSize: 25),
+                      margin: EdgeInsets.only(left: screensize.width * 0.02),
+                      child: const Text(
+                        'Add Task',
+                        style: TextStyle(fontFamily: 'Opensans', fontSize: 25),
                       ),
                     ),
                   ],
                 ),
+                onTap: () {
+                  showDialog(
+                      barrierDismissible: true,
+                      context: context,
+                      builder: (_) {
+                        return AlertDialog(
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10.0))),
+                          content: Form(
+                            key: fkey,
+                            child: SizedBox(
+                              width: 100,
+                              height: 330,
+                              child: Column(
+                                children: [
+                                  TextFormField(
+                                    decoration: const InputDecoration(
+                                        labelText: 'Select Start date ',
+                                        suffixIcon:
+                                            Icon(Icons.calendar_month_rounded)),
+                                    controller: _dateC1,
+                                    onTap: () async {
+                                      displayDatePicker1(context);
+                                    },
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return "Select Start Date";
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                  TextFormField(
+                                    decoration: const InputDecoration(
+                                        labelText: 'Select End date ',
+                                        suffixIcon:
+                                            Icon(Icons.calendar_month_rounded)),
+                                    controller: _dateC2,
+                                    onTap: () async {
+                                      displayDatePicker2(context);
+                                    },
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return "Select End Date";
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                  TextFormField(
+                                    decoration: const InputDecoration(
+                                      labelText: "Enter Task Detail",
+                                    ),
+                                    controller: _taskdetail,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return "Enter about Task";
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 20),
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            if (fkey.currentState!.validate()) {
+                                              listforstartdate
+                                                  .add(_dateC1.text.toString());
+                                              listforendDate
+                                                  .add(_dateC2.text.toString());
+                                              listfortask.add(
+                                                  _taskdetail.text.toString());
+                                              Navigator.pop(context);
+                                              _dateC1.clear();
+                                              _dateC2.clear();
+                                              _taskdetail.clear();
+                                              setState(() {});
+                                            }
+                                          },
+                                          child: const Text('Add'),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          top: 20,
+                                        ),
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text('Cancel'),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      });
+                },
               ),
             ),
             Container(
-              width: screensize.width * 0.91,
-              height: screensize.height * 0.17625,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24.0),
-                color: const Color(0xffBDE6F1),
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height * 0.19,
+                bottom: MediaQuery.of(context).size.height * 0.10,
+                //right: MediaQuery.of(context).size.height * 0.020,
+                //left: MediaQuery.of(context).size.height * 0.020,
               ),
-              margin: EdgeInsets.only(
-                top: screensize.height * 0.185,
-                left: screensize.width * 0.04,
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                      top: screensize.height * 0.03,
-                      right: screensize.width * 0.65,
+              child: ListView.builder(
+                itemCount: listforstartdate.length,
+                itemBuilder: (BuildContext context, int index) {
+                  var endDate = listforendDate[index];
+                  return Container(
+                    height: 100,
+                    margin: const EdgeInsets.only(left: 15, right: 15),
+                    child: InkWell(
+                      child: Card(
+                        color: const Color(0xffA6D1E6),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        //elevation: 10.0,
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              top: MediaQuery.of(context).size.height * 0.038,
+                              left: MediaQuery.of(context).size.width * 0.05,
+                              child: Text(
+                                listforstartdate[index].toString(),
+                                style: const TextStyle(
+                                    fontSize: 18, fontFamily: 'Opensans'),
+                              ),
+                            ),
+                            Positioned(
+                              top: MediaQuery.of(context).size.height * 0.038,
+                              left: MediaQuery.of(context).size.width * 0.3,
+                              child: Text(
+                                ' - $endDate',
+                                style: const TextStyle(
+                                    fontSize: 18, fontFamily: 'Opensans'),
+                              ),
+                            ),
+                            Positioned(
+                              top: MediaQuery.of(context).size.height * 0.078,
+                              left: MediaQuery.of(context).size.width * 0.3,
+                              child: Text(
+                                listfortask[index].toString(),
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'Opensans',
+                                  color: Color(0xff000000),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      onTap: () {},
                     ),
-                    child: Text(
-                      '1-8 Aug',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      top: screensize.height * (0.01 / 6),
-                    ),
-                    child: Text(
-                      'After finishing \nShow reports to sir',
-                      style: TextStyle(fontSize: 20, fontFamily: 'Readxpro'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: screensize.width * 0.91,
-              height: screensize.height * 0.17625,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24.0),
-                color: const Color(0xffBDE6F1),
-              ),
-              margin: EdgeInsets.only(
-                top: screensize.height * 0.37125,
-                left: screensize.width * 0.04,
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                      top: screensize.height * 0.03,
-                      right: screensize.width * 0.65,
-                    ),
-                    child: Text(
-                      '9-16 Aug',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        top: screensize.height * (0.01 / 6),
-                        left: screensize.width * 0.105),
-                    child: Text(
-                      'Check Progress in block',
-                      style: TextStyle(fontSize: 20, fontFamily: 'Readxpro'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: screensize.width * 0.91,
-              height: screensize.height * 0.17625,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24.0),
-                color: const Color(0xffBDE6F1),
-              ),
-              margin: EdgeInsets.only(
-                top: screensize.height * 0.56125,
-                left: screensize.width * 0.04,
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                      top: screensize.height * 0.03,
-                      right: screensize.width * 0.65,
-                    ),
-                    child: Text(
-                      '17-24 Aug',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        top: screensize.height * (0.01 / 6),
-                        left: screensize.width * (0.01 / 6)),
-                    child: Text(
-                      'Submits reports',
-                      style: TextStyle(fontSize: 20, fontFamily: 'Readxpro'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: screensize.width * 0.91,
-              height: screensize.height * 0.17625,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24.0),
-                color: const Color(0xffBDE6F1),
-              ),
-              margin: EdgeInsets.only(
-                top: screensize.height * 0.76125,
-                left: screensize.width * 0.04,
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                      top: screensize.height * 0.03,
-                      right: screensize.width * 0.65,
-                    ),
-                    child: Text(
-                      '24-31 Aug',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      top: screensize.height * (0.04 / 5),
-                      left: screensize.width * 0.1,
-                    ),
-                    child: Text(
-                      'Get supply from supplier',
-                      style: TextStyle(fontSize: 20, fontFamily: 'Readxpro'),
-                    ),
-                  ),
-                ],
+                    // child : Card(child: Center(child: Text(userList1[index].keys.elementAt(0).toString())))
+                  );
+                },
               ),
             ),
           ],
