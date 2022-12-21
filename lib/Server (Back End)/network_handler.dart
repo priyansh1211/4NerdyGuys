@@ -1,22 +1,21 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
-import 'dart:convert';
-import 'dart:async';
 
 class NetworkHandler {
+  Map<String, String> requestHeaders = {
+    'Content-type': 'application/json',
+    'Accept': 'application/json',
+  };
 
-
-  Map<String, String> requestHeaders =
-  {'Content-type': 'application/json',
-    'Accept': 'application/json',};
-
-  String baseurl = "http://192.168.159.77:5000/user";
+  String baseurl = "http://192.168.1.5:5000/user";
   var log = Logger();
 
   Future<dynamic> get(String url) async {
-
     url = formater("/register");
 
     final response = await http.get(Uri.parse(url));
@@ -44,7 +43,7 @@ class NetworkHandler {
   Future<List?> loginApi (Map <String,String> body) async{
     try {
       String url = formater("/login");
-      print("login : $body");
+      //print("login : $body");
       final response = await http.post(Uri.parse(url),body: jsonEncode(body),headers: {"Content-Type": "application/json"});
       // Map map2 = jsonDecode(response.body)as Map<String,dynamic>;
       // // print("login : $map2");
@@ -57,24 +56,32 @@ class NetworkHandler {
         final List map = jsonDecode(response.body);
         return map;
       }
-
-    }
-    catch(err) {
+    } catch (err) {
       //print("error =======>$err");
     }
     return [];
   }
 
-  Future<bool?> OtpVerification( Map <String,String> body)
-  async {
+  Stream<List> getUserdata(Map<String, String> body) async* {
+    String url = formater("/getUserdata");
+    final response = await http.post(Uri.parse(url),
+        body: jsonEncode(body), headers: requestHeaders);
+    final List map = jsonDecode(response.body);
 
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      // log.i(map);
+      yield map;
+    }
+  }
+
+  Future<bool?> OtpVerification(Map<String, String> body) async {
     String url = formater("/verifyOTP");
 
-    final response = await http.post(Uri.parse(url),body : jsonEncode(body), headers: requestHeaders);
+    log.i(body);
+    final response = await http.post(Uri.parse(url),
+        body: jsonEncode(body), headers: requestHeaders);
 
-
-    if(response.statusCode == 200 || response.statusCode == 201 )
-    {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       log.i(response.body);
       return true;
     }
@@ -89,25 +96,57 @@ class NetworkHandler {
 
     final response = await http.post(Uri.parse(url),body : jsonEncode(body), headers: requestHeaders);
 
-
-    if(response.statusCode == 200 || response.statusCode == 201 )
-      {
-        log.i(response.body);
-        return response.body;
-      }
-   log.i(response.body);
-   log.i(response.statusCode);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      log.i(response.body);
+      return response.body;
+    }
+    log.i(response.body);
+    log.i(response.statusCode);
   }
 
+  Stream<List> listnotification() async* {
+    String url = formater("/get-notification");
 
+    while (true) {
+      Future.delayed(const Duration(milliseconds: 500));
+      final response = await http.get(Uri.parse(url));
+      final List map1 = jsonDecode(response.body);
 
-  Future<bool?> contactDeveloper( Map <String,String> body)
-  async {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        yield map1;
+      }
+    }
+  }
 
+  Future<bool> deleteUser(Map<String, String> body) async {
+    String url = formater("/delete-User");
+    final response = await http.post(Uri.parse(url),
+        body: jsonEncode(body), headers: requestHeaders);
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return true;
+    }
+
+    return false;
+  }
+
+  Future<bool> UserVerification(Map<String, String> body) async {
+    String url = formater("/update-UserVerification");
+    final response = await http.post(Uri.parse(url),
+        body: jsonEncode(body), headers: requestHeaders);
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return true;
+    }
+
+    return false;
+  }
+
+  Future<bool?> contactDeveloper(Map<String, String> body) async {
     String url = formater("/contact_us");
 
-    final response = await http.post(Uri.parse(url),body : jsonEncode(body), headers: requestHeaders);
-
+    final response = await http.post(Uri.parse(url),
+        body: jsonEncode(body), headers: requestHeaders);
 
     if(response.statusCode == 200 || response.statusCode == 201 )
     {
@@ -118,7 +157,6 @@ class NetworkHandler {
     log.i(response.statusCode);
     return false;
   }
-
 
   Future<bool?> addProject( Map <String,String> body)
   async {
@@ -138,7 +176,6 @@ class NetworkHandler {
     return false;
   }
 
-
   Future<bool?> editProject( Map <String,String> body)
   async {
 
@@ -146,9 +183,7 @@ class NetworkHandler {
 
     final response = await http.post(Uri.parse(url),body : jsonEncode(body), headers: requestHeaders);
 
-
-    if(response.statusCode == 200 || response.statusCode == 201 )
-    {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       log.i(response.body);
       return true;
     }
@@ -157,21 +192,32 @@ class NetworkHandler {
     return false;
   }
 
-  Future<Map<String,dynamic>> listtoSave()
-  async {
+  Future<List> getprogress(Map<String, String> body) async {
+    String url = formater("/getprogress");
 
+    final response = await http.post(Uri.parse(url),
+        body: jsonEncode(body), headers: requestHeaders);
+
+    final List map = jsonDecode(response.body);
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return map;
+    }
+
+    return [];
+  }
+
+  Future<Map<String, dynamic>> listtoSave(Map<String, String> body) async {
     String url = formater("/getActive");
 
-    final response = await http.get(Uri.parse(url));
+    final response = await http.post(Uri.parse(url),
+        body: jsonEncode(body), headers: requestHeaders);
 
-    //final response = await http.post(add,body : jsonEncode(""), headers: requestHeaders);
-
-    final Map<String,dynamic> map = jsonDecode(response.body);
+    final Map<String, dynamic> map = jsonDecode(response.body);
     // log.i(map);
     //print("$map ==++++>>");
 
-    if(response.statusCode == 200 || response.statusCode == 201 )
-    {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       log.i(response.body);
       return map;
     }
@@ -179,21 +225,19 @@ class NetworkHandler {
     return {};
   }
 
-
-  Future<List> listActiveEmployeers()
-  async {
-
+  Stream<List> listActiveEmployeer(Map<String, String> body) async* {
     String url = formater("/getActiveEmployee");
+    while (true) {
+      Future.delayed(const Duration(seconds: 1));
+      final response = await http.post(Uri.parse(url),
+          body: jsonEncode(body), headers: requestHeaders);
 
-    final response = await http.get(Uri.parse(url));
-    final List map = jsonDecode(response.body);
+      final List map = jsonDecode(response.body);
 
-    if(response.statusCode == 200 || response.statusCode == 201 )
-    {
-      return map;
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        yield map;
+      }
     }
-
-    return [];
   }
 
   Future<List> listproject()
@@ -242,22 +286,22 @@ class NetworkHandler {
     return false;
   }
 
-
   Future<List> listitem(Map<String, String> body)
   async {
+    log.i(body);
 
     String url = formater("/getitems");
 
-    final response = await http.post(Uri.parse(url),body : jsonEncode(body), headers: requestHeaders);
+    final response = await http.post(Uri.parse(url),
+        body: jsonEncode(body), headers: requestHeaders);
 
     //final response = await http.post(add,body : jsonEncode(""), headers: requestHeaders);
 
     final List map = jsonDecode(response.body);
-    // log.i(map);
+    log.i(map);
     //print("$map ==++++>>");
 
-    if(response.statusCode == 200 || response.statusCode == 201 )
-    {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       log.i(response.body);
       return map;
     }
@@ -265,16 +309,30 @@ class NetworkHandler {
     return [];
   }
 
-  Future<bool?> addItems( Map <String,String> body)
-  async {
+  Stream<List> listitemdetails(Map<String, String> body) async* {
+    String url = formater("/getitemsdetails");
 
+    while (true) {
+      Future.delayed(const Duration(milliseconds: 100));
+      final response = await http.post(Uri.parse(url),
+          body: jsonEncode(body), headers: requestHeaders);
+
+      final List map = jsonDecode(response.body);
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        //log.i(response.body);
+        yield map;
+      }
+    }
+  }
+
+  Future<bool?> addItems(Map<String, String> body) async {
     String url = formater("/additems");
 
-    final response = await http.post(Uri.parse(url),body : jsonEncode(body), headers: requestHeaders);
+    final response = await http.post(Uri.parse(url),
+        body: jsonEncode(body), headers: requestHeaders);
 
-
-    if(response.statusCode == 200 || response.statusCode == 201 )
-    {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       log.i(response.body);
       return true;
     }
@@ -283,10 +341,39 @@ class NetworkHandler {
     return false;
   }
 
-  String formater(String url){
-    return baseurl + url;
+  Future<bool> updateItems(Map<String, dynamic> body) async {
+    String url = formater("/updateitems");
+    log.i(body);
+
+    final response = await http.post(Uri.parse(url),
+        body: jsonEncode(body), headers: requestHeaders);
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      log.i(response.body);
+      return true;
+    }
+
+    return false;
   }
 
+  Future<bool> updateQuantityItems(Map<String, dynamic> body) async {
+    String url = formater("/updatequantityitems");
+    log.i(body);
+
+    final response = await http.post(Uri.parse(url),
+        body: jsonEncode(body), headers: requestHeaders);
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      log.i(response.body);
+      return true;
+    }
+
+    return false;
+  }
+
+  String formater(String url) {
+    return baseurl + url;
+  }
 }
 
 

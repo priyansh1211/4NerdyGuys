@@ -1,7 +1,10 @@
+// ignore: file_names
+
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Server%20(Back%20End)/network_handler.dart';
-import 'package:flutter_app/pages/Dashboard/add_project_blocks.dart';
+import 'package:flutter_app/pages/add_project_blocks.dart';
+import 'package:flutter_app/pages/notification_page.dart';
 
 class ActiveEmployees extends StatefulWidget {
   const ActiveEmployees({Key? key}) : super(key: key);
@@ -11,46 +14,11 @@ class ActiveEmployees extends StatefulWidget {
 }
 
 class _ActiveEmployeesState extends State<ActiveEmployees> {
-  List userList = [
-    'Vishwaas',
-    'Vishwaas12',
-    'Vishwaas13',
-    'Vishwaas14',
-    'Abc',
-    'Abc12',
-    'Abc13',
-    'Abc14',
-    'XYZ',
-    'XYZ12',
-    'XYZ13',
-    'XYZ14'
-  ];
-
-  List<Map<String, dynamic>> userList1 = [
-    {'Sanskruti': 'A'},
-    {'Antriksh': 'C'},
-    {'Nakshtra': 'B'}
-  ];
-
-  List<Map<String, dynamic>> userRole = [
-    {'Junior Engineer': 'Vishwaas'},
-    {'Junior Engineer': 'Vishwaas12'},
-    {'Junior Engineer': 'Vishwaas13'},
-    {'Junior Engineer': 'Vishwaas14'},
-    {'Senior Engineer': 'Abc'},
-    {'Senior Engineer': 'Abc12'},
-    {'Senior Engineer': 'Abc13'},
-    {'Senior Engineer': 'Abc14'},
-    {'Project Manager': 'XYZ'},
-    {'Project Manager': 'XYZ12'},
-    {'Project Manager': 'XYZ13'},
-    {'Project Manager': 'XYZ14'},
-  ];
-
   String dropdownvalue = 'Select Role';
 
   // List of items in our dropdown menu
   var items = [
+    'All',
     'Junior Engineer',
     'Senior Engineer',
     'Project Manager',
@@ -58,17 +26,99 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
 
   String b = "";
 
+  Future<void> temp(
+      String name, String designation, Map<String, dynamic> site) {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      barrierColor: Colors.black87, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          elevation: 100,
+          backgroundColor: const Color.fromRGBO(137, 180, 253, 1),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          content: SingleChildScrollView(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 1,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                          flex: 4,
+                          child:
+                              Text(name, style: const TextStyle(fontSize: 20))),
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          designation,
+                          style: const TextStyle(fontSize: 12),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: site.keys.length,
+                      itemBuilder: (context, j) {
+                        List<dynamic> m =
+                            site.values.elementAt(j) as List<dynamic>;
+                        String a = "";
+                        for (var element in m) {
+                          a += element + " ";
+                        }
+                        return Row(
+                          children: [
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                              flex: 4,
+                              child: Text(
+                                site.keys.elementAt(j).toString(),
+                                style: const TextStyle(fontSize: 17),
+                              ),
+                            ),
+                            Expanded(
+                                flex: 5,
+                                child: Text(
+                                  a,
+                                  overflow: TextOverflow.visible,
+                                  style: const TextStyle(fontSize: 17),
+                                )),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                          ],
+                        );
+                      }),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   final fkey = GlobalKey<FormState>();
   TextEditingController message = TextEditingController();
   TextEditingController number = TextEditingController();
-  int inc = 0;
 
   NetworkHandler p = NetworkHandler();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<List>(
+      body: StreamBuilder<List>(
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Container(
@@ -108,142 +158,345 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
                         style: TextStyle(fontSize: 30, fontFamily: 'OpenSans'),
                       ),
                     ),
+                    /* const Positioned(
+                      top: 14,
+                      right: 24,
+                      child: Icon(
+                        Icons.notifications,
+                        size: 30,
+                        color: Colors.black38,
+                      ),
+                    ),*/
+                    Positioned(
+                      top: 10,
+                      right: 20,
+                      child: InkWell(
+                        child: Stack(
+                          children: const [
+                            Icon(Icons.notifications_active_rounded,
+                                color: Color.fromRGBO(
+                                    45, 163, 222, 0.4588235294117647),
+                                size: 30),
+                            Positioned(
+                              top: 1,
+                              right: 1,
+                              child: Icon(
+                                Icons.circle,
+                                size: 10,
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const NotificationPage()));
+                        },
+                      ),
+                    ),
                     Container(
                       margin: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * 0.1025 - 20,
+                          top: MediaQuery.of(context).size.height * 0.1025,
                           left: 30),
-                      width: MediaQuery.of(context).size.width * 0.625,
+                      //width: MediaQuery.of(context).size.width * 0.625,
                       decoration: const BoxDecoration(
-                          color: Color(0xff89CFFD),
+                          color: Color.fromRGBO(137, 207, 253, 0.46),
                           borderRadius: BorderRadius.all(Radius.circular(6.0))),
                       child: DropdownButton2(
-                        dropdownDecoration:
-                            const BoxDecoration(color: Color(0xff89CFFD)),
+                        buttonWidth: MediaQuery.of(context).size.width * 0.625,
+                        dropdownDecoration: const BoxDecoration(
+                          color: Color.fromRGBO(
+                            137,
+                            207,
+                            253,
+                            1,
+                          ),
+                        ),
                         style: const TextStyle(color: Colors.black),
                         underline: Container(),
-                        icon: Padding(
-                          padding: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width * 0.25 -
-                                  dropdownvalue.length -
-                                  10),
-                          child: const Icon(Icons.keyboard_arrow_down),
+
+                        //icon:  Padding(padding: EdgeInsets.only(left: 20,),child: const Icon(Icons.keyboard_arrow_down),),
+
+                        hint: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text(dropdownvalue),
                         ),
-                        hint: Text(dropdownvalue),
+                        icon: const Padding(
+                          padding: EdgeInsets.only(right: 20),
+                          child: Icon(Icons.keyboard_arrow_down),
+                        ),
+
                         items: items.map((String items) {
                           return DropdownMenuItem(
                             value: items,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: Text(items),
-                            ),
+                            child: Text(items),
                           );
                         }).toList(),
                         onChanged: (String? newValue) {
                           setState(() {
                             dropdownvalue = newValue!;
-                            userList = [];
-                            if (newValue.toString() != 'Select Role') {
-                              for (int i = 0; i < userRole.length; i++) {
-                                if (userRole[i].keys.elementAt(0).toString() ==
-                                    newValue.toString()) {
-                                  userList.add(userRole[i]
-                                      .values
-                                      .elementAt(0)
-                                      .toString());
-                                }
-                              }
-                            }
                           });
                         },
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 150, bottom: 20),
-                      child: ListView.builder(
-                        itemCount: snapshot.data?.length,
-                        itemBuilder: (context, i) {
-                          return InkWell(
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                  left: MediaQuery.of(context).size.width *
-                                      0.04444,
-                                  top: 20,
-                                  right: MediaQuery.of(context).size.width *
-                                      0.04444,
+                      margin: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * 0.175,
+                          bottom: 20),
+                      child: Theme(
+                        data: Theme.of(context).copyWith(
+                          // ignore: deprecated_member_use
+                          androidOverscrollIndicator:
+                              AndroidOverscrollIndicator.values[0],
+                        ),
+                        child: ListView.builder(
+                          itemCount: snapshot.data?.length,
+                          itemBuilder: (context, i) {
+                            if (snapshot.data![i]["permitted_site"].values
+                                    .toString() ==
+                                "none".toString()) {
+                              return InkWell(
+                                child: Container(
+                                  // transform: Matrix4.identity(),
+                                  //   duration: const Duration(milliseconds: 50),
+                                  margin: EdgeInsets.only(
+                                    left: MediaQuery.of(context).size.width *
+                                        0.04444,
+                                    top: 20,
+                                    right: MediaQuery.of(context).size.width *
+                                        0.04444,
+                                  ),
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  width: MediaQuery.of(context).size.width *
+                                      0.9111,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.16875,
+                                  decoration: const BoxDecoration(
+                                    color: Color.fromRGBO(137, 207, 253, 0.46),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20.0)),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          const Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 10, right: 5),
+                                            child: Icon(Icons.circle, size: 13),
+                                          ),
+                                          Expanded(
+                                              flex: 3,
+                                              child: Text(
+                                                  snapshot.data![i]["username"]
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                      fontSize: 20))),
+                                          Expanded(
+                                            flex: 2,
+                                            child: Text(
+                                              snapshot.data![i]["designation"]
+                                                  .toString(),
+                                              style:
+                                                  const TextStyle(fontSize: 15),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 50,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                width:
-                                    MediaQuery.of(context).size.width * 0.9111,
-                                height: MediaQuery.of(context).size.height *
-                                        0.16875 +
-                                    snapshot.data![i].length * 2,
-                                decoration: const BoxDecoration(
-                                  color: Color.fromRGBO(137, 207, 253, 0.46),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0)),
-                                ),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        const Icon(Icons.circle, size: 15),
-                                        Text(snapshot.data![i]["username"]
-                                            .toString()),
-                                        Text(snapshot.data![i]["designation"]
-                                            .toString()),
-                                      ],
-                                    ),
-                                    Expanded(
-                                      child: ListView.builder(
-                                          itemCount: snapshot
-                                              .data![i]["permitted_site"]
-                                              .length,
-                                          itemBuilder: (context, j) {
-                                            b = snapshot.data![i]["email"].toString();
-                                            List<dynamic> m = snapshot
-                                                .data![i]["permitted_site"]
-                                                .values
-                                                .elementAt(j) as List<dynamic>;
-                                            String a = "";
-                                            for (var element in m) {
-                                              a += element + " ";
-                                            }
-                                            return Row(
-                                              children: [
-                                                Expanded(
-                                                  flex: 1,
-                                                  child: Text(
-                                                    snapshot
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              AddProjectBlocks(
+                                                name: snapshot.data![i]
+                                                        ["username"]
+                                                    .toString(),
+                                                designation: snapshot.data![i]
+                                                        ["designation"]
+                                                    .toString(),
+                                                email: snapshot.data![i]
+                                                        ["email"]
+                                                    .toString(),
+                                              )));
+                                },
+                              );
+                            } else {
+                              return GestureDetector(
+                                onLongPress: () {
+                                  temp(
+                                      snapshot.data![i]["username"].toString(),
+                                      snapshot.data![i]["designation"]
+                                          .toString(),
+                                      snapshot.data![i]["permitted_site"]);
+                                },
+                                child: Container(
+                                  // transform: Matrix4.identity(),
+                                  //   duration: const Duration(milliseconds: 50),
+                                  margin: EdgeInsets.only(
+                                    left: MediaQuery.of(context).size.width *
+                                        0.04444,
+                                    top: 20,
+                                    right: MediaQuery.of(context).size.width *
+                                        0.04444,
+                                  ),
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  width: MediaQuery.of(context).size.width *
+                                      0.9111,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.16875,
+                                  decoration: const BoxDecoration(
+                                    color: Color.fromRGBO(137, 207, 253, 0.46),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20.0)),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          const Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 10, right: 5),
+                                            child: Icon(Icons.circle, size: 13),
+                                          ),
+                                          Expanded(
+                                              flex: 3,
+                                              child: Text(
+                                                  snapshot.data![i]["username"]
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                      fontSize: 20))),
+                                          Expanded(
+                                            flex: 2,
+                                            child: Text(
+                                              snapshot.data![i]["designation"]
+                                                  .toString(),
+                                              style:
+                                                  const TextStyle(fontSize: 15),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 50,
+                                          ),
+                                        ],
+                                      ),
+                                      Flexible(
+                                        flex: 1,
+                                        child: snapshot
+                                                    .data![i]["permitted_site"]
+                                                    .length >
+                                                0
+                                            ? ListView.builder(
+                                                physics:
+                                                    const NeverScrollableScrollPhysics(),
+                                                itemCount: snapshot
+                                                    .data![i]["permitted_site"]
+                                                    .length,
+                                                itemBuilder: (context, j) {
+                                                  if (snapshot
+                                                          .data![i]
+                                                              ["permitted_site"]
+                                                          .keys
+                                                          .elementAt(j)
+                                                          .toString() !=
+                                                      "none") {
+                                                    b = snapshot.data![i]
+                                                            ["email"]
+                                                        .toString();
+                                                    List<dynamic> m = snapshot
                                                         .data![i]
                                                             ["permitted_site"]
-                                                        .keys
-                                                        .elementAt(j)
-                                                        .toString(),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                    flex: 3,
-                                                    child: Text(
-                                                      a,
-                                                      overflow:
-                                                          TextOverflow.visible,
-                                                    )),
-                                              ],
-                                            );
-                                          }),
-                                    ),
-                                  ],
+                                                        .values
+                                                        .elementAt(
+                                                            j) as List<dynamic>;
+
+                                                    String a = "";
+
+                                                    for (var element in m) {
+                                                      a += element + " ";
+                                                    }
+                                                    return Row(
+                                                      children: [
+                                                        const SizedBox(
+                                                          width: 20,
+                                                        ),
+                                                        Expanded(
+                                                          flex: 1,
+                                                          child: Text(
+                                                            snapshot
+                                                                .data![i][
+                                                                    "permitted_site"]
+                                                                .keys
+                                                                .elementAt(j)
+                                                                .toString(),
+                                                            style:
+                                                                const TextStyle(
+                                                                    fontSize:
+                                                                        17),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                            flex: 2,
+                                                            child: Text(
+                                                              a,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .visible,
+                                                              style: const TextStyle(
+                                                                  fontSize: 17,
+                                                                  color: Colors
+                                                                      .black45),
+                                                            )),
+                                                      ],
+                                                    );
+                                                  } else {
+                                                    return Container();
+                                                  }
+                                                },
+                                              )
+                                            : Container(),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => AddProjectBlocks(
-                                              name: snapshot.data![i]["email"]
-                                                  .toString(),
-                                            )));
-                              });
-                        },
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              AddProjectBlocks(
+                                                name: snapshot.data![i]
+                                                        ["username"]
+                                                    .toString(),
+                                                designation: snapshot.data![i]
+                                                        ["designation"]
+                                                    .toString(),
+                                                email: snapshot.data![i]
+                                                        ["email"]
+                                                    .toString(),
+                                              )));
+                                },
+                              );
+                            }
+
+                            //return Text(snapshot.data![i]["permitted_site"].toString());
+                          },
+                        ),
                       ),
                     ),
                   ],
@@ -253,7 +506,7 @@ class _ActiveEmployeesState extends State<ActiveEmployees> {
           }
           return const Text("Something Went Wrong");
         },
-        future: p.listActiveEmployeers(),
+        stream: p.listActiveEmployeer({"search_by": dropdownvalue}),
       ),
     );
   }
