@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/Dashboard/Item_list.dart';
-import 'package:flutter_app/pages/analytics.dart';
-import 'package:flutter_app/pages/tasks.dart';
+import 'package:flutter_app/pages/Dashboard/analytics.dart';
+import 'package:flutter_app/pages/Dashboard/tasks.dart';
 import 'package:flutter_app/pages/drawerpage.dart';
 
 class SelectPage extends StatefulWidget {
-
   String projectName;
-  SelectPage({Key? key , required this.projectName}) : super(key: key);
+
+  SelectPage({Key? key, required this.projectName}) : super(key: key);
+
   @override
   State<SelectPage> createState() => _SelectPageState();
 }

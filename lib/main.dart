@@ -4,15 +4,17 @@ import 'package:flutter_app/pages/Auth/ForgotPassword.dart';
 import 'package:flutter_app/pages/Auth/LoginPage.dart';
 import 'package:flutter_app/pages/Auth/SignUp.dart';
 import 'package:flutter_app/pages/Reports/ManPowerReport.dart';
+
 //import 'package:flutter_app/pages/ProjectProgress.dart';
 import 'package:flutter_app/pages/home_page.dart';
 import 'package:get/get.dart';
-import './pages/ResetPassword.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import './pages/Auth/ResetPassword.dart';
+
 void main() {
-  runApp(
-      GetMaterialApp(
-        debugShowCheckedModeBanner: false,
+  runApp(GetMaterialApp(
+    debugShowCheckedModeBanner: false,
     home: const ManPowerReport(),
     routes: {
       'LoginPage': (context) => const LoginPage(),
